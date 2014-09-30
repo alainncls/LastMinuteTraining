@@ -22,4 +22,10 @@ public class DashboardController extends HttpServlet {
 		// Forward the request
 		dispatcher.forward(req, resp);
 	}
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		doGet(req, resp);
+	}
 }

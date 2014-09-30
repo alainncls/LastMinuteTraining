@@ -6,10 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="./css/flatly.bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="./css/main.css" />
-	<!-- <link rel="stylesheet" type="text/css" href='./css/fullcalendar.css' />
+	<link rel="stylesheet" type="text/css" href='./css/fullcalendar.css' />
 	<link rel="stylesheet" type="text/css" href='./css/fullcalendar.print.css' />
- -->
+
 	<script src="./js/jquery-2.1.1.min.js"></script>
 	<script src='./js/fullcalendar.min.js'></script>
 	<script src='./js/moment.min.js'></script>
