@@ -1,6 +1,21 @@
 <jsp:include page="/include/header.jsp" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<div class="filter">
+	<form role="form">
+		<div class="form-group">
+			<label for="inputPrerequis">Prerequisites</label>
+			<select multiple id="inputPrerequis" name="inputPrerequis" class="form-control">
+				<c:forEach items="${prerequis}" var="prerequis">
+					<option value="${prerequis.id}" selected="${prerequis.selected}">${prerequis.name}</option>
+				</c:forEach>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="inputDate">Date</label>
+			<input type="date" id="inputDate" name="inputDate"/>
+		</div>
+	</form>
+</div>
 <div class="table-responsive">
 	<table class="table table-hover">
 		<thead>
@@ -25,5 +40,5 @@
 	</tbody>
 </table>
 </div>
-<!-- <jsp:include page="/include/calendar.jsp" /> -->
+
 <jsp:include page="/include/footer.jsp" />

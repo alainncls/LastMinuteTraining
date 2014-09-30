@@ -19,127 +19,100 @@
 				<li><a href="#">Home</a></li>
 				<li><a href="#">GED</a></li>
 				<li><a href="#">Webinar</a></li>
-				<li><!-- Button trigger modal -->
-					<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">LogIn</button>
-				</li>
 			</ul>
 
-			<form class="navbar-form navbar-left" role="search">
+			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#loginModal">Log In</button>
 			</form>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>
 
 <!-- Modal de login -->
-<div class="modal fade bs-modal-sm" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
-	<div class="modal-dialog modal-sm">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
+	<div class="modal-dialog">
 		<div class="modal-content">
-			<br>
-			<div class="bs-example bs-example-tabs">
-				<ul id="myTab" class="nav nav-tabs">
-					<li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
-					<li class=""><a href="#signup" data-toggle="tab">Register</a></li>
-				</ul>
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<br/>
 			</div>
 			<div class="modal-body">
-				<div id="myTabContent" class="tab-content">
-					<div class="tab-pane fade active in" id="signin">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+					<li ><a href="#signup" data-toggle="tab">Register</a></li>
+				</ul>
+				<br/>
+				<div class="tab-content">
+					<div class="tab-pane active fade in" id="signin">
 						<form class="form-horizontal">
-							<fieldset>
-								<!-- Sign In Form -->
-								<!-- Text input-->
-								<div class="control-group">
-									<label class="control-label" for="userid">Alias:</label>
-									<div class="controls">
-										<input required="" id="userid" name="userid" type="text" class="form-control" placeholder="JoeSixpack" class="input-medium" required="">
-									</div>
+							<!-- Sign In Form -->
+							<!-- Text input-->
+							<div class="form-group">
+								<label for="inputLogin" class="col-sm-4 control-label">Login:</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="inputLogin" name="login" />
 								</div>
-
-								<!-- Password input-->
-								<div class="control-group">
-									<label class="control-label" for="passwordinput">Password:</label>
-									<div class="controls">
-										<input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">
-									</div>
+							</div>
+							<!-- Password input-->
+							<div class="form-group">
+								<label for="inputPassword" class="col-sm-4 control-label">Mot de passe:</label>
+								<div class="col-sm-8">
+									<input type="password" class="form-control" id="inputPassword" name="password" />
 								</div>
-
-								<!-- Multiple Checkboxes (inline) -->
-								<div class="control-group">
-									<label class="control-label" for="rememberme"></label>
-									<div class="controls">
-										<label class="checkbox inline" for="rememberme-0">
-											<input type="checkbox" name="rememberme" id="rememberme-0" value="Remember me">
-											Remember me
-										</label>
-									</div>
+							</div>
+							<!-- Button -->
+							<div class="form-group">
+								<div class="col-sm-offset-4 col-sm-8">
+									<button type="submit" name="buttonLogin" class="btn btn-success">Sign In</button>
 								</div>
-
-								<!-- Button -->
-								<div class="control-group">
-									<label class="control-label" for="signin"></label>
-									<div class="controls">
-										<button id="signin" name="signin" class="btn btn-success">Sign In</button>
-									</div>
-								</div>
-							</fieldset>
+							</div>
 						</form>
 					</div>
 					<div class="tab-pane fade" id="signup">
 						<form class="form-horizontal">
-							<fieldset>
-								<!-- Sign Up Form -->
-								<!-- Text input-->
-								<div class="control-group">
-									<label class="control-label" for="Email">Email:</label>
-									<div class="controls">
-										<input id="Email" name="Email" class="form-control" type="text" class="input-large" required="" />
-									</div>
+							<!-- Sign Up Form -->
+							<!-- Text input-->
+							<div class="form-group">
+								<label for="inputEmailNew" class="col-sm-4 control-label">Email:</label>
+								<div class="col-sm-8">
+									<input type="email" class="form-control" id="inputEmailNew" name="emailNew" />
 								</div>
-
-								<!-- Text input-->
-								<div class="control-group">
-									<label class="control-label" for="userid">Alias:</label>
-									<div class="controls">
-										<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="" />
-									</div>
+							</div>
+							<!-- Text input-->
+							<div class="form-group">
+								<label for="inputLoginNew" class="col-sm-4 control-label">Login:</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="inputLoginNew" name="loginNew" />
 								</div>
-
-								<!-- Password input-->
-								<div class="control-group">
-									<label class="control-label" for="password">Password:</label>
-									<div class="controls">
-										<input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="" />
-										<em>1-8 Characters</em>
-									</div>
+							</div>
+							<!-- Password input-->
+							<div class="form-group">
+								<label for="inputPasswordNew" class="col-sm-4 control-label">Password:</label>
+								<div class="col-sm-8">
+									<input type="password" class="form-control" id="inputPasswordNew" name="passwordNew" />
 								</div>
-
-								<!-- Text input-->
-								<div class="control-group">
-									<label class="control-label" for="reenterpassword">Re-Enter Password:</label>
-									<div class="controls">
-										<input id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="********" class="input-large" required="" />
-									</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPasswordSecondNew" class="col-sm-4 control-label">Re-Enter Password:</label>
+								<div class="col-sm-8">
+									<input type="password" class="form-control" id="inputPasswordSecondNew" name="passwordSecondNew" />
 								</div>
-								<!-- Button -->
-								<div class="control-group">
-									<label class="control-label" for="confirmsignup"></label>
-									<div class="controls">
-										<button id="confirmsignup" name="confirmsignup" class="btn btn-success">Sign Up</button>
-									</div>
+							</div>
+							<!-- Button -->
+							<div class="form-group">
+								<div class="col-sm-offset-4 col-sm-8">
+									<button type="submit" name="buttonRegister" class="btn btn-success">Sign Up</button>
 								</div>
-							</fieldset>
+							</div>
 						</form>
 					</div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<center>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</center>
 			</div>
 		</div>
 	</div>
