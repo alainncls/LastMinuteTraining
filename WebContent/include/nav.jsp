@@ -20,14 +20,7 @@
 				<li><a href="#">GED</a></li>
 				<li><a href="#">Webinar</a></li>
 			</ul>
-
-			<form class="navbar-form navbar-right" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#loginModal">Log In</button>
-			</form>
+			<button type="button" class="btn btn-success navbar-btn navbar-right" data-toggle="modal" data-target="#loginModal">Log In</button>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>
@@ -40,14 +33,12 @@
 				<button type="button" class="close" data-dismiss="modal">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<br/>
-			</div>
-			<div class="modal-body">
 				<ul class="nav nav-tabs" role="tablist">
 					<li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
 					<li ><a href="#signup" data-toggle="tab">Register</a></li>
 				</ul>
-				<br/>
+			</div>
+			<div class="modal-body">
 				<div class="tab-content">
 					<div class="tab-pane active fade in" id="signin">
 						<form class="form-horizontal">
