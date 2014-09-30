@@ -10,9 +10,6 @@
  * Make sure to include this stylesheet IN ADDITION to the regular fullcalendar.css.
  */
 
-.fc {
-	max-width: 100% !important;
-}
 
 
 /* Global Event Restyling
@@ -38,8 +35,8 @@ hr,
 thead,
 tbody,
 .fc-row {
-	border-color: #ccc !important;
-	background: #fff !important;
+	border-color: #ccc;
+	background: #fff;
 }
 
 /* kill the overlaid, absolutely-positioned common components */
