@@ -25,6 +25,24 @@
 	</div><!-- /.container-fluid -->
 </nav>
 
+<script>
+$(document).ready(function () {
+	var menu = $('.navbar');
+	var origOffsetY = menu.offset().top;
+
+	function scroll() {
+	    if ($(window).scrollTop() >= origOffsetY) {
+	        $('.navbar').addClass('navbar-fixed-top');
+	        $('#page-content').addClass('navbar-padding');
+	    } else {
+	        $('.navbar').removeClass('navbar-fixed-top');
+	        $('#page-content').removeClass('navbar-padding');
+	    }
+	   }
+	  document.onscroll = scroll;
+	});
+</script>
+
 <!-- Modal de login -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
 	<div class="modal-dialog">
