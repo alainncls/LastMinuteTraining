@@ -11,7 +11,7 @@
 						<th>Prix</th>
 						<th>Prix via SM</th>
 						<th>Date</th>
-						<th>Difficulté</th>
+						<th>Difficult&eacute;</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,73 +26,73 @@
 					</c:forEach> -->
 				<tr>
 					<td><a href="addformation?id=1">Formation 1</a></td>
-					<td>1000€</td>
-					<td>100€</td>
+					<td>1 000 &euro;</td>
+					<td>100 &euro;</td>
 					<td>20/02/2014</td>
-					<td>Tada magic !</td>
+					<td><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
 					<td><a href="addformation?id=2">Formation 2</a></td>
-					<td>2000€</td>
-					<td>200€</td>
+					<td>2 000 &euro;</td>
+					<td>200 &euro;</td>
 					<td>20/02/2014</td>
-					<td>Tada magic !</td>
+					<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
 					<td><a href="addformation?id=3">Formation 3</a></td>
-					<td>3000€</td>
-					<td>300€</td>
+					<td>3 000 &euro;</td>
+					<td>3 00 &euro;</td>
 					<td>20/02/2014</td>
-					<td>Tada magic !</td>
+					<td><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
 					<td><a href="addformation?id=4">Formation 4</a></td>
-					<td>4000€</td>
-					<td>400€</td>
+					<td>4 000 &euro;</td>
+					<td>4 00 &euro;</td>
 					<td>20/02/2014</td>
-					<td>Tada magic !</td>
+					<td><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
 					<td><a href="addformation?id=5">Formation 5</a></td>
-					<td>5000€</td>
-					<td>500€</td>
+					<td>5 000 &euro;</td>
+					<td>500 &euro;</td>
 					<td>20/02/2014</td>
-					<td>Tada magic !</td>
+					<td><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
 					<td><a href="addformation?id=6">Formation 6</a></td>
-					<td>6000€</td>
-					<td>600€</td>
+					<td>6 000 &euro;</td>
+					<td>600 &euro;</td>
 					<td>20/02/2014</td>
-					<td>Tada magic !</td>
+					<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
 					<td><a href="addformation?id=7">Formation 7</a></td>
-					<td>7000€</td>
-					<td>700€</td>
+					<td>7 000 &euro;</td>
+					<td>700 &euro;</td>
 					<td>20/02/2014</td>
-					<td>Tada magic !</td>
+					<td><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
 					<td><a href="addformation?id=8">Formation 8</a></td>
-					<td>8000€</td>
-					<td>800€</td>
+					<td>8 000 &euro;</td>
+					<td>800 &euro;</td>
 					<td>20/02/2014</td>
-					<td>Tada magic !</td>
+					<td><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
 					<td><a href="addformation?id=9">Formation 9</a></td>
-					<td>9000€</td>
-					<td>900€</td>
+					<td>9 000 &euro;</td>
+					<td>900 &euro;</td>
 					<td>20/02/2014</td>
-					<td>Tada magic !</td>
+					<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
 					<td><a href="addformation?id=10">Formation 10</a></td>
-					<td>10000€</td>
-					<td>1000€</td>
+					<td>10 000 &euro;</td>
+					<td>1 000 &euro;</td>
 					<td>20/02/2014</td>
-					<td>Tada magic !</td>
+					<td><span class="fa fa-star"></span></td>
 				</tr>
 			</tbody>
 			</table>

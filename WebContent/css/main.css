@@ -7,17 +7,34 @@ div#carousel-header {
 }
 
 div.carousel-inner, .item {
-	height:100%;
+	height: 100%;
 }
 
 div.carousel-inner div.item img {
-	width:100%;
-	height:auto;
+	width: 100%;
+	height: auto;
 }
 
 .page-content {
-	margin-top:10px;
+	margin-top: 10px;
 }
+
 .navbar-padding {
-	margin-top:80px!important;
+	margin-top: 80px !important;
+}
+
+.footer {
+	border-top: solid 1px;
+	margin-top: 40px;
+	padding: 20px;
+}
+
+.footpart {
+	text-align: center;
+}
+
+.error {
+	max-width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
 }
