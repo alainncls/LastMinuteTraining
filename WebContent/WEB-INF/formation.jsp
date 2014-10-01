@@ -24,7 +24,7 @@
 				<th>Prix</th>
 				<th>Prix via SM</th>
 				<th>Date</th>
-				<th>DifficultÃ©</th>
+				<th>Difficulté</th>
 			</tr>
 		</thead>
 		<tbody>
