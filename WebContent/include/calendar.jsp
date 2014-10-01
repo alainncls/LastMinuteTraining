@@ -5,6 +5,7 @@
 	$(document).ready(function() {
 		
 		$('#calendar').fullCalendar({
+			lang: 'fr',
 			header: {
 				left: 'prev,next today',
 				center: 'title',

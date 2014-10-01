@@ -15,9 +15,11 @@
 <link href="css/font-awesome.css" rel="stylesheet" media="screen">
 
 <script src="./js/jquery-2.1.1.min.js"></script>
-<script src='./js/fullcalendar.min.js'></script>
 <script src='./js/moment.min.js'></script>
+<script src='./js/fullcalendar.min.js'></script>
+<script src="./js/lang/fr.js"></script>
 <script src="./js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
