@@ -3,18 +3,21 @@
 
 <div class="row">
 	<div class="col-sm-6">
-		<div class="table-responsive">
-			<table class="table table-hover table-striped table-condensed">
-				<thead>
-					<tr>
-						<th>Nom</th>
-						<th>Prix</th>
-						<th>Prix via SM</th>
-						<th>Date</th>
-						<th>Difficult&eacute;</th>
-					</tr>
-				</thead>
-				<tbody>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+			</div>
+			<div class="table-responsive">
+				<table class="table table-hover table-striped table-condensed">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Prix</th>
+							<th>Prix LMT</th>
+							<th>Date</th>
+							<th>Difficult&eacute;</th>
+						</tr>
+					</thead>
+					<tbody>
 					<!-- <c:forEach items="${formations}" var="formation">
 					<tr>
 						<td><a href="addformation?id=${formation.id}">${formation.name}</a></td>
@@ -23,7 +26,7 @@
 						<td>${formation.date_debut}</td>
 						<td>${formation.niveau}</td>
 					</tr>
-					</c:forEach> -->
+				</c:forEach> -->
 				<tr>
 					<td><a href="addformation?id=1">Formation 1</a></td>
 					<td>1 000 &euro;</td>
@@ -95,23 +98,24 @@
 					<td><span class="fa fa-star"></span></td>
 				</tr>
 			</tbody>
-			</table>
+		</table>
+	</div>
+</div>
+</div>
+<div class="col-sm-6">
+	<div class="row">
+		<div class="col-sm-12">
+			<form class="form-inline pull-right" role="search" method="post">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		<div class="col-sm-12">
+			<jsp:include page="/include/calendar.jsp" />
 		</div>
 	</div>
-	<div class="col-sm-6">
-		<div class="row">
-			<div class="col-sm-12">
-				<form class="form-inline pull-right" role="search" method="post">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
-			</div>
-			<div class="col-sm-12">
-				<jsp:include page="/include/calendar.jsp" />
-			</div>
-		</div>
-	</div>
+</div>
 </div>
 <jsp:include page="/include/footer.jsp" />
