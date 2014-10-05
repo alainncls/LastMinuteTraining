@@ -25,7 +25,7 @@ LastMinuteTraining uses a number of open source projects to work properly:
 * [Apache Tomcat Server] - for hosting the application locally
 * [JEE] - Java Enterprise edition
 * [Eclipse] - A great Open source editor
-* [Java 8]
+* [Java 8] - The most recent Java runtime environment / JVM
 
 Installation
 --------------
