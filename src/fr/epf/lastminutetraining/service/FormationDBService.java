@@ -1,5 +1,10 @@
 package fr.epf.lastminutetraining.service;
 
+import java.util.List;
+
+import fr.epf.lastminutetraining.dao.FormationDAO;
+import fr.epf.lastminutetraining.domain.Formation;
+
 public class FormationDBService {
 
 
@@ -19,21 +24,21 @@ public class FormationDBService {
 
 	}
 
-	public void create(FormationDAO formation){
+	public void create(Formation formation){
 		formationDAO.createFormation(formation);
 	}
 	
-	public void update(FormationDAO formation){
+	public void update(Formation formation){
 		formationDAO.updateFormation(formation);
 	}
 
-	private FormationDAO formationDAO = FOrmationDAO.getInstance();
+	private FormationDAO formationDAO = FormationDAO.getInstance();
 
-	public FormationDAO get(Long id){
-		return formationDAO.getFomation(id); 
+	public Formation get(Long id){
+		return formationDAO.getFormation(id); 
 	}
 
-	public List<FormationDAO> getAll(){
+	public List<Formation> getAll(){
 		return formationDAO.getAll();
 	}
 
