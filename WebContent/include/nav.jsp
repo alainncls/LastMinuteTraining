@@ -17,9 +17,9 @@
 			<ul class="nav navbar-nav">
 				<!-- liste des liens en fonction des droits d'accès -->
 				<li><a href="404">Base documentaire</a></li>
-				<li><a href="#">Webinars</a></li>
-				<li><a href="#">A propos</a></li>
-				<li><a href="#">CGV</a></li>
+				<li><a href="work">Webinars</a></li>
+				<li><a href="work">A propos</a></li>
+				<li><a href="work">CGV</a></li>
 			</ul>
 			<button type="button" class="btn btn-success navbar-btn navbar-right"
 				data-toggle="modal" data-target="#loginModal">Log In</button>
