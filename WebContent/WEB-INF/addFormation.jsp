@@ -1,5 +1,5 @@
 <jsp:include page="/include/header.jsp" />
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="f" %>
 
 <div class="container">
 	<div class="panel panel-primary">
@@ -14,7 +14,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-4">
-					<form role="form" action="addComputer" method="POST">
+					<form role="form" action="addFormation" method="POST">
 						<div class="form-group">
 							<label for="name">Intitulé de la formation</label> <input type="text"
 								class="form-control" name="Formation" id="name"
