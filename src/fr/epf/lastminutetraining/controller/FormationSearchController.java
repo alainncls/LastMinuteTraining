@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet("/home")
-public class DashboardController extends HttpServlet {
+@WebServlet("/formation")
+public class FormationSearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
 		// Get the dispatcher JSP
 		RequestDispatcher dispatcher = req
-				.getRequestDispatcher("/WEB-INF/home.jsp");
+				.getRequestDispatcher("/WEB-INF/formation.jsp");
 
 		// Forward the request
 		dispatcher.forward(req, resp);
@@ -26,6 +26,7 @@ public class DashboardController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		resp.sendRedirect("formation");
+		doGet(req, resp);
 	}
+
 }
