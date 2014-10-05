@@ -1,5 +1,5 @@
 <jsp:include page="/include/header.jsp" />
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="row">
 	<div class="col-sm-6">
@@ -25,70 +25,70 @@
 					</tr>
 					</c:forEach> -->
 				<tr>
-					<td><a href="addformation?id=1">Formation 1</a></td>
+					<td><a href="formation?id=1">Formation 1</a></td>
 					<td>1 000 &euro;</td>
 					<td>100 &euro;</td>
 					<td>20/02/2014</td>
 					<td><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
-					<td><a href="addformation?id=2">Formation 2</a></td>
+					<td><a href="formation?id=2">Formation 2</a></td>
 					<td>2 000 &euro;</td>
 					<td>200 &euro;</td>
 					<td>20/02/2014</td>
 					<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
-					<td><a href="addformation?id=3">Formation 3</a></td>
+					<td><a href="formation?id=3">Formation 3</a></td>
 					<td>3 000 &euro;</td>
 					<td>3 00 &euro;</td>
 					<td>20/02/2014</td>
 					<td><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
-					<td><a href="addformation?id=4">Formation 4</a></td>
+					<td><a href="formation?id=4">Formation 4</a></td>
 					<td>4 000 &euro;</td>
 					<td>4 00 &euro;</td>
 					<td>20/02/2014</td>
 					<td><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
-					<td><a href="addformation?id=5">Formation 5</a></td>
+					<td><a href="formation?id=5">Formation 5</a></td>
 					<td>5 000 &euro;</td>
 					<td>500 &euro;</td>
 					<td>20/02/2014</td>
 					<td><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
-					<td><a href="addformation?id=6">Formation 6</a></td>
+					<td><a href="formation?id=6">Formation 6</a></td>
 					<td>6 000 &euro;</td>
 					<td>600 &euro;</td>
 					<td>20/02/2014</td>
 					<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
-					<td><a href="addformation?id=7">Formation 7</a></td>
+					<td><a href="formation?id=7">Formation 7</a></td>
 					<td>7 000 &euro;</td>
 					<td>700 &euro;</td>
 					<td>20/02/2014</td>
 					<td><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
-					<td><a href="addformation?id=8">Formation 8</a></td>
+					<td><a href="formation?id=8">Formation 8</a></td>
 					<td>8 000 &euro;</td>
 					<td>800 &euro;</td>
 					<td>20/02/2014</td>
 					<td><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
-					<td><a href="addformation?id=9">Formation 9</a></td>
+					<td><a href="formation?id=9">Formation 9</a></td>
 					<td>9 000 &euro;</td>
 					<td>900 &euro;</td>
 					<td>20/02/2014</td>
 					<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 				</tr>
 				<tr>
-					<td><a href="addformation?id=10">Formation 10</a></td>
+					<td><a href="formation?id=10">Formation 10</a></td>
 					<td>10 000 &euro;</td>
 					<td>1 000 &euro;</td>
 					<td>20/02/2014</td>
