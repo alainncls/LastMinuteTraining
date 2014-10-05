@@ -20,6 +20,7 @@
 				<li><a href="#">Webinars</a></li>
 				<li><a href="#">A propos</a></li>
 				<li><a href="#">CGV</a></li>
+				<li><a href="addFormation">Ajouter une formation</a></li>
 			</ul>
 			<button type="button" class="btn btn-success navbar-btn navbar-right"
 				data-toggle="modal" data-target="#loginModal">Log In</button>
