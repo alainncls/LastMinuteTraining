@@ -15,7 +15,8 @@ The goal of this project is to provide a last minute training reservation interf
 Version
 ----
 
-1.0
+  > 1.0
+  > Home page and add Training interfaces created.
 
 Technology
 -----------
