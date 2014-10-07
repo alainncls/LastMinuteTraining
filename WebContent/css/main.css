@@ -38,3 +38,11 @@ div.carousel-inner div.item img {
 	margin-left: 5%;
 	margin-right: 5%;
 }
+
+.table-align tbody>tr>td {
+	vertical-align: middle !important;
+}
+
+.table-align tbody>tr {
+	cursor:pointer;
+}
