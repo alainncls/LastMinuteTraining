@@ -53,34 +53,34 @@
 							<td colspan="6">Description trop fraiche de cette belle
 								formation trop cool !</td>
 						</tr>
-						<tr>
+						<tr data-toggle="collapse" href="#colThree">
 							<td><a href="formation?id=3">Formation 3</a></td>
 							<td>3 000 &euro;</td>
-							<td>3 00 &euro;</td>
+							<td>300 &euro;</td>
 							<td>20/02/2014</td>
 							<td><span class="fa fa-star"></span></td>
 							<td><a href="404" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
-						<tr id="colOne" class="panel-collapse collapse">
+						<tr id="colThree" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
 								formation trop cool !</td>
 						</tr>
-						<tr>
+						<tr data-toggle="collapse" href="#colFour">
 							<td><a href="formation?id=4">Formation 4</a></td>
 							<td>4 000 &euro;</td>
-							<td>4 00 &euro;</td>
+							<td>400 &euro;</td>
 							<td>20/02/2014</td>
 							<td><span class="fa fa-star"></span><span class="fa fa-star"></span><span
 								class="fa fa-star"></span></td>
 							<td><a href="404" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
-						<tr id="colOne" class="panel-collapse collapse">
+						<tr id="colFour" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
 								formation trop cool !</td>
 						</tr>
-						<tr>
+						<tr data-toggle="collapse" href="#colFive">
 							<td><a href="formation?id=5">Formation 5</a></td>
 							<td>5 000 &euro;</td>
 							<td>500 &euro;</td>
@@ -89,11 +89,11 @@
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
-						<tr id="colOne" class="panel-collapse collapse">
+						<tr id="colFive" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
 								formation trop cool !</td>
 						</tr>
-						<tr>
+						<tr data-toggle="collapse" href="#colSix">
 							<td><a href="formation?id=6">Formation 6</a></td>
 							<td>6 000 &euro;</td>
 							<td>600 &euro;</td>
@@ -102,11 +102,11 @@
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
-						<tr id="colOne" class="panel-collapse collapse">
+						<tr id="colSix" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
 								formation trop cool !</td>
 						</tr>
-						<tr>
+						<tr data-toggle="collapse" href="#colSeven">
 							<td><a href="formation?id=7">Formation 7</a></td>
 							<td>7 000 &euro;</td>
 							<td>700 &euro;</td>
@@ -115,11 +115,11 @@
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
-						<tr id="colOne" class="panel-collapse collapse">
+						<tr id="colSeven" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
 								formation trop cool !</td>
 						</tr>
-						<tr>
+						<tr data-toggle="collapse" href="#colEight">
 							<td><a href="formation?id=8">Formation 8</a></td>
 							<td>8 000 &euro;</td>
 							<td>800 &euro;</td>
@@ -129,11 +129,11 @@
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
-						<tr id="colOne" class="panel-collapse collapse">
+						<tr id="colEight" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
 								formation trop cool !</td>
 						</tr>
-						<tr>
+						<tr data-toggle="collapse" href="#colNine">
 							<td><a href="formation?id=9">Formation 9</a></td>
 							<td>9 000 &euro;</td>
 							<td>900 &euro;</td>
@@ -142,11 +142,11 @@
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
-						<tr id="colOne" class="panel-collapse collapse">
+						<tr id="colNine" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
 								formation trop cool !</td>
 						</tr>
-						<tr>
+						<tr data-toggle="collapse" href="#colTen">
 							<td><a href="formation?id=10">Formation 10</a></td>
 							<td>10 000 &euro;</td>
 							<td>1 000 &euro;</td>
@@ -155,7 +155,7 @@
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
-						<tr id="colOne" class="panel-collapse collapse">
+						<tr id="colTen" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
 								formation trop cool !</td>
 						</tr>
