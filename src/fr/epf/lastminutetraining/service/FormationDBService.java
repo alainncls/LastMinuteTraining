@@ -23,7 +23,9 @@ public class FormationDBService {
 	private FormationDBService(){
 
 	}
-
+	
+	private FormationDAO formationDAO = FormationDAO.getInstance();
+	
 	public void create(Formation formation){
 		formationDAO.createFormation(formation);
 	}
@@ -32,14 +34,7 @@ public class FormationDBService {
 		formationDAO.updateFormation(formation);
 	}
 
-	private FormationDAO formationDAO = FormationDAO.getInstance();
+	
 
-	public Formation get(Long id){
-		return formationDAO.getFormation(id); 
-	}
-
-	public List<Formation> getAll(){
-		return formationDAO.getAll();
-	}
 
 }

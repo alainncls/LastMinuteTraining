@@ -10,55 +10,281 @@ import javax.persistence.Table;
 @Table(name="formation")
 public class Formation {
 
-	public Formation(){
-
-	}
-
-	public Formation(String name, Long id,String startDate, String endDate, Long difficulty, Long customerId, int price, int priceLMT, String description, String prerequis) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.startDate = startDate;
-		this.endDate = startDate;
-		this.difficulty = difficulty;
-		this.customerId = customerId;
-		this.price = price;
-		this.priceLMT = priceLMT;
-		this.description = description;
-		this.prerequis = prerequis;
-	}
+	
 
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	//durée
+	@Column(name="duration")
+	private int duration;
 
+	//Lieu de formation
+	@Column(name="location")
+	private String location;
+
+	// type de formation (Salle, web, conferance, ...) -> "references"
+	@Column(name="formationType")
+	private Short formationType;
+
+	//Nombre de place restante
+	@Column(name="available")
+	private int available;
+
+	//Type de certification (Officielle, groupement privé, etc...) -> references
+	@Column(name="certification")
+	private short certification;
+
+	//Categorie de la formation (ERP, ...) -> références
+	@Column(name="category")
+	private int category;
+
+	//Id vendeur
+	@Column(name="sellerId")
+	private int sellerId;
+
+	//Contact
+	@Column(name="contact")
+	private String contact;
+	
+	//Résumé
+	@Column(name="summary")
+	private String summary;
+
+	//Titre
 	@Column(name="name")
 	private String name;
 
+	//Date début
 	@Column(name="startDate")
 	private String startDate;
 
+	//Date de fin
 	@Column(name="endDate")
 	private String endDate;
 
+	//difficulté
 	@Column(name="difficulty")
-	private Long difficulty;
+	private int difficulty;
 
-	@Column(name="customerId")
-	private Long customerId;
-
+	//Prix original
 	@Column(name="price")
 	private int price;
 
+	//Prix réduc
 	@Column(name="priceLMT")
 	private int priceLMT;
 
+	
 	@Column(name="description")
 	private String description;
 
 	@Column(name="prerequis")
 	private String prerequis;
 
+	
+	//Description détaillée
+	
+	
+	//Introduction de formation
+	@Column(name="introduction")
+	private String introduction;
+
+	//Utilisateurs cible
+	@Column(name="target")
+	private String target;
+
+	//Programme de formation
+	@Column(name="program")
+	private String program;
+
+	public Formation(Long id, int duration, String location,
+			Short formationType, int available, short certification,
+			int category, int sellerId, String contact, String summary,
+			String name, String startDate, String endDate, int difficulty,
+			int price, int priceLMT, String description, String prerequis,
+			String introduction, String target, String program,
+			String objectives, String activities) {
+		super();
+		this.id = id;
+		this.duration = duration;
+		this.location = location;
+		this.formationType = formationType;
+		this.available = available;
+		this.certification = certification;
+		this.category = category;
+		this.sellerId = sellerId;
+		this.contact = contact;
+		this.summary = summary;
+		this.name = name;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.difficulty = difficulty;
+		this.price = price;
+		this.priceLMT = priceLMT;
+		this.description = description;
+		this.prerequis = prerequis;
+		this.introduction = introduction;
+		this.target = target;
+		this.program = program;
+		this.objectives = objectives;
+		this.activities = activities;
+	}
+
+	//Objectifs
+	@Column(name="objectives")
+	private String objectives;
+
+	//activités
+	@Column(name="activities")
+	private String activities;
+
+	
+	public Formation(){
+
+	}
+
+	public Formation(int sellerId, String activities, String objectives, String program, String target,String introduction,Short certification,int category,int available,Short formationType,String location,int duration, String summary, String name, Long id,String startDate, String endDate, Short difficulty, int price, int priceLMT, String description, String prerequis) {
+		super();
+		this.id = id;
+		this.certification=certification;
+		this.formationType = formationType;
+		this.category=category;
+		this.location = location ;
+		this.duration = duration;
+		this.available=available;
+		this.summary = summary;
+		this.name = name;
+		this.startDate = startDate;
+		this.endDate = startDate;
+		this.difficulty = difficulty;
+		this.price = price;
+		this.priceLMT = priceLMT;
+		this.description = description;
+		this.prerequis = prerequis;
+		this.introduction = introduction;
+		this.target=target;
+		this.program=program;
+		this.objectives=objectives;
+		this.activities=activities;
+		this.sellerId=sellerId;
+		
+	}
+	
+	
+	
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public Short getFormationType() {
+		return formationType;
+	}
+
+	public void setFormationType(Short formationType) {
+		this.formationType = formationType;
+	}
+
+	public int getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(int available) {
+		this.available = available;
+	}
+
+	public short getCertification() {
+		return certification;
+	}
+
+	public void setCertification(short certification) {
+		this.certification = certification;
+	}
+
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
+	}
+
+	public int getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(int sellerId) {
+		this.sellerId = sellerId;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public String getIntroduction() {
+		return introduction;
+	}
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+
+	public String getTarget() {
+		return target;
+	}
+
+	public void setTarget(String target) {
+		this.target = target;
+	}
+
+	public String getProgram() {
+		return program;
+	}
+
+	public void setProgram(String program) {
+		this.program = program;
+	}
+
+	public String getObjectives() {
+		return objectives;
+	}
+
+	public void setObjectives(String objectives) {
+		this.objectives = objectives;
+	}
+
+	public String getActivities() {
+		return activities;
+	}
+
+	public void setActivities(String activities) {
+		this.activities = activities;
+	}
 
 	public String getPrerequis() {
 		return prerequis;
@@ -100,20 +326,12 @@ public class Formation {
 		this.endDate = endDate;
 	}
 
-	public Long getDifficulty() {
+	public int getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(Long difficulty) {
+	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
-	}
-
-	public Long getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
 	}
 
 	public int getPrice() {
@@ -142,9 +360,18 @@ public class Formation {
 
 	@Override
 	public String toString() {
-		return "formation [id=" + id + ", name=" + name + ", startDate="
-				+ startDate + ", endDate=" + endDate
-				+ ", difficulty=" + difficulty +", customerId=" + customerId +", price=" + price + ", priceLMT=" + priceLMT + ", description=" + description + "]";
+		return "Formation [id=" + id + ", duration=" + duration + ", location="
+				+ location + ", formationType=" + formationType
+				+ ", available=" + available + ", certification="
+				+ certification + ", category=" + category + ", sellerId="
+				+ sellerId + ", contact=" + contact + ", summary=" + summary
+				+ ", name=" + name + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", difficulty=" + difficulty + ", price=" + price
+				+ ", priceLMT=" + priceLMT + ", description=" + description
+				+ ", prerequis=" + prerequis + ", introduction=" + introduction
+				+ ", target=" + target + ", program=" + program
+				+ ", objectives=" + objectives + ", activities=" + activities
+				+ "]";
 	}
 
 
@@ -172,72 +399,5 @@ public class Formation {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public static Builder builder(){
-		return new Builder();
-	}
-
-	public static class Builder{
-
-		private Formation formation;
-
-		private Builder(){
-			formation = new Formation();
-		}
-
-		public Builder id (Long id){
-			formation.id = id;
-			return this;
-		}
-
-		public Builder name (String name){
-			formation.name = name;
-			return this;
-		}
-
-		public Builder startDate (String startDate){
-			formation.startDate = startDate;
-			return this;
-		}
-
-		public Builder endDate (String endDate){
-			formation.endDate = endDate;
-			return this;
-		}
-
-		public Builder difficulty (Long difficulty){
-			formation.difficulty = difficulty;
-			return this;
-		}
-
-		public Builder customerId (Long customerId){
-			formation.customerId = customerId;
-			return this;
-		}
-
-		public Builder price (int price){
-			formation.price = price;
-			return this;
-		}
-
-		public Builder priceLMT (int priceLMT){
-			formation.priceLMT = priceLMT;
-			return this;
-		}
-
-		public Builder description (String description){
-			formation.description = description;
-			return this;
-		}
-		public Builder prerequis (String prerequis){
-			formation.prerequis = prerequis;
-			return this;
-		}
-
-
-		public Formation build(){
-			return formation;
-		}
 	}
 }
