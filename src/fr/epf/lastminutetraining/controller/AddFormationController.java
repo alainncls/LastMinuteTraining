@@ -39,7 +39,7 @@ public class AddFormationController extends HttpServlet {
 		String description = (String) req.getParameter("description");
 		String prerequis = (String)req.getParameter("prerequis");
 		
-		Formation formation = Formation.builder().name(name).price(price).priceLMT(priceLMT).startDate(startDate).endDate(endDate).difficulty(difficulty).description(description).prerequis(prerequis).build();
+		Formation formation = new Formation();//ajouter les infos ici ;)
 
 		FormationDBService service = FormationDBService.getInstance();
 		
