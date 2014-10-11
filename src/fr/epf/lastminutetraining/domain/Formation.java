@@ -1,179 +1,61 @@
 package fr.epf.lastminutetraining.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.jongo.marshall.jackson.oid.Id;
 
-@Entity
-@Table(name="formation")
 public class Formation {
 
-	
-
 	@Id
-	@GeneratedValue
 	private Long id;
-	
-	//durée
-	@Column(name="duration")
+
 	private int duration;
-
-	//Lieu de formation
-	@Column(name="location")
+	// Lieu de formation
 	private String location;
-
 	// type de formation (Salle, web, conferance, ...) -> "references"
-	@Column(name="formationType")
 	private Short formationType;
-
-	//Nombre de place restante
-	@Column(name="available")
+	// Nombre de place restante
 	private int available;
-
-	//Type de certification (Officielle, groupement privé, etc...) -> references
-	@Column(name="certification")
+	// Type de certification (Officielle, groupement privé, etc...) ->
+	// references
 	private short certification;
-
-	//Categorie de la formation (ERP, ...) -> références
-	@Column(name="category")
+	// Categorie de la formation (ERP, ...) -> références
 	private int category;
-
-	//Id vendeur
-	@Column(name="sellerId")
+	// Id vendeur
 	private int sellerId;
-
-	//Contact
-	@Column(name="contact")
+	// Contact
 	private String contact;
-	
-	//Résumé
-	@Column(name="summary")
+	// Résumé
 	private String summary;
-
-	//Titre
-	@Column(name="name")
+	// Titre
 	private String name;
-
-	//Date début
-	@Column(name="startDate")
+	// Date début
 	private String startDate;
-
-	//Date de fin
-	@Column(name="endDate")
+	// Date de fin
 	private String endDate;
-
-	//difficulté
-	@Column(name="difficulty")
+	// difficulté
 	private int difficulty;
-
-	//Prix original
-	@Column(name="price")
+	// Prix original
 	private int price;
-
-	//Prix réduc
-	@Column(name="priceLMT")
+	// Prix réduc
 	private int priceLMT;
-
-	
-	@Column(name="description")
+	// description
 	private String description;
-
-	@Column(name="prerequis")
+	// Formations requises (liste ??)
 	private String prerequis;
-
-	
-	//Description détaillée
-	
-	
-	//Introduction de formation
-	@Column(name="introduction")
+	// Introduction de formation
 	private String introduction;
-
-	//Utilisateurs cible
-	@Column(name="target")
+	// Utilisateurs cible
 	private String target;
-
-	//Programme de formation
-	@Column(name="program")
+	// Programme de formation
 	private String program;
-
-	public Formation(Long id, int duration, String location,
-			Short formationType, int available, short certification,
-			int category, int sellerId, String contact, String summary,
-			String name, String startDate, String endDate, int difficulty,
-			int price, int priceLMT, String description, String prerequis,
-			String introduction, String target, String program,
-			String objectives, String activities) {
-		super();
-		this.id = id;
-		this.duration = duration;
-		this.location = location;
-		this.formationType = formationType;
-		this.available = available;
-		this.certification = certification;
-		this.category = category;
-		this.sellerId = sellerId;
-		this.contact = contact;
-		this.summary = summary;
-		this.name = name;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.difficulty = difficulty;
-		this.price = price;
-		this.priceLMT = priceLMT;
-		this.description = description;
-		this.prerequis = prerequis;
-		this.introduction = introduction;
-		this.target = target;
-		this.program = program;
-		this.objectives = objectives;
-		this.activities = activities;
-	}
-
-	//Objectifs
-	@Column(name="objectives")
+	// Objectifs
 	private String objectives;
-
-	//activités
-	@Column(name="activities")
+	// activités
 	private String activities;
 
-	
-	public Formation(){
+	public Formation() {
 
 	}
 
-	public Formation(int sellerId, String activities, String objectives, String program, String target,String introduction,Short certification,int category,int available,Short formationType,String location,int duration, String summary, String name, Long id,String startDate, String endDate, Short difficulty, int price, int priceLMT, String description, String prerequis) {
-		super();
-		this.id = id;
-		this.certification=certification;
-		this.formationType = formationType;
-		this.category=category;
-		this.location = location ;
-		this.duration = duration;
-		this.available=available;
-		this.summary = summary;
-		this.name = name;
-		this.startDate = startDate;
-		this.endDate = startDate;
-		this.difficulty = difficulty;
-		this.price = price;
-		this.priceLMT = priceLMT;
-		this.description = description;
-		this.prerequis = prerequis;
-		this.introduction = introduction;
-		this.target=target;
-		this.program=program;
-		this.objectives=objectives;
-		this.activities=activities;
-		this.sellerId=sellerId;
-		
-	}
-	
-	
-	
 	public int getDuration() {
 		return duration;
 	}
@@ -374,8 +256,6 @@ public class Formation {
 				+ "]";
 	}
 
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -399,5 +279,137 @@ public class Formation {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	public static class Builder {
+
+		private Formation formation;
+
+		private Builder() {
+			formation = new Formation();
+		}
+
+		public Builder id(Long id) {
+			formation.id = id;
+			return this;
+		}
+
+		public Builder name(String name) {
+			formation.name = name;
+			return this;
+		}
+
+		public Builder startDate(String startDate) {
+			formation.startDate = startDate;
+			return this;
+		}
+
+		public Builder endDate(String endDate) {
+			formation.endDate = endDate;
+			return this;
+		}
+
+		public Builder difficulty(int difficulty) {
+			formation.difficulty = difficulty;
+			return this;
+		}
+
+		public Builder price(int price) {
+			formation.price = price;
+			return this;
+		}
+
+		public Builder priceLMT(int priceLMT) {
+			formation.priceLMT = priceLMT;
+			return this;
+		}
+
+		public Builder description(String description) {
+			formation.description = description;
+			return this;
+		}
+
+		public Builder prerequis(String prerequis) {
+			formation.prerequis = prerequis;
+			return this;
+		}
+
+		public Builder duration(int duration) {
+			formation.duration = duration;
+			return this;
+		}
+
+		public Builder location(String location) {
+			formation.location = location;
+			return this;
+		}
+
+		public Builder formationType(Short formationType) {
+			formation.formationType = formationType;
+			return this;
+		}
+
+		public Builder available(int available) {
+			formation.available = available;
+			return this;
+		}
+
+		public Builder certification(Short certification) {
+			formation.certification = certification;
+			return this;
+		}
+
+		public Builder category(int category) {
+			formation.category = category;
+			return this;
+		}
+
+		public Builder sellerId(int sellerId) {
+			formation.sellerId = sellerId;
+			return this;
+		}
+
+		public Builder contact(String contact) {
+			formation.contact = contact;
+			return this;
+		}
+
+		public Builder summary(String summary) {
+			formation.summary = summary;
+			return this;
+		}
+
+		public Builder introduction(String introduction) {
+			formation.introduction = introduction;
+			return this;
+		}
+
+		public Builder target(String target) {
+			formation.target = target;
+			return this;
+		}
+
+		public Builder program(String program) {
+			formation.program = program;
+			return this;
+		}
+
+		public Builder objectives(String objectives) {
+			formation.objectives = objectives;
+			return this;
+		}
+
+		public Builder activities(String activities) {
+			formation.activities = activities;
+			return this;
+		}
+
+		public Formation build() {
+			return formation;
+		}
 	}
 }

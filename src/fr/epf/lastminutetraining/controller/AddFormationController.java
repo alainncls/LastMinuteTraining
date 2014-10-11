@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.epf.lastminutetraining.dao.FormationDAO;
 import fr.epf.lastminutetraining.domain.Formation;
 import fr.epf.lastminutetraining.service.FormationDBService;
 
@@ -26,26 +25,29 @@ public class AddFormationController extends HttpServlet {
 		// Forward the request
 		dispatcher.forward(req, resp);
 	}
-	
+
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		//Get data from form
+		// Get data from form
 		String name = (String) req.getParameter("name");
 		int price = Integer.parseInt(req.getParameter("price"));
 		int priceLMT = Integer.parseInt(req.getParameter("priceLMT"));
 		String startDate = (String) req.getParameter("startDate");
 		String endDate = (String) req.getParameter("endDate");
-		Long difficulty = Long.parseLong(req.getParameter("difficulty"));
+		int difficulty = Integer.parseInt(req.getParameter("difficulty"));
 		String description = (String) req.getParameter("description");
-		String prerequis = (String)req.getParameter("prerequis");
-		
-		Formation formation = new Formation();//ajouter les infos ici ;)
+		String prerequis = (String) req.getParameter("prerequis");
+
+		Formation formation = Formation.builder().name(name).price(price)
+				.priceLMT(priceLMT).startDate(startDate).endDate(endDate)
+				.difficulty(difficulty).description(description)
+				.prerequis(prerequis).build();
 
 		FormationDBService service = FormationDBService.getInstance();
-		
-		//Persist the formation
-		service.create(formation);
-		
+
+		// Persist the formation
+		service.save(formation);
+
 		resp.sendRedirect("addFormation");
 	}
 }
