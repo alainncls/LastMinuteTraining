@@ -2,6 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="row">
+	<div class="col-sm-12">
+		<h3>Passer par LastMinuteTraining.com, c'est s'assurer d'avoir
+			les meilleurs prix du march&eacute; sur les meilleures formations ERP
+			/ SAP du moment</h3>
+		<h4>Client&egrave;le satisfaite &agrave; 97%</h4>
+	</div>
+</div>
+<div class="row">
 	<div class="col-sm-8">
 		<div class="panel panel-primary">
 			<div class="panel-heading">Les prochaines formations</div>
@@ -13,7 +21,9 @@
 							<th>Prix</th>
 							<th>Prix LMT</th>
 							<th>Date</th>
+							<th>Dur&eacute;e</th>
 							<th>Difficult&eacute;</th>
+							<th>Places restantes</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -32,9 +42,12 @@
 							<td>1 000 &euro;</td>
 							<td>100 &euro;</td>
 							<td>20/02/2014</td>
+							<td>2 jours</td>
 							<td><span class="fa fa-star"></span></td>
+							<td>2</td>
 							<td><a href="404" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+
 						</tr>
 						<tr id="colOne" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
@@ -45,7 +58,9 @@
 							<td>2 000 &euro;</td>
 							<td>200 &euro;</td>
 							<td>20/02/2014</td>
+							<td>2 jours</td>
 							<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
+							<td>2</td>
 							<td><a href="404" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
@@ -58,7 +73,9 @@
 							<td>3 000 &euro;</td>
 							<td>300 &euro;</td>
 							<td>20/02/2014</td>
+							<td>2 jours</td>
 							<td><span class="fa fa-star"></span></td>
+							<td>2</td>
 							<td><a href="404" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
@@ -71,8 +88,10 @@
 							<td>4 000 &euro;</td>
 							<td>400 &euro;</td>
 							<td>20/02/2014</td>
+							<td>2 jours</td>
 							<td><span class="fa fa-star"></span><span class="fa fa-star"></span><span
 								class="fa fa-star"></span></td>
+							<td>2</td>
 							<td><a href="404" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
@@ -85,7 +104,9 @@
 							<td>5 000 &euro;</td>
 							<td>500 &euro;</td>
 							<td>20/02/2014</td>
+							<td>2 jours</td>
 							<td><span class="fa fa-star"></span></td>
+							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
@@ -98,7 +119,9 @@
 							<td>6 000 &euro;</td>
 							<td>600 &euro;</td>
 							<td>20/02/2014</td>
+							<td>2 jours</td>
 							<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
+							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
@@ -111,7 +134,9 @@
 							<td>7 000 &euro;</td>
 							<td>700 &euro;</td>
 							<td>20/02/2014</td>
+							<td>2 jours</td>
 							<td><span class="fa fa-star"></span></td>
+							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
@@ -124,8 +149,10 @@
 							<td>8 000 &euro;</td>
 							<td>800 &euro;</td>
 							<td>20/02/2014</td>
+							<td>2 jours</td>
 							<td><span class="fa fa-star"></span><span class="fa fa-star"></span><span
 								class="fa fa-star"></span></td>
+							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
@@ -138,7 +165,9 @@
 							<td>9 000 &euro;</td>
 							<td>900 &euro;</td>
 							<td>20/02/2014</td>
+							<td>2 jours</td>
 							<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
+							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
@@ -151,7 +180,9 @@
 							<td>10 000 &euro;</td>
 							<td>1 000 &euro;</td>
 							<td>20/02/2014</td>
+							<td>2 jours</td>
 							<td><span class="fa fa-star"></span></td>
+							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
 									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
 						</tr>
@@ -165,7 +196,8 @@
 		</div>
 	</div>
 	<div class="col-sm-4">
-		<div class="row">
+		<jsp:include page="/include/formation.jsp" />
+		<!-- 		<div class="row">
 			<div class="col-sm-12">
 				<form class="form-inline pull-right" role="search" method="post">
 					<div class="form-group">
@@ -174,10 +206,8 @@
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form>
 			</div>
-			<div class="col-sm-12">
-				<jsp:include page="/include/calendar.jsp" />
-			</div>
-		</div>
+			<div class="col-sm-12"></div>
+		</div> -->
 	</div>
 </div>
 <jsp:include page="/include/footer.jsp" />

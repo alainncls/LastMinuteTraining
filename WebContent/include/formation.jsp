@@ -1,8 +1,5 @@
-<jsp:include page="/include/header.jsp" />
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <div class="row">
-	<div class="col-sm-3">
+	<div class="col-sm-12">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Filtre de recherche</h3>
@@ -53,7 +50,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-9">
+<%-- 	<div class="col-sm-9">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Resultats de la recherche</h3>
@@ -83,7 +80,5 @@
 				</table>
 			</div>
 		</div>
-	</div>
+	</div> --%>
 </div>
-
-<jsp:include page="/include/footer.jsp" />
