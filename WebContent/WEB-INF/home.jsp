@@ -46,12 +46,12 @@
 							<td><span class="fa fa-star"></span></td>
 							<td>2</td>
 							<td><a href="404" class="btn btn-warning btn-sm"><i
-									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+									class="fa fa-shopping-cart"></i> Acheter</a></td>
 
 						</tr>
 						<tr id="colOne" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool !</td>
+								formation trop cool</td>
 						</tr>
 						<tr data-toggle="collapse" href="#colTwo">
 							<td><a href="formation?id=2">Formation 2</a></td>
@@ -62,11 +62,11 @@
 							<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 							<td>2</td>
 							<td><a href="404" class="btn btn-warning btn-sm"><i
-									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+									class="fa fa-shopping-cart"></i> Acheter</a></td>
 						</tr>
 						<tr id="colTwo" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool !</td>
+								formation trop cool</td>
 						</tr>
 						<tr data-toggle="collapse" href="#colThree">
 							<td><a href="formation?id=3">Formation 3</a></td>
@@ -77,11 +77,11 @@
 							<td><span class="fa fa-star"></span></td>
 							<td>2</td>
 							<td><a href="404" class="btn btn-warning btn-sm"><i
-									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+									class="fa fa-shopping-cart"></i> Acheter</a></td>
 						</tr>
 						<tr id="colThree" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool !</td>
+								formation trop cool</td>
 						</tr>
 						<tr data-toggle="collapse" href="#colFour">
 							<td><a href="formation?id=4">Formation 4</a></td>
@@ -93,11 +93,11 @@
 								class="fa fa-star"></span></td>
 							<td>2</td>
 							<td><a href="404" class="btn btn-warning btn-sm"><i
-									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+									class="fa fa-shopping-cart"></i> Acheter</a></td>
 						</tr>
 						<tr id="colFour" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool !</td>
+								formation trop cool</td>
 						</tr>
 						<tr data-toggle="collapse" href="#colFive">
 							<td><a href="formation?id=5">Formation 5</a></td>
@@ -108,11 +108,11 @@
 							<td><span class="fa fa-star"></span></td>
 							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+									class="fa fa-shopping-cart"></i> Acheter</a></td>
 						</tr>
 						<tr id="colFive" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool !</td>
+								formation trop cool</td>
 						</tr>
 						<tr data-toggle="collapse" href="#colSix">
 							<td><a href="formation?id=6">Formation 6</a></td>
@@ -123,11 +123,11 @@
 							<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+									class="fa fa-shopping-cart"></i> Acheter</a></td>
 						</tr>
 						<tr id="colSix" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool !</td>
+								formation trop cool</td>
 						</tr>
 						<tr data-toggle="collapse" href="#colSeven">
 							<td><a href="formation?id=7">Formation 7</a></td>
@@ -138,11 +138,11 @@
 							<td><span class="fa fa-star"></span></td>
 							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+									class="fa fa-shopping-cart"></i> Acheter</a></td>
 						</tr>
 						<tr id="colSeven" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool !</td>
+								formation trop cool</td>
 						</tr>
 						<tr data-toggle="collapse" href="#colEight">
 							<td><a href="formation?id=8">Formation 8</a></td>
@@ -154,11 +154,11 @@
 								class="fa fa-star"></span></td>
 							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+									class="fa fa-shopping-cart"></i> Acheter</a></td>
 						</tr>
 						<tr id="colEight" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool !</td>
+								formation trop cool</td>
 						</tr>
 						<tr data-toggle="collapse" href="#colNine">
 							<td><a href="formation?id=9">Formation 9</a></td>
@@ -169,11 +169,11 @@
 							<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
 							<td>2</td>
 							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+									class="fa fa-shopping-cart"></i> Acheter</a></td>
 						</tr>
 						<tr id="colNine" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool !</td>
+								formation trop cool</td>
 						</tr>
 						<tr data-toggle="collapse" href="#colTen">
 							<td><a href="formation?id=10">Formation 10</a></td>
@@ -183,12 +183,12 @@
 							<td>2 jours</td>
 							<td><span class="fa fa-star"></span></td>
 							<td>2</td>
-							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="icon-white icon-shopping-cart"></i> Acheter !</a></td>
+							<td><a href="404" class="btn btn-warning btn-sm"><span
+									class="fa fa-shopping-cart"></span> Acheter</a></td>
 						</tr>
 						<tr id="colTen" class="panel-collapse collapse">
 							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool !</td>
+								formation trop cool</td>
 						</tr>
 					</tbody>
 				</table>

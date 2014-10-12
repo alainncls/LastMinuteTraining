@@ -24,7 +24,13 @@
 
 			</ul>
 			<button type="button" class="btn btn-success navbar-btn navbar-right"
-				data-toggle="modal" data-target="#loginModal">Log In</button>
+				data-toggle="modal" data-target="#loginModal">
+				<span class="fa fa-sign-in"></span> Connexion
+			</button>
+			<button type="button" class="btn btn-warning navbar-btn navbar-right"
+				data-toggle="modal" data-target="#cartModal">
+				<span class="fa fa-shopping-cart"></span> Mon panier
+			</button>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
@@ -140,6 +146,29 @@
 						</form>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal de panier -->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog"
+	aria-labelledby="CartModal" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				Mon panier
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+			</div>
+			<div class="modal-body">
+				Article 1<br> Article 2<br> Article 3<br>
+			</div>
+			<div class="modal-footer">
+				<a href="404" class="btn btn-warning btn-sm">Passer ma commande <span
+					class="fa fa-arrow-circle-right"></span></a>
 			</div>
 		</div>
 	</div>

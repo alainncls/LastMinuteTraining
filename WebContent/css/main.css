@@ -51,3 +51,7 @@ div.carousel-inner div.item img {
 	-webkit-transition: width 2s, height 2s, -webkit-transform 2s;
 	transition: width 2s, height 2s, transform 2s;
 }
+
+.navbar-btn{
+	margin-right: 0.5em;
+}
