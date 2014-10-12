@@ -1,9 +1,6 @@
 package fr.epf.lastminutetraining.service;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.jongo.MongoCursor;
 
 import fr.epf.lastminutetraining.dao.FormationDAO;
 import fr.epf.lastminutetraining.domain.Formation;

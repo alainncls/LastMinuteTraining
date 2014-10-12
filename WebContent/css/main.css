@@ -44,12 +44,10 @@ div.carousel-inner div.item img {
 }
 
 .table-align tbody>tr {
-	cursor:pointer;
+	cursor: pointer;
 }
 
-.collapsing{
-{
-    -webkit-transition: width 2s, height 2s,-webkit-transform 2s;  /* For Safari 3.1 to 6.0 */
-    transition: width 2s, height 2s, transform 2s;
-}
+.collapsing {
+	-webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+	transition: width 2s, height 2s, transform 2s;
 }

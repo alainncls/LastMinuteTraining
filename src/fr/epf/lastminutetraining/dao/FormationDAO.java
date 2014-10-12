@@ -44,27 +44,28 @@ public enum FormationDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<Formation> findLastFormation() {
 		List<Formation> formations = new ArrayList<Formation>();
-		MongoCursor<Formation> cursor = collection.find().limit(10).as(Formation.class);
-		while(cursor.hasNext()){
+		/*MongoCursor<Formation> cursor = collection.find().limit(10)
+				.as(Formation.class);
+		while (cursor.hasNext()) {
 			formations.add(cursor.next());
-		}
+		}*/
 		return formations;
 	}
-	
+
 	public void saveFormation(Formation formation) {
 		collection.save(formation);
 	}
 
-	/*public void createFormation(Formation formation) {
-		collection.insert(formation);
-	}
-
-	public void updateFormation(Formation formation) {
-		collection.update("{id: #}", formation.getId()).with(formation);
-	}*/
+	/*
+	 * public void createFormation(Formation formation) {
+	 * collection.insert(formation); }
+	 * 
+	 * public void updateFormation(Formation formation) {
+	 * collection.update("{id: #}", formation.getId()).with(formation); }
+	 */
 
 	public void removeFormation(Formation formation) {
 		collection.remove("{id: #}", formation.getId());

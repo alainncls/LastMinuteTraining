@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="row">
-	<div class="col-sm-6">
+	<div class="col-sm-8">
 		<div class="panel panel-primary">
 			<div class="panel-heading">Les prochaines formations</div>
 			<div class="table-responsive">
@@ -164,7 +164,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-6">
+	<div class="col-sm-4">
 		<div class="row">
 			<div class="col-sm-12">
 				<form class="form-inline pull-right" role="search" method="post">
