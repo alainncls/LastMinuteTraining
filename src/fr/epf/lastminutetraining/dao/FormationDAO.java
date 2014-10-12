@@ -22,7 +22,7 @@ public enum FormationDAO {
 	public static final String MONGO_HOST = "localhost";
 	public static final int MONGO_PORT = 27017;
 
-	private MongoCollection collection;
+	private MongoCollection collection = init();
 
 	public static FormationDAO getInstance() {
 		return INSTANCE;
@@ -32,26 +32,28 @@ public enum FormationDAO {
 
 	}
 
-	public void init() {
+	public MongoCollection init() {
+		MongoCollection collection = null;
 		try {
 			MongoClient mongo = new MongoClient(MONGO_HOST, MONGO_PORT);
 			DB db = mongo.getDB(DB_NAME);
 
 			Jongo jongo = new Jongo(db);
 			collection = jongo.getCollection(DB_COLLECTION);
-
+			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
+		return collection;
 	}
 
 	public List<Formation> findLastFormation() {
 		List<Formation> formations = new ArrayList<Formation>();
-		/*MongoCursor<Formation> cursor = collection.find().limit(10)
+		MongoCursor<Formation> cursor = collection.find().limit(10)
 				.as(Formation.class);
 		while (cursor.hasNext()) {
 			formations.add(cursor.next());
-		}*/
+		}
 		return formations;
 	}
 
