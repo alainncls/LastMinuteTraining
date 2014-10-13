@@ -2,10 +2,12 @@ package fr.epf.lastminutetraining.domain;
 
 import org.jongo.marshall.jackson.oid.Id;
 
+import org.bson.types.ObjectId;
+
 public class Formation {
 
 	@Id
-	private Long id;
+	private ObjectId id;
 
 	private int duration;
 	// Lieu de formation
@@ -176,11 +178,11 @@ public class Formation {
 		this.prerequis = prerequis;
 	}
 
-	public Long getId() {
+	public ObjectId getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 
@@ -293,7 +295,7 @@ public class Formation {
 			formation = new Formation();
 		}
 
-		public Builder id(Long id) {
+		public Builder id(ObjectId id) {
 			formation.id = id;
 			return this;
 		}

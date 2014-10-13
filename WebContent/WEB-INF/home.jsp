@@ -28,15 +28,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<!-- <c:forEach items="${formations}" var="formation">
-					<tr>
-						<td><a href="addformation?id=${formation.id}">${formation.name}</a></td>
-						<td>${formation.prix}</td>
-						<td>${formation.prixReduc}</td>
-						<td>${formation.date_debut}</td>
-						<td>${formation.niveau}</td>
-					</tr>
-				</c:forEach> -->
+					<%-- <c:forEach items="${formations}" var="formation">
+						<tr>
+							<td><a href="addformation?id=${formation.id}">${formation.name}</a></td>
+							<td>${formation.prix}</td>
+							<td>${formation.prixReduc}</td>
+							<td>${formation.date_debut}</td>
+							<td>${formation.niveau}</td>
+						</tr>
+					</c:forEach> --%>
 						<tr data-toggle="collapse" href="#colOne">
 							<td><a href="formation?id=1">Formation 1</a></td>
 							<td>1 000 &euro;</td>
