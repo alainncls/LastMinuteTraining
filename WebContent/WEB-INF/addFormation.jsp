@@ -17,7 +17,7 @@
 					<form role="form" action="addFormation" method="POST">
 						<div class="form-group">
 							<label for="name">Intitulé de la formation</label> <input type="text"
-								class="form-control" name="Formation" id="name"
+								class="form-control" name="name" id="name"
 								placeholder="Intitulé de la formation">
 						</div>
 						<div class="form-group">
