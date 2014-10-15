@@ -28,172 +28,24 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${formations}" var="formation">
-						<tr>
-							<td><a href="404?id=${formation.id}">${formation.name}</a></td>
-							<td>${formation.price} &euro;</td>
-							<td>${formation.priceLMT} &euro;</td>
-							<td>${formation.startDate}</td>
-							<td>${formation.duration} jours</td>
-							<td>${formation.difficulty}</td>
-							<td>${formation.available}</td>
-							<td><a href="404" class="btn btn-warning btn-sm"><i
-									class="fa fa-shopping-cart"></i> Acheter</a></td>
-						</tr>
-					</c:forEach>
-						<tr data-toggle="collapse" href="#colOne">
-							<td><a href="formation?id=1">Formation 1</a></td>
-							<td>1 000 &euro;</td>
-							<td>100 &euro;</td>
-							<td>20/02/2014</td>
-							<td>2 jours</td>
-							<td><span class="fa fa-star"></span></td>
-							<td>2</td>
-							<td><a href="404" class="btn btn-warning btn-sm"><i
-									class="fa fa-shopping-cart"></i> Acheter</a></td>
-
-						</tr>
-						<tr id="colOne" class="panel-collapse collapse">
-							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool</td>
-						</tr>
-						<tr data-toggle="collapse" href="#colTwo">
-							<td><a href="formation?id=2">Formation 2</a></td>
-							<td>2 000 &euro;</td>
-							<td>200 &euro;</td>
-							<td>20/02/2014</td>
-							<td>2 jours</td>
-							<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
-							<td>2</td>
-							<td><a href="404" class="btn btn-warning btn-sm"><i
-									class="fa fa-shopping-cart"></i> Acheter</a></td>
-						</tr>
-						<tr id="colTwo" class="panel-collapse collapse">
-							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool</td>
-						</tr>
-						<tr data-toggle="collapse" href="#colThree">
-							<td><a href="formation?id=3">Formation 3</a></td>
-							<td>3 000 &euro;</td>
-							<td>300 &euro;</td>
-							<td>20/02/2014</td>
-							<td>2 jours</td>
-							<td><span class="fa fa-star"></span></td>
-							<td>2</td>
-							<td><a href="404" class="btn btn-warning btn-sm"><i
-									class="fa fa-shopping-cart"></i> Acheter</a></td>
-						</tr>
-						<tr id="colThree" class="panel-collapse collapse">
-							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool</td>
-						</tr>
-						<tr data-toggle="collapse" href="#colFour">
-							<td><a href="formation?id=4">Formation 4</a></td>
-							<td>4 000 &euro;</td>
-							<td>400 &euro;</td>
-							<td>20/02/2014</td>
-							<td>2 jours</td>
-							<td><span class="fa fa-star"></span><span class="fa fa-star"></span><span
-								class="fa fa-star"></span></td>
-							<td>2</td>
-							<td><a href="404" class="btn btn-warning btn-sm"><i
-									class="fa fa-shopping-cart"></i> Acheter</a></td>
-						</tr>
-						<tr id="colFour" class="panel-collapse collapse">
-							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool</td>
-						</tr>
-						<tr data-toggle="collapse" href="#colFive">
-							<td><a href="formation?id=5">Formation 5</a></td>
-							<td>5 000 &euro;</td>
-							<td>500 &euro;</td>
-							<td>20/02/2014</td>
-							<td>2 jours</td>
-							<td><span class="fa fa-star"></span></td>
-							<td>2</td>
-							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="fa fa-shopping-cart"></i> Acheter</a></td>
-						</tr>
-						<tr id="colFive" class="panel-collapse collapse">
-							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool</td>
-						</tr>
-						<tr data-toggle="collapse" href="#colSix">
-							<td><a href="formation?id=6">Formation 6</a></td>
-							<td>6 000 &euro;</td>
-							<td>600 &euro;</td>
-							<td>20/02/2014</td>
-							<td>2 jours</td>
-							<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
-							<td>2</td>
-							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="fa fa-shopping-cart"></i> Acheter</a></td>
-						</tr>
-						<tr id="colSix" class="panel-collapse collapse">
-							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool</td>
-						</tr>
-						<tr data-toggle="collapse" href="#colSeven">
-							<td><a href="formation?id=7">Formation 7</a></td>
-							<td>7 000 &euro;</td>
-							<td>700 &euro;</td>
-							<td>20/02/2014</td>
-							<td>2 jours</td>
-							<td><span class="fa fa-star"></span></td>
-							<td>2</td>
-							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="fa fa-shopping-cart"></i> Acheter</a></td>
-						</tr>
-						<tr id="colSeven" class="panel-collapse collapse">
-							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool</td>
-						</tr>
-						<tr data-toggle="collapse" href="#colEight">
-							<td><a href="formation?id=8">Formation 8</a></td>
-							<td>8 000 &euro;</td>
-							<td>800 &euro;</td>
-							<td>20/02/2014</td>
-							<td>2 jours</td>
-							<td><span class="fa fa-star"></span><span class="fa fa-star"></span><span
-								class="fa fa-star"></span></td>
-							<td>2</td>
-							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="fa fa-shopping-cart"></i> Acheter</a></td>
-						</tr>
-						<tr id="colEight" class="panel-collapse collapse">
-							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool</td>
-						</tr>
-						<tr data-toggle="collapse" href="#colNine">
-							<td><a href="formation?id=9">Formation 9</a></td>
-							<td>9 000 &euro;</td>
-							<td>900 &euro;</td>
-							<td>20/02/2014</td>
-							<td>2 jours</td>
-							<td><span class="fa fa-star"></span><span class="fa fa-star"></span></td>
-							<td>2</td>
-							<td><a href="#" class="btn btn-warning btn-sm"><i
-									class="fa fa-shopping-cart"></i> Acheter</a></td>
-						</tr>
-						<tr id="colNine" class="panel-collapse collapse">
-							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool</td>
-						</tr>
-						<tr data-toggle="collapse" href="#colTen">
-							<td><a href="formation?id=10">Formation 10</a></td>
-							<td>10 000 &euro;</td>
-							<td>1 000 &euro;</td>
-							<td>20/02/2014</td>
-							<td>2 jours</td>
-							<td><span class="fa fa-star"></span></td>
-							<td>2</td>
-							<td><a href="404" class="btn btn-warning btn-sm"><span
-									class="fa fa-shopping-cart"></span> Acheter</a></td>
-						</tr>
-						<tr id="colTen" class="panel-collapse collapse">
-							<td colspan="6">Description trop fraiche de cette belle
-								formation trop cool</td>
-						</tr>
+						<c:forEach items="${formations}" var="formation" varStatus="loop">
+							<tr data-toggle="collapse" href="#col${loop.index}">
+								<td><a href="404?id=${formation.id}">${formation.name}</a></td>
+								<td>${formation.price}&euro;</td>
+								<td>${formation.priceLMT}&euro;</td>
+								<td>${formation.startDate}</td>
+								<td>${formation.duration}jours</td>
+								<td><c:forEach begin="1" end="${formation.difficulty}">
+										<span class="fa fa-star"></span>
+									</c:forEach></td>
+								<td>${formation.available}</td>
+								<td><a href="404" class="btn btn-warning btn-sm"><i
+										class="fa fa-shopping-cart"></i> Acheter</a></td>
+							</tr>
+							<tr id="col${loop.index}" class="panel-collapse collapse">
+								<td colspan="8">${formation.available}</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
