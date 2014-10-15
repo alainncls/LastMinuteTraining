@@ -28,6 +28,7 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:if test="${not empty formations}">
 						<c:forEach items="${formations}" var="formation" varStatus="loop">
 							<tr data-toggle="collapse" href="#col${loop.index}">
 								<td><a href="404?id=${formation.id}">${formation.name}</a></td>
@@ -46,6 +47,7 @@
 								<td colspan="8">${formation.available}</td>
 							</tr>
 						</c:forEach>
+					</c:if>
 					</tbody>
 				</table>
 			</div>
