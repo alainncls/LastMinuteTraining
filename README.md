@@ -28,6 +28,8 @@ LastMinuteTraining uses a number of open source projects to work properly:
 * [Eclipse] - A great Open source editor
 * [Java 8] - The most recent Java runtime environment / JVM
 * [MongoDB] - Awesome no-SQL database
+* [Python 3.4] - A useful language for server-side task scheduling
+* [LXML] - One of the best webscraping tools out there
 
 Installation
 --------------
@@ -72,3 +74,5 @@ License
 [Eclipse]:http://www.eclipse.org
 [Java 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [MongoDB]:http://www.mongodb.com/
+[Python 3.4]:https://www.python.org/
+[LXML]:http://lxml.de
