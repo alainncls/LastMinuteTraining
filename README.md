@@ -37,27 +37,30 @@ Installation
 ```git
 git clone https://github.com/alainncls/LastMinuteTraining/
 ```
-###Step1 : Install python3.4
+##### Configure Tomcat Server 8.0.x
+* Make sure the JRE is Java 8+ enabled
+
+Install the mongoDB updater / webscraper
+--------------
+####Step1 : Install python3.4
 ```bash
 sudo apt-get install python3.4
 ```
-###Step2 : Install pip for python3.4
+####Step2 : Install pip for python3.4
 ```bash
 sudo apt-get install python3-pip
 ```
-###Step3 : install python libs : lxml
+####Step3 : install python libs : lxml
 ```bash
 pip3 install lxml
 ```
 
-###Step4 : Schedule task to run every 0 minutes 3 hours every day every week every month
+####Step4 : Schedule task to run every 0 minutes 3 hours every day every week every month
 ```bash
 sudo crontab -e
 0 3 * * * cd /pathToMaster.sh/ && bash master.sh
 ```
-##### Configure Tomcat Server 8.0.x
 
-* Make sure the JRE is Java 8+ enabled
 
 
 
