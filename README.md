@@ -27,6 +27,7 @@ LastMinuteTraining uses a number of open source projects to work properly:
 * [JEE] - Java Enterprise edition
 * [Eclipse] - A great Open source editor
 * [Java 8] - The most recent Java runtime environment / JVM
+* [MongoDB] - Awesome no-SQL database
 
 Installation
 --------------
@@ -34,7 +35,24 @@ Installation
 ```git
 git clone https://github.com/alainncls/LastMinuteTraining/
 ```
+###Step1 : Install python3.4
+```bash
+sudo apt-get install python3.4
+```
+###Step2 : Install pip for python3.4
+```bash
+sudo apt-get install python3-pip
+```
+###Step3 : install python libs : lxml
+```bash
+pip3 install lxml
+```
 
+###Step4 : Schedule task to run every 0 minutes 3 hours every day every week every month
+```bash
+sudo crontab -e
+0 3 * * * cd /pathToMaster.sh/ && bash master.sh
+```
 ##### Configure Tomcat Server 8.0.x
 
 * Make sure the JRE is Java 8+ enabled
@@ -53,3 +71,4 @@ License
 [JEE]:http://fr.wikipedia.org/wiki/Java_EE
 [Eclipse]:http://www.eclipse.org
 [Java 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
+[MongoDB]:http://www.mongodb.com/
