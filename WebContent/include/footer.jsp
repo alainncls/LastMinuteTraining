@@ -45,7 +45,8 @@
 				max: 6,
 				step: 1,
 				size: "xs",
-				showCaption: false
+				showCaption: false,
+				symbol: "★"
 			});
 		});
 	</script>
