@@ -17,8 +17,8 @@ public enum FormationDAO {
 
 	INSTANCE;
 
-	public static final String DB_NAME = "NomBDD";
-	public static final String DB_COLLECTION = "NomCollection";
+	public static final String DB_NAME = "LMT";
+	public static final String DB_COLLECTION = "formation";
 	public static final String MONGO_HOST = "localhost";
 	public static final int MONGO_PORT = 27017;
 
