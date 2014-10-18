@@ -17,51 +17,34 @@
 					<form role="form" action="addFormation" method="POST">
 						<div class="form-group">
 							<label for="name">Intitulé de la formation</label> <input type="text"
-								class="form-control" name="name" id="name"
-								placeholder="Intitulé de la formation">
+							class="form-control" name="name" id="name"
+							placeholder="Intitulé de la formation" />
 						</div>
 						<div class="form-group">
 							<label for="introduced">Prix</label> <input
-								type="number" class="form-control" name="price"
-								id="price" placeholder="Prix" required>
+							type="number" class="form-control" name="price"
+							id="price" placeholder="Prix" required="required" />
 						</div>
 						<div class="form-group">
 							<label for="introduced">Prix via LMT</label> <input
-								type="number" class="form-control" name="priceLMT"
-								id="priceLMT" placeholder="Prix LMT" required>
+							type="number" class="form-control" name="priceLMT"
+							id="priceLMT" placeholder="Prix LMT" required="required" />
 						</div>
 						<div class="form-group">
-							<label for="name">Début de la formation</label> <input type="text"
-								class="form-control" name="startDate" id="startDate"
-								placeholder="Intitulé de la formation">
+							<label for="name">Début de la formation</label> <input type="date"
+							class="form-control" name="startDate" id="startDate" />
 						</div>
 						<div class="form-group">
-							<label for="name">Fin de la formation</label> <input type="text"
-								class="form-control" name="endDate" id="endDate"
-								placeholder="Intitulé de la formation">
+							<label for="name">Fin de la formation</label> <input type="date"
+							class="form-control" name="endDate" id="endDate" />
 						</div>
-						
 						<div class="form-group">
-							<label for="discontinued">Difficulté</label> 
-							<div class="input">
-								<select name="difficulty" class="form-control">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-								</select>	
-							</div>
+							<label for="difficulty">Difficulty</label>
+							<input type="number" class="rating-stars" name="difficulty" id="difficulty" />
 						</div>
 						<div class="form-group">
 							<label for="name">Description</label> <input type="text"
-								class="form-control" name="description" id="description"
-								placeholder="Intitulé de la formation">
+							class="form-control" name="description" id="description" />
 						</div>
 
 						<div class="actions">
@@ -69,8 +52,6 @@
 							<a href="home" class="btn btn-danger">Annuler</a>
 						</div>
 					</form>
-
-
 				</div>
 			</div>
 		</div>

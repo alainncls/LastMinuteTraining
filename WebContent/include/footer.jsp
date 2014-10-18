@@ -40,6 +40,13 @@
 				disable_search_threshold: 10,
 				allow_single_deselect: true
 			});
+			$(".rating-stars").rating({
+				min: 0,
+				max: 6,
+				step: 1,
+				size: "xs",
+				showCaption: false
+			});
 		});
 	</script>
 </body>

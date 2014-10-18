@@ -13,7 +13,7 @@
 					<div class="form-group">
 						<label for="inputPrereq">Prérequis</label> <select multiple
 							class="form-control chosen-select" id="inputPrereq"
-							name="inputPrereq">
+							name="inputPrereq[]">
 							<c:forEach items="${prerequis}" var="prerequis">
 								<option value="${prerequis.id}" selected="${prerequis.selected}">${prerequis.name}</option>
 							</c:forEach>
@@ -40,7 +40,7 @@
 					<div class="form-group">
 						<label for="inputVendor">Organisme Formateur</label> <select
 							multiple class="form-control chosen-select" id="inputVendor"
-							name="inputVendor">
+							name="inputVendor[]">
 							<c:forEach items="${vendors}" var="vendor">
 								<option value="${vendor.id}" selected="${vendor.selected}">${vendor.name}</option>
 							</c:forEach>
