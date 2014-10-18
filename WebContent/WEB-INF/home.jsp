@@ -54,7 +54,7 @@
 		</div>
 	</div>
 	<div class="col-sm-4">
-		<jsp:include page="/include/formation.jsp" />
+		<jsp:include page="/include/searchFormation.jsp" />
 		<!-- 		<div class="row">
 			<div class="col-sm-12">
 				<form class="form-inline pull-right" role="search" method="post">
