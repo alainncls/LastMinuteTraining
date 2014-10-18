@@ -1,7 +1,6 @@
 package fr.epf.lastminutetraining.domain;
 
 import org.jongo.marshall.jackson.oid.Id;
-
 import org.bson.types.ObjectId;
 
 public class Formation {
@@ -34,11 +33,11 @@ public class Formation {
 	// Date de fin
 	private String endDate;
 	// difficulté
-	private int difficulty;
+	private String difficulty;
 	// Prix original
-	private int price;
+	private String price;
 	// Prix réduc
-	private int priceLMT;
+	private String priceLMT;
 	// description
 	private String description;
 	// Formations requises (liste ??)
@@ -210,27 +209,27 @@ public class Formation {
 		this.endDate = endDate;
 	}
 
-	public int getDifficulty() {
+	public String getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(int difficulty) {
+	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
 	}
 
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
-	public int getPriceLMT() {
+	public String getPriceLMT() {
 		return priceLMT;
 	}
 
-	public void setPriceLMT(int priceLMT) {
+	public void setPriceLMT(String priceLMT) {
 		this.priceLMT = priceLMT;
 	}
 
@@ -315,17 +314,17 @@ public class Formation {
 			return this;
 		}
 
-		public Builder difficulty(int difficulty) {
+		public Builder difficulty(String difficulty) {
 			formation.difficulty = difficulty;
 			return this;
 		}
 
-		public Builder price(int price) {
+		public Builder price(String price) {
 			formation.price = price;
 			return this;
 		}
 
-		public Builder priceLMT(int priceLMT) {
+		public Builder priceLMT(String priceLMT) {
 			formation.priceLMT = priceLMT;
 			return this;
 		}
