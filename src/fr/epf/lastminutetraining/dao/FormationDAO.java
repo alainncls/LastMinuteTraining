@@ -3,6 +3,7 @@ package fr.epf.lastminutetraining.dao;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
@@ -40,7 +41,7 @@ public enum FormationDAO {
 
 			Jongo jongo = new Jongo(db);
 			collection = jongo.getCollection(DB_COLLECTION);
-			
+
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -61,16 +62,26 @@ public enum FormationDAO {
 		collection.save(formation);
 	}
 
-	
-	 public void createFormation(Formation formation) {
-	 collection.insert(formation); }
-	  
-	 public void updateFormation(Formation formation) {
-	 collection.update("{id: #}", formation.getId()).with(formation); }
-	 
+//	public void createFormation(Formation formation) {
+//		collection.insert(formation);
+//	}
+//
+//	public void updateFormation(Formation formation) {
+//		collection.update("{id: #}", formation.getId()).with(formation);
+//	}
 
 	public void removeFormation(Formation formation) {
 		collection.remove("{id: #}", formation.getId());
+	}
+	
+	public List<Formation> findFormation(String name) {
+		List<Formation> formations = new ArrayList<Formation>();
+		MongoCursor<Formation> cursor = collection.find( "{name: #}", "/"+name+"/")
+				.as(Formation.class);
+		while (cursor.hasNext()) {
+			formations.add(cursor.next());
+		}
+		return formations;
 	}
 
 	public void finish() {

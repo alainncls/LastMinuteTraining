@@ -1,6 +1,7 @@
 package fr.epf.lastminutetraining.service;
 
 import java.util.List;
+import java.util.Map;
 
 import fr.epf.lastminutetraining.dao.FormationDAO;
 import fr.epf.lastminutetraining.domain.Formation;
@@ -28,6 +29,10 @@ public class FormationDBService {
 	
 	public List<Formation> findLastFormation() {
 		return formationDAO.findLastFormation();
+	}
+	
+	public List<Formation> findFormation(String name) {
+		return formationDAO.findFormation(name);
 	}
 	
 	public void save(Formation formation) {
