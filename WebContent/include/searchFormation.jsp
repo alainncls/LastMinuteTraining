@@ -5,7 +5,8 @@
 				<h3 class="panel-title">Filtre de recherche</h3>
 			</div>
 			<div class="panel-body">
-				<form role="form">
+				<%-- <pre>${debug}</pre> --%>
+				<form role="form" method="post">
 					<div class="form-group">
 						<label for="inputName">Nom</label> <input type="text"
 							class="form-control" id="inputName" name="inputName" />
@@ -46,11 +47,14 @@
 							</c:forEach>
 						</select>
 					</div>
+					<div>
+						<input type="submit" class="btn btn-primary" name="search" value="Rechercher" />
+					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-<%-- 	<div class="col-sm-9">
+	<%-- 	<div class="col-sm-9">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Resultats de la recherche</h3>
