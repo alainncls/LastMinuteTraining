@@ -28,26 +28,28 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:if test="${not empty formations}">
-						<c:forEach items="${formations}" var="formation" varStatus="loop">
-							<tr data-toggle="collapse" href="#col${loop.index}">
-								<td><a href="404?id=${formation.id}">${formation.name}</a></td>
-								<td>${formation.price}&euro;</td>
-								<td>${formation.priceLMT}&euro;</td>
-								<td>${formation.startDate}</td>
-								<td>${formation.duration}jours</td>
-								<td><c:forEach begin="1" end="${formation.difficulty}">
-										<span class="fa fa-star"></span>
-									</c:forEach></td>
-								<td>${formation.available}</td>
-								<td><a href="404" class="btn btn-warning btn-sm"><i
-										class="fa fa-shopping-cart"></i> Acheter</a></td>
-							</tr>
-							<tr id="col${loop.index}" class="panel-collapse collapse">
-								<td colspan="8">${formation.available}</td>
-							</tr>
-						</c:forEach>
-					</c:if>
+						<c:if test="${not empty formations}">
+							<c:forEach items="${formations}" var="formation" varStatus="loop">
+								<tr>
+									<td class="formationName"><a href="404?id=${formation.id}">${formation.name}</a></td>
+									<td>${formation.price}&euro;</td>
+									<td>${formation.priceLMT}&euro;</td>
+									<td>${formation.startDate}</td>
+									<td>${formation.duration}jours</td>
+									<td><c:forEach begin="1" end="${formation.difficulty}">
+											<i class="fa fa-star"></i>
+										</c:forEach></td>
+									<td>${formation.available}</td>
+									<td><a href="404" class="btn btn-warning btn-sm"><i
+											class="fa fa-shopping-cart"></i> Acheter</a></td>
+									<td data-toggle="collapse" href="#col${loop.index}"><i
+										class="fa fa-chevron-down"></i></td>
+								</tr>
+								<tr id="col${loop.index}" class="panel-collapse collapse">
+									<td colspan="8">${formation.available}</td>
+								</tr>
+							</c:forEach>
+						</c:if>
 					</tbody>
 				</table>
 			</div>
