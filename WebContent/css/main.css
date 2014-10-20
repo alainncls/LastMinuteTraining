@@ -52,6 +52,13 @@ div.carousel-inner div.item img {
 	transition: width 2s, height 2s, transform 2s;
 }
 
-.navbar-btn{
+.navbar-btn {
 	margin-right: 0.5em;
+}
+
+td.formationName {
+	max-width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
