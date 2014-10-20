@@ -31,7 +31,23 @@ public class DashboardController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+		String name = req.getParameter("inputName");
+		if(name==""||name==null){
+			resp.sendRedirect("home");
+			return;
+		}
 
-		resp.sendRedirect("formation");
+		FormationDBService service = FormationDBService.getInstance();
+		
+		//resp.sendRedirect("formation");
+		RequestDispatcher dispatcher = req
+				.getRequestDispatcher("/WEB-INF/home.jsp");
+		
+		req.setAttribute("formations", service.findFormation(name));
+		req.setAttribute("debug", req.getParameterMap().toString());
+
+		// Forward the request
+		dispatcher.forward(req, resp);
 	}
 }

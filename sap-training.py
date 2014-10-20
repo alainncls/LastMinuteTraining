@@ -1,9 +1,13 @@
+from datetime import datetime
+startTime = datetime.now()
 import lxml
 import lxml.html
 from lxml import etree
 import subprocess
 import re
 import json
+import pymongo
+from pymongo import MongoClient
 #Get the list of roles
 baseurl='https://training.sap.com'
 subprocess.call(['wget','https://training.sap.com/shop/catalogue/by-role','-q','--secure-protocol=sslv3'])
@@ -15,7 +19,7 @@ for x in roleListPage.xpath("//div[@class='expander columns2']/div[@class='expan
 	req='?TimeFrame=LT1'
 	subprocess.call(['wget',baseurl+x+req,'-q','--secure-protocol=sslv3'])
 	roleList=lxml.html.parse(role+req)
-	formations=[]
+	formations={"list":[]}
 	for listEl in roleList.xpath("//a[@class='subtle-link']"):
 		name=listEl.text_content().strip().replace(" ","_")
 		trainingURL=baseurl+listEl.get('href')
@@ -24,7 +28,7 @@ for x in roleListPage.xpath("//div[@class='expander columns2']/div[@class='expan
 		#get level, name and code
 		formation={"role":role,"url":trainingURL}
 		for training in trainingPage.xpath("//p[contains(@class,'course-level')]"):
-			trainingCode=training.text_content().strip()
+			formation["code"]=training.text_content().strip()
 			match = re.search(r'level-.', training.get('class'))
 			formation["level"]=match.group()
 			formation["name"]=listEl.text_content().strip()
@@ -38,6 +42,7 @@ for x in roleListPage.xpath("//div[@class='expander columns2']/div[@class='expan
 		for domain in domains:
 			domainList.append(domain.text_content())
 		formation["domains"]=domainList
+		subprocess.call(['rm',name])
 		#seperate page for price and date pages....
 		#get price and dtp (date time place)
 		subprocess.call(['wget','-O'+name+'%2Fset-course',trainingURL+'set-course','-q','--secure-protocol=sslv3'])
@@ -52,11 +57,15 @@ for x in roleListPage.xpath("//div[@class='expander columns2']/div[@class='expan
 			dateobj = {'date': splitdate[1], 'place': splitdate[2], 'collection':splitdate[3]}
 			dates.append(dateobj)			
 		formation["dates"]=dates
-		with open('data.txt', 'w') as outfile:
-  			json.dump(formation, outfile)
-		#json.dumps(formation)
+		print(formation["code"])
+		left=datetime.now()-startTime
+		print("Script has been running for "+repr(left))
 		subprocess.call(['rm',name+'%2Fset-course'])
-		formations.append(formation)
+		formations["list"].append(formation)
 	subprocess.call(['rm',role+req])
-
 subprocess.call(['rm','by-role'])
+client = MongoClient()
+db = client.training
+db.connection.drop_database('formations')
+db.formations.insert(formations)
+#pymongo stuff : db.formations.find({}, {'_id': false})
