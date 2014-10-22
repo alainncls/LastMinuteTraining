@@ -167,8 +167,9 @@
 				Article 1<br> Article 2<br> Article 3<br>
 			</div>
 			<div class="modal-footer">
-				<a href="404" class="btn btn-warning btn-sm">Passer ma commande <span
-					class="fa fa-arrow-circle-right"></span></a>
+				<a href="404" class="btn btn-warning btn-sm">Passer ma commande
+					<span class="fa fa-arrow-circle-right"></span>
+				</a>
 			</div>
 		</div>
 	</div>

@@ -48,7 +48,8 @@
 						</select>
 					</div>
 					<div>
-						<input type="submit" class="btn btn-primary" name="search" value="Rechercher" />
+						<input type="submit" class="btn btn-primary" name="search"
+							value="Rechercher" />
 					</div>
 				</form>
 			</div>
