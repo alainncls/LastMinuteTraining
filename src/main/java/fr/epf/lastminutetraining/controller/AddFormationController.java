@@ -4,17 +4,24 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.epf.lastminutetraining.domain.Formation;
 import fr.epf.lastminutetraining.service.FormationDBService;
 
-@SuppressWarnings("serial")
-@WebServlet("/addFormation")
-public class AddFormationController extends HttpServlet {
+@RequestMapping("/addFormation")
+@Controller
+public class AddFormationController {
+	@Autowired
+	private FormationDBService service;
+	
+	@RequestMapping(method = RequestMethod.GET)
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
@@ -26,6 +33,7 @@ public class AddFormationController extends HttpServlet {
 		dispatcher.forward(req, resp);
 	}
 
+	@RequestMapping(method = RequestMethod.POST)
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// Get data from form
@@ -42,8 +50,6 @@ public class AddFormationController extends HttpServlet {
 				.priceLMT(priceLMT).startDate(startDate).endDate(endDate)
 				.difficulty(difficulty).description(description)
 				.prerequis(prerequis).build();
-
-		FormationDBService service = FormationDBService.getInstance();
 
 		// Persist the formation
 		service.save(formation);

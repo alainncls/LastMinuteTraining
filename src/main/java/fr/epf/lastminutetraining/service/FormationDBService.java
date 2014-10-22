@@ -1,31 +1,21 @@
 package fr.epf.lastminutetraining.service;
 
 import java.util.List;
-import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fr.epf.lastminutetraining.dao.FormationDAO;
 import fr.epf.lastminutetraining.domain.Formation;
 
+@Service
 public class FormationDBService {
 
-
-	private static FormationDBService instance = null ;
-
-	//static to be call without an instance
-	public static FormationDBService getInstance(){
-
-		if(instance == null){
-			//If there is no instance yet just created it.
-			instance = new FormationDBService();
-		} 
-		return instance;
-	}
-
-	private FormationDBService(){
-
+	public FormationDBService(){
 	}
 	
-	private FormationDAO formationDAO = FormationDAO.getInstance();
+	@Autowired
+	private FormationDAO formationDAO;
 	
 	public List<Formation> findLastFormation() {
 		return formationDAO.findLastFormation();
@@ -50,5 +40,4 @@ public class FormationDBService {
 	public void remove(Formation formation){
 		formationDAO.removeFormation(formation);
 	}
-
 }

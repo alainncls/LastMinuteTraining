@@ -3,20 +3,19 @@ package fr.epf.lastminutetraining.dao;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
+import org.springframework.stereotype.Repository;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
 import fr.epf.lastminutetraining.domain.Formation;
 
-public enum FormationDAO {
-
-	INSTANCE;
+@Repository
+public class FormationDAO {
 
 	public static final String DB_NAME = "LMT";
 	public static final String DB_COLLECTION = "formation";
@@ -25,12 +24,7 @@ public enum FormationDAO {
 
 	private MongoCollection collection = init();
 
-	public static FormationDAO getInstance() {
-		return INSTANCE;
-	}
-
 	private FormationDAO() {
-
 	}
 
 	public MongoCollection init() {
@@ -62,22 +56,22 @@ public enum FormationDAO {
 		collection.save(formation);
 	}
 
-//	public void createFormation(Formation formation) {
-//		collection.insert(formation);
-//	}
-//
-//	public void updateFormation(Formation formation) {
-//		collection.update("{id: #}", formation.getId()).with(formation);
-//	}
+	// public void createFormation(Formation formation) {
+	// collection.insert(formation);
+	// }
+	//
+	// public void updateFormation(Formation formation) {
+	// collection.update("{id: #}", formation.getId()).with(formation);
+	// }
 
 	public void removeFormation(Formation formation) {
 		collection.remove("{id: #}", formation.getId());
 	}
-	
+
 	public List<Formation> findFormation(String name) {
 		List<Formation> formations = new ArrayList<Formation>();
-		MongoCursor<Formation> cursor = collection.find( "{name: #}", "/"+name+"/")
-				.as(Formation.class);
+		MongoCursor<Formation> cursor = collection.find("{name: #}",
+				"/" + name + "/").as(Formation.class);
 		while (cursor.hasNext()) {
 			formations.add(cursor.next());
 		}
