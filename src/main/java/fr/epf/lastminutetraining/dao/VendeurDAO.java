@@ -1,13 +1,9 @@
 package fr.epf.lastminutetraining.dao;
 
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
-import org.jongo.MongoCursor;
-import org.jongo.marshall.jackson.oid.ObjectId;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
