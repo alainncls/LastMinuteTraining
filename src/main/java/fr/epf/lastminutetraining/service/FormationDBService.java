@@ -29,13 +29,13 @@ public class FormationDBService {
 		formationDAO.saveFormation(formation);
 	}
 	
-	/*public void create(Formation formation){
-		formationDAO.createFormation(formation);
+	public void create(Formation formation){
+		formationDAO.saveFormation(formation);
 	}
 	
 	public void update(Formation formation){
-		formationDAO.updateFormation(formation);
-	}*/
+		formationDAO.saveFormation(formation);
+	}
 	
 	public void remove(Formation formation){
 		formationDAO.removeFormation(formation);

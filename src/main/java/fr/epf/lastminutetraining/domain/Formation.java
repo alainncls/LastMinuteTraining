@@ -21,7 +21,7 @@ public class Formation {
 	// Categorie de la formation (ERP, ...) -> références
 	private int category;
 	// Id vendeur
-	private int sellerId;
+	private ObjectId sellerId;
 	// Contact
 	private String contact;
 	// Résumé
@@ -105,11 +105,11 @@ public class Formation {
 		this.category = category;
 	}
 
-	public int getSellerId() {
+	public ObjectId getSellerId() {
 		return sellerId;
 	}
 
-	public void setSellerId(int sellerId) {
+	public void setSellerId(ObjectId sellerId) {
 		this.sellerId = sellerId;
 	}
 
@@ -369,7 +369,7 @@ public class Formation {
 			return this;
 		}
 
-		public Builder sellerId(int sellerId) {
+		public Builder sellerId(ObjectId sellerId) {
 			formation.sellerId = sellerId;
 			return this;
 		}

@@ -56,14 +56,6 @@ public class FormationDAO {
 		collection.save(formation);
 	}
 
-	// public void createFormation(Formation formation) {
-	// collection.insert(formation);
-	// }
-	//
-	// public void updateFormation(Formation formation) {
-	// collection.update("{id: #}", formation.getId()).with(formation);
-	// }
-
 	public void removeFormation(Formation formation) {
 		collection.remove("{id: #}", formation.getId());
 	}
@@ -76,9 +68,5 @@ public class FormationDAO {
 			formations.add(cursor.next());
 		}
 		return formations;
-	}
-
-	public void finish() {
-		collection.drop();
 	}
 }
