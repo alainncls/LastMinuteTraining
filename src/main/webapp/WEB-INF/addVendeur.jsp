@@ -21,9 +21,8 @@
 								placeholder="Nom de l'organisme" />
 						</div>
 						<div class="form-group">
-							<label for="avatar">Avatar</label> <input type="text"
-								class="form-control" name="avatar" id="avatar" placeholder="Avatar"
-								required="required" />
+							<label for="avatar">Avatar</label> <input type="file"
+								class="form-control" name="avatar" id="avatar"/>
 						</div>
 						<div class="form-group">
 							<label for="mail">Adresse mail</label> <input type="email"
