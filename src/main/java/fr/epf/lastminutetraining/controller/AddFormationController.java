@@ -37,12 +37,12 @@ public class AddFormationController {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// Get data from form
-		String name = (String) req.getParameter("name").replaceAll("\\u([0-9a-f]{3,4})","");
+		String name = (String) req.getParameter("name");
 		String price = (String) req.getParameter("price");
 		String priceLMT = "";//(int) (price - price*(0.2));//Integer.parseInt(req.getParameter("priceLMT"));
-		String startDate = (String) req.getParameter("dates.date").replaceAll("\\u([0-9a-f]{3,4})","");
+		String startDate = (String) req.getParameter("dates.date");
 		String endDate = "";//(String) req.getParameter("endDate");
-		String difficulty = (String) req.getParameter("level").replaceAll("\\u([0-9a-f]{3,4})","");
+		String difficulty = (String) req.getParameter("level");
 		String description = (String)req.getParameter("description");//(String) req.getParameter("description").replaceAll("\\u([0-9a-f]{3,4})","");
 		String prerequis = "";//(String) req.getParameter("prerequis");
 
