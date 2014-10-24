@@ -52,17 +52,21 @@
 						<div class="form-group">
 							<label for="marge">Marge</label> <input type="number"
 								class="form-control" name="marge" id="marge" 
-								placeholder="xxx &euro;" required="required"/>
+								required="required"/>
 						</div>
 						<div class="form-group">
-							<label for="abonnement">IBAN</label> <input type="number"
+							<label for="abonnement">IBAN</label> <input type="number" maxlength="34"
 								class="form-control" name="iban" id="iban" 
 								required="required"/>
 						</div>
 						<div class="form-group">
-							<label for="abonnement">Abonnement</label> 
-							<input class="radio-inline" type="radio" name="abonnement" id="abonnementY" value="1">Oui
-                    		<input class="radio-inline" type="radio" name="abonnement" id="abonnementN" value="0" checked="true">Non
+							<label for="abonnement">Abonnement</label><br>
+							<label class="radio-inline">
+								<input type="radio" name="abonnement" id="abonnementY" value="Oui">Oui
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="abonnement" id="abonnementN" value="Non" checked="true">Non
+							</label> 
 						</div>
 						<div class="actions">
 							<button type="submit" class="btn btn-success">Envoyer</button>
