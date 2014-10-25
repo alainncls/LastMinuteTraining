@@ -1,15 +1,19 @@
 package fr.epf.lastminutetraining.dao;
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
+import org.jongo.MongoCursor;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
+import fr.epf.lastminutetraining.domain.Formation;
 import fr.epf.lastminutetraining.domain.Vendeur;
 
 @Repository
@@ -50,5 +54,15 @@ public class VendeurDAO {
 
 	public Vendeur findVendeur(ObjectId id) {
 		return collection.findOne(id).as(Vendeur.class);
+	}
+	
+	public List<Vendeur> findAllVendeurs() {
+		List<Vendeur> vendeurs = new ArrayList<Vendeur>();
+		MongoCursor<Vendeur> cursor = collection.find().limit(10)
+				.as(Vendeur.class);
+		while (cursor.hasNext()) {
+			vendeurs.add(cursor.next());
+		}
+		return vendeurs;
 	}
 }

@@ -12,14 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import fr.epf.lastminutetraining.service.FormationDBService;
+import fr.epf.lastminutetraining.service.VendeurDBService;
 
 @Controller
-@RequestMapping("/home")
-public class DashboardController {
+@RequestMapping("/listVendeurs")
+public class ListVendeursController {
 
 	@Autowired
-	private FormationDBService service;
+	private VendeurDBService service;
 
 	@RequestMapping(method = RequestMethod.GET)
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -27,9 +27,9 @@ public class DashboardController {
 
 		// Get the dispatcher JSP
 		RequestDispatcher dispatcher = req
-				.getRequestDispatcher("/WEB-INF/home.jsp");
+				.getRequestDispatcher("/WEB-INF/listVendeurs.jsp");
 
-		req.setAttribute("formations", service.findLastFormations());
+		req.setAttribute("vendeurs", service.findAllVendeurs());
 
 		// Forward the request
 		dispatcher.forward(req, resp);
@@ -39,18 +39,10 @@ public class DashboardController {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		String name = req.getParameter("inputName");
-		if (name == "" || name == null) {
-			resp.sendRedirect("home");
-			return;
-		}
-
+		
 		// resp.sendRedirect("formation");
 		RequestDispatcher dispatcher = req
-				.getRequestDispatcher("/WEB-INF/home.jsp");
-
-		req.setAttribute("formations", service.findFormation(name));
-		req.setAttribute("debug", req.getParameterMap().toString());
+				.getRequestDispatcher("/WEB-INF/listVendeurs.jsp");
 
 		// Forward the request
 		dispatcher.forward(req, resp);

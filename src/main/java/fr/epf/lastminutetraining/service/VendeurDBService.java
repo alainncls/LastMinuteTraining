@@ -1,10 +1,13 @@
 package fr.epf.lastminutetraining.service;
 
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.epf.lastminutetraining.dao.VendeurDAO;
+import fr.epf.lastminutetraining.domain.Formation;
 import fr.epf.lastminutetraining.domain.Vendeur;
 
 @Service
@@ -18,6 +21,10 @@ public class VendeurDBService {
 	
 	public Vendeur findVendeur(ObjectId id) {
 		return vendeurDAO.findVendeur(id);
+	}
+	
+	public List<Vendeur> findAllVendeurs() {
+		return vendeurDAO.findAllVendeurs();
 	}
 	
 	public void save(Vendeur vendeur) {

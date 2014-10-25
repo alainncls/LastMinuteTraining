@@ -42,7 +42,7 @@ public class FormationDAO {
 		return collection;
 	}
 
-	public List<Formation> findLastFormation() {
+	public List<Formation> findLastFormations() {
 		List<Formation> formations = new ArrayList<Formation>();
 		MongoCursor<Formation> cursor = collection.find().limit(10)
 				.as(Formation.class);
@@ -64,6 +64,15 @@ public class FormationDAO {
 		List<Formation> formations = new ArrayList<Formation>();
 		MongoCursor<Formation> cursor = collection.find("{name: #}",
 				"/" + name + "/").as(Formation.class);
+		while (cursor.hasNext()) {
+			formations.add(cursor.next());
+		}
+		return formations;
+	}
+	
+	public List<Formation> findAllFormations() {
+		List<Formation> formations = new ArrayList<Formation>();
+		MongoCursor<Formation> cursor = collection.find().as(Formation.class);
 		while (cursor.hasNext()) {
 			formations.add(cursor.next());
 		}
