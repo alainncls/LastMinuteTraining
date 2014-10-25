@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import fr.epf.lastminutetraining.service.FormationDBService;
 
 @Controller
-@RequestMapping("/home")
-public class DashboardController {
+@RequestMapping("/listFormations")
+public class ListFormationsController {
 
 	@Autowired
 	private FormationDBService service;
@@ -27,9 +27,9 @@ public class DashboardController {
 
 		// Get the dispatcher JSP
 		RequestDispatcher dispatcher = req
-				.getRequestDispatcher("/WEB-INF/home.jsp");
+				.getRequestDispatcher("/WEB-INF/listFormations.jsp");
 
-		req.setAttribute("formations", service.findLastFormations());
+		req.setAttribute("formations", service.findAllFormations());
 
 		// Forward the request
 		dispatcher.forward(req, resp);
@@ -39,18 +39,10 @@ public class DashboardController {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		String name = req.getParameter("inputName");
-		if (name == "" || name == null) {
-			resp.sendRedirect("home");
-			return;
-		}
-
+		
 		// resp.sendRedirect("formation");
 		RequestDispatcher dispatcher = req
-				.getRequestDispatcher("/WEB-INF/home.jsp");
-
-		req.setAttribute("formations", service.findFormation(name));
-		req.setAttribute("debug", req.getParameterMap().toString());
+				.getRequestDispatcher("/WEB-INF/listFormations.jsp");
 
 		// Forward the request
 		dispatcher.forward(req, resp);

@@ -17,8 +17,12 @@ public class FormationDBService {
 	@Autowired
 	private FormationDAO formationDAO;
 	
-	public List<Formation> findLastFormation() {
-		return formationDAO.findLastFormation();
+	public List<Formation> findLastFormations() {
+		return formationDAO.findLastFormations();
+	}
+	
+	public List<Formation> findAllFormations() {
+		return formationDAO.findAllFormations();
 	}
 	
 	public List<Formation> findFormation(String name) {
