@@ -118,7 +118,7 @@
 %
 {
     -moz-transform: rotate(359deg
-)
+    )
 ;
 
 }
@@ -137,7 +137,7 @@
 %
 {
     -webkit-transform: rotate(359deg
-)
+    )
 ;
 
 }
@@ -156,7 +156,7 @@
 %
 {
     -o-transform: rotate(359deg
-)
+    )
 ;
 
 }
@@ -177,11 +177,11 @@ keyframes spin {
 %
 {
     -webkit-transform: rotate(359deg
-)
+    )
 ;
 
     transform: rotate(359deg
-)
+    )
 ;
 
 }
