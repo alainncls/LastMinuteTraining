@@ -16,8 +16,8 @@
 				<div class="col-md-4">
 					<form role="form" action="addVendeur" method="POST">
 						<div class="form-group">
-							<label for="name">Nom de l'organisme</label> <input
-								type="text" class="form-control" name="name" id="name"
+							<label for="nom">Nom de l'organisme</label> <input
+								type="text" class="form-control" name="nom" id="nom"
 								placeholder="Nom de l'organisme" />
 						</div>
 						<div class="form-group">
