@@ -7,15 +7,15 @@ public class Vendeur {
 
     @Id
     private ObjectId id;
-    private String nom;
+    private String name;
     private String avatar;
     private String mail;
-    private String telephone;
-    private String marge;
-    private String abonnement;
-    private String adresse;
-    private String ville;
-    private String codePostal;
+    private String phone;
+    private String margin;
+    private String sub;
+    private String address;
+    private String town;
+    private String cp;
     private String iban;
 
     public Vendeur() {
@@ -35,11 +35,11 @@ public class Vendeur {
     }
 
     public String getNom() {
-        return nom;
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNom(String name) {
+        this.name = name;
     }
 
     public String getAvatar() {
@@ -59,51 +59,51 @@ public class Vendeur {
     }
 
     public String getTelephone() {
-        return telephone;
+        return phone;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setTelephone(String phone) {
+        this.phone = phone;
     }
 
     public String getMarge() {
-        return marge;
+        return margin;
     }
 
-    public void setMarge(String marge) {
-        this.marge = marge;
+    public void setMarge(String margin) {
+        this.margin = margin;
     }
 
     public String getAbonnement() {
-        return abonnement;
+        return sub;
     }
 
-    public void setAbonnement(String abonnement) {
-        this.abonnement = abonnement;
+    public void setAbonnement(String sub) {
+        this.sub = sub;
     }
 
     public String getAdresse() {
-        return adresse;
+        return address;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setAdresse(String address) {
+        this.address = address;
     }
 
     public String getVille() {
-        return ville;
+        return town;
     }
 
-    public void setVille(String ville) {
-        this.ville = ville;
+    public void setVille(String town) {
+        this.town = town;
     }
 
     public String getCodePostal() {
-        return codePostal;
+        return cp;
     }
 
-    public void setCodePostal(String codePostal) {
-        this.codePostal = codePostal;
+    public void setCodePostal(String cp) {
+        this.cp = cp;
     }
 
     public String getIban() {
@@ -157,8 +157,8 @@ public class Vendeur {
             return this;
         }
 
-        public Builder nom(String nom) {
-            vendeur.nom = nom;
+        public Builder nom(String name) {
+            vendeur.name = name;
             return this;
         }
 
@@ -172,33 +172,33 @@ public class Vendeur {
             return this;
         }
 
-        public Builder telephone(String telephone) {
-            vendeur.telephone = telephone;
+        public Builder telephone(String phone) {
+            vendeur.phone = phone;
             return this;
         }
 
-        public Builder marge(String marge) {
-            vendeur.marge = marge;
+        public Builder marge(String margin) {
+            vendeur.margin = margin;
             return this;
         }
 
-        public Builder abonnement(String abonnement) {
-            vendeur.abonnement = abonnement;
+        public Builder abonnement(String sub) {
+            vendeur.sub = sub;
             return this;
         }
 
-        public Builder adresse(String adresse) {
-            vendeur.adresse = adresse;
+        public Builder adresse(String address) {
+            vendeur.address = address;
             return this;
         }
 
-        public Builder ville(String ville) {
-            vendeur.ville = ville;
+        public Builder ville(String town) {
+            vendeur.town = town;
             return this;
         }
 
-        public Builder codePostal(String codePostal) {
-            vendeur.codePostal = codePostal;
+        public Builder codePostal(String cp) {
+            vendeur.cp = cp;
             return this;
         }
 
