@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -42,6 +43,7 @@
 
 <script>
 	$(document).ready(function() {
+
 		var menu = $('.navbar');
 		var origOffsetY = menu.offset().top;
 
@@ -71,6 +73,7 @@
 				<ul class="nav nav-tabs" role="tablist">
 					<li class="active"><a href="#signin" data-toggle="tab">Sign
 							In</a></li>
+
 					<li><a href="#signup" data-toggle="tab">Register</a></li>
 				</ul>
 			</div>
@@ -86,12 +89,14 @@
 								<div class="col-sm-8">
 									<input type="text" class="form-control" id="inputLogin"
 										name="login" />
+
 								</div>
 							</div>
 							<!-- Password input-->
 							<div class="form-group">
 								<label for="inputPassword" class="col-sm-4 control-label">Mot
 									de passe:</label>
+
 
 								<div class="col-sm-8">
 									<input type="password" class="form-control" id="inputPassword"
@@ -103,6 +108,7 @@
 								<div class="col-sm-offset-4 col-sm-8">
 									<button type="submit" name="buttonLogin"
 										class="btn btn-success">Sign In</button>
+
 								</div>
 							</div>
 						</form>
@@ -117,6 +123,7 @@
 								<div class="col-sm-8">
 									<input type="email" class="form-control" id="inputEmailNew"
 										name="emailNew" />
+
 								</div>
 							</div>
 							<!-- Text input-->
@@ -126,6 +133,7 @@
 								<div class="col-sm-8">
 									<input type="text" class="form-control" id="inputLoginNew"
 										name="loginNew" />
+
 								</div>
 							</div>
 							<!-- Password input-->
@@ -135,6 +143,7 @@
 								<div class="col-sm-8">
 									<input type="password" class="form-control"
 										id="inputPasswordNew" name="passwordNew" />
+
 								</div>
 							</div>
 							<div class="form-group">
@@ -144,6 +153,7 @@
 								<div class="col-sm-8">
 									<input type="password" class="form-control"
 										id="inputPasswordSecondNew" name="passwordSecondNew" />
+
 								</div>
 							</div>
 							<!-- Button -->
@@ -155,11 +165,14 @@
 							</div>
 						</form>
 					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
+
 </div>
+
 
 <!-- Modal de mon panier -->
 <div class="modal fade" id="cartModal" tabindex="-1" role="dialog"
@@ -183,4 +196,5 @@
 			</div>
 		</div>
 	</div>
+
 </div>
