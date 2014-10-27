@@ -1,5 +1,4 @@
 <jsp:include page="/include/header.jsp"/>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="f" %>
 
 <div class="container">
     <div class="panel panel-primary">
@@ -66,7 +65,7 @@
                                 <input type="radio" name="sub" id="subY" value="Oui">Oui
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="sub" id="subN" value="Non" checked="true">Non
+                                <input type="radio" name="sub" id="subN" value="Non" checked="checked">Non
                             </label>
                         </div>
                         <div class="actions">
