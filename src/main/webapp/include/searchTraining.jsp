@@ -77,13 +77,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${formations}" var="formation">
+                        <c:forEach items="${trainings}" var="training">
                             <tr>
-                                <td><a href="addformation?id=${formation.id}">${formation.name}</a></td>
-                                <td>${formation.prix}</td>
-                                <td>${formation.prixReduc}</td>
-                                <td>${formation.date_debut}</td>
-                                <td>${formation.niveau}</td>
+                                <td><a href="addtraining?id=${training.id}">${training.name}</a></td>
+                                <td>${training.prix}</td>
+                                <td>${training.prixReduc}</td>
+                                <td>${training.date_debut}</td>
+                                <td>${training.niveau}</td>
                             </tr>
                         </c:forEach>
                     </tbody>

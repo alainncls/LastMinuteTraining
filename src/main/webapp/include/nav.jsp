@@ -20,7 +20,7 @@
                 <li><a href="work">Webinars</a></li>
                 <li><a href="work">A propos</a></li>
                 <li><a href="work">CGV</a></li>
-                <li><a href="addFormation">Ajouter une formation</a></li>
+                <li><a href="addTraining">Ajouter une formation</a></li>
 
             </ul>
             <button type="button" class="btn btn-success navbar-btn navbar-right"

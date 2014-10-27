@@ -3,22 +3,22 @@ package fr.epf.lastminutetraining.domain;
 import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
 
-public class Formation {
+public class Training {
 
     @Id
     private ObjectId id;
 
     private int duration;
-    // Lieu de formation
+    // Lieu de training
     private String location;
-    // type de formation (Salle, web, conferance, ...) -> "references"
-    private Short formationType;
+    // type de training (Salle, web, conferance, ...) -> "references"
+    private Short trainingType;
     // Nombre de place restante
     private int available;
     // Type de certification (Officielle, groupement priv�, etc...) ->
     // references
     private short certification;
-    // Categorie de la formation (ERP, ...) -> r�f�rences
+    // Categorie de la training (ERP, ...) -> r�f�rences
     private int category;
     // Id vendeur
     private ObjectId sellerId;
@@ -42,18 +42,18 @@ public class Formation {
     private String description;
     // Formations requises (liste ??)
     private String prerequis;
-    // Introduction de formation
+    // Introduction de training
     private String introduction;
     // Utilisateurs cible
     private String target;
-    // Programme de formation
+    // Programme de training
     private String program;
     // Objectifs
     private String objectives;
     // activit�s
     private String activities;
 
-    public Formation() {
+    public Training() {
 
     }
 
@@ -77,12 +77,12 @@ public class Formation {
         this.location = location;
     }
 
-    public Short getFormationType() {
-        return formationType;
+    public Short getTrainingType() {
+        return trainingType;
     }
 
-    public void setFormationType(Short formationType) {
-        this.formationType = formationType;
+    public void setTrainingType(Short trainingType) {
+        this.trainingType = trainingType;
     }
 
     public int getAvailable() {
@@ -247,8 +247,8 @@ public class Formation {
 
     @Override
     public String toString() {
-        return "Formation [id=" + id + ", duration=" + duration + ", location="
-                + location + ", formationType=" + formationType
+        return "Training [id=" + id + ", duration=" + duration + ", location="
+                + location + ", trainingType=" + trainingType
                 + ", available=" + available + ", certification="
                 + certification + ", category=" + category + ", sellerId="
                 + sellerId + ", contact=" + contact + ", summary=" + summary
@@ -277,7 +277,7 @@ public class Formation {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Formation other = (Formation) obj;
+        Training other = (Training) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -288,129 +288,129 @@ public class Formation {
 
     public static class Builder {
 
-        private Formation formation;
+        private Training training;
 
         private Builder() {
-            formation = new Formation();
+            training = new Training();
         }
 
         public Builder id(ObjectId id) {
-            formation.id = id;
+            training.id = id;
             return this;
         }
 
         public Builder name(String name) {
-            formation.name = name;
+            training.name = name;
             return this;
         }
 
         public Builder startDate(String startDate) {
-            formation.startDate = startDate;
+            training.startDate = startDate;
             return this;
         }
 
         public Builder endDate(String endDate) {
-            formation.endDate = endDate;
+            training.endDate = endDate;
             return this;
         }
 
         public Builder difficulty(String difficulty) {
-            formation.difficulty = difficulty;
+            training.difficulty = difficulty;
             return this;
         }
 
         public Builder price(String price) {
-            formation.price = price;
+            training.price = price;
             return this;
         }
 
         public Builder priceLMT(String priceLMT) {
-            formation.priceLMT = priceLMT;
+            training.priceLMT = priceLMT;
             return this;
         }
 
         public Builder description(String description) {
-            formation.description = description;
+            training.description = description;
             return this;
         }
 
         public Builder prerequis(String prerequis) {
-            formation.prerequis = prerequis;
+            training.prerequis = prerequis;
             return this;
         }
 
         public Builder duration(int duration) {
-            formation.duration = duration;
+            training.duration = duration;
             return this;
         }
 
         public Builder location(String location) {
-            formation.location = location;
+            training.location = location;
             return this;
         }
 
-        public Builder formationType(Short formationType) {
-            formation.formationType = formationType;
+        public Builder trainingType(Short trainingType) {
+            training.trainingType = trainingType;
             return this;
         }
 
         public Builder available(int available) {
-            formation.available = available;
+            training.available = available;
             return this;
         }
 
         public Builder certification(Short certification) {
-            formation.certification = certification;
+            training.certification = certification;
             return this;
         }
 
         public Builder category(int category) {
-            formation.category = category;
+            training.category = category;
             return this;
         }
 
         public Builder sellerId(ObjectId sellerId) {
-            formation.sellerId = sellerId;
+            training.sellerId = sellerId;
             return this;
         }
 
         public Builder contact(String contact) {
-            formation.contact = contact;
+            training.contact = contact;
             return this;
         }
 
         public Builder summary(String summary) {
-            formation.summary = summary;
+            training.summary = summary;
             return this;
         }
 
         public Builder introduction(String introduction) {
-            formation.introduction = introduction;
+            training.introduction = introduction;
             return this;
         }
 
         public Builder target(String target) {
-            formation.target = target;
+            training.target = target;
             return this;
         }
 
         public Builder program(String program) {
-            formation.program = program;
+            training.program = program;
             return this;
         }
 
         public Builder objectives(String objectives) {
-            formation.objectives = objectives;
+            training.objectives = objectives;
             return this;
         }
 
         public Builder activities(String activities) {
-            formation.activities = activities;
+            training.activities = activities;
             return this;
         }
 
-        public Formation build() {
-            return formation;
+        public Training build() {
+            return training;
         }
     }
 }

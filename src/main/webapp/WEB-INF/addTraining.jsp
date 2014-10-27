@@ -6,7 +6,7 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="panel-title">Ajouter une formation</h1>
+                    <h1 class="panel-title">Ajouter une training</h1>
                 </div>
             </div>
         </div>
@@ -14,11 +14,11 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4">
-                    <form role="form" action="addFormation" method="POST">
+                    <form role="form" action="addTraining" method="POST">
                         <div class="form-group">
-                            <label for="name">Intitul� de la formation</label> <input
+                            <label for="name">Intitule de la formation</label> <input
                                 type="text" class="form-control" name="name" id="name"
-                                placeholder="Intitul� de la formation"/>
+                                placeholder="Intitul� de la fromation"/>
                         </div>
                         <div class="form-group">
                             <label for="introduced">Prix</label> <input type="number"
@@ -34,7 +34,7 @@
                                                                                 required="required"/>
                         </div>
                         <div class="form-group">
-                            <label for="name">D�but de la formation</label> <input
+                            <label for="name">Début de la formation</label> <input
                                 type="date" class="form-control" name="startDate" id="startDate"/>
                         </div>
                         <div class="form-group">

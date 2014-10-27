@@ -1,6 +1,6 @@
 package fr.epf.lastminutetraining.controller;
 
-import fr.epf.lastminutetraining.service.FormationDBService;
+import fr.epf.lastminutetraining.service.TrainingDBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class DashboardController {
 
     @Autowired
-    private FormationDBService service;
+    private TrainingDBService service;
 
     @RequestMapping(method = RequestMethod.GET)
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -27,7 +27,7 @@ public class DashboardController {
         RequestDispatcher dispatcher = req
                 .getRequestDispatcher("/WEB-INF/home.jsp");
 
-        req.setAttribute("formations", service.findLastFormations());
+        req.setAttribute("trainings", service.findLastTraining());
 
         // Forward the request
         dispatcher.forward(req, resp);
@@ -47,7 +47,7 @@ public class DashboardController {
         RequestDispatcher dispatcher = req
                 .getRequestDispatcher("/WEB-INF/home.jsp");
 
-        req.setAttribute("formations", service.findFormation(name));
+        req.setAttribute("trainings", service.findTraining(name));
         req.setAttribute("debug", req.getParameterMap().toString());
 
         // Forward the request

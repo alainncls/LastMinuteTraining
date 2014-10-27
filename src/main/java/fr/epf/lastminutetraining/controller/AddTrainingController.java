@@ -1,7 +1,7 @@
 package fr.epf.lastminutetraining.controller;
 
-import fr.epf.lastminutetraining.domain.Formation;
-import fr.epf.lastminutetraining.service.FormationDBService;
+import fr.epf.lastminutetraining.domain.Training;
+import fr.epf.lastminutetraining.service.TrainingDBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@RequestMapping("/addFormation")
+@RequestMapping("/addTraining")
 @Controller
-public class AddFormationController {
+public class AddTrainingController {
     @Autowired
-    private FormationDBService service;
+    private TrainingDBService service;
 
     @RequestMapping(method = RequestMethod.GET)
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -25,7 +25,7 @@ public class AddFormationController {
 
         // Get the dispatcher JSP
         RequestDispatcher dispatcher = req
-                .getRequestDispatcher("/WEB-INF/addFormation.jsp");
+                .getRequestDispatcher("/WEB-INF/addTraining.jsp");
 
         // Forward the request
         dispatcher.forward(req, resp);
@@ -44,14 +44,14 @@ public class AddFormationController {
         String description = (String) req.getParameter("description");//(String) req.getParameter("description").replaceAll("\\u([0-9a-f]{3,4})","");
         String prerequis = "";//(String) req.getParameter("prerequis");
 
-        Formation formation = Formation.builder().name(name).price(price)
+        Training training = Training.builder().name(name).price(price)
                 .priceLMT(priceLMT).startDate(startDate).endDate(endDate)
                 .difficulty(difficulty).description(description)
                 .prerequis(prerequis).build();
 
-        // Persist the formation
-        service.save(formation);
+        // Persist the training
+        service.save(training);
 
-        resp.sendRedirect("addFormation");
+        resp.sendRedirect("addTraining");
     }
 }
