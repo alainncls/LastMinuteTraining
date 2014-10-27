@@ -29,7 +29,6 @@
 <body>
 
 <jsp:include page="/include/carousel.jsp"/>
-
 <jsp:include page="/include/nav.jsp"/>
 
 <div id="page-content" class="container">
