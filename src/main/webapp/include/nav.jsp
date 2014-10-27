@@ -74,7 +74,7 @@
             <div class="modal-body">
                 <div class="tab-content">
                     <div class="tab-pane active fade in" id="signin">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" method="POST" action="login">
                             <!-- Sign In Form -->
                             <!-- Text input-->
                             <div class="form-group">
