@@ -14,7 +14,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4">
-                    <form role="form" action="addVendor" method="POST">
+                    <form name="vendorForm" role="form" action="addVendor" method="POST" onsubmit="return validateForm()">
                         <div class="form-group">
                             <label for="name">Nom de l'organisme</label> <input
                                 type="text" class="form-control" name="name" id="name"
@@ -47,8 +47,8 @@
                         </div>
                         <div class="form-group">
                             <label for="town">Ville</label> <input type="text"
-                                                                    class="form-control" name="town" id="town"
-                                                                    required="required"/>
+                                                                   class="form-control" name="town" id="town"
+                                                                   required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="margin">Marge</label> <input type="number"
@@ -56,9 +56,9 @@
                                                                     required="required"/>
                         </div>
                         <div class="form-group">
-                            <label for="iban">IBAN</label> <input type="number" maxlength="34"
-                                                                        class="form-control" name="iban" id="iban"
-                                                                        required="required"/>
+                            <label for="iban">IBAN</label> <input type="text" maxlength="34"
+                                                                  class="form-control" name="iban" id="iban"
+                                                                  required="required"/>
                         </div>
                         <div class="form-group">
                             <label>Abonnement</label><br>
