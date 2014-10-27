@@ -12,7 +12,7 @@
                                                                   class="form-control" id="inputName" name="inputName"/>
                     </div>
                     <div class="form-group">
-                        <label for="inputPrereq">Pr�requis</label> <select multiple
+                        <label for="inputPrereq">Pr&eacute;requis</label> <select multiple
                                                                            class="form-control chosen-select"
                                                                            id="inputPrereq"
                                                                            name="inputPrereq[]">
@@ -22,7 +22,7 @@
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="inputStart">Date D�but</label> <input type="date"
+                        <label for="inputStart">Date D&eacute;but</label> <input type="date"
                                                                           class="form-control" id="inputStart"
                                                                           name="inputStart"/>
                     </div>

@@ -23,21 +23,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:if test="${not empty vendeurs}">
-                        <c:forEach items="${vendeurs}" var="vendeur" varStatus="loop">
+                    <c:if test="${not empty vendors}">
+                        <c:forEach items="${vendors}" var="vendor" varStatus="loop">
                             <tr>
                                 <td>${loop.index+1}</td>
-                                <td>${vendeur.id}</td>
-                                <td>${vendeur.nom}</td>
-                                <td>${vendeur.avatar}</td>
-                                <td>${vendeur.mail}</td>
-                                <td>${vendeur.telephone}</td>
-                                <td>${vendeur.marge}</td>
-                                <td>${vendeur.abonnement}</td>
-                                <td>${vendeur.adresse}</td>
-                                <td>${vendeur.ville}</td>
-                                <td>${vendeur.codePostal}</td>
-                                <td>${vendeur.iban}</td>
+                                <td>${vendor.id}</td>
+                                <td>${vendor.nom}</td>
+                                <td>${vendor.avatar}</td>
+                                <td>${vendor.mail}</td>
+                                <td>${vendor.telephone}</td>
+                                <td>${vendor.marge}</td>
+                                <td>${vendor.abonnement}</td>
+                                <td>${vendor.adresse}</td>
+                                <td>${vendor.ville}</td>
+                                <td>${vendor.codePostal}</td>
+                                <td>${vendor.iban}</td>
                             </tr>
                         </c:forEach>
                     </c:if>
