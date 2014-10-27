@@ -6,7 +6,7 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="panel-title">Ajouter une formation</h1>
+                    <h1 class="panel-title">Ajouter une training</h1>
                 </div>
             </div>
         </div>
@@ -21,13 +21,13 @@
                                 placeholder="Intitul&eacute; de la fromation"/>
                         </div>
                         <div class="form-group">
-                            <label for="price">Prix</label> <input type="number"
+                            <label for="introduced">Prix</label> <input type="number"
                                                                         class="form-control" name="price" id="price"
                                                                         placeholder="Prix"
                                                                         required="required"/>
                         </div>
                         <div class="form-group">
-                            <label for="priceLMT">Prix via LMT</label> <input type="number"
+                            <label for="introduced">Prix via LMT</label> <input type="number"
                                                                                 class="form-control" name="priceLMT"
                                                                                 id="priceLMT"
                                                                                 placeholder="Prix LMT"

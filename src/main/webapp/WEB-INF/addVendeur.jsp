@@ -16,7 +16,7 @@
                 <div class="col-md-4">
                     <form role="form" action="addVendor" method="POST">
                         <div class="form-group">
-                            <label for="name">Nom de l'organisme</label> <input
+                            <label for="nom">Nom de l'organisme</label> <input
                                 type="text" class="form-control" name="name" id="name"
                                 placeholder="Nom de l'organisme"/>
                         </div>
@@ -36,7 +36,7 @@
                                 placeholder="xx xx xx xx xx" required="required"/>
                         </div>
                         <div class="form-group">
-                            <label for="address">Adresse</label> <input type="text"
+                            <label for="adresse">Adresse</label> <input type="text"
                                                                         class="form-control" name="address" id="address"
                                                                         required="required"/>
                         </div>
@@ -46,22 +46,22 @@
                                                                        required="required"/>
                         </div>
                         <div class="form-group">
-                            <label for="town">Ville</label> <input type="text"
+                            <label for="ville">Ville</label> <input type="text"
                                                                     class="form-control" name="town" id="town"
                                                                     required="required"/>
                         </div>
                         <div class="form-group">
-                            <label for="margin">Marge</label> <input type="number"
+                            <label for="marge">Marge</label> <input type="number"
                                                                     class="form-control" name="margin" id="margin"
                                                                     required="required"/>
                         </div>
                         <div class="form-group">
-                            <label for="iban">IBAN</label> <input type="number" maxlength="34"
+                            <label for="abonnement">IBAN</label> <input type="number" maxlength="34"
                                                                         class="form-control" name="iban" id="iban"
                                                                         required="required"/>
                         </div>
                         <div class="form-group">
-                            <label>Abonnement</label><br>
+                            <label for="abonnement">Abonnement</label><br>
                             <label class="radio-inline">
                                 <input type="radio" name="sub" id="subY" value="Oui">Oui
                             </label>
