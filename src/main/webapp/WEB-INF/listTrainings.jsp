@@ -35,33 +35,33 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:if test="${not empty formations}">
-                        <c:forEach items="${formations}" var="formation" varStatus="loop">
+                    <c:if test="${not empty trainings}">
+                        <c:forEach items="${trainings}" var="training" varStatus="loop">
                             <tr>
                                 <td>${loop.index+1}</td>
-                                <td>${formation.id}</td>
-                                <td>${formation.duration}</td>
-                                <td>${formation.location}</td>
-                                <td>${formation.formationType}</td>
-                                <td>${formation.available}</td>
-                                <td>${formation.certification}</td>
-                                <td>${formation.category}</td>
-                                <td>${formation.sellerId}</td>
-                                <td>${formation.contact}</td>
-                                <td>${formation.summary}</td>
-                                <td>${formation.name}</td>
-                                <td>${formation.startDate}</td>
-                                <td>${formation.endDate}</td>
-                                <td>${formation.difficulty}</td>
-                                <td>${formation.price}</td>
-                                <td>${formation.priceLMT}</td>
-                                <td>${formation.description}</td>
-                                <td>${formation.prerequis}</td>
-                                <td>${formation.introduction}</td>
-                                <td>${formation.target}</td>
-                                <td>${formation.program}</td>
-                                <td>${formation.objectives}</td>
-                                <td>${formation.activities}</td>
+                                <td>${training.id}</td>
+                                <td>${training.duration}</td>
+                                <td>${training.location}</td>
+                                <td>${training.formationType}</td>
+                                <td>${training.available}</td>
+                                <td>${training.certification}</td>
+                                <td>${training.category}</td>
+                                <td>${training.sellerId}</td>
+                                <td>${training.contact}</td>
+                                <td>${training.summary}</td>
+                                <td>${training.name}</td>
+                                <td>${training.startDate}</td>
+                                <td>${training.endDate}</td>
+                                <td>${training.difficulty}</td>
+                                <td>${training.price}</td>
+                                <td>${training.priceLMT}</td>
+                                <td>${training.description}</td>
+                                <td>${training.prerequis}</td>
+                                <td>${training.introduction}</td>
+                                <td>${training.target}</td>
+                                <td>${training.program}</td>
+                                <td>${training.objectives}</td>
+                                <td>${training.activities}</td>
                             </tr>
                         </c:forEach>
                     </c:if>

@@ -16,7 +16,7 @@
             <div class="carousel-caption">
                 <h3>Formation SAP Premium</h3>
 
-                <p>Offre � saisir d'urgence !</p>
+                <p>Offre a saisir d'urgence !</p>
             </div>
         </div>
         <div class="item">
@@ -36,7 +36,7 @@
                     alt="...">
 
             <div class="carousel-caption">
-                <h3>Formation d�butants SAP</h3>
+                <h3>Formation debutants SAP</h3>
 
                 <p>SAP niveau 1 en 48 heures seulement !</p>
             </div>

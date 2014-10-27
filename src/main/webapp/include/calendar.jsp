@@ -18,11 +18,11 @@
             eventLimit: true, // allow "more" link when too many events
             events: [
                 {
-                    title: 'Formation 1 day',
+                    title: 'Training 1 day',
                     start: '2014-10-01'
                 },
                 {
-                    title: 'Formation several days',
+                    title: 'Training several days',
                     start: '2014-10-07',
                     end: '2014-10-10'
                 },
@@ -37,7 +37,7 @@
                     start: '2014-09-16T16:00:00'
                 },
                 {
-                    title: 'Formation SAP RH',
+                    title: 'Training SAP RH',
                     start: '2014-09-11',
                     end: '2014-09-13'
                 },

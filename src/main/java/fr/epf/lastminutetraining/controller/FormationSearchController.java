@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/formation")
+@RequestMapping("/training")
 public class FormationSearchController {
     @RequestMapping(method = RequestMethod.GET)
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -19,7 +19,7 @@ public class FormationSearchController {
 
         // Get the dispatcher JSP
         RequestDispatcher dispatcher = req
-                .getRequestDispatcher("/WEB-INF/formation.jsp");
+                .getRequestDispatcher("/WEB-INF/training.jsp");
 
         // Forward the request
         dispatcher.forward(req, resp);

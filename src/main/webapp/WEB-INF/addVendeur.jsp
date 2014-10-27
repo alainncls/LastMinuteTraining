@@ -6,7 +6,7 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="panel-title">Ajouter un organisme de formation</h1>
+                    <h1 class="panel-title">Ajouter un organisme de training</h1>
                 </div>
             </div>
         </div>
