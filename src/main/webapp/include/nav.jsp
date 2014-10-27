@@ -16,18 +16,27 @@
 		<div class="collapse navbar-collapse" id="bs-navbar-collapse">
 			<!-- Menu -->
 			<ul class="nav navbar-nav">
-				<!-- liste des liens en fonction des droits d'accès -->
+				<!-- liste des liens en fonction des droits d'accï¿½s -->
 				<li><a href="404">Base documentaire</a></li>
 				<li><a href="work">Webinars</a></li>
 				<li><a href="work">A propos</a></li>
 				<li><a href="work">CGV</a></li>
 				<li><a href="addTraining">Ajouter une formation</a></li>
-
 			</ul>
-			<button type="button" class="btn btn-success navbar-btn navbar-right"
-				data-toggle="modal" data-target="#loginModal">
-				<span class="fa fa-sign-in"></span> Connexion
-			</button>
+			<c:choose>
+				<c:when test="${sessionScope.login==null}">
+					<button type="button"
+						class="btn btn-success navbar-btn navbar-right"
+						data-toggle="modal" data-target="#loginModal">
+						<span class="fa fa-sign-in"></span> Connexion
+					</button>
+				</c:when>
+				<c:otherwise>
+					<a class="btn btn-danger navbar-btn navbar-right" href="logout">
+						<span class="fa fa-sign-out"></span> Déconnexion
+					</a>
+				</c:otherwise>
+			</c:choose>
 			<button type="button" class="btn btn-warning navbar-btn navbar-right"
 				data-toggle="modal" data-target="#cartModal">
 				<span class="fa fa-shopping-cart"></span> Mon Panier
