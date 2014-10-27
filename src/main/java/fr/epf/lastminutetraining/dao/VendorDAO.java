@@ -48,7 +48,7 @@ public class VendorDAO {
     public void removeVendor(Vendor Vendor) {
         collection.remove("{id: #}", Vendor.getId());
     }
-
+    //Method to find vendor by id
     public Vendor findVendor(ObjectId id) {
         return collection.findOne(id).as(Vendor.class);
     }
