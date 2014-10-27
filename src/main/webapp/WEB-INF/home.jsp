@@ -32,7 +32,7 @@
                         <c:forEach items="${trainings}" var="training" varStatus="loop">
                             <tr>
                                 <td class="trainingName"><a href="404?id=${training.id}">${training.name}</a></td>
-                                <td>${training.price}</td>
+                                <td>${training.price}&euro;</td>
                                 <td>${training.priceLMT}&euro;</td>
                                 <td>${training.startDate}</td>
                                 <td>${training.duration}jours</td>
