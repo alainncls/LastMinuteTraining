@@ -2,7 +2,7 @@ package fr.epf.lastminutetraining.dao;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
-import fr.epf.lastminutetraining.domain.Vendeur;
+import fr.epf.lastminutetraining.domain.Vendor;
 import org.bson.types.ObjectId;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
@@ -14,16 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class VendeurDAO {
+public class VendorDAO {
 
     public static final String DB_NAME = "LMT";
-    public static final String DB_COLLECTION = "vendeur";
+    public static final String DB_COLLECTION = "vendors";
     public static final String MONGO_HOST = "localhost";
     public static final int MONGO_PORT = 27017;
 
     private MongoCollection collection = init();
 
-    private VendeurDAO() {
+    private VendorDAO() {
     }
 
     public MongoCollection init() {
@@ -41,25 +41,25 @@ public class VendeurDAO {
         return collection;
     }
 
-    public void saveVendeur(Vendeur Vendeur) {
-        collection.save(Vendeur);
+    public void saveVendor(Vendor Vendor) {
+        collection.save(Vendor);
     }
 
-    public void removeVendeur(Vendeur Vendeur) {
-        collection.remove("{id: #}", Vendeur.getId());
+    public void removeVendor(Vendor Vendor) {
+        collection.remove("{id: #}", Vendor.getId());
     }
 
-    public Vendeur findVendeur(ObjectId id) {
-        return collection.findOne(id).as(Vendeur.class);
+    public Vendor findVendor(ObjectId id) {
+        return collection.findOne(id).as(Vendor.class);
     }
 
-    public List<Vendeur> findAllVendeurs() {
-        List<Vendeur> vendeurs = new ArrayList<Vendeur>();
-        MongoCursor<Vendeur> cursor = collection.find().limit(10)
-                .as(Vendeur.class);
+    public List<Vendor> findAllVendors() {
+        List<Vendor> vendors = new ArrayList<Vendor>();
+        MongoCursor<Vendor> cursor = collection.find().limit(10)
+                .as(Vendor.class);
         while (cursor.hasNext()) {
-            vendeurs.add(cursor.next());
+            vendors.add(cursor.next());
         }
-        return vendeurs;
+        return vendors;
     }
 }

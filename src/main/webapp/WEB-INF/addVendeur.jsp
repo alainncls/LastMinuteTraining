@@ -6,7 +6,7 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="panel-title">Ajouter un organisme de training</h1>
+                    <h1 class="panel-title">Ajouter un organisme de formation</h1>
                 </div>
             </div>
         </div>
@@ -14,10 +14,10 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4">
-                    <form role="form" action="addVendeur" method="POST">
+                    <form role="form" action="addVendor" method="POST">
                         <div class="form-group">
                             <label for="nom">Nom de l'organisme</label> <input
-                                type="text" class="form-control" name="nom" id="nom"
+                                type="text" class="form-control" name="name" id="name"
                                 placeholder="Nom de l'organisme"/>
                         </div>
                         <div class="form-group">
@@ -31,13 +31,13 @@
                                                                           required="required"/>
                         </div>
                         <div class="form-group">
-                            <label for="tel">Num�ro de t�l�phone</label> <input
-                                type="text" maxlength="10" class="form-control" name="tel" id="tel"
+                            <label for="phone">Num&eacute;ro de t&eacute;phone</label> <input
+                                type="text" maxlength="10" class="form-control" name="phone" id="phone"
                                 placeholder="xx xx xx xx xx" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="adresse">Adresse</label> <input type="text"
-                                                                        class="form-control" name="adresse" id="adresse"
+                                                                        class="form-control" name="address" id="address"
                                                                         required="required"/>
                         </div>
                         <div class="form-group">
@@ -47,12 +47,12 @@
                         </div>
                         <div class="form-group">
                             <label for="ville">Ville</label> <input type="text"
-                                                                    class="form-control" name="ville" id="ville"
+                                                                    class="form-control" name="town" id="town"
                                                                     required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="marge">Marge</label> <input type="number"
-                                                                    class="form-control" name="marge" id="marge"
+                                                                    class="form-control" name="margin" id="margin"
                                                                     required="required"/>
                         </div>
                         <div class="form-group">
@@ -63,10 +63,10 @@
                         <div class="form-group">
                             <label for="abonnement">Abonnement</label><br>
                             <label class="radio-inline">
-                                <input type="radio" name="abonnement" id="abonnementY" value="Oui">Oui
+                                <input type="radio" name="sub" id="subY" value="Oui">Oui
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="abonnement" id="abonnementN" value="Non" checked="true">Non
+                                <input type="radio" name="sub" id="subN" value="Non" checked="true">Non
                             </label>
                         </div>
                         <div class="actions">

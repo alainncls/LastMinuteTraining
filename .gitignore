@@ -64,3 +64,6 @@ $RECYCLE.BIN/
 
 .idea
 *.iml
+
+#classpath
+.classpath
