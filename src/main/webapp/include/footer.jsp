@@ -37,7 +37,7 @@
     /*Activate chosen plugin on select with chosen-select class*/
     $(function () {
         $(".chosen-select").chosen({
-            no_results_text: "Aucun rÃ©sultat",
+            no_results_text: "Aucun résultat",
             disable_search_threshold: 10,
             allow_single_deselect: true
         });
@@ -49,6 +49,19 @@
             showCaption: false,
             symbol: "â˜…"
         });
+    });
+</script>
+<script type="text/javascript">
+    $(function validateForm() {
+    	var iban = document.forms["vendorForm"]["iban"].value;
+    	var regex = /^[A-Z]{2}([0-9a-zA-Z]{25})$/;
+    	
+    	if (!regex.test(iban)) {
+            alert("Veuillez entre un numéro IBAN valide");
+            return false;
+        }
+    	
+    	return true;
     });
 </script>
 </body>
