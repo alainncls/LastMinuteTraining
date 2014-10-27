@@ -10,15 +10,15 @@
                     <tr>
                         <th>index</th>
                         <th>id</th>
-                        <th>name</th>
+                        <th>nom</th>
                         <th>avatar</th>
                         <th>mail</th>
-                        <th>phone</th>
-                        <th>margin</th>
-                        <th>sub</th>
-                        <th>address</th>
-                        <th>town</th>
-                        <th>cp</th>
+                        <th>telephone</th>
+                        <th>marge</th>
+                        <th>abonnement</th>
+                        <th>adresse</th>
+                        <th>ville</th>
+                        <th>codePostal</th>
                         <th>iban</th>
                     </tr>
                     </thead>
@@ -28,15 +28,15 @@
                             <tr>
                                 <td>${loop.index+1}</td>
                                 <td>${vendor.id}</td>
-                                <td>${vendor.name}</td>
+                                <td>${vendor.nom}</td>
                                 <td>${vendor.avatar}</td>
                                 <td>${vendor.mail}</td>
-                                <td>${vendor.phone}</td>
-                                <td>${vendor.margin}</td>
-                                <td>${vendor.sub}</td>
-                                <td>${vendor.address}</td>
-                                <td>${vendor.town}</td>
-                                <td>${vendor.cp}</td>
+                                <td>${vendor.telephone}</td>
+                                <td>${vendor.marge}</td>
+                                <td>${vendor.abonnement}</td>
+                                <td>${vendor.adresse}</td>
+                                <td>${vendor.ville}</td>
+                                <td>${vendor.codePostal}</td>
                                 <td>${vendor.iban}</td>
                             </tr>
                         </c:forEach>
