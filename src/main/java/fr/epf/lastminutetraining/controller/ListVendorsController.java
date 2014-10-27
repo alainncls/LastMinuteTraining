@@ -26,7 +26,7 @@ public class ListVendorsController {
         // Get the dispatcher JSP
         RequestDispatcher dispatcher = req
                 .getRequestDispatcher("/WEB-INF/listVendors.jsp");
-
+        //Put all the vendors from database into "vendors"
         req.setAttribute("vendors", service.findAllVendors());
 
         // Forward the request

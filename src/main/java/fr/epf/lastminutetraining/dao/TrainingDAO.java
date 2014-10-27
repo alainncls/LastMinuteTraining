@@ -42,9 +42,11 @@ public class TrainingDAO {
 
     public List<Training> findLastTraining() {
         List<Training> trainings = new ArrayList<Training>();
+        //get 10 last trainings from database
         MongoCursor<Training> cursor = collection.find().limit(10)
                 .as(Training.class);
         while (cursor.hasNext()) {
+        	//move cursor to next training
             trainings.add(cursor.next());
         }
         return trainings;
@@ -57,7 +59,7 @@ public class TrainingDAO {
     public void removeTraining(Training training) {
         collection.remove("{id: #}", training.getId());
     }
-
+    //Method to find a training by name
     public List<Training> findTraining(String name) {
         List<Training> trainings = new ArrayList<Training>();
         MongoCursor<Training> cursor = collection.find("{name: #}",
@@ -67,7 +69,7 @@ public class TrainingDAO {
         }
         return trainings;
     }
-
+    
     public List<Training> findAllTrainings() {
         List<Training> trainings = new ArrayList<Training>();
         MongoCursor<Training> cursor = collection.find().as(Training.class);

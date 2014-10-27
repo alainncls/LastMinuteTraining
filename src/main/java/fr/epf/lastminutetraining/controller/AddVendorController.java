@@ -45,7 +45,7 @@ public class AddVendorController {
         String town = (String) req.getParameter("town");
         String cp = (String) req.getParameter("cp");
         String iban = (String) req.getParameter("iban");
-
+        //Build vendor object
         Vendor vendor = Vendor.builder().name(name).avatar(avatar)
                 .mail(mail).phone(phone).margin(margin).sub(sub)
                 .address(address).town(town).cp(cp).iban(iban).build();

@@ -7,15 +7,25 @@ public class Vendor {
 
     @Id
     private ObjectId id;
+    //	Nom
     private String name;
+    //	Logo de l'entreprse
     private String avatar;
+    //	Adresse mail
     private String mail;
+    //	Numéro de téléphone
     private String phone;
+    //	Marge éffectuée par LMT
     private String margin;
+    //	Type de souscription à LMT
     private String sub;
+    //	Adresse postale
     private String address;
+    //	Ville
     private String town;
+    //	Code Postal
     private String cp;
+    //	Numéro IBAN
     private String iban;
 
     public Vendor() {
@@ -115,11 +125,14 @@ public class Vendor {
     }
 
     @Override
-    public String toString() {
-        return "Vendor [id=" + id + "]";
-    }
+	public String toString() {
+		return "Vendor [id=" + id + ", name=" + name + ", avatar=" + avatar
+				+ ", mail=" + mail + ", phone=" + phone + ", margin=" + margin
+				+ ", sub=" + sub + ", address=" + address + ", town=" + town
+				+ ", cp=" + cp + ", iban=" + iban + "]";
+	}
 
-    @Override
+	@Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;

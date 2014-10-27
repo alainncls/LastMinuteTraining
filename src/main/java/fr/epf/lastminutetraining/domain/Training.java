@@ -9,48 +9,47 @@ public class Training {
     private ObjectId id;
 
     private int duration;
-    // Lieu de training
+    // Lieu de formation
     private String location;
-    // type de training (Salle, web, conferance, ...) -> "references"
+    // type de formation (Salle, web, conférence, ...) -> "références"
     private Short trainingType;
-    // Nombre de place restante
+    // Nombre de places restantes
     private int available;
-    // Type de certification (Officielle, groupement privï¿½, etc...) ->
-    // references
+    // Type de certification (Officielle, groupement privé, etc...) ->
     private short certification;
-    // Categorie de la training (ERP, ...) -> rï¿½fï¿½rences
+    // Categorie de la training (ERP, ...) -> rérences
     private int category;
     // Id vendeur
     private ObjectId sellerId;
     // Contact
     private String contact;
-    // Rï¿½sumï¿½
+    // Résumé
     private String summary;
     // Titre
     private String name;
-    // Date dï¿½but
+    // Date début
     private String startDate;
     // Date de fin
     private String endDate;
-    // difficultï¿½
+    // difficultée
     private String difficulty;
     // Prix original
     private String price;
-    // Prix rï¿½duc
+    // Prix réduit
     private String priceLMT;
-    // description
+    // Description
     private String description;
-    // Formations requises (liste ??)
+    // Formation requise
     private String prerequis;
     // Introduction de training
     private String introduction;
     // Utilisateurs cible
     private String target;
-    // Programme de training
+    // Programme de formation
     private String program;
     // Objectifs
     private String objectives;
-    // activitï¿½s
+    // Activitées
     private String activities;
 
     public Training() {

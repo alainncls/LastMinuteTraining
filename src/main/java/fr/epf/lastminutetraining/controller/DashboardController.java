@@ -26,7 +26,7 @@ public class DashboardController {
         // Get the dispatcher JSP
         RequestDispatcher dispatcher = req
                 .getRequestDispatcher("/WEB-INF/home.jsp");
-
+        //Put the 10 last trainings in "trainings"
         req.setAttribute("trainings", service.findLastTraining());
 
         // Forward the request
@@ -43,7 +43,6 @@ public class DashboardController {
             return;
         }
 
-        // resp.sendRedirect("formation");
         RequestDispatcher dispatcher = req
                 .getRequestDispatcher("/WEB-INF/home.jsp");
 

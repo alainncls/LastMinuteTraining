@@ -26,7 +26,7 @@ public class LoginController  {
         // Forward the request
         dispatcher.forward(req, resp);
     }
-    //methode pour login de compte
+    //Methode pour login de compte
     @RequestMapping(method = RequestMethod.POST, value="/login")
     protected void login(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {

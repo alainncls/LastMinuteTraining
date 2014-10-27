@@ -57,17 +57,6 @@
     </div>
     <div class="col-sm-4">
         <jsp:include page="/include/searchTraining.jsp"/>
-        <!-- 		<div class="row">
-            <div class="col-sm-12">
-                <form class="form-inline pull-right" role="search" method="post">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div>
-            <div class="col-sm-12"></div>
-        </div> -->
     </div>
 </div>
 <jsp:include page="/include/footer.jsp"/>

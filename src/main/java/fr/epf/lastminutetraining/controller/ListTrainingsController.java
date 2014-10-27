@@ -26,7 +26,7 @@ public class ListTrainingsController {
         // Get the dispatcher JSP
         RequestDispatcher dispatcher = req
                 .getRequestDispatcher("/WEB-INF/listTrainings.jsp");
-
+        //put all trainings from database in "trainings"
         req.setAttribute("trainings", service.findAllTrainings());
 
         // Forward the request

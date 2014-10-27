@@ -37,13 +37,13 @@ public class AddTrainingController {
         // Get data from form
         String name = (String) req.getParameter("name");
         String price = (String) req.getParameter("price");
-        String priceLMT = "";//(int) (price - price*(0.2));//Integer.parseInt(req.getParameter("priceLMT"));
+        String priceLMT = (String) req.getParameter("priceLMT");
         String startDate = (String) req.getParameter("dates.date");
-        String endDate = "";//(String) req.getParameter("endDate");
+        String endDate = (String) req.getParameter("endDate");
         String difficulty = (String) req.getParameter("level");
-        String description = (String) req.getParameter("description");//(String) req.getParameter("description").replaceAll("\\u([0-9a-f]{3,4})","");
-        String prerequis = "";//(String) req.getParameter("prerequis");
-
+        String description = (String) req.getParameter("description");
+        String prerequis = (String) req.getParameter("prerequis");
+        //Build the training object
         Training training = Training.builder().name(name).price(price)
                 .priceLMT(priceLMT).startDate(startDate).endDate(endDate)
                 .difficulty(difficulty).description(description)
