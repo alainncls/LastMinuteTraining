@@ -31,7 +31,7 @@
                                                                           required="required"/>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Num&eacute;ro de t&eacute;phone</label> <input
+                            <label for="phone">Numéro de téléphone</label> <input
                                 type="text" maxlength="10" class="form-control" name="phone" id="phone"
                                 placeholder="xx xx xx xx xx" required="required"/>
                         </div>

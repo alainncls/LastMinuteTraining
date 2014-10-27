@@ -3,7 +3,7 @@
     <div class="row">
         <div class="footpart">
             <div class="col-md-4 col-sm-6">
-                <h4>R&eacute;seaux sociaux</h4>
+                <h4>Réseaux sociaux</h4>
                 <a href="https://twitter.com/Alain_Ncls"><span
                         class="fa fa-twitter"> Twitter</span></a><br/> <a
                     href="https://www.facebook.com/alain.nicolas"><span
@@ -37,7 +37,7 @@
     /*Activate chosen plugin on select with chosen-select class*/
     $(function () {
         $(".chosen-select").chosen({
-            no_results_text: "Aucun r�sultat",
+            no_results_text: "Aucun résultat",
             disable_search_threshold: 10,
             allow_single_deselect: true
         });
@@ -47,7 +47,7 @@
             step: 1,
             size: "xs",
             showCaption: false,
-            symbol: "★"
+            symbol: "â"
         });
     });
 </script>
@@ -57,7 +57,7 @@
     	var regex = /^[A-Z]{2}([0-9a-zA-Z]{25})$/;
     	
     	if (!regex.test(iban)) {
-            alert("Veuillez entre un num�ro IBAN valide");
+            alert("Veuillez entre un numéro IBAN valide");
             return false;
         }
     	

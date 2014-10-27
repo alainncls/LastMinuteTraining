@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-sm-12">
         <h3>Passer par LastMinuteTraining.com, c'est s'assurer d'avoir
-            les meilleurs prix du march&eacute; sur les meilleures formations ERP
+            les meilleurs prix du marché sur les meilleures formations ERP
             / SAP du moment</h3>
         <h4>Client&egrave;le satisfaite &agrave; 97%</h4>
     </div>
@@ -21,8 +21,8 @@
                         <th>Prix</th>
                         <th>Prix LMT</th>
                         <th>Date</th>
-                        <th>Dur&eacute;e</th>
-                        <th>Difficult&eacute;</th>
+                        <th>Durée</th>
+                        <th>Difficulté</th>
                         <th>Places restantes</th>
                         <th></th>
                     </tr>
@@ -32,8 +32,8 @@
                         <c:forEach items="${trainings}" var="training" varStatus="loop">
                             <tr>
                                 <td class="trainingName"><a href="404?id=${training.id}">${training.name}</a></td>
-                                <td>${training.price}&euro;</td>
-                                <td>${training.priceLMT}&euro;</td>
+                                <td>${training.price}€</td>
+                                <td>${training.priceLMT}€</td>
                                 <td>${training.startDate}</td>
                                 <td>${training.duration}jours</td>
                                 <td><c:forEach begin="1" end="${training.difficulty}">
