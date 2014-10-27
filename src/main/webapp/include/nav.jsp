@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-navbar-collapse">
             <!-- Menu -->
             <ul class="nav navbar-nav">
-                <!-- liste des liens en fonction des droits d'acc�s -->
+                <!-- liste des liens en fonction des droits d'accï¿½s -->
                 <li><a href="404">Base documentaire</a></li>
                 <li><a href="work">Webinars</a></li>
                 <li><a href="work">A propos</a></li>

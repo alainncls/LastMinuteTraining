@@ -16,9 +16,9 @@
                 <div class="col-md-4">
                     <form role="form" action="addTraining" method="POST">
                         <div class="form-group">
-                            <label for="name">Intitul&eacute; de la formation</label> <input
+                            <label for="name">Intitulé de la formation</label> <input
                                 type="text" class="form-control" name="name" id="name"
-                                placeholder="Intitul&eacute; de la fromation"/>
+                                placeholder="Intitulé de la fromation"/>
                         </div>
                         <div class="form-group">
                             <label for="price">Prix</label> <input type="number"
@@ -34,7 +34,7 @@
                                                                                 required="required"/>
                         </div>
                         <div class="form-group">
-                            <label for="name">D&eacute;but de la formation</label> <input
+                            <label for="name">Début de la formation</label> <input
                                 type="date" class="form-control" name="startDate" id="startDate"/>
                         </div>
                         <div class="form-group">
@@ -43,7 +43,7 @@
                                                                                  id="endDate"/>
                         </div>
                         <div class="form-group">
-                            <label for="difficulty">Difficult&eacute;e</label> <input type="number"
+                            <label for="difficulty">Difficulté</label> <input type="number"
                                                                               class="rating-stars" name="difficulty"
                                                                               id="difficulty"/>
                         </div>
