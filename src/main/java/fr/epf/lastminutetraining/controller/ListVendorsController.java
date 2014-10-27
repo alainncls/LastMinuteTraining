@@ -1,6 +1,6 @@
 package fr.epf.lastminutetraining.controller;
 
-import fr.epf.lastminutetraining.service.VendeurDBService;
+import fr.epf.lastminutetraining.service.VendorDBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/listVendeurs")
-public class ListVendeursController {
+@RequestMapping("/listVendors")
+public class ListVendorsController {
 
     @Autowired
-    private VendeurDBService service;
+    private VendorDBService service;
 
     @RequestMapping(method = RequestMethod.GET)
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -25,9 +25,9 @@ public class ListVendeursController {
 
         // Get the dispatcher JSP
         RequestDispatcher dispatcher = req
-                .getRequestDispatcher("/WEB-INF/listVendeurs.jsp");
+                .getRequestDispatcher("/WEB-INF/listVendors.jsp");
 
-        req.setAttribute("vendeurs", service.findAllVendeurs());
+        req.setAttribute("vendors", service.findAllVendors());
 
         // Forward the request
         dispatcher.forward(req, resp);
@@ -40,7 +40,7 @@ public class ListVendeursController {
 
         // resp.sendRedirect("formation");
         RequestDispatcher dispatcher = req
-                .getRequestDispatcher("/WEB-INF/listVendeurs.jsp");
+                .getRequestDispatcher("/WEB-INF/listVendors.jsp");
 
         // Forward the request
         dispatcher.forward(req, resp);

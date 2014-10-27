@@ -3,7 +3,7 @@ package fr.epf.lastminutetraining.domain;
 import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
 
-public class Vendeur {
+public class Vendor {
 
     @Id
     private ObjectId id;
@@ -18,7 +18,7 @@ public class Vendeur {
     private String cp;
     private String iban;
 
-    public Vendeur() {
+    public Vendor() {
 
     }
 
@@ -34,11 +34,11 @@ public class Vendeur {
         this.id = id;
     }
 
-    public String getNom() {
+    public String getName() {
         return name;
     }
 
-    public void setNom(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -58,51 +58,51 @@ public class Vendeur {
         this.mail = mail;
     }
 
-    public String getTelephone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setTelephone(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public String getMarge() {
+    public String getMargin() {
         return margin;
     }
 
-    public void setMarge(String margin) {
+    public void setMargin(String margin) {
         this.margin = margin;
     }
 
-    public String getAbonnement() {
+    public String getSub() {
         return sub;
     }
 
-    public void setAbonnement(String sub) {
+    public void setSub(String sub) {
         this.sub = sub;
     }
 
-    public String getAdresse() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAdresse(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getVille() {
+    public String getTown() {
         return town;
     }
 
-    public void setVille(String town) {
+    public void setTown(String town) {
         this.town = town;
     }
 
-    public String getCodePostal() {
+    public String getCP() {
         return cp;
     }
 
-    public void setCodePostal(String cp) {
+    public void setCP(String cp) {
         this.cp = cp;
     }
 
@@ -116,7 +116,7 @@ public class Vendeur {
 
     @Override
     public String toString() {
-        return "Vendeur [id=" + id + "]";
+        return "Vendor [id=" + id + "]";
     }
 
     @Override
@@ -135,7 +135,7 @@ public class Vendeur {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Vendeur other = (Vendeur) obj;
+        Vendor other = (Vendor) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -146,69 +146,69 @@ public class Vendeur {
 
     public static class Builder {
 
-        private Vendeur vendeur;
+        private Vendor vendor;
 
         private Builder() {
-            vendeur = new Vendeur();
+            vendor = new Vendor();
         }
 
         public Builder id(ObjectId id) {
-            vendeur.id = id;
+            vendor.id = id;
             return this;
         }
 
-        public Builder nom(String name) {
-            vendeur.name = name;
+        public Builder name(String name) {
+            vendor.name = name;
             return this;
         }
 
         public Builder avatar(String avatar) {
-            vendeur.avatar = avatar;
+            vendor.avatar = avatar;
             return this;
         }
 
         public Builder mail(String mail) {
-            vendeur.mail = mail;
+            vendor.mail = mail;
             return this;
         }
 
-        public Builder telephone(String phone) {
-            vendeur.phone = phone;
+        public Builder phone(String phone) {
+            vendor.phone = phone;
             return this;
         }
 
-        public Builder marge(String margin) {
-            vendeur.margin = margin;
+        public Builder margin(String margin) {
+            vendor.margin = margin;
             return this;
         }
 
-        public Builder abonnement(String sub) {
-            vendeur.sub = sub;
+        public Builder sub(String sub) {
+            vendor.sub = sub;
             return this;
         }
 
-        public Builder adresse(String address) {
-            vendeur.address = address;
+        public Builder address(String address) {
+            vendor.address = address;
             return this;
         }
 
-        public Builder ville(String town) {
-            vendeur.town = town;
+        public Builder town(String town) {
+            vendor.town = town;
             return this;
         }
 
-        public Builder codePostal(String cp) {
-            vendeur.cp = cp;
+        public Builder cp(String cp) {
+            vendor.cp = cp;
             return this;
         }
 
         public Builder iban(String iban) {
-            vendeur.iban = iban;
+            vendor.iban = iban;
             return this;
         }
 
-        public Vendeur build() {
-            return vendeur;
+        public Vendor build() {
+            return vendor;
         }
     }
 

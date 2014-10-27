@@ -1,7 +1,7 @@
 package fr.epf.lastminutetraining.controller;
 
-import fr.epf.lastminutetraining.domain.Vendeur;
-import fr.epf.lastminutetraining.service.VendeurDBService;
+import fr.epf.lastminutetraining.domain.Vendor;
+import fr.epf.lastminutetraining.service.VendorDBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@RequestMapping("/addVendeur")
+@RequestMapping("/addVendor")
 @Controller
-public class AddVendeurController {
+public class AddVendorController {
     @Autowired
-    private VendeurDBService service;
+    private VendorDBService service;
 
     @RequestMapping(method = RequestMethod.GET)
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -25,7 +25,7 @@ public class AddVendeurController {
 
         // Get the dispatcher JSP
         RequestDispatcher dispatcher = req
-                .getRequestDispatcher("/WEB-INF/addVendeur.jsp");
+                .getRequestDispatcher("/WEB-INF/addVendor.jsp");
 
         // Forward the request
         dispatcher.forward(req, resp);
@@ -35,24 +35,24 @@ public class AddVendeurController {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         // Get data from form
-        String nom = (String) req.getParameter("nom");
+        String name = (String) req.getParameter("name");
         String avatar = (String) req.getParameter("avatar");
         String mail = (String) req.getParameter("mail");
-        String telephone = (String) req.getParameter("tel");
-        String marge = (String) req.getParameter("marge");
-        String abonnement = (String) req.getParameter("abonnement");
-        String adresse = (String) req.getParameter("adresse");
-        String ville = (String) req.getParameter("ville");
-        String code_postal = (String) req.getParameter("cp");
+        String phone = (String) req.getParameter("phone");
+        String margin = (String) req.getParameter("margin");
+        String sub = (String) req.getParameter("sub");
+        String address = (String) req.getParameter("address");
+        String town = (String) req.getParameter("town");
+        String cp = (String) req.getParameter("cp");
         String iban = (String) req.getParameter("iban");
 
-        Vendeur vendeur = Vendeur.builder().nom(nom).avatar(avatar)
-                .mail(mail).telephone(telephone).marge(marge).abonnement(abonnement)
-                .adresse(adresse).ville(ville).codePostal(code_postal).iban(iban).build();
+        Vendor vendor = Vendor.builder().name(name).avatar(avatar)
+                .mail(mail).phone(phone).margin(margin).sub(sub)
+                .address(address).town(town).cp(cp).iban(iban).build();
 
         // Persist the formation
-        service.save(vendeur);
+        service.save(vendor);
 
-        resp.sendRedirect("addVendeur");
+        resp.sendRedirect("addVendor");
     }
 }
