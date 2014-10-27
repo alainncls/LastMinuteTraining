@@ -42,7 +42,7 @@
                                 <td>${training.id}</td>
                                 <td>${training.duration}</td>
                                 <td>${training.location}</td>
-                                <td>${training.formationType}</td>
+                                <td>${training.trainingType}</td>
                                 <td>${training.available}</td>
                                 <td>${training.certification}</td>
                                 <td>${training.category}</td>
