@@ -46,9 +46,11 @@
 				data-toggle="modal" data-target="#cartModal">
 				<span class="fa fa-shopping-cart"></span> Mon Panier
 			</button>
+			<c:if test="${sessionScope.status!=null}">
 			<a class="btn btn-info navbar-btn navbar-right" href="myaccount">
 				<span class="fa fa-user"></span> Mon compte
 			</a>
+			</c:if>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
