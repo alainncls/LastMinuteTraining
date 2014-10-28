@@ -134,3 +134,30 @@ tr.tr-dark {
 tr.tr-light {
 	background-color: #f9f9f9;
 }
+
+/* Couleurs pour la page d'admin
+*/
+
+.color-blue {
+	background-color: #aaffff;
+}
+
+.color-red {
+	background-color: #ffaaaa;
+}
+
+.color-green {
+	background-color: #aaffaa;
+}
+
+.color-yellow {
+	background-color: #ffffaa;
+}
+.color-darkblue {
+	background-color: #aaaaff;
+}
+
+.margin {
+	margin: 0;
+	border-radius:50px!important;
+}
