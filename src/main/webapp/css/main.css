@@ -77,7 +77,17 @@ td.trainingName {
 /* Pour les selects du plugin chosen
 * Permet de leur donner un même style que pour les autres inputs
 */
-.chosen-single, .chosen-choices {
+.chosen-container>ul {
+	border-width: 2px;
+	box-shadow: none;
+	margin: 0;
+	font: inherit;
+	border-radius: 4px !important;
+	border: 2px solid #dce4ec !important;
+	min-height: 43px !important
+}
+
+.chosen-container {
 	min-height: 34px !important;
 	font-size: 14px !important;
 	background-image: none !important;
