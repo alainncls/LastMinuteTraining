@@ -17,10 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by Baptiste on 28/10/2014.
- */
-
 @Controller
 public class TrainingController {
 
