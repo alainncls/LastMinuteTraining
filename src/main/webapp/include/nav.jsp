@@ -21,7 +21,12 @@
 				<li><a href="work">Webinars</a></li>
 				<li><a href="work">A propos</a></li>
 				<li><a href="work">CGV</a></li>
-				<li><a href="addTraining">Ajouter une formation</a></li>
+
+				<c:if test="${sessionScope.status=='vendor'}">
+					<li><a href="addTraining">Ajouter une formation</a></li>
+				</c:if>
+
+
 			</ul>
 			<c:choose>
 				<c:when test="${sessionScope.login==null}">

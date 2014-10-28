@@ -31,6 +31,7 @@ public class LoginController {
 		HttpSession session = req.getSession();
 		session.setAttribute("login", req.getParameter("login"));
 		session.setAttribute("password", req.getParameter("password"));
+		session.setAttribute("status", "vendor");
 		
 		resp.sendRedirect("home");
 
