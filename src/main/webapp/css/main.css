@@ -79,18 +79,30 @@ td.trainingName {
 */
 .chosen-container>ul {
 	border-width: 2px;
-	box-shadow: none;
+	box-shadow: none !important;
 	margin: 0;
 	font: inherit;
 	border-radius: 4px !important;
 	border: 2px solid #dce4ec !important;
-	min-height: 43px !important
+	min-height: 43px !important;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
 .chosen-container {
 	min-height: 34px !important;
 	font-size: 14px !important;
 	background-image: none !important;
+}
+
+.chosen-container-active>ul {
+	border-color: #2c3e50!important;
+	border-bottom-right-radius: 0px!important;
+	border-bottom-left-radius: 0px!important;
+	border-bottom-style: hidden!important;
+}
+
+.chosen-container-active>div.chosen-drop {
+	border: 2px solid #2c3e50!important;
 }
 
 .chosen-drop, .chosen-single, .chosen-choices {
