@@ -13,8 +13,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-4">
-					<form name="vendorForm" role="form" action="addVendor"
-						method="POST" onsubmit="return validateForm()">
+					<form name="vendorForm" role="form" action="addVendor" method="POST"">
 						<div class="form-group">
 							<label for="name">Nom de l'organisme</label> <input type="text"
 								class="form-control" name="name" id="name"
@@ -53,7 +52,7 @@
 								required="required" />
 						</div>
 						<div class="form-group">
-							<label for="cp">Code Postal</label> <input type="number"
+							<label for="cp">Code Postal</label> <input type="text"
 								maxlength="5" class="form-control" name="cp" id="cp"
 								required="required" />
 						</div>
