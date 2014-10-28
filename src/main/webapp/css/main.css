@@ -75,7 +75,7 @@ td.trainingName {
 }
 
 /* Pour les selects du plugin chosen
-* Permet de leur donner un même style que pour les autres inputs
+* Permet de leur donner un mï¿½me style que pour les autres inputs
 */
 .chosen-single, .chosen-choices {
 	min-height: 34px !important;
@@ -113,4 +113,14 @@ ul.chosen-choices li.search-choice {
 
 ul.chosen-choices li.search-choice a.search-choice-close {
 	top: 0px !important;
+}
+
+/* Pour le tableau de rÃ©sultats
+*/
+tr.tr-dark {
+	background-color: #f0f0f0;
+}
+
+tr.tr-light {
+	background-color: #f9f9f9;
 }
