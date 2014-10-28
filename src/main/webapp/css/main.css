@@ -95,14 +95,14 @@ td.trainingName {
 }
 
 .chosen-container-active>ul {
-	border-color: #2c3e50!important;
-	border-bottom-right-radius: 0px!important;
-	border-bottom-left-radius: 0px!important;
-	border-bottom-style: hidden!important;
+	border-color: #2c3e50 !important;
+	border-bottom-right-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+	border-bottom-style: hidden !important;
 }
 
 .chosen-container-active>div.chosen-drop {
-	border: 2px solid #2c3e50!important;
+	border: 2px solid #2c3e50 !important;
 }
 
 .chosen-drop, .chosen-single, .chosen-choices {
@@ -149,7 +149,6 @@ tr.tr-light {
 
 /* Couleurs pour la page d'admin
 */
-
 .color-blue {
 	background-color: #aaffff;
 }
@@ -165,11 +164,27 @@ tr.tr-light {
 .color-yellow {
 	background-color: #ffffaa;
 }
+
 .color-darkblue {
 	background-color: #aaaaff;
 }
 
-.margin {
-	margin: 0;
-	border-radius:50px!important;
+.fakejumbo {
+	width: 100%;
+	padding: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.marginleft {
+	margin-left: 15px;
+}
+
+.marginright {
+	margin-right: 15px;
+}
+
+.paddingugly {
+	padding-right: 0!important;
+
 }
