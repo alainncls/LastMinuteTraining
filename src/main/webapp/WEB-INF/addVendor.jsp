@@ -90,5 +90,17 @@
 		</div>
 	</div>
 </div>
-
+<script>
+$(function () {
+    $('#iban').inputmask({
+    	  mask: 'FR99 **** **** **** **** **** *99'
+    	});
+    $('#phone').inputmask({
+    	  mask: '99 99 99 99 99'
+    	});
+   	$('#cp').inputmask({
+   	  mask: '99999'
+   	});
+});
+</script>
 <jsp:include page="/include/footer.jsp" />

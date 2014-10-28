@@ -51,16 +51,6 @@
         });
     });
 </script>
-<script type="text/javascript">
-    $('#iban').inputmask({
-    	  mask: 'FR99 9999 9999 9999 9999 9999 999'
-    	})
-    $('#phone').inputmask({
-    	  mask: '99 99 99 99 99'
-    	})
-   	$('#cp').inputmask({
-   	  mask: '99999'
-   	})
-</script>
+
 </body>
 </html>
