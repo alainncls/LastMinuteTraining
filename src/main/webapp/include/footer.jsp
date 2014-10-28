@@ -50,6 +50,9 @@
             symbol: "â"
         });
     });
+    
+    $('div.ratingstars').raty({ starType: 'i', number: 6});
+    
 </script>
 
 </body>

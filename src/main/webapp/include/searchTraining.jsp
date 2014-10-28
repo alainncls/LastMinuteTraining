@@ -34,15 +34,13 @@
 							class="form-control" id="inputPriceLMT" name="inputPriceLMT" />
 					</div>
 					<div class="form-group">
-						<label for="inputDifficulty">Difficulty</label>
-
-						<div id="stars" class="starrr"></div>
-						<input type="hidden" class="form-control" id="count"
-							name="inputDifficulty" />
+						<label for="inputDifficulty">Difficulté</label>
+						<div class="ratingstars"></div>
 					</div>
 					<div class="form-group">
-						<label for="inputVendor">Organisme Formateur</label>
-						<select multiple class="form-control chosen-select" id="inputVendor" name="inputVendor[]">
+						<label for="inputVendor">Organisme Formateur</label> <select
+							multiple class="form-control chosen-select" id="inputVendor"
+							name="inputVendor[]">
 							<c:forEach items="${vendors}" var="vendor">
 								<option value="${vendor.id}" selected="${vendor.selected}">${vendor.name}</option>
 							</c:forEach>
