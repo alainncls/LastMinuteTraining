@@ -13,27 +13,30 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-4">
-					<form name="vendorForm" role="form" action="addVendor"
-						method="POST" onsubmit="return validateForm()">
+					<form name="vendorForm" role="form" action="addVendor" method="POST"">
 						<div class="form-group">
 							<label for="name">Nom de l'organisme</label> <input type="text"
 								class="form-control" name="name" id="name"
 								placeholder="Nom de l'organisme" />
 						</div>
 						<div class="form-group">
-							<label for="avatar">Avatar</label>
-							<div class="fileinput fileinput-new" data-provides="fileinput">
-								<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-								<img data-src="holder.js/100%x100%" alt="avatar" />
-								</div>
-								<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-								<div>
-									<span class="btn btn-default btn-file">
-										<span class="fileinput-new">Select image</span>
-										<span class="fileinput-exists">Change</span>
-										<input type="file" name="avatar" />
-									</span>
-									<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+							<label>Avatar</label>
+							<div>
+								<div class="fileinput fileinput-new" data-provides="fileinput">
+									<div class="fileinput-new thumbnail"
+										style="width: 160px; height: 160px;">
+										<img data-src="holder.js/100%x100%" alt="avatar" />
+									</div>
+									<div class="fileinput-preview fileinput-exists thumbnail"
+										style="max-width: 200px; max-height: 150px;"></div>
+									<div>
+										<span class="btn btn-default btn-file"> <span
+											class="fileinput-new">Select image</span> <span
+											class="fileinput-exists">Change</span> <input type="file"
+											name="avatar" />
+										</span> <a href="#" class="btn btn-default fileinput-exists"
+											data-dismiss="fileinput">Remove</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -53,7 +56,7 @@
 								required="required" />
 						</div>
 						<div class="form-group">
-							<label for="cp">Code Postal</label> <input type="number"
+							<label for="cp">Code Postal</label> <input type="text"
 								maxlength="5" class="form-control" name="cp" id="cp"
 								required="required" />
 						</div>

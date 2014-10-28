@@ -1,17 +1,20 @@
 package fr.epf.lastminutetraining.controller;
 
-import fr.epf.lastminutetraining.domain.Vendor;
-import fr.epf.lastminutetraining.service.VendorDBService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import java.io.IOException;
+import java.math.BigDecimal;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import fr.epf.lastminutetraining.domain.Vendor;
+import fr.epf.lastminutetraining.service.VendorDBService;
 
 @RequestMapping("/addVendor")
 @Controller
@@ -44,7 +47,13 @@ public class AddVendorController {
         String address = (String) req.getParameter("address");
         String town = (String) req.getParameter("town");
         String cp = (String) req.getParameter("cp");
+        
         String iban = (String) req.getParameter("iban");
+        Boolean ibanOK = checkIban(iban);
+        if (ibanOK == false)
+        {
+        	iban = "IBAN non valide !";
+        }
         //Build vendor object
         Vendor vendor = Vendor.builder().name(name).avatar(avatar)
                 .mail(mail).phone(phone).margin(margin).sub(sub)
@@ -54,5 +63,22 @@ public class AddVendorController {
         service.save(vendor);
 
         resp.sendRedirect("addVendor");
+    }
+    
+    //Method to check if the IBAN number is valid  	
+    public boolean checkIban(String iban) {
+    	
+    final BigDecimal ibanCheckingConstant = new BigDecimal(97);
+        //En considerant que iban != null et iban.length > 4
+        StringBuffer sbIban = new StringBuffer(iban.substring(4));
+	sbIban.append(iban.substring(0, 4));
+	iban = sbIban.toString();
+ 
+        StringBuilder extendedIban = new StringBuilder(iban.length());
+        for(char currentChar : iban.toCharArray()){
+            extendedIban.append(Character.digit(currentChar,36));
+        }
+ 
+        return new BigDecimal(extendedIban.toString()).remainder(ibanCheckingConstant ).intValue() == 1;
     }
 }
