@@ -10,10 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.epf.lastminutetraining.domain.Training;
 import fr.epf.lastminutetraining.service.TrainingDBService;
 
-/**
- * Created by Baptiste on 28/10/2014.
- */
-
 @Controller
 public class TrainingController {
 
