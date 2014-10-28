@@ -38,8 +38,8 @@
 								class="form-control" name="endDate" id="endDate" />
 						</div>
 						<div class="form-group">
-							<label for="difficulty">Difficulté</label> <input type="number"
-								class="rating-stars" name="difficulty" id="difficulty" />
+							<label for="difficulty">Difficulté </label>
+							<div class="ratingstars"></div>
 						</div>
 						<div class="form-group">
 							<label for="name">Description</label> <input type="text"
