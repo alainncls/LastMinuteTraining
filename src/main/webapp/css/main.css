@@ -75,9 +75,19 @@ td.trainingName {
 }
 
 /* Pour les selects du plugin chosen
-* Permet de leur donner un mÍme style que pour les autres inputs
+* Permet de leur donner un mÔøΩme style que pour les autres inputs
 */
-.chosen-single, .chosen-choices {
+.chosen-container>ul {
+	border-width: 2px;
+	box-shadow: none;
+	margin: 0;
+	font: inherit;
+	border-radius: 4px !important;
+	border: 2px solid #dce4ec !important;
+	min-height: 43px !important
+}
+
+.chosen-container {
 	min-height: 34px !important;
 	font-size: 14px !important;
 	background-image: none !important;
@@ -113,4 +123,14 @@ ul.chosen-choices li.search-choice {
 
 ul.chosen-choices li.search-choice a.search-choice-close {
 	top: 0px !important;
+}
+
+/* Pour le tableau de r√©sultats
+*/
+tr.tr-dark {
+	background-color: #f0f0f0;
+}
+
+tr.tr-light {
+	background-color: #f9f9f9;
 }
