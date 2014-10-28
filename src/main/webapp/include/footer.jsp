@@ -52,17 +52,15 @@
     });
 </script>
 <script type="text/javascript">
-    $(function validateForm() {
-    	var iban = document.forms["vendorForm"]["iban"].value;
-    	var regex = /^[A-Z]{2}([0-9a-zA-Z]{25})$/;
-    	
-    	if (!regex.test(iban)) {
-            alert("Veuillez entre un numéro IBAN valide");
-            return false;
-        }
-    	
-    	return true;
-    });
+    $('#iban').inputmask({
+    	  mask: 'FR99 9999 9999 9999 9999 9999 999'
+    	})
+    $('#phone').inputmask({
+    	  mask: '99 99 99 99 99'
+    	})
+   	$('#cp').inputmask({
+   	  mask: '99999'
+   	})
 </script>
 </body>
 </html>
