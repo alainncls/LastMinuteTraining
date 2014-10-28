@@ -108,20 +108,36 @@
 			</div>
 			<div class="panel-body">
 				<form role="form" method="post">
-					<div class="form-group">
-						<label for="inputIBAN">Mon IBAN</label> <input type="text"
-							class="form-control" id="inputIBAN" name="inputIBAN"
-							value="30002 04227 0000 0633 12D 56" />
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="inputCB">Mon n° de carte bancaire pro</label> <input
+									type="text" class="form-control" id="inputCB" name="inputCB"
+									value="0000 3333 4444 9999" />
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="inputCBExp">Date d'exp. de ma carte bancaire
+									pro</label> <input type="text" class="form-control" id="inputCBExp"
+									name="inputCBExp" value="10/17" />
+							</div>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="inputBank">Organisme payeur</label> <input type="text"
-							class="form-control" id="inputBank" name="inputBank"
-							value="Caisse d'Epargne" />
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label for="inputBank">Organisme payeur</label> <input
+									type="text" class="form-control" id="inputBank"
+									name="inputBank" value="Caisse d'Epargne" />
+							</div>
+							<div class="actions">
+								<button type="submit" class="btn btn-success btn-xs">Enregistrer</button>
+								<a href="home" class="btn btn-danger btn-xs">Annuler</a>
+							</div>
+						</div>
 					</div>
-					<div class="actions">
-						<button type="submit" class="btn btn-success btn-xs">Enregistrer</button>
-						<a href="home" class="btn btn-danger btn-xs">Annuler</a>
-					</div>
+
 				</form>
 			</div>
 		</div>
