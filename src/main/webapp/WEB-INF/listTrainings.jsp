@@ -5,7 +5,7 @@
     <div class="col-sm-12">
         <div class="panel panel-primary">
             <div class="table-responsive">
-                <table class="table table-hover table-striped table-align">
+                <table class="table table-hover table-striped">
                     <thead>
                     <tr>
                         <th>index</th>
