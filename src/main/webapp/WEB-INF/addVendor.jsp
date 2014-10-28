@@ -13,7 +13,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-4">
-					<form name="vendorForm" role="form" action="addVendor" method="POST"">
+					<form name="vendorForm" role="form" action="addVendor" method="POST">
 						<div class="form-group">
 							<label for="name">Nom de l'organisme</label> <input type="text"
 								class="form-control" name="name" id="name"
