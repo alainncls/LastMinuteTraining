@@ -1,64 +1,116 @@
 nav {
-    border-radius: 0px !important;
+	border-radius: 0px !important;
 }
 
 div#carousel-header {
-    height: 250px;
+	height: 250px;
 }
 
 div.carousel-inner, .item {
-    height: 100%;
+	height: 100%;
 }
 
 div.carousel-inner div.item img {
-    width: 100%;
-    height: auto;
+	width: 100%;
+	height: auto;
 }
 
 .page-content {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .navbar-padding {
-    margin-top: 80px !important;
+	margin-top: 80px !important;
 }
 
 .footer {
-    border-top: solid 1px;
-    margin-top: 40px;
-    padding: 20px;
+	border-top: solid 1px;
+	margin-top: 40px;
+	padding: 20px;
 }
 
 .footpart {
-    text-align: center;
+	text-align: center;
 }
 
 .error {
-    max-width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
+	max-width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
-.table-align tbody > tr > td {
-    vertical-align: middle !important;
+.table-align tbody>tr>td {
+	vertical-align: middle !important;
 }
 
-.table-align tbody > tr {
-    cursor: pointer;
+.table-align tbody>tr {
+	cursor: pointer;
 }
 
 .collapsing {
-    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
-    transition: width 2s, height 2s, transform 2s;
+	-webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+	transition: width 2s, height 2s, transform 2s;
 }
 
 .navbar-btn {
-    margin-right: 0.5em;
+	margin-right: 0.5em;
 }
 
 td.trainingName {
-    max-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+	max-width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* bootstrap table overflow fix */
+.table-responsive {
+	width: 100%;
+	margin-bottom: 15px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	border: 1px solid #ddd
+}
+
+/* Pour les selects du plugin chosen
+* Permet de leur donner un même style que pour les autres inputs
+*/
+.chosen-single, .chosen-choices {
+	min-height: 34px !important;
+	font-size: 14px !important;
+	background-image: none !important;
+}
+
+.chosen-drop, .chosen-single, .chosen-choices {
+	border-radius: 0px !important;
+	border-color: rgb(204, 204, 204) !important;
+	box-shadow: none;
+}
+
+.search-choice-close, .chosen-single, .chosen-choices, .chosen-single div
+	{
+	padding-top: 5px !important;
+}
+
+.chosen-single abbr {
+	margin-top: 5px !important;
+}
+
+.chosen-container>ul>li>input {
+	padding: 0px 12px !important;
+}
+
+.chosen-container {
+	width: 100% !important;
+}
+
+ul.chosen-choices li.search-choice {
+	padding-top: 0px !important;
+	border-radius: 0px !important;
+}
+
+ul.chosen-choices li.search-choice a.search-choice-close {
+	top: 0px !important;
 }
