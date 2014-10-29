@@ -8,34 +8,36 @@ public class Training {
     @Id
     private ObjectId id;
 
-    private int duration;
+	private int duration;
     // Lieu de formation
     private String location;
-    // type de formation (Salle, web, conférence, ...) -> "références"
+    // type de formation (Salle, web, confï¿½rence, ...) -> "rï¿½fï¿½rences"
     private Short trainingType;
     // Nombre de places restantes
     private int available;
-    // Type de certification (Officielle, groupement privé, etc...) ->
+    // Type de certification (Officielle, groupement privï¿½, etc...) ->
     private short certification;
-    // Categorie de la training (ERP, ...) -> rérences
+    // Categorie de la training (ERP, ...) -> rï¿½rences
     private int category;
     // Id vendeur
     private ObjectId sellerId;
     // Contact
     private String contact;
-    // Résumé
+    // Rï¿½sumï¿½
     private String summary;
     // Titre
     private String name;
-    // Date début
-    private String startDate;
+    // Date dï¿½but
+    private String date;
     // Date de fin
     private String endDate;
-    // difficultée
-    private String difficulty;
+	// DurÃ©e
+    private String length;
+    // difficultï¿½e
+    private String level;
     // Prix original
     private String price;
-    // Prix réduit
+    // Prix rï¿½duit
     private String priceLMT;
     // Description
     private String description;
@@ -49,8 +51,10 @@ public class Training {
     private String program;
     // Objectifs
     private String objectives;
-    // Activitées
+    // Activitï¿½es
     private String activities;
+    // URL
+    private String url;
 
     public Training() {
 
@@ -59,6 +63,22 @@ public class Training {
     public static Builder builder() {
         return new Builder();
     }
+    
+    public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getLength() {
+		return length;
+	}
+
+	public void setLength(String length) {
+		this.length = length;
+	}
 
     public int getDuration() {
         return duration;
@@ -67,6 +87,14 @@ public class Training {
     public void setDuration(int duration) {
         this.duration = duration;
     }
+    
+    public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
     public String getLocation() {
         return location;
@@ -196,12 +224,12 @@ public class Training {
         this.name = name;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getdate() {
+        return date;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setdate(String date) {
+        this.date = date;
     }
 
     public String getEndDate() {
@@ -212,12 +240,12 @@ public class Training {
         this.endDate = endDate;
     }
 
-    public String getDifficulty() {
-        return difficulty;
+    public String getLevel() {
+        return level;
     }
 
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
+    public void setLevel(String level) {
+        this.level = level;
     }
 
     public String getPrice() {
@@ -251,8 +279,8 @@ public class Training {
                 + ", available=" + available + ", certification="
                 + certification + ", category=" + category + ", sellerId="
                 + sellerId + ", contact=" + contact + ", summary=" + summary
-                + ", name=" + name + ", startDate=" + startDate + ", endDate="
-                + endDate + ", difficulty=" + difficulty + ", price=" + price
+                + ", name=" + name + ", date=" + date + ", endDate="
+                + endDate + ", level=" + level + ", price=" + price
                 + ", priceLMT=" + priceLMT + ", description=" + description
                 + ", prerequis=" + prerequis + ", introduction=" + introduction
                 + ", target=" + target + ", program=" + program
@@ -303,8 +331,8 @@ public class Training {
             return this;
         }
 
-        public Builder startDate(String startDate) {
-            training.startDate = startDate;
+        public Builder date(String date) {
+            training.date = date;
             return this;
         }
 
@@ -313,8 +341,8 @@ public class Training {
             return this;
         }
 
-        public Builder difficulty(String difficulty) {
-            training.difficulty = difficulty;
+        public Builder level(String level) {
+            training.level = level;
             return this;
         }
 
@@ -405,6 +433,11 @@ public class Training {
 
         public Builder activities(String activities) {
             training.activities = activities;
+            return this;
+        }
+        
+        public Builder url(String url) {
+            training.url = url;
             return this;
         }
 
