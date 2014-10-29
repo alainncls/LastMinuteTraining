@@ -71,11 +71,11 @@
 						<label for="inputNewsletter">Je souhaite recevoir des
 							offres et informations de la part de LMT : </label>
 						<div class="btn-group" data-toggle="buttons">
-							<label class="btn btn-primary active"> <input
-								type="radio" name="options" id="newsletterYes" checked>
+							<label class="btn btn-sm btn-primary active"> <input
+								type="radio" name="newsletter" value="1" id="newsletterYes" checked="checked" />
 								Yes
-							</label> <label class="btn btn-primary"> <input type="radio"
-								name="options" id="newsletterNo"> No
+							</label> <label class="btn btn-sm btn-primary"> <input type="radio"
+								name="newsletter" value="0" id="newsletterNo" /> No
 							</label>
 						</div>
 					</div>
@@ -83,10 +83,10 @@
 						<label for="inputNewsletter">Je souhaite recevoir par SMS
 							les offres de dernière minute de LMT : </label>
 						<div class="btn-group" data-toggle="buttons">
-							<label class="btn btn-primary active"> <input
-								type="radio" name="smsYes" id="smsYes" checked> Yes
-							</label><label class="btn btn-primary"> <input type="radio"
-								name="smsNo" id="smsNo"> No
+							<label class="btn btn-sm btn-primary active"> <input
+								type="radio" name="sms" value="1" id="smsYes" checked="checked" /> Yes
+							</label><label class="btn btn-sm btn-primary"> <input type="radio"
+								name="sms" value="0" id="smsNo"/> No
 							</label>
 						</div>
 					</div>
