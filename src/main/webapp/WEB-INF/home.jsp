@@ -31,23 +31,24 @@
 						<c:if test="${not empty trainings}">
 							<c:forEach items="${trainings}" var="training" varStatus="loop">
 								<tr class="tr-dark">
+									<%-- <td colspan="8" class="trainingName"><a
+										href="404?id=${training.id}">${training.name}</a></td> --%>
 									<td colspan="8" class="trainingName"><a
-										href="404?id=${training.id}">${training.name}</a></td>
-
+										href="${training.url}" target="_blank">${training.name}</a></td>
 									<td class="td-chevron"><i
 										class="fa fa-chevron-down chevron-toggle pull-right"
 										data-toggle="collapse" href="#col${loop.index}"></i></td>
 								</tr>
 								<tr id="col${loop.index}"
 									class="panel-collapse collapse tr-light">
-									<td colspan="9">${training.available}</td>
+									<td colspan="9">${training.description}</td>
 								</tr>
 								<tr class="tr-light">
 									<td>${training.price}€</td>
 									<td>${training.priceLMT}€</td>
-									<td>${training.startDate}</td>
-									<td>${training.duration}jours</td>
-									<td><c:forEach begin="1" end="${training.difficulty}">
+									<td>${training.date}</td>
+									<td>${training.length}jours</td>
+									<td><c:forEach begin="1" end="${training.level}">
 											<i class="fa fa-star"></i>
 										</c:forEach></td>
 									<td>${training.available}</td>
