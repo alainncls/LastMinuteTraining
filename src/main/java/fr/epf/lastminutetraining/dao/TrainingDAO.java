@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Repository
 public class TrainingDAO {
@@ -63,7 +64,7 @@ public class TrainingDAO {
     public List<Training> findTraining(String name) {
         List<Training> trainings = new ArrayList<Training>();
         MongoCursor<Training> cursor = collection.find("{name: #}",
-                "/" + name + "/").as(Training.class);
+                Pattern.compile(".*"+name+".*")).as(Training.class);
         while (cursor.hasNext()) {
             trainings.add(cursor.next());
         }
