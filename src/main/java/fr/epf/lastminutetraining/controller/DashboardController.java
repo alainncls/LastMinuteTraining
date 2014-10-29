@@ -15,7 +15,7 @@ public class DashboardController {
     @Autowired
     private TrainingDBService service;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/home")
+    @RequestMapping(method = RequestMethod.GET, value = {"/home","/"})
     protected ModelAndView home(){ return new ModelAndView("home", "trainings", service.findLastTraining()); }
 
     //pour un champs de recherche 'inputName'
