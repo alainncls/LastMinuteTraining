@@ -42,7 +42,11 @@
             allow_single_deselect: true
         });
         
-        $('div.ratingstars').raty({ starType: 'i', number: 6});
+        $('div.ratingstars').raty({
+        	starType: 'i',
+        	number: 6,
+        	scoreName: 'inputDifficulty'
+        	});
     });    
 </script>
 
