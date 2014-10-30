@@ -3,7 +3,7 @@ package fr.epf.lastminutetraining.domain;
 import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
 
-public class Vendor {
+public class Vendor extends User{
 
     @Id
     private ObjectId id;

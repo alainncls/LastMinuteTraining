@@ -47,9 +47,9 @@
 				<span class="fa fa-shopping-cart"></span> Mon Panier
 			</button>
 			<c:if test="${sessionScope.status!=null}">
-			<a class="btn btn-info navbar-btn navbar-right" href="myaccount">
-				<span class="fa fa-user"></span> Mon compte
-			</a>
+				<a class="btn btn-info navbar-btn navbar-right" href="myaccount">
+					<span class="fa fa-user"></span> Mon compte
+				</a>
 			</c:if>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -96,7 +96,7 @@
 			<div class="modal-body">
 				<div class="tab-content">
 					<div class="tab-pane active fade in" id="signin">
-						<form class="form-horizontal" method="POST" action="login">
+						<form class="form-horizontal" method="post" action="login">
 							<!-- Sign In Form -->
 							<!-- Text input-->
 							<div class="form-group">
@@ -130,7 +130,7 @@
 						</form>
 					</div>
 					<div class="tab-pane fade" id="signup">
-						<form class="form-horizontal">
+						<form class="form-horizontal" method="post" action="register">
 							<!-- Sign Up Form -->
 							<!-- Text input-->
 							<div class="form-group">
@@ -138,7 +138,7 @@
 
 								<div class="col-sm-8">
 									<input type="email" class="form-control" id="inputEmailNew"
-										name="emailNew" />
+										name="mail" />
 
 								</div>
 							</div>
@@ -148,7 +148,7 @@
 
 								<div class="col-sm-8">
 									<input type="text" class="form-control" id="inputLoginNew"
-										name="loginNew" />
+										name="login" />
 
 								</div>
 							</div>
@@ -158,8 +158,7 @@
 
 								<div class="col-sm-8">
 									<input type="password" class="form-control"
-										id="inputPasswordNew" name="passwordNew" />
-
+										id="inputPasswordNew" name="password" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -168,9 +167,18 @@
 
 								<div class="col-sm-8">
 									<input type="password" class="form-control"
-										id="inputPasswordSecondNew" name="passwordSecondNew" />
+										id="inputPasswordSecondNew" name="passwordSecond" />
 
 								</div>
+							</div>
+							<div class="btn-group" data-toggle="buttons">
+								<label class="btn btn-sm btn-primary active"> <input
+									type="radio" name="status" value="client" id="statusClient"
+									checked="checked" /> Client
+								</label> <label class="btn btn-sm btn-primary"> <input
+									type="radio" name="status" value="vendor" id="statusVendor" />
+									Vendeur
+								</label>
 							</div>
 							<!-- Button -->
 							<div class="form-group">
