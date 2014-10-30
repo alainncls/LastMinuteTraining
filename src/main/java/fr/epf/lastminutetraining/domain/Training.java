@@ -8,36 +8,36 @@ public class Training {
     @Id
     private ObjectId id;
 
-	private int duration;
+	private int count;
     // Lieu de formation
     private String location;
-    // type de formation (Salle, web, conf�rence, ...) -> "r�f�rences"
+    // type de formation (Salle, web, conférence, ...) -> "références"
     private Short trainingType;
     // Nombre de places restantes
     private int available;
-    // Type de certification (Officielle, groupement priv�, etc...) ->
+    // Type de certification (Officielle, groupement privé, etc...) ->
     private short certification;
-    // Categorie de la training (ERP, ...) -> r�rences
+    // Categorie de la training (ERP, ...) -> références
     private int category;
     // Id vendeur
     private ObjectId sellerId;
     // Contact
     private String contact;
-    // R�sum�
+    // Résumé
     private String summary;
     // Titre
     private String name;
-    // Date d�but
-    private String date;
+    // Date début
+    private String startDate;
     // Date de fin
     private String endDate;
 	// Durée
     private String length;
-    // difficult�e
+    // difficulté
     private String level;
     // Prix original
     private String price;
-    // Prix r�duit
+    // Prix réduit
     private String priceLMT;
     // Description
     private String description;
@@ -51,10 +51,16 @@ public class Training {
     private String program;
     // Objectifs
     private String objectives;
-    // Activit�es
+    // Activités
     private String activities;
     // URL
     private String url;
+	// Unité de temps
+    private String unit;
+	// Objet durée
+    private Object duration;
+	// Objet dates
+    private Object date;
 
     public Training() {
 
@@ -63,12 +69,20 @@ public class Training {
     public static Builder builder() {
         return new Builder();
     }
-    
-    public String getDate() {
+	
+    public Object getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Object duration) {
+		this.duration = duration;
+	}
+	
+    public Object getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Object date) {
 		this.date = date;
 	}
 
@@ -79,14 +93,6 @@ public class Training {
 	public void setLength(String length) {
 		this.length = length;
 	}
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
     
     public String getUrl() {
 		return url;
@@ -224,12 +230,12 @@ public class Training {
         this.name = name;
     }
 
-    public String getdate() {
-        return date;
+    public String getstartDate() {
+        return startDate;
     }
 
-    public void setdate(String date) {
-        this.date = date;
+    public void setstartDate(String startDate) {
+        this.startDate = startDate;
     }
 
     public String getEndDate() {
@@ -271,15 +277,39 @@ public class Training {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
 
     @Override
     public String toString() {
-        return "Training [id=" + id + ", duration=" + duration + ", location="
+        return "Training [id=" + id + ", count=" + count + ", location="
                 + location + ", trainingType=" + trainingType
                 + ", available=" + available + ", certification="
                 + certification + ", category=" + category + ", sellerId="
                 + sellerId + ", contact=" + contact + ", summary=" + summary
-                + ", name=" + name + ", date=" + date + ", endDate="
+                + ", name=" + name + ", startDate=" + startDate + ", endDate="
                 + endDate + ", level=" + level + ", price=" + price
                 + ", priceLMT=" + priceLMT + ", description=" + description
                 + ", prerequis=" + prerequis + ", introduction=" + introduction
@@ -331,8 +361,7 @@ public class Training {
             return this;
         }
 
-        public Builder date(String date) {
-            training.date = date;
+        public Builder startDate(String startDate) {
             return this;
         }
 
@@ -366,8 +395,8 @@ public class Training {
             return this;
         }
 
-        public Builder duration(int duration) {
-            training.duration = duration;
+        public Builder count(int count) {
+            training.count = count;
             return this;
         }
 

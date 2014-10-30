@@ -19,7 +19,7 @@
 						<tr>
 							<th>Prix</th>
 							<th>Prix LMT</th>
-							<th>Date</th>
+							<th>Date début</th>
 							<th>Durée</th>
 							<th>Difficulté</th>
 							<th>Places restantes</th>
@@ -46,8 +46,8 @@
 								<tr class="tr-light">
 									<td>${training.price}€</td>
 									<td>${training.priceLMT}€</td>
-									<td>${training.date}</td>
-									<td>${training.length}jours</td>
+									<td>${training.date.startDate}</td>
+									<td>${training.duration.count} <c:if test="${training.duration.unit == 'days'}">jours</c:if><c:if test="${training.duration.unit == 'day'}">jour</c:if><c:if test="${training.duration.unit != 'day' && training.duration.unit != 'days'}">${training.duration.unit}</c:if></td>
 									<td><c:forEach begin="1" end="${training.level}">
 											<i class="fa fa-star"></i>
 										</c:forEach></td>
