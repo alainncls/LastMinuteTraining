@@ -147,7 +147,11 @@ tr.tr-light {
 	background-color: #f9f9f9;
 }
 
-/* Couleurs pour la page d'admin
+th {
+	text-align: center;
+}
+
+/* Page d'admin
 */
 .color-blue {
 	background-color: #aaffff;
@@ -185,6 +189,5 @@ tr.tr-light {
 }
 
 .paddingugly {
-	padding-right: 0!important;
-
+	padding-right: 0 !important;
 }
