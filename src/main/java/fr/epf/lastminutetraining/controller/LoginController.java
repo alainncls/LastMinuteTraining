@@ -4,12 +4,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import fr.epf.lastminutetraining.domain.User;
 import fr.epf.lastminutetraining.domain.Vendor;
 import fr.epf.lastminutetraining.service.TrainingDBService;
@@ -23,16 +21,17 @@ public class LoginController {
 	private UserDBService uservice;
 	@Autowired
 	private VendorDBService vservice;
-//	@Autowired
-//	private UserDBService uservice;
 	@Autowired
 	private TrainingDBService tservice;
+	
+	private static final String trainings = "trainings";
+	private static final String home = "home";
 
 	// methode pour log out
 	@RequestMapping(method = RequestMethod.GET, value = "/logout")
 	protected ModelAndView logout(HttpSession session) {
 		session.invalidate();
-		return new ModelAndView("home", "trainings",
+		return new ModelAndView(home, trainings,
 				tservice.findLastTraining());
 	}
 
@@ -48,7 +47,7 @@ public class LoginController {
 			session.setAttribute("status", user.getStatus());
 			session.setAttribute("login", user.getLogin());
 			session.setAttribute("id", user.getId());
-		return new ModelAndView("home", "trainings",
+		return new ModelAndView(home, trainings,
 				tservice.findLastTraining());
 		}else{
 			return new ModelAndView("login", "error", true);
@@ -67,7 +66,7 @@ public class LoginController {
 		vendor.setPassword(password);
 		vservice.save(vendor);
 		System.out.println(vendor.getPassword());
-		return new ModelAndView("home", "trainings",
+		return new ModelAndView(home, trainings,
 				tservice.findLastTraining());
 	}
 

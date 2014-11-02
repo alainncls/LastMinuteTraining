@@ -13,17 +13,21 @@ import fr.epf.lastminutetraining.service.TrainingDBService;
 @Controller
 public class TrainingController {
 
-    @Autowired
-    private TrainingDBService service;
+	@Autowired
+	private TrainingDBService service;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/addTraining")
-    protected ModelAndView addTraining(){ return new ModelAndView("addTraining"); }
+	@RequestMapping(method = RequestMethod.GET, value = "/addTraining")
+	protected ModelAndView addTraining(){
+		return new ModelAndView("addTraining");
+	}
 
-    @RequestMapping(method = RequestMethod.GET, value = "/listTrainings")
-    protected ModelAndView listTrainings(){ return new ModelAndView("listTrainings", "trainings", service.findAllTrainings()); }
+	@RequestMapping(method = RequestMethod.GET, value = "/listTrainings")
+	protected ModelAndView listTrainings(){
+		return new ModelAndView("listTrainings", "trainings", service.findAllTrainings());
+	}
 
-    @RequestMapping(method = RequestMethod.POST, value = "/addTraining")
-    protected void createTraining(@ModelAttribute("training")Training training){
-        service.save(training);
-    }
+	@RequestMapping(method = RequestMethod.POST, value = "/addTraining")
+	protected void createTraining(@ModelAttribute("training")Training training){
+		service.save(training);
+	}
 }

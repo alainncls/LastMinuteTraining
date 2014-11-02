@@ -9,11 +9,11 @@ public class Vendor extends User {
 	private String name;
 	// Logo de l'entreprse
 	private String avatar;
-	// Numéro de téléphone
+	// Numï¿½ro de tï¿½lï¿½phone
 	private String phone;
-	// Marge éffectuée par LMT
+	// Marge ï¿½ffectuï¿½e par LMT
 	private String margin;
-	// Type de souscription à LMT
+	// Type de souscription ï¿½ LMT
 	private String sub;
 	// Adresse postale
 	private String address;
@@ -21,8 +21,11 @@ public class Vendor extends User {
 	private String town;
 	// Code Postal
 	private String cp;
-	// Numéro IBAN
+	// Numï¿½ro IBAN
 	private String iban;
+	//prime
+	private static final int prime = 31;
+
 
 	public Vendor() {
 
@@ -114,7 +117,6 @@ public class Vendor extends User {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
