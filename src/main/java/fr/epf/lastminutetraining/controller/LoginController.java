@@ -45,7 +45,9 @@ public class LoginController {
 		System.out.println(password);
 		User user = uservice.connect(login, password);
 		if(user!=null){
-		session.setAttribute("status", user.getStatus());
+			session.setAttribute("status", user.getStatus());
+			session.setAttribute("login", user.getLogin());
+			session.setAttribute("id", user.getId());
 		return new ModelAndView("home", "trainings",
 				tservice.findLastTraining());
 		}else{
