@@ -10,6 +10,8 @@
                     <tr>
                         <th>index</th>
                         <th>id</th>
+                        <th>login</th>
+                        <th>password</th>
                         <th>name</th>
                         <th>avatar</th>
                         <th>mail</th>
@@ -18,7 +20,6 @@
                         <th>sub</th>
                         <th>address</th>
                         <th>town</th>
-                        <th>cp</th>
                         <th>iban</th>
                     </tr>
                     </thead>
@@ -28,6 +29,8 @@
                             <tr>
                                 <td>${loop.index+1}</td>
                                 <td>${vendor.id}</td>
+                                <td>${vendor.login}</td>
+                                <td>${vendor.password}</td>
                                 <td>${vendor.name}</td>
                                 <td>${vendor.avatar}</td>
                                 <td>${vendor.mail}</td>
@@ -36,7 +39,6 @@
                                 <td>${vendor.sub}</td>
                                 <td>${vendor.address}</td>
                                 <td>${vendor.town}</td>
-                                <td>${vendor.cp}</td>
                                 <td>${vendor.iban}</td>
                             </tr>
                         </c:forEach>

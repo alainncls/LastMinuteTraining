@@ -1,20 +1,23 @@
 package fr.epf.lastminutetraining.dao;
 
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
-import fr.epf.lastminutetraining.domain.Vendor;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 import org.springframework.stereotype.Repository;
 
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
+import com.mongodb.DB;
+import com.mongodb.MongoClient;
+
+import fr.epf.lastminutetraining.domain.User;
+import fr.epf.lastminutetraining.domain.Vendor;
 
 @Repository
-public class VendorDAO {
+public class VendorDAO extends UserDAO {
 
     public static final String DB_NAME = "LMT";
     public static final String DB_COLLECTION = "vendors";
@@ -41,12 +44,18 @@ public class VendorDAO {
         return collection;
     }
 
-    public void saveVendor(Vendor Vendor) {
-        collection.save(Vendor);
+    public void saveVendor(Vendor vendor) {
+    	try {
+			vendor.setPassword(encrypt(vendor.getPassword()).toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        collection.save(vendor);
     }
 
-    public void removeVendor(Vendor Vendor) {
-        collection.remove("{id: #}", Vendor.getId());
+    public void removeVendor(Vendor vendor) {
+        collection.remove("{id: #}", vendor.getId());
     }
     //Method to find vendor by id
     public Vendor findVendor(ObjectId id) {
@@ -55,11 +64,23 @@ public class VendorDAO {
 
     public List<Vendor> findAllVendors() {
         List<Vendor> vendors = new ArrayList<Vendor>();
-        MongoCursor<Vendor> cursor = collection.find().limit(10)
-                .as(Vendor.class);
+        MongoCursor<Vendor> cursor = collection.find().as(Vendor.class);
         while (cursor.hasNext()) {
             vendors.add(cursor.next());
         }
         return vendors;
     }
+
+	@Override
+	public Vendor connectUser(String login, String password) {
+		try {
+			return collection.findOne("{login:#, password:#}", login, encrypt(password)).as(Vendor.class);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
 }

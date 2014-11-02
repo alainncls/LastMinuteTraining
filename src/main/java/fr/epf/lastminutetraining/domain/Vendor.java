@@ -11,8 +11,6 @@ public class Vendor extends User{
     private String name;
     //	Logo de l'entreprse
     private String avatar;
-    //	Adresse mail
-    private String mail;
     //	Numéro de téléphone
     private String phone;
     //	Marge éffectuée par LMT
@@ -58,14 +56,6 @@ public class Vendor extends User{
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
     }
 
     public String getPhone() {
@@ -224,5 +214,11 @@ public class Vendor extends User{
             return vendor;
         }
     }
+
+	@Override
+	public String getStatus() {
+		// TODO Auto-generated method stub
+		return "vendor";
+	}
 
 }
