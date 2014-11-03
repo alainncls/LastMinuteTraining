@@ -10,37 +10,122 @@ public abstract class User {
 	protected String mail;
 	protected String login;
 	protected String password;
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	protected String bank;
+	protected String cardNumber;
+	protected String expirationDate;
 
 	public ObjectId getId() {
 		return id;
 	}
 
+
+
 	public void setId(ObjectId id) {
 		this.id = id;
+	}
+
+
+
+	public String getMail() {
+		return mail;
+	}
+
+
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+
+
+	public String getLogin() {
+		return login;
+	}
+
+
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+	public String getBank() {
+		return bank;
+	}
+
+
+
+	public void setBank(String bank) {
+		this.bank = bank;
+	}
+
+
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+
+
+	public String getExpirationDate() {
+		return expirationDate;
+	}
+
+
+
+	public void setExpirationDate(String expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", mail=" + mail + ", login=" + login
+				+ ", password=" + password + ", bank=" + bank + ", cardNumber="
+				+ cardNumber + ", expirationDate=" + expirationDate + "]";
 	}
 
 	public abstract String getStatus();

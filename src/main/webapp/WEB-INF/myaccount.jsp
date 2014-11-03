@@ -9,25 +9,27 @@
 			</div>
 			<div class="panel-body">
 				<form role="form" method="post">
-					<div class="form-group">
-						<label for="inputLastName">Nom de l'entreprise</label> <input
-							type="text" class="form-control" id="inputClientName"
-							name="inputClientName" value="EPF Oenologie" />
-					</div>
-					<div class="form-group">
-						<label for="inputLastName">Nom</label> <input type="text"
-							class="form-control" id="inputLastName" name="inputLastName"
-							value="Fex" />
-					</div>
-					<div class="form-group">
-						<label for="inputFirstName">Prénom</label> <input type="text"
-							class="form-control" id="inputFirstName" name="inputName"
-							value="Jean" />
-					</div>
-					<div class="actions">
-						<button type="submit" class="btn btn-success btn-xs">Enregistrer</button>
-						<a href="home" class="btn btn-danger btn-xs">Annuler</a>
-					</div>
+						<div class="form-group">
+							<label for="name">Nom de l'entreprise</label> <input
+								type="text" class="form-control" id="name"
+								name="name" value="${currentUser.name}" />
+						</div>
+						<c:if test="${sessionScope.status=='user'}">
+							<div class="form-group">
+								<label for="lastName">Nom</label> <input type="text"
+									class="form-control" id="lastName" name="lastName"
+									value="Fex" />
+							</div>
+							<div class="form-group">
+								<label for="firstName">Prénom</label> <input type="text"
+									class="form-control" id="firstName" name="firstName"
+									value="Jean" />
+							</div>
+						</c:if>
+						<div class="actions">
+							<button type="submit" class="btn btn-success btn-xs">Enregistrer</button>
+							<a href="home" class="btn btn-danger btn-xs">Annuler</a>
+						</div>
 				</form>
 			</div>
 		</div>
@@ -52,20 +54,31 @@
 			<div class="panel-body">
 				<form role="form" method="post">
 					<div class="form-group">
-						<label for="inputMail">Mon adresse mail</label> <input type="text"
-							class="form-control" id="inputMail" name="inputMail"
-							value="jean.fex@epf.fr" />
+						<label for="address">Mon adresse postale</label> <input type="text"
+							class="form-control" id="address" name="address"
+							value="${currentUser.address}" />
 					</div>
 					<div class="form-group">
-						<label for="inputMobile">Mon numéro de portable</label> <input
-							type="tel" class="form-control" id="inputMobile"
-							name="inputMobile" value="06 41 13 90 52" />
+						<label for="town">Ville</label> <input type="text"
+							class="form-control" id="town" name="town"
+							value="${currentUser.town}" />
+					</div>
+
+					<div class="form-group">
+						<label for="mail">Mon adresse mail</label> <input type="text"
+							class="form-control" id="mail" name="mail"
+							value="${currentUser.mail}" />
 					</div>
 					<div class="form-group">
-						<label for="inputID">Mon identifiant LMT (à rappeler dans
+						<label for="phone">Mon numéro de portable</label> <input
+							type="tel" class="form-control" id="phone"
+							name="phone" value="${currentUser.phone}" />
+					</div>
+					<div class="form-group">
+						<label for="id">Mon identifiant LMT (à rappeler dans
 							toutes vos communications avec LMT)</label> <input type="text"
-							class="form-control" id="inputID" name="inputID"
-							disabled="disabled" value="00038736" />
+							class="form-control" id="id" name="id"
+							disabled="disabled" value="${sessionScope.id}" />
 					</div>
 					<div class="form-group">
 						<label for="inputNewsletter">Je souhaite recevoir des
@@ -108,19 +121,20 @@
 			</div>
 			<div class="panel-body">
 				<form role="form" method="post">
+				<c:if test="${sessionScope.status=='user'}">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="inputCB">Mon n° de carte bancaire pro</label> <input
 									type="text" class="form-control" id="inputCB" name="inputCB"
-									value="0000 3333 4444 9999" />
+									value="${currentUser.cardNumber}" />
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="inputCBExp">Date d'exp. de ma carte bancaire
 									pro</label> <input type="text" class="form-control" id="inputCBExp"
-									name="inputCBExp" value="10/17" />
+									name="inputCBExp" value="${currentUser.expirationDate}" />
 							</div>
 						</div>
 					</div>
@@ -129,7 +143,7 @@
 							<div class="form-group">
 								<label for="inputBank">Organisme payeur</label> <input
 									type="text" class="form-control" id="inputBank"
-									name="inputBank" value="Caisse d'Epargne" />
+									name="inputBank" value="${currentUser.bank}" />
 							</div>
 							<div class="actions">
 								<button type="submit" class="btn btn-success btn-xs">Enregistrer</button>
@@ -137,6 +151,18 @@
 							</div>
 						</div>
 					</div>
+				</c:if>
+				<c:if test="${sessionScope.status=='vendor'}">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="iban">Mon n° IBAN</label> <input
+									type="text" class="form-control" id="iban" name="iban"
+									value="${currentUser.iban}" />
+							</div>
+						</div>
+					</div>
+				</c:if>
 
 				</form>
 			</div>
