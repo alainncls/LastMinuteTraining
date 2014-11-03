@@ -14,25 +14,28 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.epf.lastminutetraining.domain.Vendor;
 import fr.epf.lastminutetraining.service.VendorDBService;
 
-
 @Controller
 public class MyAccountController {
-	
+
 	@Autowired
 	private VendorDBService vservice;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/myaccount")
-    protected ModelAndView show(HttpSession session){
-    	ObjectId id = new ObjectId(session.getAttribute("id").toString());
-    	return new ModelAndView("myaccount", "currentUser", vservice.findVendor(id)); }
-    
-    @RequestMapping(method = RequestMethod.POST, value = "/myaccount")
-    protected void updateVendor(HttpSession session, @ModelAttribute("vendor")Vendor vendor, 
-    		@RequestParam("name") String name){
-    	
-    	ObjectId id = new ObjectId(session.getAttribute("id").toString());
-    	vendor = vservice.findVendor(id);
-    	vendor.setName(name);
-    	vservice.update(vendor); }
+	@RequestMapping(method = RequestMethod.GET, value = "/myaccount")
+	protected ModelAndView show(HttpSession session) {
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());
+		return new ModelAndView("myaccount", "currentUser",
+				vservice.findVendor(id));
+	}
 
+	@RequestMapping(method = RequestMethod.POST, value = "/myaccount")
+	protected ModelAndView updateVendor(HttpSession session,
+			@ModelAttribute("vendor") Vendor vendor,
+			@RequestParam("name") String name) {
+
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());
+		vendor = vservice.findVendor(id);
+		vendor.setName(name);
+		vservice.update(vendor);
+		return new ModelAndView("myaccount", "currentUser",vendor);
+	}
 }

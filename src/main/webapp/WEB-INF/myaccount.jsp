@@ -8,13 +8,15 @@
 				<h3 class="panel-title">Mes informations</h3>
 			</div>
 			<div class="panel-body">
-				<form role="form" method="post">
+				<form acrion="/myaccount" role="form" method="post">
+						<c:if test="${sessionScope.status=='vendor'}">
 						<div class="form-group">
 							<label for="name">Nom de l'entreprise</label> <input
 								type="text" class="form-control" id="name"
 								name="name" value="${currentUser.name}" />
 						</div>
-						<c:if test="${sessionScope.status=='user'}">
+						</c:if>
+						<c:if test="${sessionScope.status=='client'}">
 							<div class="form-group">
 								<label for="lastName">Nom</label> <input type="text"
 									class="form-control" id="lastName" name="lastName"
