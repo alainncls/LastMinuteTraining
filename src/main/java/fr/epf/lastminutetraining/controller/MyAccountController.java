@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.epf.lastminutetraining.domain.Vendor;
@@ -29,13 +28,11 @@ public class MyAccountController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/myaccount")
 	protected ModelAndView updateVendor(HttpSession session,
-			@ModelAttribute("vendor") Vendor vendor,
-			@RequestParam("name") String name) {
+			@ModelAttribute("vendor") Vendor vendor){
 
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		vendor = vservice.findVendor(id);
-		vendor.setName(name);
+		vendor.setId(id);
 		vservice.update(vendor);
-		return new ModelAndView("myaccount", "currentUser",vendor);
+		return new ModelAndView("myaccount", "currentUser", vendor);
 	}
 }
