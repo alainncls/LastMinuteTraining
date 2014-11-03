@@ -9,11 +9,11 @@ public class Vendor extends User {
 	private String name;
 	// Logo de l'entreprse
 	private String avatar;
-	// Numï¿½ro de tï¿½lï¿½phone
+	// Numéro de téléphone
 	private String phone;
-	// Marge ï¿½ffectuï¿½e par LMT
+	// Marge éffectuée par LMT
 	private String margin;
-	// Type de souscription ï¿½ LMT
+	// Type de souscription à LMT
 	private String sub;
 	// Adresse postale
 	private String address;
@@ -21,7 +21,7 @@ public class Vendor extends User {
 	private String town;
 	// Code Postal
 	private String cp;
-	// Numï¿½ro IBAN
+	// Numéro IBAN
 	private String iban;
 	//prime
 	private static final int prime = 31;
@@ -31,7 +31,7 @@ public class Vendor extends User {
 
 	}
 
-	public static Builder builder() {
+	public Builder builder() {
 		return new Builder();
 	}
 
@@ -139,7 +139,7 @@ public class Vendor extends User {
 		return true;
 	}
 
-	public static class Builder {
+	public  class Builder {
 
 		private Vendor vendor;
 
