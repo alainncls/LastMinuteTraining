@@ -8,28 +8,26 @@ import org.bson.types.ObjectId;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
-import fr.epf.lastminutetraining.domain.Training;
+import fr.epf.lastminutetraining.domain.Client;
 import fr.epf.lastminutetraining.domain.Vendor;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 @Repository
-public class VendorDAO extends UserDAO {
-
+public class ClientDAO extends UserDAO{
 	public static final String DBNAME = "LMT";
-	public static final String DBCOLLECTION = "vendors";
+	public static final String DBCOLLECTION = "clients";
 	public static final String MONGOHOST = "localhost";
 	public static final int MONGOPORT = 27017;
 
 	private MongoCollection collection = init();
 
-	private VendorDAO() {
+	private ClientDAO() {
 	}
 
 	public MongoCollection init() {
@@ -47,46 +45,46 @@ public class VendorDAO extends UserDAO {
 		return collec;
 	}
 
-	public void saveVendor(Vendor vendor) {
+	public void saveClient(Client client) {
 		try {
-			vendor.setPassword(encrypt(vendor.getPassword()).toString());
+			client.setPassword(encrypt(client.getPassword()).toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log(e);
 		}
-		collection.save(vendor);
+		collection.save(client);
 	}
 
-	public void removeVendor(Vendor vendor) {
-		collection.remove("{id: #}", vendor.getId());
+	public void removeClient(Client client) {
+		collection.remove("{id: #}", client.getId());
 	}
-	//Method to find vendor by id
-	public Vendor findVendor(ObjectId id) {
-		return collection.findOne(id).as(Vendor.class);
+	//Method to find client by id
+	public Client findClient(ObjectId id) {
+		return collection.findOne(id).as(Client.class);
 	}
 
-	public List<Vendor> findAllVendors() {
-		List<Vendor> vendors = new ArrayList<Vendor>();
-		MongoCursor<Vendor> cursor = collection.find().as(Vendor.class);
-		List<Vendor> result=iterateAndReturn(vendors, cursor);
+	public List<Client> findAllClients() {
+		List<Client> clients = new ArrayList<Client>();
+		MongoCursor<Client> cursor = collection.find().as(Client.class);
+		List<Client> result=iterateAndReturn(clients, cursor);
 		return result;
 	}
 
 	@Override
-	public Vendor connectUser(String login, String password) {
+	public Client connectUser(String login, String password) {
 		try {
-			return collection.findOne("{login:#, password:#}", login, encrypt(password)).as(Vendor.class);
+			return collection.findOne("{login:#, password:#}", login, encrypt(password)).as(Client.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log(e);
 		}
 		return null;
 	}
-	public List<Vendor> iterateAndReturn(List<Vendor> vendors, MongoCursor<Vendor>cursor){
+	public List<Client> iterateAndReturn(List<Client> clients, MongoCursor<Client>cursor){
 		while (cursor.hasNext()) {
-			vendors.add(cursor.next());
+			clients.add(cursor.next());
 		}
-		return vendors;
+		return clients;
 	}
 
 	public void log(Exception e){
