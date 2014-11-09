@@ -87,10 +87,9 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<ul class="nav nav-tabs" role="tablist">
-					<li class="active"><a href="#signin" data-toggle="tab">Sign
-							In</a></li>
+					<li class="active"><a href="#signin" data-toggle="tab">Connexion</a></li>
 
-					<li><a href="#signup" data-toggle="tab">Register</a></li>
+					<li><a href="#signup" data-toggle="tab">S'enregistrer</a></li>
 				</ul>
 			</div>
 			<div class="modal-body">
@@ -123,7 +122,7 @@
 							<div class="form-group">
 								<div class="col-sm-offset-4 col-sm-8">
 									<button type="submit" name="buttonLogin"
-										class="btn btn-success">Sign In</button>
+										class="btn btn-success">Connexion</button>
 
 								</div>
 							</div>
@@ -154,7 +153,7 @@
 							</div>
 							<!-- Password input-->
 							<div class="form-group">
-								<label for="inputPasswordNew" class="col-sm-4 control-label">Password:</label>
+								<label for="inputPasswordNew" class="col-sm-4 control-label">Mot de passe:</label>
 
 								<div class="col-sm-8">
 									<input type="password" class="form-control"
@@ -163,7 +162,7 @@
 							</div>
 							<div class="form-group">
 								<label for="inputPasswordSecondNew"
-									class="col-sm-4 control-label">Re-Enter Password:</label>
+									class="col-sm-4 control-label">Entrer de nouveau le mot de passe:</label>
 
 								<div class="col-sm-8">
 									<input type="password" class="form-control"
