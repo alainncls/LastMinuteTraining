@@ -191,3 +191,71 @@ th {
 .paddingugly {
 	padding-right: 0 !important;
 }
+
+dt {
+	float: left;
+	clear: left;
+	min-width: 100px;
+	font-weight: bold;
+	color: #9b9b9b;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+dd {
+	margin: 0 0 10px 140px;
+}
+
+.jumbotron {
+	padding: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.level {
+	font-size: 20px;
+	border-radius: 3px;
+	color: white;
+	margin-left: 10px;
+	padding: 2px;
+}
+
+.level-1 {
+	background: #219a89;
+}
+
+.level-2 {
+	background: #9c2873;
+}
+
+.level-3 {
+	background: #5c903d;
+}
+
+.level-4 {
+	background: #ffb001;
+}
+
+.level-5 {
+	background: #9d2b2a;
+}
+
+.level-6 {
+	background: #8c4704;
+}
+
+.level-9 {
+	background: #aaa;
+}
+
+.span6 {
+	margin-left: 0;
+	float:left;
+}
+
+ul.sap {
+list-style-image: url('https://training.sap.com/img/bullet-one.png');
+}
