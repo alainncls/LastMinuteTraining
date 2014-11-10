@@ -16,10 +16,10 @@ import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
 import fr.epf.lastminutetraining.domain.Client;
-import fr.epf.lastminutetraining.domain.Vendor;
+import fr.epf.lastminutetraining.domain.User;
 
 @Repository
-public class ClientDAO extends UserDAO{
+public class ClientDAO {
 	public static final String DBNAME = "LMT";
 	public static final String DBCOLLECTION = "clients";
 	public static final String MONGOHOST = "localhost";
@@ -46,19 +46,14 @@ public class ClientDAO extends UserDAO{
 	}
 
 	public void saveClient(Client client) {
-		try {
-			client.setPassword(encrypt(client.getPassword()).toString());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log(e);
-		}
 		collection.save(client);
 	}
 
 	public void removeClient(Client client) {
 		collection.remove("{id: #}", client.getId());
 	}
-	//Method to find client by id
+
+	// Method to find client by id
 	public Client findClient(ObjectId id) {
 		return collection.findOne(id).as(Client.class);
 	}
@@ -66,29 +61,26 @@ public class ClientDAO extends UserDAO{
 	public List<Client> findAllClients() {
 		List<Client> clients = new ArrayList<Client>();
 		MongoCursor<Client> cursor = collection.find().as(Client.class);
-		List<Client> result=iterateAndReturn(clients, cursor);
+		List<Client> result = iterateAndReturn(clients, cursor);
 		return result;
 	}
 
-	@Override
-	public Client connectUser(String login, String password) {
-		try {
-			return collection.findOne("{login:#, password:#}", login, encrypt(password)).as(Client.class);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log(e);
-		}
-		return null;
+	public Client connect(String login, String password) {
+		return collection.findOne("{login:#, password:#}", login,
+				User.encrypt(password)).as(Client.class);
 	}
-	public List<Client> iterateAndReturn(List<Client> clients, MongoCursor<Client>cursor){
+
+	public List<Client> iterateAndReturn(List<Client> clients,
+			MongoCursor<Client> cursor) {
 		while (cursor.hasNext()) {
 			clients.add(cursor.next());
 		}
 		return clients;
 	}
 
-	public void log(Exception e){
-		Logger logger = LoggerFactory.getLogger("fr.epf.lastminutetraining.dao");
+	public void log(Exception e) {
+		Logger logger = LoggerFactory
+				.getLogger("fr.epf.lastminutetraining.dao");
 		logger.debug(e.getStackTrace().toString());
 	}
 }
