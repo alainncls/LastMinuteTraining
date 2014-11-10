@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.epf.lastminutetraining.domain.Client;
 import fr.epf.lastminutetraining.domain.Vendor;
+import fr.epf.lastminutetraining.service.ClientDBService;
 import fr.epf.lastminutetraining.service.VendorDBService;
 
 @Controller
@@ -18,21 +20,45 @@ public class MyAccountController {
 
 	@Autowired
 	private VendorDBService vservice;
+	@Autowired
+	private ClientDBService cservice;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/myaccount")
 	protected ModelAndView show(HttpSession session) {
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		return new ModelAndView("myaccount", "currentUser",
+		
+		if (session.getAttribute("status").toString().equals("vendeur")){
+			return new ModelAndView("myaccount", "currentUser",
 				vservice.findVendor(id));
+		}
+		else if (session.getAttribute("status").toString().equals("client")){
+			return new ModelAndView("myaccount", "currentUser",
+				cservice.findClient(id));
+		}
+		else{
+			return null;
+		}
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/myaccount")
-	protected ModelAndView updateVendor(HttpSession session,
-			@ModelAttribute("vendor") Vendor vendor){
+	protected ModelAndView updateAccount(HttpSession session,
+			@ModelAttribute("vendor") Vendor vendor,
+			@ModelAttribute("client") Client client){
 
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		vendor.setId(id);
-		vservice.update(vendor);
-		return new ModelAndView("myaccount", "currentUser", vendor);
+		
+		if (session.getAttribute("status").toString().equals("vendeur")){
+			vendor.setId(id);
+			vservice.update(vendor);
+			return new ModelAndView("myaccount", "currentUser", vendor);
+		}
+		else if (session.getAttribute("status").toString().equals("client")){
+			client.setId(id);
+			cservice.update(client);
+			return new ModelAndView("myaccount", "currentUser", client);
+		}
+		else{
+			return null;
+		}
 	}
 }
