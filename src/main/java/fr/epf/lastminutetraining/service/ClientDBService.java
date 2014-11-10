@@ -17,7 +17,7 @@ public class ClientDBService {
     public ClientDBService() {
     }
 
-    public Client findVendor(ObjectId id) {
+    public Client findClient(ObjectId id) {
         return clientDAO.findClient(id);
     }
 

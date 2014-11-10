@@ -81,7 +81,8 @@ public class LoginController {
      		   mail,
      		   "Confirmation de création de compte Last Minute Training", 
      		   "Cher vendeur,\n"
-     		   + "Vous venez de créer un compte sur notre site Last Minute Training. Pour compléter votre compte, vuillez suivre le line suivant :...");
+     		   + "Vous venez de créer un compte sur notre site Last Minute Training. Pour compléter votre compte, veuillez suivre le lien suivant :...\n\n"
+     		   + "Cordialement,\n\nL'équipe Last Minute Training");
         
 		return new ModelAndView(home, trainings, tservice.findLastTraining());
 	}
@@ -106,7 +107,8 @@ public class LoginController {
      		   mail,
      		   "Confirmation de création de compte Last Minute Training", 
      		   "Cher client,\n"
-     		   + "Vous venez de créer un compte sur notre site Last Minute Training. Pour compléter votre compte, vuillez suivre le line suivant :...");
+     		   + "Vous venez de créer un compte sur notre site Last Minute Training. Pour compléter votre compte, veuillez suivre le lien suivant :...\n\n"
+     		   + "Cordialement,\n\nL'équipe Last Minute Training");
 		        
 		return new ModelAndView(home, trainings, tservice.findLastTraining());
 	}

@@ -20,12 +20,12 @@
 							<div class="form-group">
 								<label for="lastName">Nom</label> <input type="text"
 									class="form-control" id="lastName" name="lastName"
-									value="Fex" />
+									value="${currentUser.lastName}" />
 							</div>
 							<div class="form-group">
 								<label for="firstName">Prénom</label> <input type="text"
 									class="form-control" id="firstName" name="firstName"
-									value="Jean" />
+									value="${currentUser.firstName}" />
 							</div>
 						</c:if>
 						<div class="actions">
@@ -63,6 +63,11 @@
 						<label for="town">Ville</label> <input type="text"
 							class="form-control" id="town" name="town"
 							value="${currentUser.town}" form="userForm"/>
+					</div>
+					<div class="form-group">
+						<label for="town">Code postal</label> <input type="text"
+							class="form-control" id="cp" name="cp"
+							value="${currentUser.cp}" form="userForm"/>
 					</div>
 					<div class="form-group">
 						<label for="mail">Mon adresse mail</label> <input type="text"
@@ -119,20 +124,20 @@
 				<h3 class="panel-title">Mes moyens de paiement</h3>
 			</div>
 			<div class="panel-body">
-				<c:if test="${sessionScope.status=='user'}">
+				<c:if test="${sessionScope.status=='client'}">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="inputCB">Mon n° de carte bancaire pro</label> <input
-									type="text" class="form-control" id="inputCB" name="inputCB"
+									type="text" class="form-control" id="cardNumber" name="cardNumber"
 									value="${currentUser.cardNumber}" form="userForm"/>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="inputCBExp">Date d'exp. de ma carte bancaire
-									pro</label> <input type="text" class="form-control" id="inputCBExp"
-									name="inputCBExp" value="${currentUser.expirationDate}" form="userForm"/>
+									pro</label> <input type="text" class="form-control" id="expirationDate"
+									name="expirationDate" value="${currentUser.expirationDate}" form="userForm"/>
 							</div>
 						</div>
 					</div>
@@ -140,12 +145,8 @@
 						<div class="col-sm-12">
 							<div class="form-group">
 								<label for="inputBank">Organisme payeur</label> <input
-									type="text" class="form-control" id="inputBank"
-									name="inputBank" value="${currentUser.bank}" form="userForm"/>
-							</div>
-							<div class="actions">
-								<button type="submit" class="btn btn-success btn-xs">Enregistrer</button>
-								<a href="home" class="btn btn-danger btn-xs">Annuler</a>
+									type="text" class="form-control" id="bank"
+									name="bank" value="${currentUser.bank}" form="userForm"/>
 							</div>
 						</div>
 					</div>
