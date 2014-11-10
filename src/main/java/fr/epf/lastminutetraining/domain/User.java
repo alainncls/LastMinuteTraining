@@ -1,5 +1,8 @@
 package fr.epf.lastminutetraining.domain;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
 
@@ -97,6 +100,8 @@ public abstract class User {
 	}
 
 	public void setPassword(String password) {
+
+		password = encrypt(password).toString();
 		this.password = password;
 	}
 
@@ -160,5 +165,25 @@ public abstract class User {
 	}
 
 	public abstract String getStatus();
+	
+	protected static final String SALT = "Ahf54zdF";
+
+	public static String encrypt(String x) {
+		java.security.MessageDigest d = null;
+		x += SALT; // add salt
+		try {
+			d = java.security.MessageDigest.getInstance("SHA-1");
+			d.reset();
+			d.update(x.getBytes());
+			return new String(d.digest(), "UTF-8");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
