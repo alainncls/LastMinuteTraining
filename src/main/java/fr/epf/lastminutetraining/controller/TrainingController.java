@@ -31,10 +31,16 @@ public class TrainingController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/add")
 	protected void createTraining(@ModelAttribute("training")Training training){
-}
+	}
 	@RequestMapping(value="/{code}")
 	@ResponseBody
 	protected ModelAndView training(@PathVariable("code") String code){
-		return new ModelAndView("training", "training", code);
+		Training x = service.findTraining(code);
+		if(x!=null){
+			return new ModelAndView("training", "training", x);
+		}
+		else{
+			return new ModelAndView("404");
+		}
 	}
 }
