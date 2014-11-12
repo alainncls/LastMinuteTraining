@@ -1,7 +1,16 @@
 package fr.epf.lastminutetraining.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
+
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 public class Training {
 
@@ -12,7 +21,7 @@ public class Training {
 	// Lieu de formation
 	private String location;
 	// type de formation (Salle, web, conférence, ...) -> "références"
-	private Short trainingType;
+	private String method;
 	// Nombre de places restantes
 	private int available;
 	// Type de certification (Officielle, groupement privé, etc...) ->
@@ -27,12 +36,14 @@ public class Training {
 	private String summary;
 	// Titre
 	private String name;
+	// Langue
+	private String language;
+	// Solution
+	private String solution;
 	// Date début
 	private String startDate;
 	// Date de fin
 	private String endDate;
-	// Durée
-	private String length;
 	// difficulté
 	private String level;
 	// Prix original
@@ -41,8 +52,6 @@ public class Training {
 	private String priceLMT;
 	// Description
 	private String description;
-	// Formation requise
-	private String prerequis;
 	// Introduction de training
 	private String introduction;
 	// Utilisateurs cible
@@ -50,17 +59,27 @@ public class Training {
 	// Programme de formation
 	private String program;
 	// Objectifs
-	private String objectives;
+	private Map content;
 	// Activités
 	private String activities;
 	// URL
 	private String url;
 	// Unité de temps
 	private String unit;
-	// Objet durée
-	private Object duration;
 	// Objet dates
-	private Object date;
+	private HashMap<String,String> date;
+	// Objet dates
+	private HashMap<String,String> duration;
+	// evaluation
+	private Float evaluation;
+	//Public
+	private ArrayList<String> audience;
+	//Images
+	private ArrayList<String> relatedCurricula;
+	//Prerequisiste
+	private Map prerequisites;
+	//release
+	private ArrayList release;
 	// prime
 	private static final int prime = 31;
 
@@ -73,28 +92,12 @@ public class Training {
 		return new Builder();
 	}
 
-	public Object getDuration() {
-		return duration;
-	}
-
-	public void setDuration(Object duration) {
-		this.duration = duration;
-	}
-
-	public Object getDate() {
+	public HashMap<String,String> getDate() {
 		return date;
 	}
 
-	public void setDate(Object date) {
+	public void setDate(HashMap<String, String> date) {
 		this.date = date;
-	}
-
-	public String getLength() {
-		return length;
-	}
-
-	public void setLength(String length) {
-		this.length = length;
 	}
 
 	public String getUrl() {
@@ -111,14 +114,6 @@ public class Training {
 
 	public void setLocation(String location) {
 		this.location = location;
-	}
-
-	public Short getTrainingType() {
-		return trainingType;
-	}
-
-	public void setTrainingType(Short trainingType) {
-		this.trainingType = trainingType;
 	}
 
 	public int getAvailable() {
@@ -193,12 +188,12 @@ public class Training {
 		this.program = program;
 	}
 
-	public String getObjectives() {
-		return objectives;
+	public Map getContent() {
+		return content;
 	}
 
-	public void setObjectives(String objectives) {
-		this.objectives = objectives;
+	public void setObjectives(Map objectives) {
+		this.content = objectives;
 	}
 
 	public String getActivities() {
@@ -209,13 +204,7 @@ public class Training {
 		this.activities = activities;
 	}
 
-	public String getPrerequis() {
-		return prerequis;
-	}
 
-	public void setPrerequis(String prerequis) {
-		this.prerequis = prerequis;
-	}
 
 	public ObjectId getId() {
 		return id;
@@ -308,17 +297,17 @@ public class Training {
 	@Override
 	public String toString() {
 		return "Training [id=" + id + ", count=" + count + ", location="
-				+ location + ", trainingType=" + trainingType
+				+ location + ", trainingType=" + method
 				+ ", available=" + available + ", certification="
-						+ certification + ", category=" + category + ", sellerId="
-								+ sellerId + ", contact=" + contact + ", summary=" + summary
-								+ ", name=" + name + ", startDate=" + startDate + ", endDate="
-										+ endDate + ", level=" + level + ", price=" + price
-										+ ", priceLMT=" + priceLMT + ", description=" + description
-										+ ", prerequis=" + prerequis + ", introduction=" + introduction
-										+ ", target=" + target + ", program=" + program
-										+ ", objectives=" + objectives + ", activities=" + activities
-										+ "]";
+				+ certification + ", category=" + category + ", sellerId="
+				+ sellerId + ", contact=" + contact + ", summary=" + summary
+				+ ", name=" + name + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", level=" + level + ", price=" + price
+				+ ", priceLMT=" + priceLMT + ", description=" + description
+				+ ", prerequisites=" + prerequisites + ", introduction=" + introduction
+				+ ", target=" + target + ", program=" + program
+				+ ", objectives=" + content + ", activities=" + activities
+				+ "]";
 	}
 
 	@Override
@@ -347,6 +336,88 @@ public class Training {
 		}
 		return true;
 	}
+
+	public String getSolution() {
+		return solution;
+	}
+
+	public void setSolution(String solution) {
+		this.solution = solution;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+
+	class Duration{
+		int count;
+		String unit;
+	}
+
+	public HashMap<String, String> getDuration() {
+		return duration;
+	}
+
+	public void setDuration(HashMap<String, String> duration) {
+		this.duration = duration;
+	}
+
+	public double getEvaluation() {
+		return evaluation;
+	}
+
+	public void setEvaluation(String evaluation){
+			this.evaluation=Float.parseFloat(evaluation);
+	}
+	public ArrayList<String> getAudience() {
+		return audience;
+	}
+
+	public void setAudience(ArrayList<String> audience) {
+		this.audience = audience;
+	}
+
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String delivery) {
+		this.method = delivery;
+	}
+
+
+	public ArrayList<String> getRelatedCurricula() {
+		return relatedCurricula;
+	}
+
+	public void setRelatedCurricula(ArrayList<String> relatedCurricula) {
+		this.relatedCurricula = relatedCurricula;
+	}
+
+
+	public Map getPrerequisites() {
+		return prerequisites;
+	}
+
+	public void setPrerequisites(Map prerequisites) {
+		this.prerequisites = prerequisites;
+	}
+
+
+	public ArrayList getRelease() {
+		return release;
+	}
+
+	public void setRelease(ArrayList release) {
+		this.release = release;
+	}
+
 
 	public static class Builder {
 
@@ -396,10 +467,6 @@ public class Training {
 			return this;
 		}
 
-		public Builder prerequis(String prerequis) {
-			training.prerequis = prerequis;
-			return this;
-		}
 
 		public Builder count(int count) {
 			training.count = count;
@@ -411,8 +478,8 @@ public class Training {
 			return this;
 		}
 
-		public Builder trainingType(Short trainingType) {
-			training.trainingType = trainingType;
+		public Builder method(String delivery) {
+			training.method = delivery;
 			return this;
 		}
 
@@ -461,8 +528,8 @@ public class Training {
 			return this;
 		}
 
-		public Builder objectives(String objectives) {
-			training.objectives = objectives;
+		public Builder objectives(Map objectives) {
+			training.content = objectives;
 			return this;
 		}
 

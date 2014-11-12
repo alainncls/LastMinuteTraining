@@ -1,17 +1,23 @@
 package fr.epf.lastminutetraining.dao;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
 
 import fr.epf.lastminutetraining.domain.Training;
 
+import org.bson.types.ObjectId;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.util.NestedServletException;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -63,11 +69,16 @@ public class TrainingDAO {
 	public void removeTraining(Training training) {
 		collection.remove("{id: #}", training.getId());
 	}
-	//Method to find a training by name
-	public List<Training> findTraining(String name) {
-		List<Training> trainings = new ArrayList<Training>();
-		MongoCursor<Training> cursor = collection.find("{name: #}",Pattern.compile(".*"+name+".*")).as(Training.class);
-		List<Training> result=iterateAndReturn(trainings, cursor);
+	//Method to find a training by id
+	public Training findTraining(String id) {
+		Training result=new Training();
+		try{
+			ObjectId oid= new ObjectId(id);
+			result = collection.findOne(oid).as(Training.class);
+		}
+		catch(IllegalArgumentException e){
+			result=null;
+		}
 		return result;
 	}
 
