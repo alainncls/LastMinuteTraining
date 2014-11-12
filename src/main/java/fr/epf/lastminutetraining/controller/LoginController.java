@@ -17,14 +17,11 @@ import fr.epf.lastminutetraining.domain.User;
 import fr.epf.lastminutetraining.domain.Vendor;
 import fr.epf.lastminutetraining.service.ClientDBService;
 import fr.epf.lastminutetraining.service.TrainingDBService;
-import fr.epf.lastminutetraining.service.UserDBService;
 import fr.epf.lastminutetraining.service.VendorDBService;
 
 @Controller
 public class LoginController {
 
-	@Autowired
-	private UserDBService uservice;
 	@Autowired
 	private VendorDBService vservice;
 	@Autowired
@@ -48,7 +45,10 @@ public class LoginController {
 			@RequestParam(value = "password") String password,
 			HttpSession session) {
 		System.out.println(password);
-		User user = uservice.connect(login, password);
+		User user = vservice.connect(login, password);
+		if(user==null){
+			user = cservice.connect(login, password);
+		}
 		if (user != null) {
 			session.setAttribute("status", user.getStatus());
 			session.setAttribute("login", user.getLogin());
@@ -61,17 +61,28 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/register", params = "status=vendor")
+	@RequestMapping(method = RequestMethod.POST, value = "/register")
 	protected ModelAndView registerVendor(
 			@RequestParam(value = "mail") String mail,
 			@RequestParam(value = "login") String login,
-			@RequestParam(value = "password") String password) {
+			@RequestParam(value = "password") String password,
+			@RequestParam(value = "status") String status) {
 		//Création du compte
-		Vendor vendor = new Vendor();
-		vendor.setMail(mail);
-		vendor.setLogin(login);
-		vendor.setPassword(password);
-		vservice.save(vendor);
+		User user;
+		if(status=="vendor"){
+			user = new Vendor();
+		}else{
+			user = new Client();
+		}
+		user.setMail(mail);
+		user.setLogin(login);
+		user.setPassword(password);
+		if(status=="vendor"){
+			vservice.save((Vendor)user);
+		}else{
+			cservice.save((Client)user);
+		}
+		
 		
 		//Envoi d'un mail de confirmation
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
@@ -81,34 +92,9 @@ public class LoginController {
      		   mail,
      		   "Confirmation de création de compte Last Minute Training", 
      		   "Cher vendeur,\n"
-     		   + "Vous venez de créer un compte sur notre site Last Minute Training. Pour compléter votre compte, vuillez suivre le line suivant :...");
+     		   + "Vous venez de créer un compte sur notre site Last Minute Training. Pour compléter votre compte, veuillez suivre le lien suivant :...\n\n"
+     		   + "Cordialement,\n\nL'équipe Last Minute Training");
         
 		return new ModelAndView(home, trainings, tservice.findLastTraining());
 	}
-
-	@RequestMapping(method = RequestMethod.POST, value = "/register", params = "status=client")
-	protected ModelAndView registerClient(
-			@RequestParam(value = "mail") String mail,
-			@RequestParam(value = "login") String login,
-			@RequestParam(value = "password") String password) {
-		//Création d'un client
-		Client client = new Client();
-		client.setMail(mail);
-		client.setLogin(login);
-		client.setPassword(password);
-		cservice.save(client);
-		
-		//Envoi d'un mail de confirmation
-		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
-   	 
-    	Mail mm = (Mail) context.getBean("Mail");
-        mm.sendMail("lastminutetraining.epf@gmail.com",
-     		   mail,
-     		   "Confirmation de création de compte Last Minute Training", 
-     		   "Cher client,\n"
-     		   + "Vous venez de créer un compte sur notre site Last Minute Training. Pour compléter votre compte, vuillez suivre le line suivant :...");
-		        
-		return new ModelAndView(home, trainings, tservice.findLastTraining());
-	}
-
 }
