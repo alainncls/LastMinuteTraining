@@ -1,7 +1,5 @@
 package fr.epf.lastminutetraining.domain;
 
-import org.bson.types.ObjectId;
-import org.jongo.marshall.jackson.oid.Id;
 
 public class Vendor extends User {
 
@@ -9,30 +7,17 @@ public class Vendor extends User {
 	private String name;
 	// Logo de l'entreprse
 	private String avatar;
-	// Numéro de téléphone
-	private String phone;
 	// Marge éffectuée par LMT
 	private String margin;
 	// Type de souscription à LMT
 	private String sub;
-	// Adresse postale
-	private String address;
-	// Ville
-	private String town;
-	// Code Postal
-	private String cp;
 	// Numéro IBAN
 	private String iban;
-	//prime
+	// prime
 	private static final int prime = 31;
-
 
 	public Vendor() {
 
-	}
-
-	public Builder builder() {
-		return new Builder();
 	}
 
 	public String getName() {
@@ -51,14 +36,6 @@ public class Vendor extends User {
 		this.avatar = avatar;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public String getMargin() {
 		return margin;
 	}
@@ -73,22 +50,6 @@ public class Vendor extends User {
 
 	public void setSub(String sub) {
 		this.sub = sub;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getTown() {
-		return town;
-	}
-
-	public void setTown(String town) {
-		this.town = town;
 	}
 
 	public String getCP() {
@@ -109,10 +70,13 @@ public class Vendor extends User {
 
 	@Override
 	public String toString() {
-		return "Vendor [id=" + id + ", name=" + name + ", avatar=" + avatar
-				+ ", mail=" + mail + ", phone=" + phone + ", margin=" + margin
-				+ ", sub=" + sub + ", address=" + address + ", town=" + town
-				+ ", cp=" + cp + ", iban=" + iban + "]";
+		return "Vendor [name=" + name + ", avatar=" + avatar + ", margin="
+				+ margin + ", sub=" + sub + ", iban=" + iban + ", id=" + id
+				+ ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", address=" + address + ", town=" + town + ", cp=" + cp
+				+ ", mail=" + mail + ", phone=" + phone + ", login=" + login
+				+ ", password=" + password + ", bank=" + bank + ", cardNumber="
+				+ cardNumber + ", expirationDate=" + expirationDate + "]";
 	}
 
 	@Override
@@ -137,74 +101,6 @@ public class Vendor extends User {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public  class Builder {
-
-		private Vendor vendor;
-
-		private Builder() {
-			vendor = new Vendor();
-		}
-
-		public Builder id(ObjectId id) {
-			vendor.id = id;
-			return this;
-		}
-
-		public Builder name(String name) {
-			vendor.name = name;
-			return this;
-		}
-
-		public Builder avatar(String avatar) {
-			vendor.avatar = avatar;
-			return this;
-		}
-
-		public Builder mail(String mail) {
-			vendor.mail = mail;
-			return this;
-		}
-
-		public Builder phone(String phone) {
-			vendor.phone = phone;
-			return this;
-		}
-
-		public Builder margin(String margin) {
-			vendor.margin = margin;
-			return this;
-		}
-
-		public Builder sub(String sub) {
-			vendor.sub = sub;
-			return this;
-		}
-
-		public Builder address(String address) {
-			vendor.address = address;
-			return this;
-		}
-
-		public Builder town(String town) {
-			vendor.town = town;
-			return this;
-		}
-
-		public Builder cp(String cp) {
-			vendor.cp = cp;
-			return this;
-		}
-
-		public Builder iban(String iban) {
-			vendor.iban = iban;
-			return this;
-		}
-
-		public Vendor build() {
-			return vendor;
-		}
 	}
 
 	@Override
