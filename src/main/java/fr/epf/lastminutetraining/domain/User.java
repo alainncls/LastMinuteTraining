@@ -22,7 +22,7 @@ public abstract class User {
 	protected String bank;
 	protected String cardNumber;
 	protected String expirationDate;
-	
+
 	public ObjectId getId() {
 		return id;
 	}
@@ -129,43 +129,8 @@ public abstract class User {
 		this.expirationDate = expirationDate;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", address=" + address + ", town=" + town
-				+ ", cp=" + cp + ", mail=" + mail + ", phone=" + phone
-				+ ", login=" + login + ", password=" + password + ", bank="
-				+ bank + ", cardNumber=" + cardNumber + ", expirationDate="
-				+ expirationDate + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-
 	public abstract String getStatus();
-	
+
 	protected static final String SALT = "Ahf54zdF";
 
 	public static String encrypt(String x) {
