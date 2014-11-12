@@ -35,6 +35,6 @@ public class TrainingController {
 	@RequestMapping(value="/{code}")
 	@ResponseBody
 	protected ModelAndView training(@PathVariable("code") String code){
-		return new ModelAndView("training", "training", code);
+		return new ModelAndView("training", "training", service.findTraining(code));
 	}
 }

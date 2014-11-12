@@ -24,7 +24,7 @@ public class TrainingDBService {
         return trainingDAO.findAllTrainings();
     }
 
-    public List<Training> findTraining(String name) {
+    public Training findTraining(String name) {
         return trainingDAO.findTraining(name);
     }
 
