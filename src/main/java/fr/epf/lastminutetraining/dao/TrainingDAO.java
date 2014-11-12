@@ -19,6 +19,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
@@ -75,9 +76,36 @@ public class TrainingDAO {
 		try{
 			ObjectId oid= new ObjectId(id);
 			result = collection.findOne(oid).as(Training.class);
+			String a = result.getLevel();
+			switch(a){
+			case "1" : result.setTextLevel("Overview");
+			break;
+			case "2" : result.setTextLevel("Foundation");
+			break;
+			case "3" : result.setTextLevel("Detailed");
+			break;				
+			case "4" : result.setTextLevel("Delta Knowledge");
+			break;				
+			case "5" : result.setTextLevel("Consultant Academy");
+			break;			
+			case "6" : result.setTextLevel("Certification");
+			break;			
+			case "9" : result.setTextLevel("Grouped Offering");
+			break;
+			default : result.setTextLevel("");
+
+			}
 		}
 		catch(IllegalArgumentException e){
 			result=null;
+		}
+		String regex= "(?<=Curriculum=)(.*?)(?=&)";
+		Pattern pattern = Pattern.compile(regex);
+		for(String x : result.getRelatedCurricula()){
+			Matcher matcher = pattern.matcher(x);
+			if(matcher.find()){
+				result.addAcademy(matcher.group(1));
+			}
 		}
 		return result;
 	}
