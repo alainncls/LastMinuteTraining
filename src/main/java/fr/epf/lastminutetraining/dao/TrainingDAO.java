@@ -4,6 +4,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
 
 import fr.epf.lastminutetraining.domain.Training;
 
@@ -12,6 +13,7 @@ import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.util.NestedServletException;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -69,9 +71,14 @@ public class TrainingDAO {
 	}
 	//Method to find a training by id
 	public Training findTraining(String id) {
-		ObjectId oid= new ObjectId(id);
-		Training result = collection.findOne(oid).as(Training.class);
-		System.out.println(result.getId());
+		Training result=new Training();
+		try{
+			ObjectId oid= new ObjectId(id);
+			result = collection.findOne(oid).as(Training.class);
+		}
+		catch(IllegalArgumentException e){
+			result=null;
+		}
 		return result;
 	}
 
