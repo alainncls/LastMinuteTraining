@@ -1,10 +1,13 @@
 package fr.epf.lastminutetraining.dao;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
 import fr.epf.lastminutetraining.domain.Training;
 
+import org.bson.types.ObjectId;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
@@ -64,10 +67,11 @@ public class TrainingDAO {
 	public void removeTraining(Training training) {
 		collection.remove("{id: #}", training.getId());
 	}
-	//Method to find a training by name
-	public Training findTraining(String name) {
-		Training result = collection.findOne("{name: #}",Pattern.compile(".*"+name+".*")).as(Training.class);
-		System.out.println(result.getRelease());
+	//Method to find a training by id
+	public Training findTraining(String id) {
+		ObjectId oid= new ObjectId(id);
+		Training result = collection.findOne(oid).as(Training.class);
+		System.out.println(result.getId());
 		return result;
 	}
 
