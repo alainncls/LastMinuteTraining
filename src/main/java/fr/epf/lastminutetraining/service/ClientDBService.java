@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import fr.epf.lastminutetraining.dao.ClientDAO;
 import fr.epf.lastminutetraining.domain.Client;
+import fr.epf.lastminutetraining.domain.Vendor;
 
 @Service
 public class ClientDBService {
@@ -17,7 +18,7 @@ public class ClientDBService {
     public ClientDBService() {
     }
 
-    public Client findVendor(ObjectId id) {
+    public Client findClient(ObjectId id) {
         return clientDAO.findClient(id);
     }
 
@@ -39,5 +40,9 @@ public class ClientDBService {
 
     public void remove(Client client) {
     	clientDAO.removeClient(client);
+    }
+    
+    public Client connect(String login, String password) {
+    	return clientDAO.connect(login, password);
     }
 }

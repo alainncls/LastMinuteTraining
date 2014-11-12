@@ -40,4 +40,8 @@ public class VendorDBService {
     public void remove(Vendor vendor) {
         vendorDAO.removeVendor(vendor);
     }
+    
+    public Vendor connect(String login, String password) {
+    	return vendorDAO.connect(login, password);
+    }
 }
