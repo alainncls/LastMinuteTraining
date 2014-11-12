@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -64,10 +65,9 @@ public class TrainingDAO {
 		collection.remove("{id: #}", training.getId());
 	}
 	//Method to find a training by name
-	public List<Training> findTraining(String name) {
-		List<Training> trainings = new ArrayList<Training>();
-		MongoCursor<Training> cursor = collection.find("{name: #}",Pattern.compile(".*"+name+".*")).as(Training.class);
-		List<Training> result=iterateAndReturn(trainings, cursor);
+	public Training findTraining(String name) {
+		Training result = collection.findOne("{name: #}",Pattern.compile(".*"+name+".*")).as(Training.class);
+		System.out.println(result.getRelease());
 		return result;
 	}
 
