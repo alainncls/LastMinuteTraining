@@ -1,36 +1,34 @@
 package fr.epf.lastminutetraining.dao;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoException;
-
-import fr.epf.lastminutetraining.domain.Training;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.util.NestedServletException;
-
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.regex.Pattern;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
+
+import com.mongodb.DB;
+import com.mongodb.MongoClient;
+
+import fr.epf.lastminutetraining.domain.Training;
 
 @Repository
 public class TrainingDAO {
-
-	public static final String DB_NAME = "LMT";
+	
+	@Value("${database.name}")
+	public static String DB_NAME;
+	@Value("${database.host}")
+	public static String MONGO_HOST;
+	@Value("${database.port}")
+	public static int MONGO_PORT;
+	
 	public static final String DB_COLLECTION = "trainings";
-	public static final String MONGO_HOST = "localhost";
-	public static final int MONGO_PORT = 27017;
 	public static final int limit = 10;
 
 	private MongoCollection collection = init();
