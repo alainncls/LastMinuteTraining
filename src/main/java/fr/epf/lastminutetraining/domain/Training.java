@@ -46,6 +46,8 @@ public class Training {
 	private String endDate;
 	// difficulté
 	private String level;
+	//mot difficulté
+	private String textLevel;
 	// Prix original
 	private String price;
 	// Prix réduit
@@ -76,6 +78,7 @@ public class Training {
 	private ArrayList<String> audience;
 	//Images
 	private ArrayList<String> relatedCurricula;
+	private ArrayList<String> academys=new ArrayList<String>();
 	//Prerequisiste
 	private Map prerequisites;
 	//release
@@ -370,7 +373,9 @@ public class Training {
 	public double getEvaluation() {
 		return evaluation;
 	}
-
+	public void addAcademy(String academy) {
+		academys.add(academy);
+	}
 	public void setEvaluation(String evaluation){
 			this.evaluation=Float.parseFloat(evaluation);
 	}
@@ -416,6 +421,24 @@ public class Training {
 
 	public void setRelease(ArrayList release) {
 		this.release = release;
+	}
+
+
+	public String getTextLevel() {
+		return textLevel;
+	}
+
+	public void setTextLevel(String textLevel) {
+		this.textLevel = textLevel;
+	}
+
+
+	public ArrayList<String> getAcademys() {
+		return academys;
+	}
+
+	public void setAcademys(ArrayList<String> academys) {
+		this.academys = academys;
 	}
 
 
