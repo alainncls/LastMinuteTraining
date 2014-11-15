@@ -17,6 +17,7 @@
                             <th>Durée</th>
                             <th>Difficulté</th>
                             <th>Places restantes</th>
+                            <th>Action</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -49,6 +50,10 @@
                                         <td colspan="3"><a href="404"
                                                            class="btn btn-warning btn-sm pull-right"><i
                                                 class="fa fa-shopping-cart"></i> Acheter</a></td>
+                                    </tr>
+                                    <tr>
+                                        <a href="./edit" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
+                                        <a href="./del" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
                                     </tr>
                                 </c:if>
                             </c:forEach>
