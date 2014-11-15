@@ -50,6 +50,11 @@
 				<a class="btn btn-info navbar-btn navbar-right" href="myaccount">
 					<span class="fa fa-user"></span> Mon compte
 				</a>
+                <c:if test="${sessionScope.status=='vendor'}">
+                    <a class="btn btn-file navbar-btn navbar-right" href="mytrainings">
+                        <span class="fa fa-file-text"></span> Mes formations
+                    </a>
+                </c:if>
 			</c:if>
 		</div>
 		<!-- /.navbar-collapse -->
