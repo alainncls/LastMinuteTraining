@@ -9,7 +9,7 @@
 					<div class="container">
 
 						<h2>
-							${training.name}<span class="level level-${training.level}">text_level</span>
+							${training.name}<span class="level level-${training.level}">${training.textLevel}</span>
 						</h2>
 						<dl>
 							<dt>Solution:</dt>
@@ -44,7 +44,10 @@
 							<li><div>
 									<dt>Lieux:</dt>
 									<dd>${training.location}</dd>
-								</div></li>
+								</div>
+								<a href="404"
+										class="btn btn-warning btn-sm pull-right"><i
+											class="fa fa-shopping-cart"></i> Acheter</a></li>
 						</ul>
 					</div>
 				</div>
@@ -154,7 +157,9 @@
 						<ul class="sap">
 							<c:forEach items="${training.relatedCurricula}" var="related"
 								varStatus="loop">
-								<li><a href="${related}">${loop.index}</a></li>
+								<li><a href="${related}">
+									${training.academys[loop.index]}
+								</a></li>
 							</c:forEach>
 							</td>
 						</ul>

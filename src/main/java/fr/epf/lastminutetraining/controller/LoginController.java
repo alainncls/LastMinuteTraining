@@ -92,7 +92,9 @@ public class LoginController {
      		   mail,
      		   "Confirmation de création de compte Last Minute Training", 
      		   "Cher vendeur,\n"
-     		   + "Vous venez de créer un compte sur notre site Last Minute Training. Pour compléter votre compte, veuillez suivre le lien suivant :...\n\n"
+     		   + "Vous venez de créer un compte sur notre site Last Minute Training. "
+     		   + "Pour compléter votre compte, veuillez utiliser votre interface « mon compte » disponible"
+     		   + " à l’adresse suivante : http://lastminutetraining.epf.fr/myaccount\n\n"
      		   + "Cordialement,\n\nL'équipe Last Minute Training");
         
 		return new ModelAndView(home, trainings, tservice.findLastTraining());
