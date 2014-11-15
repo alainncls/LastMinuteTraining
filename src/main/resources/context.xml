@@ -4,9 +4,13 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context.xsd">
-
+	
+	<context:property-placeholder    
+       location="classpath:database.properties"  ignore-unresolvable="true" />
+       
 	<context:component-scan base-package="fr.epf.lastminutetraining.dao"></context:component-scan>
 	<context:component-scan base-package="fr.epf.lastminutetraining.service"></context:component-scan>
+	
 	
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
