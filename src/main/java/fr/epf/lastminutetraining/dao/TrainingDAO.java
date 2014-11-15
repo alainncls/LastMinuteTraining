@@ -23,12 +23,12 @@ import fr.epf.lastminutetraining.domain.Training;
 @Repository
 public class TrainingDAO {
 	
-	@Value("${database.name}")
-	public static String DB_NAME;
-	@Value("${database.host}")
-	public static String MONGO_HOST;
-	@Value("${database.port}")
-	public static int MONGO_PORT;
+	//@Value("${db.name}")
+	public static String DB_NAME = "LMT";
+	//@Value("${db.host}")
+	public static String MONGO_HOST = "localhost";
+	//@Value("${db.port}")
+	public static int MONGO_PORT = 27017;
 	
 	public static final String DB_COLLECTION = "trainings";
 	public static final int limit = 10;
