@@ -66,8 +66,8 @@ public class TrainingDAO {
 		collection.save(training);
 	}
 
-	public void removeTraining(Training training) {
-		collection.remove("{id: #}", training.getId());
+	public void removeTraining(ObjectId id) {
+		collection.remove("{id: #}", id);
 	}
 	//Method to find a training by id
 	public Training findTraining(String id) {

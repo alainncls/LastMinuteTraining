@@ -2,6 +2,7 @@ package fr.epf.lastminutetraining.service;
 
 import fr.epf.lastminutetraining.dao.TrainingDAO;
 import fr.epf.lastminutetraining.domain.Training;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +49,7 @@ public class TrainingDBService {
         trainingDAO.saveTraining(training);
     }
 
-    public void remove(Training training) {
-        trainingDAO.removeTraining(training);
+    public void remove(ObjectId id) {
+        trainingDAO.removeTraining(id);
     }
 }
