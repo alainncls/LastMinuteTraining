@@ -16,16 +16,25 @@ import org.jongo.MongoCursor;
 import org.jongo.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.util.NestedServletException;
-
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.bson.types.ObjectId;
+import org.jongo.Jongo;
+import org.jongo.MongoCollection;
+import org.jongo.MongoCursor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
+
+import com.mongodb.DB;
+import com.mongodb.MongoClient;
+
+import fr.epf.lastminutetraining.domain.Training;
 
 @Repository
 public class TrainingDAO {
@@ -72,8 +81,8 @@ public class TrainingDAO {
 		trainingsCollection.save(training);
 	}
 
-	public void removeTraining(Training training) {
-		trainingsCollection.remove("{id: #}", training.getId());
+	public void removeTraining(ObjectId id) {
+		trainingsCollection.remove("{id: #}", id);
 	}
 	//Method to find a training by id
 	public Training findTraining(String id) {
@@ -118,6 +127,29 @@ public class TrainingDAO {
 		result.setVendor(vendor);
 		return result;
 	}
+
+    public List<Training> searchTraining(String name) {
+        System.out.println(name);
+        List<Training> trainings = new ArrayList<Training>();
+        MongoCursor<Training> cursor = trainingsCollection.find("{name: #}",
+                Pattern.compile(".*"+name+".*")).as(Training.class);
+        while (cursor.hasNext()) {
+            trainings.add(cursor.next());
+        }
+        System.out.println(trainings);
+        return trainings;
+    }
+
+    public List<Training> searchTraining(Training training) {
+        System.out.println(training);
+        List<Training> trainings = new ArrayList<Training>();
+        MongoCursor<Training> cursor = trainingsCollection.find("{name: #}",Pattern.compile(".*"+training.getName()+".*")).as(Training.class);
+        while (cursor.hasNext()) {
+            trainings.add(cursor.next());
+        }
+        System.out.println(trainings);
+        return trainings;
+    }
 
 	public List<Training> findAllTrainings() {
 		List<Training> trainings = new ArrayList<Training>();

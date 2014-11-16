@@ -4,10 +4,7 @@
 
 <div class="row">
 	<div class="col-sm-12">
-		<h3>Passer par LastMinuteTraining.com, c'est s'assurer d'avoir
-			les meilleurs prix du marché sur les meilleures formations ERP / SAP
-			du moment</h3>
-		<h4>Clientèle satisfaite à 97%</h4>
+		<h3>Gérez ici les formations publiées en ligne</h3>
 	</div>
 </div>
 <div class="row">
@@ -53,9 +50,9 @@
 											<i class="fa fa-star"></i>
 										</c:forEach></td>
 									<td>${training.available}</td>
-									<td colspan="3"><a href="404"
-										class="btn btn-warning btn-sm pull-right"><i
-											class="fa fa-shopping-cart"></i> Acheter</a></td>
+									<td colspan="3">
+                                        <a href="/LastMinuteTraining/admin/editTraining/${training.id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
+                                        <a href="/LastMinuteTraining/admin/deleteTraining/${training.id}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
 								</tr>
 							</c:forEach>
 						</c:if>

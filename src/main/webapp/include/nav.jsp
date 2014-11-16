@@ -55,6 +55,11 @@
 				<a class="btn btn-info navbar-btn navbar-right" href="${page.url}/LastMinuteTraining/mytrainings">
 					<span class="fa fa-bars"></span> Mes Formations
 				</a>
+                <c:if test="${sessionScope.status=='vendor'}">
+                    <a class="btn btn-success navbar-btn navbar-right" href="mytrainings">
+                        <span class="fa fa-file-text"></span> Mes formations
+                    </a>
+                </c:if>
 			</c:if>
 		</div>
 		<!-- /.navbar-collapse -->

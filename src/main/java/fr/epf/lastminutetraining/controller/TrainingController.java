@@ -19,6 +19,8 @@ public class TrainingController {
 	@Autowired
 	private TrainingDBService service;
 
+
+
 	@RequestMapping(method = RequestMethod.GET, value = "/add")
 	protected ModelAndView addTraining(){
 		return new ModelAndView("addTraining");
