@@ -24,12 +24,12 @@ public class MyTrainingsController {
 	@Autowired
 	private TrainingDBService service;
 	
-	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings", "/" })
+	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings"})
 	protected ModelAndView home() {
 		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
 		return new ModelAndView("myTrainings", "trainings", service.findAllTrainings(id));
 	}
-	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings/edit/{code}", "/" })
+	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings/edit/{code}" })
 	protected ModelAndView home(@PathVariable("code") String code) {
 		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
 		return new ModelAndView("training", "training", service.findTraining(code));
