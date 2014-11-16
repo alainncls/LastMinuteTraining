@@ -35,7 +35,7 @@
 									<%-- <td colspan="8" class="trainingName"><a
 										href="404?id=${training.id}">${training.name}</a></td> --%>
 									<td colspan="8" class="trainingName"><a
-										href="/LastMinuteTraining/trainings/${training.id}" target="_blank">${training.name}</a></td>
+										href="/trainings/${training.id}" target="_blank">${training.name}</a></td>
 									<td class="td-chevron"><i
 										class="fa fa-chevron-down chevron-toggle pull-right"
 										data-toggle="collapse" href="#col${loop.index}"></i></td>
