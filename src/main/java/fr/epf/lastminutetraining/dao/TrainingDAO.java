@@ -7,11 +7,13 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoException;
 
 import fr.epf.lastminutetraining.domain.Training;
+import fr.epf.lastminutetraining.domain.Vendor;
 
 import org.bson.types.ObjectId;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
+import org.jongo.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.util.NestedServletException;
 
@@ -29,24 +31,27 @@ import org.slf4j.LoggerFactory;
 public class TrainingDAO {
 
 	public static final String DB_NAME = "LMT";
-	public static final String DB_COLLECTION = "trainings";
+	public static final String DB_COLLECTION_TRAININGS = "trainings";
+	public static final String DB_COLLECTION_VENDORS = "vendors";
 	public static final String MONGO_HOST = "localhost";
 	public static final int MONGO_PORT = 27017;
 	public static final int limit = 10;
+	
+	private MongoCollection trainingsCollection = init(DB_NAME, DB_COLLECTION_TRAININGS,MONGO_HOST,MONGO_PORT,limit);
 
-	private MongoCollection collection = init();
-
+	private MongoCollection vendorCollection = init(DB_NAME, DB_COLLECTION_VENDORS,MONGO_HOST,MONGO_PORT,limit);
+	
 	private TrainingDAO() {
 	}
 
-	public MongoCollection init() {
+	public MongoCollection init(String dbName,String dbCollection,String mongoHost,int mongoPort,int limit) {
 		MongoCollection collec = null;
 		try {
-			MongoClient mongo = new MongoClient(MONGO_HOST, MONGO_PORT);
-			DB db = mongo.getDB(DB_NAME);
+			MongoClient mongo = new MongoClient(mongoHost, mongoPort);
+			DB db = mongo.getDB(dbName);
 
 			Jongo jongo = new Jongo(db);
-			collec = jongo.getCollection(DB_COLLECTION);
+			collec = jongo.getCollection(dbCollection);
 
 		} catch (UnknownHostException e) {
 			log(e);
@@ -57,25 +62,25 @@ public class TrainingDAO {
 	public List<Training> findLastTraining() {
 		List<Training> trainings = new ArrayList<Training>();
 		//get 10 last trainings from database
-		MongoCursor<Training> cursor = collection.find().limit(limit)
+		MongoCursor<Training> cursor = trainingsCollection.find().limit(limit)
 				.as(Training.class);
 		List<Training> result=iterateAndReturn(trainings, cursor);
 		return result;
 	}
 
 	public void saveTraining(Training training) {
-		collection.save(training);
+		trainingsCollection.save(training);
 	}
 
 	public void removeTraining(Training training) {
-		collection.remove("{id: #}", training.getId());
+		trainingsCollection.remove("{id: #}", training.getId());
 	}
 	//Method to find a training by id
 	public Training findTraining(String id) {
 		Training result=new Training();
 		try{
 			ObjectId oid= new ObjectId(id);
-			result = collection.findOne(oid).as(Training.class);
+			result = trainingsCollection.findOne(oid).as(Training.class);
 			String a = result.getLevel();
 			switch(a){
 			case "1" : result.setTextLevel("Overview");
@@ -107,12 +112,24 @@ public class TrainingDAO {
 				result.addAcademy(matcher.group(1));
 			}
 		}
+		ObjectId oid=new ObjectId(result.getVendorId());
+		Vendor vendor=new Vendor();
+		vendor=vendorCollection.findOne(oid).as(Vendor.class);
+		result.setVendor(vendor);
 		return result;
 	}
 
 	public List<Training> findAllTrainings() {
 		List<Training> trainings = new ArrayList<Training>();
-		MongoCursor<Training> cursor = collection.find().as(Training.class);
+		MongoCursor<Training> cursor = trainingsCollection.find().as(Training.class);
+		List<Training> result=iterateAndReturn(trainings, cursor);
+		return result;
+	}
+	public List<Training> findAllTrainings(ObjectId id) {
+		List<Training> trainings = new ArrayList<Training>();
+		String query = "{vendorId: \""+id+"\"}";
+		System.out.println(query);
+		MongoCursor<Training> cursor = trainingsCollection.find(query).as(Training.class);
 		List<Training> result=iterateAndReturn(trainings, cursor);
 		return result;
 	}
