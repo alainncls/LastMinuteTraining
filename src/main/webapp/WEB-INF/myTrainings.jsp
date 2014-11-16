@@ -11,7 +11,7 @@
 		<input type="text" id="search" placeholder="Renseignez vos termes de recherche">
 			</div>
 	</div>
-					<a class="btn btn-primary fa fa-plus" style="margin-bottom:10px" href="${page.url}/LastMinuteTraining/mytrainings/add">Ajouter une formation</a></li>
+					<a class="btn btn-primary fa fa-plus" style="margin-bottom:10px" href="/mytrainings/add">Ajouter une formation</a></li>
 		<div class="panel panel-primary">
 			<div class="panel-heading">Les prochaines formations</div>
 			<div class="table-responsive">
@@ -36,7 +36,7 @@
 									<%-- <td colspan="8" class="trainingName"><a
 										href="404?id=${training.id}">${training.name}</a></td> --%>
 									<td colspan="8" class="trainingName"><a
-										href="/LastMinuteTraining/trainings/${training.id}"
+										href="/trainings/${training.id}"
 										target="_blank">${training.name}</a></td>
 									<td class="td-chevron"><i
 										class="fa fa-chevron-down chevron-toggle pull-right"
@@ -58,7 +58,7 @@
 											<i class="fa fa-star"></i>
 										</c:forEach></td>
 									<td>${training.available}</td>
-									<td colspan="3"><a href="mytrainings/edit/${training.id}"
+									<td colspan="3"><a href="/mytrainings/edit/${training.id}"
 										class="btn btn-warning btn-sm pull-right"><i
 											class="fa fa-edit"></i>Modifer</a></td>
 								</tr>
