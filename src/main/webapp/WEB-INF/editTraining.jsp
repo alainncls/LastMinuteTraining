@@ -5,7 +5,7 @@
 		<div class="panel-heading">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="panel-title">Ajouter une formation</h1>
+					<h1 class="panel-title">Modifier une formation</h1>
 				</div>
 			</div>
 		</div>
@@ -13,29 +13,29 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-4">
-					<form role="form" action="addTraining" method="POST">
+					<form role="form" action="editTraining" method="POST">
 						<div class="form-group">
 							<label for="name">Intitulé de la formation</label> <input
 								type="text" class="form-control" name="name" id="name"
-								placeholder="Intitulé de la fromation" />
+								placeholder="${training.name}" />
 						</div>
 						<div class="form-group">
 							<label for="price">Prix</label> <input type="number"
-								class="form-control" name="price" id="price" placeholder="Prix"
+								class="form-control" name="price" id="price" placeholder="${training.price}"
 								required="required" />
 						</div>
 						<div class="form-group">
 							<label for="price">Prix via LMT</label> <input type="number"
 								class="form-control" name="priceLMT" id="priceLMT"
-								placeholder="Prix LMT" required="required" />
+                                placeholder="${training.priceLMT}" required="required" />
 						</div>
 						<div class="form-group">
 							<label for="date.startDate">Début de la formation</label> <input
-								type="date" class="form-control" name="date.startDate" id="date.startDate" />
+								type="date" class="form-control" name="date.startDate" id="date.startDate" placeholder="${training.startDate}"/>
 						</div>
 						<div class="form-group">
 							<label for="date.endDate">Fin de la formation</label> <input type="date"
-								class="form-control" name="date.endDate" id="date.endDate" />
+								class="form-control" name="date.endDate" id="date.endDate" placeholder="${training.endDate}"/>
 						</div>
 						<div class="form-group">
 							<label for="level">Difficulté </label>
@@ -43,7 +43,7 @@
 						</div>
 						<div class="form-group">
 							<label for="description">Description</label> <input type="text"
-								class="form-control" name="description" id="description" />
+								class="form-control" name="description" id="description" placeholder="${training.description}"/>
 						</div>
 
 						<div class="actions">
