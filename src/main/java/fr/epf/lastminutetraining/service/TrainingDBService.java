@@ -24,8 +24,16 @@ public class TrainingDBService {
         return trainingDAO.findAllTrainings();
     }
 
-    public Training findTraining(String name) {
-        return trainingDAO.findTraining(name);
+    public Training findTraining(String id) {
+        return trainingDAO.findTraining(id);
+    }
+
+    public List<Training> searchTraining(String name) {
+        return trainingDAO.searchTraining(name);
+    }
+
+    public List<Training> searchTraining(Training training) {
+        return trainingDAO.searchTraining(training);
     }
 
     public void save(Training training) {

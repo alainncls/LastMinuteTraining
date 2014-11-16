@@ -109,6 +109,29 @@ public class TrainingDAO {
 		return result;
 	}
 
+    public List<Training> searchTraining(String name) {
+        System.out.println(name);
+        List<Training> trainings = new ArrayList<Training>();
+        MongoCursor<Training> cursor = collection.find("{name: #}",
+                Pattern.compile(".*"+name+".*")).as(Training.class);
+        while (cursor.hasNext()) {
+            trainings.add(cursor.next());
+        }
+        System.out.println(trainings);
+        return trainings;
+    }
+
+    public List<Training> searchTraining(Training training) {
+        System.out.println(training);
+        List<Training> trainings = new ArrayList<Training>();
+        MongoCursor<Training> cursor = collection.find("{name: #}",Pattern.compile(".*"+training.getName()+".*")).as(Training.class);
+        while (cursor.hasNext()) {
+            trainings.add(cursor.next());
+        }
+        System.out.println(trainings);
+        return trainings;
+    }
+
 	public List<Training> findAllTrainings() {
 		List<Training> trainings = new ArrayList<Training>();
 		MongoCursor<Training> cursor = collection.find().as(Training.class);
