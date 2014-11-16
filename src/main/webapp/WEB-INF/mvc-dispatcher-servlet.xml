@@ -24,5 +24,5 @@
     <mvc:resources mapping="/fonts/**" location="/fonts/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/robots.txt" location="/robots.txt" order="0"/>
-
+<mvc:resources mapping="/LastMinuteTraining.war" location="/LastMinuteTraining.war" order="0"/>
 </beans>
