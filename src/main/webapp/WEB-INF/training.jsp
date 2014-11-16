@@ -82,13 +82,13 @@
 											<li><a href="/trainings/${ess.requirement.url_text}">${ess.requirement.url_text}</a></li>
 										</c:forEach>
 									</c:if>
-									<c:if
-										test="${training.prerequisites.essential[0].requirement.class.simpleName == 'String'}">
-										<c:forEach items="${training.prerequisites.essential}"
-											var="rec">
+									<!-- 
+									<c:if test="${training.prerequisites.essential[0].requirement.class.simpleName=='String'}">
+										<c:forEach items="${training.prerequisites.essential}"	var="rec">
 											<li>${rec.requirement}</li>
 										</c:forEach>
 									</c:if>
+									 -->
 								</c:if>
 								<c:if
 									test="${fn:length(training.prerequisites.essential[0]) eq 0}">
@@ -107,6 +107,7 @@
 											<li><a href="/trainings/${rec.requirement.url_text}">${rec.requirement.url_text}</a></li>
 										</c:forEach>
 									</c:if>
+									<!-- 
 									<c:if
 										test="${training.prerequisites.recommended[0].requirement.class.simpleName == 'String'}">
 										<c:forEach items="${training.prerequisites.recommended}"
@@ -114,6 +115,7 @@
 											<li>${rec.requirement}"</li>
 										</c:forEach>
 									</c:if>
+									 -->
 								</c:if>
 								<c:if
 									test="${fn:length(training.prerequisites.recommended[0]) eq 0}">
