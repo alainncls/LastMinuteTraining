@@ -38,9 +38,4 @@ public class DashboardController {
             return new ModelAndView("home", params);
         }
     }
-
-    @RequestMapping(method = RequestMethod.GET, value = { "/mytrainings" })
-    protected ModelAndView mytrainings() {
-        return new ModelAndView("mytrainings", "trainings", service.findLastTraining());
-    }
 }

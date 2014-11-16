@@ -20,7 +20,7 @@ import fr.epf.lastminutetraining.service.TrainingDBService;
 import fr.epf.lastminutetraining.service.VendorDBService;
 
 @Controller
-public class myTrainingsController {
+public class MyTrainingsController {
 	@Autowired
 	private TrainingDBService service;
 	
