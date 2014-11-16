@@ -3,7 +3,14 @@
 
 <div class="row">
 	<div class="col-sm-12">
-		<input type="text" id="search" placeholder="Type to search">
+	<div class ="panel panel-primary">
+	<div class="panel-heading">
+				<h3 class="panel-title">Filtre de recherche</h3>
+			</div>
+			<div class="panel-body">
+		<input type="text" id="search" placeholder="Renseignez vos termes de recherche">
+			</div>
+	</div>
 					<a lass="btn btn-p	rimary" href="${page.url}/LastMinuteTraining/mytrainings/add">Ajouter une formation</a></li>
 		<div class="panel panel-primary">
 			<div class="panel-heading">Les prochaines formations</div>

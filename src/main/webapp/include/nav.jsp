@@ -47,19 +47,14 @@
 				<span class="fa fa-shopping-cart"></span> Mon Panier
 			</button>
 			<c:if test="${sessionScope.status!=null}">
-				<a class="btn btn-info navbar-btn navbar-right" href="${page.url}/LastMinuteTraining//myaccount">
+				<a class="btn btn-info navbar-btn navbar-right" href="${page.url}/LastMinuteTraining/myaccount">
 					<span class="fa fa-user"></span> Mon Compte
 				</a>
 			</c:if>
 			<c:if test="${sessionScope.status=='vendor'}">
-				<a class="btn btn-info navbar-btn navbar-right" href="${page.url}/LastMinuteTraining/mytrainings">
+				<a class="btn btn-success navbar-btn navbar-right" href="${page.url}/LastMinuteTraining/mytrainings">
 					<span class="fa fa-bars"></span> Mes Formations
 				</a>
-                <c:if test="${sessionScope.status=='vendor'}">
-                    <a class="btn btn-success navbar-btn navbar-right" href="mytrainings">
-                        <span class="fa fa-file-text"></span> Mes formations
-                    </a>
-                </c:if>
 			</c:if>
 		</div>
 		<!-- /.navbar-collapse -->
