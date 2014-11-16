@@ -28,7 +28,7 @@ public class MyAccountController {
 	protected ModelAndView show(HttpSession session) {
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());System.out.println(id);
 		
-		if (session.getAttribute("status").toString().equals("vendeur")){
+		if (session.getAttribute("status").toString().equals("vendor")){
 			return new ModelAndView("myaccount", "currentUser",
 				vservice.findVendor(id));
 		}

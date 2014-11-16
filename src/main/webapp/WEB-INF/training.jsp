@@ -12,6 +12,8 @@
 							${training.name}<span class="level level-${training.level}">${training.textLevel}</span>
 						</h2>
 						<dl>
+							<dt>Vendor:</dt>
+							<dd>${training.vendor.name}</dd>
 							<dt>Solution:</dt>
 							<dd>${training.solution}</dd>
 							<dt>Delivery Method:</dt>
@@ -44,10 +46,8 @@
 							<li><div>
 									<dt>Lieux:</dt>
 									<dd>${training.location}</dd>
-								</div>
-								<a href="404"
-										class="btn btn-warning btn-sm pull-right"><i
-											class="fa fa-shopping-cart"></i> Acheter</a></li>
+								</div> <a href="404" class="btn btn-warning btn-sm pull-right"><i
+									class="fa fa-shopping-cart"></i> Acheter</a></li>
 						</ul>
 					</div>
 				</div>
@@ -125,8 +125,8 @@
 						<div class="span6 col-md-6">
 							<h4>Cours basés sur les versions des logiciels</h4>
 							<ul class="sap">
-							<c:forEach items="${training.release}" var="release">
-								<li>${release}</li>
+								<c:forEach items="${training.release}" var="release">
+									<li>${release}</li>
 								</c:forEach>
 							</ul>
 						</div>
@@ -138,17 +138,17 @@
 									<c:if test="${fn:length(content.value) gt 0}">
 										<ul>
 											<c:forEach items="${content.value}" var="value">
-											<li>${value}</li>
-										</c:forEach>
+												<li>${value}</li>
+											</c:forEach>
 										</ul>
 									</c:if>
 								</c:forEach>
 							</ul>
 						</div>
-						<div class="span6 col-md-6">
+						<!-- <div class="span6 col-md-6">
 							<h4>Informations additionnelles</h4>
 						</div>
-
+ -->
 					</div>
 				</div>
 				<div class="jumbotron col-md-3">
@@ -158,8 +158,7 @@
 							<c:forEach items="${training.relatedCurricula}" var="related"
 								varStatus="loop">
 								<li><a href="${related}">
-									${training.academys[loop.index]}
-								</a></li>
+										${training.academys[loop.index]} </a></li>
 							</c:forEach>
 							</td>
 						</ul>
@@ -170,5 +169,26 @@
 		</div>
 	</div>
 </div>
+
+	<c:forEach items="${training.relatedCurricula}" var="related"
+								varStatus="loop">
+										<a href="#modal-${loop.index}" data-toggle="modal">${training.academys[loop.index]}</a>
+ <div class="modal fade" id="modal-${loop.index}" role="dialog">
+        <div class="modal-dialog">
+             <div class="modal-content">
+                  <div class="modal-header">
+                  ${training.academys[loop.index]} 
+                       <button id="closeModal" type="button" class="close" data- dismiss="modal" aria-hidden="true">x</button><br>
+                  </div>
+                  <div class=modal=body>
+                      <li><img src="${related}"/>
+										</li>
+                  </div>
+             </div>
+        </div>
+   </div>
+							</c:forEach>
+
+
 </div>
 <jsp:include page="/include/footer.jsp" />

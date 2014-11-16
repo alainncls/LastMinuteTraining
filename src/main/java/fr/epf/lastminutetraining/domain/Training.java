@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,7 +30,9 @@ public class Training {
 	// Categorie de la training (ERP, ...) -> références
 	private int category;
 	// Id vendeur
-	private ObjectId sellerId;
+	private String vendorId;
+	//Vendor
+	private Vendor vendor;
 	// Contact
 	private String contact;
 	// Résumé
@@ -37,9 +40,9 @@ public class Training {
 	// Titre
 	private String name;
 	// Langue
-	private String language;
+	private List<String> language;
 	// Solution
-	private String solution;
+	private List<String> solution;
 	// Date début
 	private String startDate;
 	// Date de fin
@@ -141,14 +144,6 @@ public class Training {
 
 	public void setCategory(int category) {
 		this.category = category;
-	}
-
-	public ObjectId getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(ObjectId sellerId) {
-		this.sellerId = sellerId;
 	}
 
 	public String getContact() {
@@ -303,7 +298,7 @@ public class Training {
 				+ location + ", trainingType=" + method
 				+ ", available=" + available + ", certification="
 				+ certification + ", category=" + category + ", sellerId="
-				+ sellerId + ", contact=" + contact + ", summary=" + summary
+				+ vendor + ", contact=" + contact + ", summary=" + summary
 				+ ", name=" + name + ", startDate=" + startDate + ", endDate="
 				+ endDate + ", level=" + level + ", price=" + price
 				+ ", priceLMT=" + priceLMT + ", description=" + description
@@ -340,19 +335,19 @@ public class Training {
 		return true;
 	}
 
-	public String getSolution() {
+	public List<String> getSolution() {
 		return solution;
 	}
 
-	public void setSolution(String solution) {
+	public void setSolution(List<String> solution) {
 		this.solution = solution;
 	}
 
-	public String getLanguage() {
+	public List<String> getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(String language) {
+	public void setLanguage(List<String> language) {
 		this.language = language;
 	}
 
@@ -442,6 +437,24 @@ public class Training {
 	}
 
 
+	public Vendor getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(Vendor vendor) {
+		this.vendor = vendor;
+	}
+
+
+	public String getVendorId() {
+		return vendorId;
+	}
+
+	public void setVendorId(String vendorId) {
+		this.vendorId = vendorId;
+	}
+
+
 	public static class Builder {
 
 		private Training training;
@@ -518,11 +531,6 @@ public class Training {
 
 		public Builder category(int category) {
 			training.category = category;
-			return this;
-		}
-
-		public Builder sellerId(ObjectId sellerId) {
-			training.sellerId = sellerId;
 			return this;
 		}
 

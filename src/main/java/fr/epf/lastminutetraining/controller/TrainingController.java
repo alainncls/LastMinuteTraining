@@ -29,9 +29,7 @@ public class TrainingController {
 		return new ModelAndView("listTrainings", "trainings", service.findAllTrainings());
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/add")
-	protected void createTraining(@ModelAttribute("training")Training training){
-	}
+
 	@RequestMapping(value="/{code}")
 	@ResponseBody
 	protected ModelAndView training(@PathVariable("code") String code){
