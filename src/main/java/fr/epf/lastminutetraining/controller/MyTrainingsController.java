@@ -4,18 +4,18 @@ import javax.servlet.http.HttpSession;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.epf.lastminutetraining.domain.Client;
+import fr.epf.lastminutetraining.domain.Mail;
 import fr.epf.lastminutetraining.domain.Training;
 import fr.epf.lastminutetraining.domain.Vendor;
-import fr.epf.lastminutetraining.service.ClientDBService;
 import fr.epf.lastminutetraining.service.TrainingDBService;
 import fr.epf.lastminutetraining.service.VendorDBService;
 
@@ -23,9 +23,12 @@ import fr.epf.lastminutetraining.service.VendorDBService;
 public class MyTrainingsController {
 	@Autowired
 	private TrainingDBService service;
+	@Autowired
+	private VendorDBService vservice;
 	
 	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings"})
 	protected ModelAndView home() {
+		//A modifier par l'id du vendeur
 		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
 		return new ModelAndView("myTrainings", "trainings", service.findAllTrainings(id));
 	}
@@ -35,7 +38,26 @@ public class MyTrainingsController {
 		return new ModelAndView("training", "training", service.findTraining(code));
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "mytrainings/add")
-	protected void createTraining(@ModelAttribute("training")Training training){
+	protected ModelAndView createTraining(HttpSession session, @ModelAttribute("training")Training training){
+		
+		//sauvegarde de la formation
+		service.save(training);
+		
+		//Envoi d'un mail de confirmation de création de formation
+		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
+		ObjectId idVendor = new ObjectId(session.getAttribute("id").toString());
+   	 	Vendor vendor = vservice.findVendor(idVendor);
+		
+    	Mail mm = (Mail) context.getBean("Mail");
+        mm.sendMail("lastminutetraining.epf@gmail.com",
+     		   vendor.getMail(),
+     		   "Confirmation de création de compte Last Minute Training", 
+     		   "Cher vendeur,\n\n"
+     		   + "Vous venez de créer une nouvelle formation nommée "+training.getName()+"."
+     		   + " Merci de votre contribution à notre catalogue.\n\nCordialement,\n\n"
+     		   + "L'équipe Last Minute Training");
+        
+        return new ModelAndView("addTraining");
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "mytrainings/add")
 	protected ModelAndView addTraining(){
