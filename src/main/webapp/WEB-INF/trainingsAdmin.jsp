@@ -32,7 +32,7 @@
 									<%-- <td colspan="8" class="trainingName"><a
 										href="404?id=${training.id}">${training.name}</a></td> --%>
 									<td colspan="8" class="trainingName"><a
-										href="/LastMinuteTraining/trainings/${training.id}" target="_blank">${training.name}</a></td>
+										href="/trainings/${training.id}" target="_blank">${training.name}</a></td>
 									<td class="td-chevron"><i
 										class="fa fa-chevron-down chevron-toggle pull-right"
 										data-toggle="collapse" href="#col${loop.index}"></i></td>
@@ -51,8 +51,8 @@
 										</c:forEach></td>
 									<td>${training.available}</td>
 									<td colspan="3">
-                                        <a href="/LastMinuteTraining/admin/editTraining/${training.id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
-                                        <a href="/LastMinuteTraining/admin/deleteTraining/${training.id}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                                        <a href="/admin/editTraining/${training.id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
+                                        <a href="/admin/deleteTraining/${training.id}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
 								</tr>
 							</c:forEach>
 						</c:if>
