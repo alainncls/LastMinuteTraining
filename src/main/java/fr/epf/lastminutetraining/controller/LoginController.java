@@ -69,7 +69,7 @@ public class LoginController {
 			@RequestParam(value = "status") String status) {
 		//Cr�ation du compte
 		User user;
-		if(status=="vendor"){
+		if(status.equals("vendor")){
 			user = new Vendor();
 		}else{
 			user = new Client();
@@ -77,13 +77,19 @@ public class LoginController {
 		user.setMail(mail);
 		user.setLogin(login);
 		user.setPassword(password);
-		if(status=="vendor"){
+		if(status.equals("vendor")){
 			vservice.save((Vendor)user);
 		}else{
 			cservice.save((Client)user);
 		}
 		
-		
+		String typeOfUser = "";
+		if (status.equals("vendor")){
+			typeOfUser = "vendeur";
+		}
+		else{
+			typeOfUser = "client";
+		}
 		//Envoi d'un mail de confirmation
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
    	 
@@ -91,7 +97,7 @@ public class LoginController {
         mm.sendMail("lastminutetraining.epf@gmail.com",
      		   mail,
      		   "Confirmation de cr�ation de compte Last Minute Training", 
-     		   "Cher vendeur,\n"
+     		   "Cher "+typeOfUser+",\n"
      		   + "Vous venez de cr�er un compte sur notre site Last Minute Training. "
      		   + "Pour compl�ter votre compte, veuillez utiliser votre interface � mon compte � disponible"
      		   + " � l�adresse suivante : http://lastminutetraining.epf.fr/myaccount\n\n"
