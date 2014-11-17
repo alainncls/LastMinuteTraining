@@ -13,7 +13,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-4">
-					<form role="form" action="addTraining" method="POST">
+					<form role="form" action="add" method="POST">
 						<div class="form-group">
 							<label for="name">Intitulé de la formation</label> <input
 								type="text" class="form-control" name="name" id="name"

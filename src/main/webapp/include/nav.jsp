@@ -42,10 +42,12 @@
 					</a>
 				</c:otherwise>
 			</c:choose>
-			<button type="button" class="btn btn-warning navbar-btn navbar-right"
-				data-toggle="modal" data-target="#cartModal">
-				<span class="fa fa-shopping-cart"></span> Mon Panier
-			</button>
+			<c:if test="${sessionScope.status=='client'}">
+				<button type="button" class="btn btn-warning navbar-btn navbar-right"
+					data-toggle="modal" data-target="#cartModal">
+					<span class="fa fa-shopping-cart"></span> Mon Panier
+				</button>
+			</c:if>
 			<c:if test="${sessionScope.status!=null}">
 				<a class="btn btn-info navbar-btn navbar-right" href="${page.url}/myaccount">
 					<span class="fa fa-user"></span> Mon Compte

@@ -26,7 +26,7 @@ public class MyAccountController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/myaccount")
 	protected ModelAndView show(HttpSession session) {
-		ObjectId id = new ObjectId(session.getAttribute("id").toString());System.out.println(id);
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());
 		
 		if (session.getAttribute("status").toString().equals("vendor")){
 			return new ModelAndView("myaccount", "currentUser",
