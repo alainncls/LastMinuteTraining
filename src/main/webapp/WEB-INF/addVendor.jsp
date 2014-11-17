@@ -80,6 +80,28 @@
 								name="sub" id="subN" value="Non" checked="checked">Non
 							</label>
 						</div>
+						<div class="form-group">
+							<label for="login">Login</label> <input type="text"
+								class="form-control" name="login" id="login"
+								placeholder="Nom d'utilisateur" />
+						</div>
+						<div class="form-group">
+								<label for="inputPasswordNew" class="control-label">
+								Mot de passe:</label><br>
+									<input type="password" class="form-control"
+										id="inputPasswordNew" name="password" />
+							</div>
+							
+							<div class="form-group">
+								<label for="inputPasswordSecondNew"
+									class=" control-label">Entrer de nouveau le mot de passe:</label>
+
+								<div>
+									<input type="password" class="form-control"
+										id="inputPasswordSecondNew" name="passwordSecond" />
+
+								</div>
+							</div>
 						<div class="actions">
 							<button type="submit" class="btn btn-success">Envoyer</button>
 							<a href="home" class="btn btn-danger">Annuler</a>

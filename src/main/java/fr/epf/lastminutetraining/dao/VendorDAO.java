@@ -14,13 +14,12 @@ import org.springframework.stereotype.Repository;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
-
+import fr.epf.lastminutetraining.domain.Vendor;
 import fr.epf.lastminutetraining.domain.User;
 import fr.epf.lastminutetraining.domain.Vendor;
 
 @Repository
 public class VendorDAO {
-
 	public static final String DBNAME = "LMT";
 	public static final String DBCOLLECTION = "vendors";
 	public static final String MONGOHOST = "localhost";

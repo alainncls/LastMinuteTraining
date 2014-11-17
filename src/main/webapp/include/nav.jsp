@@ -9,7 +9,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="home">Accueil</a>
+			<a class="navbar-brand" href="${page.url}/home">Accueil</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,15 +17,15 @@
 			<!-- Menu -->
 			<ul class="nav navbar-nav">
 				<!-- liste des liens en fonction des droits d'accï¿½s -->
-				<li><a href="404">Base documentaire</a></li>
-				<li><a href="work">Webinars</a></li>
-				<li><a href="work">A propos</a></li>
-				<li><a href="work">CGV</a></li>
-
+				<li><a href="${page.url}/404">Base documentaire</a></li>
+				<li><a href="${page.url}/work">Webinars</a></li>
+				<li><a href="${page.url}/work">A propos</a></li>
+				<li><a href="${page.url}/work">CGV</a>${sessionScope.status}</li>
+<!-- 
 				<c:if test="${sessionScope.status=='vendor'}">
-					<li><a href="addTraining">Ajouter une formation</a></li>
+					<li><a href="${page.url}/addTraining">Ajouter une formation</a></li>
 				</c:if>
-
+ -->
 
 			</ul>
 			<c:choose>
@@ -37,7 +37,7 @@
 					</button>
 				</c:when>
 				<c:otherwise>
-					<a class="btn btn-danger navbar-btn navbar-right" href="logout">
+					<a class="btn btn-danger navbar-btn navbar-right" href="${page.url}/logout">
 						<span class="fa fa-sign-out"></span> Déconnexion
 					</a>
 				</c:otherwise>
@@ -47,8 +47,13 @@
 				<span class="fa fa-shopping-cart"></span> Mon Panier
 			</button>
 			<c:if test="${sessionScope.status!=null}">
-				<a class="btn btn-info navbar-btn navbar-right" href="myaccount">
-					<span class="fa fa-user"></span> Mon compte
+				<a class="btn btn-info navbar-btn navbar-right" href="${page.url}/myaccount">
+					<span class="fa fa-user"></span> Mon Compte
+				</a>
+			</c:if>
+			<c:if test="${sessionScope.status=='vendor'}">
+				<a class="btn btn-success navbar-btn navbar-right" href="${page.url}/mytrainings">
+					<span class="fa fa-bars"></span> Mes Formations
 				</a>
 			</c:if>
 		</div>
@@ -153,7 +158,8 @@
 							</div>
 							<!-- Password input-->
 							<div class="form-group">
-								<label for="inputPasswordNew" class="col-sm-4 control-label">Mot de passe:</label>
+								<label for="inputPasswordNew" class="col-sm-4 control-label">Mot
+									de passe:</label>
 
 								<div class="col-sm-8">
 									<input type="password" class="form-control"
@@ -162,7 +168,8 @@
 							</div>
 							<div class="form-group">
 								<label for="inputPasswordSecondNew"
-									class="col-sm-4 control-label">Entrer de nouveau le mot de passe:</label>
+									class="col-sm-4 control-label">Entrer de nouveau le mot
+									de passe:</label>
 
 								<div class="col-sm-8">
 									<input type="password" class="form-control"
@@ -213,7 +220,7 @@
 				Article 1<br> Article 2<br> Article 3<br>
 			</div>
 			<div class="modal-footer">
-				<a href="404" class="btn btn-warning btn-sm">Passer ma commande
+				<a href="${page.url}/404" class="btn btn-warning btn-sm">Passer ma commande
 					<span class="fa fa-arrow-circle-right"></span>
 				</a>
 			</div>

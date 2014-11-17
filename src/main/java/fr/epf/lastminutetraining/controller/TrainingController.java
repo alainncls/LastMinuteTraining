@@ -19,6 +19,8 @@ public class TrainingController {
 	@Autowired
 	private TrainingDBService service;
 
+
+
 	@RequestMapping(method = RequestMethod.GET, value = "/add")
 	protected ModelAndView addTraining(){
 		return new ModelAndView("addTraining");
@@ -29,9 +31,7 @@ public class TrainingController {
 		return new ModelAndView("listTrainings", "trainings", service.findAllTrainings());
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/add")
-	protected void createTraining(@ModelAttribute("training")Training training){
-	}
+
 	@RequestMapping(value="/{code}")
 	@ResponseBody
 	protected ModelAndView training(@PathVariable("code") String code){

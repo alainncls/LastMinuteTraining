@@ -22,6 +22,9 @@ public abstract class User {
 	protected String bank;
 	protected String cardNumber;
 	protected String expirationDate;
+	protected String url;
+
+
 
 	public ObjectId getId() {
 		return id;
@@ -130,7 +133,14 @@ public abstract class User {
 	}
 
 	public abstract String getStatus();
+	
+	public String getUrl() {
+		return url;
+	}
 
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	protected static final String SALT = "Ahf54zdF";
 
 	public static String encrypt(String x) {
