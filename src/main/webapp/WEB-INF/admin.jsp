@@ -4,12 +4,7 @@
 	<div class="col-sm-6">
 		<div class="fakejumbo color-blue marginright">
 			<h1>Utilisateurs</h1>
-			<p>
-				Des tonnes de
-				<del>pigeons</del>
-				<ins>clients</ins>
-				à gérer !
-			</p>
+			<p>Gestion des clients</p>
 			<p>
 				<a class="btn btn-primary btn-sm" role="button">Gestion des
 					utilisateurs</a>
