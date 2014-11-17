@@ -67,7 +67,7 @@ public class LoginController {
 			@RequestParam(value = "login") String login,
 			@RequestParam(value = "password") String password,
 			@RequestParam(value = "status") String status) {
-		//Création du compte
+		//Crï¿½ation du compte
 		User user;
 		if(status=="vendor"){
 			user = new Vendor();
@@ -90,10 +90,12 @@ public class LoginController {
     	Mail mm = (Mail) context.getBean("Mail");
         mm.sendMail("lastminutetraining.epf@gmail.com",
      		   mail,
-     		   "Confirmation de création de compte Last Minute Training", 
+     		   "Confirmation de crï¿½ation de compte Last Minute Training", 
      		   "Cher vendeur,\n"
-     		   + "Vous venez de créer un compte sur notre site Last Minute Training. Pour compléter votre compte, veuillez suivre le lien suivant :...\n\n"
-     		   + "Cordialement,\n\nL'équipe Last Minute Training");
+     		   + "Vous venez de crï¿½er un compte sur notre site Last Minute Training. "
+     		   + "Pour complï¿½ter votre compte, veuillez utiliser votre interface ï¿½ mon compte ï¿½ disponible"
+     		   + " ï¿½ lï¿½adresse suivante : http://lastminutetraining.epf.fr/myaccount\n\n"
+     		   + "Cordialement,\n\nL'ï¿½quipe Last Minute Training");
         
 		return new ModelAndView(home, trainings, tservice.findLastTraining());
 	}

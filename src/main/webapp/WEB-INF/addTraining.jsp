@@ -25,24 +25,24 @@
 								required="required" />
 						</div>
 						<div class="form-group">
-							<label for="priceLMT">Prix via LMT</label> <input type="number"
+							<label for="price">Prix via LMT</label> <input type="number"
 								class="form-control" name="priceLMT" id="priceLMT"
 								placeholder="Prix LMT" required="required" />
 						</div>
 						<div class="form-group">
-							<label for="name">Début de la formation</label> <input
-								type="date" class="form-control" name="startDate" id="startDate" />
+							<label for="date.startDate">Début de la formation</label> <input
+								type="date" class="form-control" name="date.startDate" id="date.startDate" />
 						</div>
 						<div class="form-group">
-							<label for="name">Fin de la formation</label> <input type="date"
-								class="form-control" name="endDate" id="endDate" />
+							<label for="date.endDate">Fin de la formation</label> <input type="date"
+								class="form-control" name="date.endDate" id="date.endDate" />
 						</div>
 						<div class="form-group">
-							<label for="difficulty">Difficulté </label>
-							<div class="ratingstars"></div>
+							<label for="level">Difficulté </label>
+							<div class="ratingstars" name="level" id="level"></div>
 						</div>
 						<div class="form-group">
-							<label for="name">Description</label> <input type="text"
+							<label for="description">Description</label> <input type="text"
 								class="form-control" name="description" id="description" />
 						</div>
 
