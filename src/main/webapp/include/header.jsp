@@ -11,14 +11,14 @@
 <link rel="stylesheet" type="text/css" href="/LastMinuteTraining/css/jasny-bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/LastMinuteTraining/css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="/LastMinuteTraining/css/main.css" />
-<link rel="stylesheet" type="text/css" href='/LastMinuteTraining/css/fullcalendar.css' />
+<link rel="stylesheet" type="text/css" href="/LastMinuteTraining/css/fullcalendar.css" />
 <link rel="stylesheet" type="text/css" href="/LastMinuteTraining/css/chosen.min.css" />
 <link rel="stylesheet" media="screen" href="/LastMinuteTraining/css/font-awesome.css" />
 <link rel="stylesheet" media="screen" href="/LastMinuteTraining/css/jquery.raty.css" />
 
 <script src="/LastMinuteTraining/js/jquery-2.1.1.min.js"></script>
-<script src='/LastMinuteTraining/js/moment.min.js'></script>
-<script src='/LastMinuteTraining/js/fullcalendar.min.js'></script>
+<script src="/LastMinuteTraining/js/moment.min.js"></script>
+<script src="/LastMinuteTraining/js/fullcalendar.min.js"></script>
 <script src="/LastMinuteTraining/js/lang/fr.js"></script>
 <script src="/LastMinuteTraining/js/chosen.min.js"></script>
 <script src="/LastMinuteTraining/js/bootstrap.min.js"></script>
