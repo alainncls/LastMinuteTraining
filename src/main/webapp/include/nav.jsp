@@ -9,7 +9,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${page.url}/LastMinuteTraining/home">Accueil</a>
+			<a class="navbar-brand" href="${page.url}/home">Accueil</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,10 +17,10 @@
 			<!-- Menu -->
 			<ul class="nav navbar-nav">
 				<!-- liste des liens en fonction des droits d'accï¿½s -->
-				<li><a href="${page.url}/LastMinuteTraining/404">Base documentaire</a></li>
-				<li><a href="${page.url}/LastMinuteTraining/work">Webinars</a></li>
-				<li><a href="${page.url}/LastMinuteTraining/work">A propos</a></li>
-				<li><a href="${page.url}/LastMinuteTraining/work">CGV</a>${sessionScope.status}</li>
+				<li><a href="${page.url}/404">Base documentaire</a></li>
+				<li><a href="${page.url}/work">Webinars</a></li>
+				<li><a href="${page.url}/work">A propos</a></li>
+				<li><a href="${page.url}/work">CGV</a>${sessionScope.status}</li>
 <!-- 
 				<c:if test="${sessionScope.status=='vendor'}">
 					<li><a href="${page.url}/addTraining">Ajouter une formation</a></li>
@@ -37,7 +37,7 @@
 					</button>
 				</c:when>
 				<c:otherwise>
-					<a class="btn btn-danger navbar-btn navbar-right" href="${page.url}/LastMinuteTraining/logout">
+					<a class="btn btn-danger navbar-btn navbar-right" href="${page.url}/logout">
 						<span class="fa fa-sign-out"></span> Déconnexion
 					</a>
 				</c:otherwise>
@@ -47,12 +47,12 @@
 				<span class="fa fa-shopping-cart"></span> Mon Panier
 			</button>
 			<c:if test="${sessionScope.status!=null}">
-				<a class="btn btn-info navbar-btn navbar-right" href="${page.url}/LastMinuteTraining/myaccount">
+				<a class="btn btn-info navbar-btn navbar-right" href="${page.url}/myaccount">
 					<span class="fa fa-user"></span> Mon Compte
 				</a>
 			</c:if>
 			<c:if test="${sessionScope.status=='vendor'}">
-				<a class="btn btn-success navbar-btn navbar-right" href="${page.url}/LastMinuteTraining/mytrainings">
+				<a class="btn btn-success navbar-btn navbar-right" href="${page.url}/mytrainings">
 					<span class="fa fa-bars"></span> Mes Formations
 				</a>
 			</c:if>
@@ -220,7 +220,7 @@
 				Article 1<br> Article 2<br> Article 3<br>
 			</div>
 			<div class="modal-footer">
-				<a href="${page.url}/LastMinuteTraining/404" class="btn btn-warning btn-sm">Passer ma commande
+				<a href="${page.url}/404" class="btn btn-warning btn-sm">Passer ma commande
 					<span class="fa fa-arrow-circle-right"></span>
 				</a>
 			</div>
