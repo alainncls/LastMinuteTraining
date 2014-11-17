@@ -82,13 +82,13 @@
 											<li><a href="/trainings/${ess.requirement.url_text}">${ess.requirement.url_text}</a></li>
 										</c:forEach>
 									</c:if>
-									<!-- 
-									<c:if test="${training.prerequisites.essential[0].requirement.class.simpleName=='String'}">
-										<c:forEach items="${training.prerequisites.essential}"	var="rec">
+									<c:if
+										test="${training.prerequisites.essential[0].requirement.class.simpleName eq 'String'}">
+										<c:forEach items="${training.prerequisites.essential}"
+											var="rec">
 											<li>${rec.requirement}</li>
 										</c:forEach>
 									</c:if>
-									 -->
 								</c:if>
 								<c:if
 									test="${fn:length(training.prerequisites.essential[0]) eq 0}">
@@ -107,15 +107,13 @@
 											<li><a href="/trainings/${rec.requirement.url_text}">${rec.requirement.url_text}</a></li>
 										</c:forEach>
 									</c:if>
-									<!-- 
 									<c:if
-										test="${training.prerequisites.recommended[0].requirement.class.simpleName == 'String'}">
+										test="${training.prerequisites.recommended[0].requirement.class.simpleName eq 'String'}">
 										<c:forEach items="${training.prerequisites.recommended}"
 											var="rec">
 											<li>${rec.requirement}"</li>
 										</c:forEach>
 									</c:if>
-									 -->
 								</c:if>
 								<c:if
 									test="${fn:length(training.prerequisites.recommended[0]) eq 0}">
@@ -159,8 +157,22 @@
 						<ul class="sap">
 							<c:forEach items="${training.relatedCurricula}" var="related"
 								varStatus="loop">
-								<li><a href="${related}">
-										${training.academys[loop.index]} </a></li>
+								<a href="#modal-${loop.index}" data-toggle="modal">${training.academys[loop.index]}</a>
+								<div class="modal fade" id="modal-${loop.index}" role="dialog">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												${training.academys[loop.index]}
+												<button id="closeModal" type="button" class="close" data-
+													dismiss="modal" aria-hidden="true">x</button>
+												<br>
+											</div>
+											<div class=modal=body>
+												<li><img src="${related}" /></li>
+											</div>
+										</div>
+									</div>
+								</div>
 							</c:forEach>
 							</td>
 						</ul>
@@ -172,24 +184,7 @@
 	</div>
 </div>
 
-	<c:forEach items="${training.relatedCurricula}" var="related"
-								varStatus="loop">
-										<a href="#modal-${loop.index}" data-toggle="modal">${training.academys[loop.index]}</a>
- <div class="modal fade" id="modal-${loop.index}" role="dialog">
-        <div class="modal-dialog">
-             <div class="modal-content">
-                  <div class="modal-header">
-                  ${training.academys[loop.index]} 
-                       <button id="closeModal" type="button" class="close" data- dismiss="modal" aria-hidden="true">x</button><br>
-                  </div>
-                  <div class=modal=body>
-                      <li><img src="${related}"/>
-										</li>
-                  </div>
-             </div>
-        </div>
-   </div>
-							</c:forEach>
+
 
 
 </div>
