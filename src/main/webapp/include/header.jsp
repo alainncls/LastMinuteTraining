@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/css/jasny-bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="/css/main.css" />
-<link rel="stylesheet" type="text/css" href='/css/fullcalendar.css' />
+<link rel="stylesheet" type="text/css" href="/css/fullcalendar.css" />
 <link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
 <link rel="stylesheet" media="screen" href="/css/font-awesome.css" />
 <link rel="stylesheet" media="screen" href="/css/jquery.raty.css" />
