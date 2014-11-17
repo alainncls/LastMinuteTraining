@@ -14,7 +14,6 @@
 		</div>
 		<a class="btn btn-primary fa fa-plus" style="margin-bottom: 10px"
 			href="/mytrainings/add">Ajouter une formation</a>
-		</li>
 		<div class="panel panel-primary">
 			<div class="panel-heading">Les prochaines formations</div>
 			<div class="table-responsive">
