@@ -3,15 +3,18 @@
 
 <div class="row">
 	<div class="col-sm-12">
-	<div class ="panel panel-primary">
-	<div class="panel-heading">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
 				<h3 class="panel-title">Filtre de recherche</h3>
 			</div>
 			<div class="panel-body">
-		<input type="text" id="search" placeholder="Renseignez vos termes de recherche">
+				<input type="text" id="search"
+					placeholder="Renseignez vos termes de recherche">
 			</div>
-	</div>
-					<a class="btn btn-primary fa fa-plus" style="margin-bottom:10px" href="/mytrainings/add">Ajouter une formation</a></li>
+		</div>
+		<a class="btn btn-primary fa fa-plus" style="margin-bottom: 10px"
+			href="/mytrainings/add">Ajouter une formation</a>
+		</li>
 		<div class="panel panel-primary">
 			<div class="panel-heading">Les prochaines formations</div>
 			<div class="table-responsive">
@@ -36,8 +39,7 @@
 									<%-- <td colspan="8" class="trainingName"><a
 										href="404?id=${training.id}">${training.name}</a></td> --%>
 									<td colspan="8" class="trainingName"><a
-										href="/trainings/${training.id}"
-										target="_blank">${training.name}</a></td>
+										href="/trainings/${training.id}" target="_blank">${training.name}</a></td>
 									<td class="td-chevron"><i
 										class="fa fa-chevron-down chevron-toggle pull-right"
 										data-toggle="collapse" href="#col${loop.index}"></i></td>
