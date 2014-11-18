@@ -7,7 +7,8 @@
 <title>LastMinuteTraining</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="google-site-verification" content="42P-VGwCiT29W4i-TUK4NWnbQq2zlra4DsDA28iBVoI" />
+    
 <link rel="stylesheet" type="text/css" href="/css/flatly.bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/jasny-bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
