@@ -53,6 +53,7 @@ public class LoginController {
 			session.setAttribute("status", user.getStatus());
 			session.setAttribute("login", user.getLogin());
 			session.setAttribute("id", user.getId());
+			session.setAttribute("validated", user.getActivated());
 			return new ModelAndView(home, trainings,
 					tservice.findLastTraining());
 		} else {
