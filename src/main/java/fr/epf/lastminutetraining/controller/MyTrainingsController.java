@@ -30,11 +30,13 @@ public class MyTrainingsController {
 	protected ModelAndView home() {
 		//A modifier par l'id du vendeur
 		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
+		//ObjectId id = new ObjectId(session.getAttribute("id").toString());
 		return new ModelAndView("myTrainings", "trainings", service.findAllTrainings(id));
 	}
 	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings/edit/{code}" })
 	protected ModelAndView home(@PathVariable("code") String code) {
 		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
+		//ObjectId id = new ObjectId(session.getAttribute("id").toString());
 		return new ModelAndView("training", "training", service.findTraining(code));
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "mytrainings/add")
@@ -60,8 +62,16 @@ public class MyTrainingsController {
         return new ModelAndView("addTraining");
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "mytrainings/add")
-	protected ModelAndView addTraining(){
-		return new ModelAndView("addTraining");
+	protected ModelAndView addTraining(HttpSession session){
+		if(session.getAttribute("validated").toString().equals("true")){
+			return new ModelAndView("addTraining");
+		}
+		else{
+			ObjectId id = new ObjectId("54668afc44ae11795d109a61");
+			//ObjectId id = new ObjectId(session.getAttribute("id").toString());
+			return new ModelAndView("myTrainings", "trainings", service.findAllTrainings(id));
+		}
+		
 	}
 
 }
