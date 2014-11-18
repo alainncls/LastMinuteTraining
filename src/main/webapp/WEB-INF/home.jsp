@@ -1,6 +1,5 @@
 <jsp:include page="/include/header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<meta name="google-site-verification" content="42P-VGwCiT29W4i-TUK4NWnbQq2zlra4DsDA28iBVoI" />
 
 <div class="row">
 	<div class="col-sm-12">
