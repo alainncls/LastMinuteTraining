@@ -52,14 +52,6 @@ public class Vendor extends User {
 		this.sub = sub;
 	}
 
-	public String getCP() {
-		return cp;
-	}
-
-	public void setCP(String cp) {
-		this.cp = cp;
-	}
-
 	public String getIban() {
 		return iban;
 	}

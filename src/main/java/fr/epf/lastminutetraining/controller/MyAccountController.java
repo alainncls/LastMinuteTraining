@@ -44,21 +44,34 @@ public class MyAccountController {
 	@RequestMapping(method = RequestMethod.POST, value = "/myaccount")
 	protected ModelAndView updateAccount(HttpSession session,
 			@ModelAttribute("vendor") Vendor vendor,
-			@RequestParam("firstName") String firstName,
-			@RequestParam("lastName") String lastName,
-			@RequestParam("address") String address,
-			@RequestParam("town") String town,
-			@RequestParam("cp") String cp,
-			@RequestParam("mail") String mail,
-			@RequestParam("phone") String phone,
-			@RequestParam("bank") String bank,
-			@RequestParam("cardNumber") String cardNumber,
-			@RequestParam("expirationDate") String expirationDate){
+			@RequestParam(required=false) String firstName,
+			@RequestParam(required=false) String lastName,
+			@RequestParam(required=false) String address,
+			@RequestParam(required=false) String town,
+			@RequestParam(required=false) String cp,
+			@RequestParam(required=false) String mail,
+			@RequestParam(required=false) String phone,
+			@RequestParam(required=false) String bank,
+			@RequestParam(required=false) String cardNumber,
+			@RequestParam(required=false) String expirationDate){
 
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());
 		
-		if (session.getAttribute("status").toString().equals("vendeur")){
+		if (session.getAttribute("status").toString().equals("vendor")){
 			vendor.setId(id);
+			
+			if ((vendor.getName()=="")||(vendor.getSub()=="")||(vendor.getIban()=="")||
+				(vendor.getAddress()=="")||(vendor.getCp()=="")||(vendor.getTown()=="")||
+				(vendor.getMail()=="")||(vendor.getPhone()=="")){
+				
+				vendor.setActivated(false);
+				session.setAttribute("validated", "false");
+			}
+			else{
+				vendor.setActivated(true);
+				session.setAttribute("validated", "true");
+			}
+			
 			vservice.update(vendor);
 			return new ModelAndView("myaccount", "currentUser", vendor);
 		}
