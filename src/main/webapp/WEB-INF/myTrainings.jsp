@@ -12,8 +12,15 @@
 					placeholder="Renseignez vos termes de recherche">
 			</div>
 		</div>
-		<a class="btn btn-primary fa fa-plus" style="margin-bottom: 10px"
-			href="/mytrainings/add">Ajouter une formation</a>
+		<c:if test="${sessionScope.validated=='true'}">
+			<a class="btn btn-primary fa fa-plus" style="margin-bottom: 10px"
+			href="/mytrainings/add"> Ajouter une formation</a>
+		</c:if>
+		<c:if test="${sessionScope.validated=='false'}">
+			<a class="btn btn-danger fa fa-exclamation-circle" style="margin-bottom: 10px"
+			href="/myaccount"><b> Votre compte n'est pas activé, cliquez pour compléter vos informations</b></a>
+		</c:if>
+		
 		<div class="panel panel-primary">
 			<div class="panel-heading">Les prochaines formations</div>
 			<div class="table-responsive">
