@@ -78,8 +78,10 @@ public class LoginController {
 		user.setLogin(login);
 		user.setPassword(password);
 		if(status.equals("vendor")){
+			user.setActivated(false);
 			vservice.save((Vendor)user);
 		}else{
+			user.setActivated(true);
 			cservice.save((Client)user);
 		}
 		
