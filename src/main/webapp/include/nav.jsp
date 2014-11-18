@@ -42,7 +42,7 @@
 					</a>
 				</c:otherwise>
 			</c:choose>
-			<c:if test="${sessionScope.status=='client'}">
+			<c:if test="${sessionScope.status!='vendor'}">
 				<button type="button" class="btn btn-warning navbar-btn navbar-right"
 					data-toggle="modal" data-target="#cartModal">
 					<span class="fa fa-shopping-cart"></span> Mon Panier

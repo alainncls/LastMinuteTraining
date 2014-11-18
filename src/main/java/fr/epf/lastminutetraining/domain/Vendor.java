@@ -67,16 +67,11 @@ public class Vendor extends User {
 	public void setIban(String iban) {
 		this.iban = iban;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Vendor [name=" + name + ", avatar=" + avatar + ", margin="
-				+ margin + ", sub=" + sub + ", iban=" + iban + ", id=" + id
-				+ ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", address=" + address + ", town=" + town + ", cp=" + cp
-				+ ", mail=" + mail + ", phone=" + phone + ", login=" + login
-				+ ", password=" + password + ", bank=" + bank + ", cardNumber="
-				+ cardNumber + ", expirationDate=" + expirationDate + "]";
+				+ margin + ", sub=" + sub + ", iban=" + iban + "]";
 	}
 
 	@Override
