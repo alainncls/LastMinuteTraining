@@ -153,7 +153,7 @@
 				</c:if>
 				<c:if test="${sessionScope.status=='vendor'}">
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-7">
 							<div class="form-group">
 								<label for="iban">Mon n° IBAN</label> <input
 									type="text" class="form-control" id="iban" name="iban"
