@@ -64,7 +64,7 @@ class VendorBuilderBase<GeneratorT extends VendorBuilderBase<GeneratorT>> {
 
 	@SuppressWarnings("unchecked")
 	public GeneratorT cP(String aValue) {
-		instance.setCP(aValue);
+		instance.setCp(aValue);
 
 		return (GeneratorT) this;
 	}
