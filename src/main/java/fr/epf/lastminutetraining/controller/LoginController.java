@@ -44,7 +44,7 @@ public class LoginController {
 	protected ModelAndView login(@RequestParam(value = "login") String login,
 			@RequestParam(value = "password") String password,
 			HttpSession session) {
-		System.out.println(password);
+		//System.out.println(password);
 		User user = vservice.connect(login, password);
 		if(user==null){
 			user = cservice.connect(login, password);

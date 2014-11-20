@@ -91,9 +91,9 @@
 						<div class="btn-group" data-toggle="buttons">
 							<label class="btn btn-sm btn-primary active"> <input
 								type="radio" name="newsletter" value="1" id="newsletterYes" checked="checked" form="userForm"/>
-								Yes
+								Oui
 							</label> <label class="btn btn-sm btn-primary"> <input type="radio"
-								name="newsletter" value="0" id="newsletterNo" form="userForm"/> No
+								name="newsletter" value="0" id="newsletterNo" form="userForm"/> Non
 							</label>
 						</div>
 					</div>
@@ -102,9 +102,9 @@
 							les offres de dernière minute de LMT : </label>
 						<div class="btn-group" data-toggle="buttons">
 							<label class="btn btn-sm btn-primary active"> <input
-								type="radio" name="sms" value="1" id="smsYes" checked="checked" form="userForm"/> Yes
+								type="radio" name="sms" value="1" id="smsYes" checked="checked" form="userForm"/> Oui
 							</label><label class="btn btn-sm btn-primary"> <input type="radio"
-								name="sms" value="0" id="smsNo" form="userForm"/> No
+								name="sms" value="0" id="smsNo" form="userForm"/> Non
 							</label>
 						</div>
 					</div>

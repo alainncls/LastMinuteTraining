@@ -41,7 +41,7 @@ public class MyTrainingsController {
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "mytrainings/add")
 	protected ModelAndView createTraining(HttpSession session, @ModelAttribute("training")Training training){
-		
+		System.out.println(training.getName());
 		//sauvegarde de la formation
 		service.save(training);
 		
@@ -53,7 +53,7 @@ public class MyTrainingsController {
     	Mail mm = (Mail) context.getBean("Mail");
         mm.sendMail("lastminutetraining.epf@gmail.com",
      		   vendor.getMail(),
-     		   "Confirmation de création de compte Last Minute Training", 
+     		   "Confirmation de création de formation", 
      		   "Cher vendeur,\n\n"
      		   + "Vous venez de créer une nouvelle formation nommée "+training.getName()+"."
      		   + " Merci de votre contribution à notre catalogue.\n\nCordialement,\n\n"

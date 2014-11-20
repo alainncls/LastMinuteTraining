@@ -43,7 +43,8 @@ public class MyAccountController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/myaccount")
 	protected ModelAndView updateAccount(HttpSession session,
-			@ModelAttribute("vendor") Vendor vendor,
+			@RequestParam(required=false) String name,
+			@RequestParam(required=false) String iban,
 			@RequestParam(required=false) String firstName,
 			@RequestParam(required=false) String lastName,
 			@RequestParam(required=false) String address,
@@ -58,7 +59,15 @@ public class MyAccountController {
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());
 		
 		if (session.getAttribute("status").toString().equals("vendor")){
+			Vendor vendor = vservice.findVendor(id);
 			vendor.setId(id);
+			vendor.setName(name);
+			vendor.setAddress(address);
+			vendor.setTown(town);
+			vendor.setCp(cp);
+			vendor.setMail(mail);
+			vendor.setPhone(phone);
+			vendor.setIban(iban);
 			
 			if ((vendor.getName()=="")||(vendor.getSub()=="")||(vendor.getIban()=="")||
 				(vendor.getAddress()=="")||(vendor.getCp()=="")||(vendor.getTown()=="")||
