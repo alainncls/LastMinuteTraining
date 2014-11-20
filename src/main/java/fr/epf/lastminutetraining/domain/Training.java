@@ -1,17 +1,12 @@
 package fr.epf.lastminutetraining.domain;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
-
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 public class Training {
 
@@ -39,6 +34,8 @@ public class Training {
 	private String summary;
 	// Titre
 	private String name;
+	// Notes
+	private List<String> notes;
 	// Langue
 	private List<String> language;
 	// Solution
@@ -59,8 +56,6 @@ public class Training {
 	private String description;
 	// Introduction de training
 	private String introduction;
-	// Utilisateurs cible
-	private String target;
 	// Programme de formation
 	private String program;
 	// Objectifs
@@ -72,9 +67,9 @@ public class Training {
 	// Unité de temps
 	private String unit;
 	// Objet dates
-	private HashMap<String,String> date;
+	private HashMap date;
 	// Objet dates
-	private HashMap<String,String> duration;
+	private HashMap duration;
 	// evaluation
 	private Float evaluation;
 	//Public
@@ -85,7 +80,7 @@ public class Training {
 	//Prerequisiste
 	private Map prerequisites;
 	//release
-	private ArrayList release;
+	private ArrayList<String> release;
 	// prime
 	private static final int prime = 31;
 
@@ -98,7 +93,7 @@ public class Training {
 		return new Builder();
 	}
 
-	public HashMap<String,String> getDate() {
+	public HashMap getDate() {
 		return date;
 	}
 
@@ -169,13 +164,13 @@ public class Training {
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
-
-	public String getTarget() {
-		return target;
+	
+	public List<String> getNotes() {
+		return notes;
 	}
 
-	public void setTarget(String target) {
-		this.target = target;
+	public void setNotes(List<String> notes) {
+		this.notes = notes;
 	}
 
 	public String getProgram() {
@@ -295,17 +290,22 @@ public class Training {
 	@Override
 	public String toString() {
 		return "Training [id=" + id + ", count=" + count + ", location="
-				+ location + ", trainingType=" + method
-				+ ", available=" + available + ", certification="
-				+ certification + ", category=" + category + ", sellerId="
-				+ vendor + ", contact=" + contact + ", summary=" + summary
-				+ ", name=" + name + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", level=" + level + ", price=" + price
-				+ ", priceLMT=" + priceLMT + ", description=" + description
-				+ ", prerequisites=" + prerequisites + ", introduction=" + introduction
-				+ ", target=" + target + ", program=" + program
-				+ ", objectives=" + content + ", activities=" + activities
-				+ "]";
+				+ location + ", method=" + method + ", available=" + available
+				+ ", certification=" + certification + ", category=" + category
+				+ ", vendorId=" + vendorId + ", vendor=" + vendor
+				+ ", contact=" + contact + ", summary=" + summary + ", name="
+				+ name + ", notes=" + notes + ", language=" + language
+				+ ", solution=" + solution + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", level=" + level + ", textLevel="
+				+ textLevel + ", price=" + price + ", priceLMT=" + priceLMT
+				+ ", description=" + description + ", introduction="
+				+ introduction + ", program=" + program + ", content="
+				+ content + ", activities=" + activities + ", url=" + url
+				+ ", unit=" + unit + ", date=" + date + ", duration="
+				+ duration + ", evaluation=" + evaluation + ", audience="
+				+ audience + ", relatedCurricula=" + relatedCurricula
+				+ ", academys=" + academys + ", prerequisites=" + prerequisites
+				+ ", release=" + release + "]";
 	}
 
 	@Override
@@ -410,11 +410,11 @@ public class Training {
 	}
 
 
-	public ArrayList getRelease() {
+	public ArrayList<String> getRelease() {
 		return release;
 	}
 
-	public void setRelease(ArrayList release) {
+	public void setRelease(ArrayList<String> release) {
 		this.release = release;
 	}
 
@@ -546,11 +546,6 @@ public class Training {
 
 		public Builder introduction(String introduction) {
 			training.introduction = introduction;
-			return this;
-		}
-
-		public Builder target(String target) {
-			training.target = target;
 			return this;
 		}
 
