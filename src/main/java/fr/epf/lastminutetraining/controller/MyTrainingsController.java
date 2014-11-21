@@ -37,7 +37,7 @@ public class MyTrainingsController {
 	protected ModelAndView home(@PathVariable("code") String code) {
 		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
 		//ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		return new ModelAndView("training", "training", service.findTraining(code));
+		return new ModelAndView("editTraining", "training", service.findTraining(code));
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "mytrainings/add")
 	protected ModelAndView createTraining(HttpSession session, @ModelAttribute("training")Training training){
@@ -45,7 +45,7 @@ public class MyTrainingsController {
 		//sauvegarde de la formation
 		service.save(training);
 		
-		//Envoi d'un mail de confirmation de création de formation
+		//Envoi d'un mail de confirmation de crï¿½ation de formation
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		ObjectId idVendor = new ObjectId(session.getAttribute("id").toString());
    	 	Vendor vendor = vservice.findVendor(idVendor);
@@ -53,11 +53,11 @@ public class MyTrainingsController {
     	Mail mm = (Mail) context.getBean("Mail");
         mm.sendMail("lastminutetraining.epf@gmail.com",
      		   vendor.getMail(),
-     		   "Confirmation de création de formation", 
+     		   "Confirmation de crï¿½ation de formation", 
      		   "Cher vendeur,\n\n"
-     		   + "Vous venez de créer une nouvelle formation nommée "+training.getName()+"."
-     		   + " Merci de votre contribution à notre catalogue.\n\nCordialement,\n\n"
-     		   + "L'équipe Last Minute Training");
+     		   + "Vous venez de crï¿½er une nouvelle formation nommï¿½e "+training.getName()+"."
+     		   + " Merci de votre contribution ï¿½ notre catalogue.\n\nCordialement,\n\n"
+     		   + "L'ï¿½quipe Last Minute Training");
         
         return new ModelAndView("addTraining");
 	}
