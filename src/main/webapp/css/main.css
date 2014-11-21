@@ -259,3 +259,8 @@ dd {
 ul.sap {
 list-style-image: url('https://training.sap.com/img/bullet-one.png');
 }
+textarea {
+min-height: 60px;
+overflow-y: auto;
+word-wrap:break-word
+}

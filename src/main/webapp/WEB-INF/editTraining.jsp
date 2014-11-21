@@ -57,9 +57,11 @@
 							<div class="ratingstars" name="level" id="level"></div>
 						</div>
 						<div class="form-group">
-							<label for="description">Description</label> <input type="text"
-								class="form-control" name="description" id="description"
-								placeholder="${training.description}" />
+							<label for="description">Description</label>
+							<textarea
+								class="form-control" name="description" id="description" onkeyup="adjustHeight(this)">
+								${training.description}
+								</textarea>
 						</div>
 
 						<div class="actions">
@@ -84,7 +86,12 @@ $( "#level" ).change(function () {
 	              return c.replace(/(^|\s)level-\S+/g, ' level-'+$(this).val() );
 	           });
   });
-})
+});
+function adjustHeight(el){
+    el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)+"px" : "60px";
+	console.log(el);
+}
+
 </script>
 
 <jsp:include page="/include/footer.jsp" />
