@@ -129,7 +129,7 @@
 addSmall();
 	$("#addBig").click(function() {
 		count=$('ul button').size();
-		after="<input type='text' class='form-control'></input><ul><button id='addSmall-"+count.toString()+"' class='form-control button fa fa-plus small'>Ajouterune sous-partie</button></ul>";
+		after="<input type='text' class='form-control'></input><ul><button id='addSmall-"+count.toString()+"' class='form-control button fa fa-plus small'>Ajouter une sous-partie</button></ul>";
 $(this).after(after);
 $("[id^=addSmall]").unbind("click");
 addSmall();
