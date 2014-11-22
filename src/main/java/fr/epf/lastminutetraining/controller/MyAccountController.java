@@ -127,7 +127,7 @@ public class MyAccountController {
 				}
 			}
 			
-			return new ModelAndView("myaccount", "currentUser", vendor);
+			return new ModelAndView("redirect:/myaccount", "currentUser", vendor);
 			
 		}
 		else if (session.getAttribute("status").toString().equals("client")){
@@ -142,7 +142,7 @@ public class MyAccountController {
 					cservice.update(client);
 				}
 			}
-			return new ModelAndView("myaccount", "currentUser", client);
+			return new ModelAndView("redirect:/myaccount", "currentUser", client);
 		}
 		else{
 			return null;
@@ -158,12 +158,12 @@ public class MyAccountController {
 		if (session.getAttribute("status").toString().equals("vendor")){
 			Vendor vendor = vservice.findVendor(id);
 			vendor.setId(id);
-			return new ModelAndView("redirect:myaccount", "currentUser", vendor);
+			return new ModelAndView("redirect:/myaccount", "currentUser", vendor);
 		}
 		else if (session.getAttribute("status").toString().equals("client")){
 			Client client = cservice.findClient(id);
 			client.setId(id);
-			return new ModelAndView("redirect:myaccount", "currentUser", client);
+			return new ModelAndView("redirect:/myaccount", "currentUser", client);
 		}
 		else{
 			return null;
