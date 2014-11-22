@@ -5,13 +5,13 @@ import javax.servlet.http.HttpSession;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.epf.lastminutetraining.domain.Client;
+import fr.epf.lastminutetraining.domain.User;
 import fr.epf.lastminutetraining.domain.Vendor;
 import fr.epf.lastminutetraining.service.ClientDBService;
 import fr.epf.lastminutetraining.service.VendorDBService;
@@ -100,6 +100,70 @@ public class MyAccountController {
 			client.setId(id);
 			cservice.update(client);
 			return new ModelAndView("myaccount", "currentUser", client);
+		}
+		else{
+			return null;
+		}
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/myaccount/editPwd")
+	protected ModelAndView editPwd(HttpSession session,
+			@RequestParam(required=false) String oldPass,
+			@RequestParam(required=false) String newPass,
+			@RequestParam(required=false) String newPass2){
+		
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());
+		
+		if (session.getAttribute("status").toString().equals("vendor")){
+			Vendor vendor = vservice.findVendor(id);
+			vendor.setId(id);
+			
+			String testPass = User.encrypt(oldPass);
+			if (newPass.equals(newPass2))
+			{
+				if (testPass.equals(vendor.getPassword())){
+					vendor.setPassword(User.encrypt(newPass));
+					vservice.update(vendor);
+				}
+			}
+			
+			return new ModelAndView("myaccount", "currentUser", vendor);
+			
+		}
+		else if (session.getAttribute("status").toString().equals("client")){
+			Client client = cservice.findClient(id);
+			client.setId(id);
+			
+			String testPass = User.encrypt(oldPass);
+			if (newPass.equals(newPass2))
+			{
+				if (testPass.equals(client.getPassword())){
+					client.setPassword(User.encrypt(newPass));
+					cservice.update(client);
+				}
+			}
+			return new ModelAndView("myaccount", "currentUser", client);
+		}
+		else{
+			return null;
+		}
+		
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/myaccount/editPwd")
+	protected ModelAndView editPwd(HttpSession session){
+		
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());
+		
+		if (session.getAttribute("status").toString().equals("vendor")){
+			Vendor vendor = vservice.findVendor(id);
+			vendor.setId(id);
+			return new ModelAndView("redirect:myaccount", "currentUser", vendor);
+		}
+		else if (session.getAttribute("status").toString().equals("client")){
+			Client client = cservice.findClient(id);
+			client.setId(id);
+			return new ModelAndView("redirect:myaccount", "currentUser", client);
 		}
 		else{
 			return null;

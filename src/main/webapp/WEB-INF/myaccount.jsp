@@ -176,21 +176,21 @@
 				<h3 class="panel-title">Modifier mon mot de passe</h3>
 			</div>
 			<div class="panel-body">
-				<form role="form" method="post" id="pwdForm">
+				<form role="form" method="POST" action="myaccount/editPwd" id="pwdForm">
 					<div class="form-group">
 						<label for="inputOldPass">Mot de passe actuel</label> <input
-							type="password" class="form-control" id="inputOldPass"
-							name="inputOldPass" placeholder="********" />
+							type="password" class="form-control" id="oldPass"
+							name="oldPass" placeholder="********" />
 					</div>
 					<div class="form-group">
 						<label for="inputNewPass">Nouveau mot de passe</label> <input
-							type="password" class="form-control" id="inputNewPass"
-							name="inputNewPass" placeholder="********" />
+							type="password" class="form-control" id="newPass"
+							name="newPass" placeholder="********" />
 					</div>
 					<div class="form-group">
 						<label for="inputNewPass2">Nouveau mot de passe (encore)</label> <input
-							type="password" class="form-control" id="inputNewPass2"
-							name="inputNewPass2" placeholder="********" />
+							type="password" class="form-control" id="newPass2"
+							name="newPass2" placeholder="********" />
 					</div>
 
 					<div class="actions">
