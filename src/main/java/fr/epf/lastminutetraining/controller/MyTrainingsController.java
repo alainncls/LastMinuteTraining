@@ -41,7 +41,7 @@ public class MyTrainingsController {
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "mytrainings/add")
 	protected ModelAndView createTraining(HttpSession session, @ModelAttribute("training")Training training){
-		System.out.println(training.getName());
+		
 		//sauvegarde de la formation
 		service.save(training);
 		
