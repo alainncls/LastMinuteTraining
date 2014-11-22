@@ -1,5 +1,6 @@
 <jsp:include page="/include/header.jsp" />
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="container">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -26,9 +27,11 @@
 								<option class="level level-2" value="2">Foundation</option>
 								<option class="level level-3" value="3">Detailed</option>
 								<option class="level level-4" value="4">Delta Knowledge</option>
-								<option class="level level-5" value="5">Consultant Academy</option>
+								<option class="level level-5" value="5">Consultant
+									Academy</option>
 								<option class="level level-6" value="6">Certification</option>
-								<option class="level level-9" value="9">Grouped Offering</option>
+								<option class="level level-9" value="9">Grouped
+									Offering</option>
 
 							</select>
 						</div>
@@ -58,10 +61,33 @@
 						</div>
 						<div class="form-group">
 							<label for="description">Description</label>
-							<textarea
-								class="form-control" name="description" id="description" onkeyup="adjustHeight(this)">
+							<textarea class="form-control" name="description"
+								id="description" onkeyup="adjustHeight(this)">
 								${training.description}
 								</textarea>
+						</div>
+						<div class="form-group">
+							<button id="addBig" class="button fa fa-plus">Ajouter
+								une partie</button>
+							<c:forEach items="${training.content}" var="content"
+								varStatus="loop">
+
+								<input type="text" class="form-control"
+									placeholder="${content.key}"></input>
+								<ul>
+									<button id="addSmall-${loop.index}"
+										class="form-control button fa fa-plus small">Ajouter
+										une sous-partie</button>
+									<c:if test="${fn:length(content.value) gt 0}">
+
+
+										<c:forEach items="${content.value}" var="value">
+											<input type="text" class="form-control"
+												placeholder="${value}"></input>
+										</c:forEach>
+									</c:if>
+								</ul>
+							</c:forEach>
 						</div>
 
 						<div class="actions">
@@ -75,23 +101,43 @@
 	</div>
 </div>
 <script>
-$("#level option[value=${training.level}]").attr("selected","selected");
-$( "#level option:selected" ).each(function() {
-	$('#level').addClass(" level-${training.level}")
-});
-$( "#level" ).change(function () {
- $( "#level option:selected" ).each(function() {
-	 $('#level').attr('class',
-	           function(i, c){
-	              return c.replace(/(^|\s)level-\S+/g, ' level-'+$(this).val() );
-	           });
-  });
-});
-function adjustHeight(el){
-    el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)+"px" : "60px";
-	console.log(el);
-}
-	
+	$("#level option[value=${training.level}]").attr("selected", "selected");
+	$("#level option:selected").each(function() {
+		$('#level').addClass(" level-${training.level}")
+	});
+	$("#level").change(
+			function() {
+				$("#level option:selected").each(
+						function() {
+							$('#level').attr(
+									'class',
+									function(i, c) {
+										return c.replace(/(^|\s)level-\S+/g,
+												' level-' + $(this).val());
+									});
+						});
+			});
+	function adjustHeight(el) {
+		el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)
+				+ "px"
+				: "60px";
+		console.log(el);
+	}
+</script>
+
+<script type="text/javascript">
+addSmall();
+	$("#addBig").click(function() {
+		count=$('ul button').size();
+		after="<input type='text' class='form-control'></input><ul><button id='addSmall-"+count.toString()+"' class='form-control button fa fa-plus small'>Ajouterune sous-partie</button></ul>";
+$(this).after(after);
+$("[id^=addSmall]").unbind("click");
+addSmall();
+	});
+	function addSmall(){$("[id^=addSmall]").click(function(event) {
+		a = this.id;
+		$("#" + a).after("<input type='text' class='form-control'/>");
+	})};
 </script>
 
 <jsp:include page="/include/footer.jsp" />
