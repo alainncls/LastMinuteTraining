@@ -183,7 +183,9 @@
 								<label class="btn btn-sm btn-primary active"> <input
 									type="radio" name="status" value="client" id="statusClient"
 									checked="checked" /> Client
-								</label> <label class="btn btn-sm btn-primary"> <input
+								</label>
+								<div class="col-xs-1"></div> 
+								<label class="btn btn-sm btn-primary"> <input
 									type="radio" name="status" value="vendor" id="statusVendor" />
 									Vendeur
 								</label>
