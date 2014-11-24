@@ -122,7 +122,7 @@ public class MyAccountController {
 			if (newPass.equals(newPass2))
 			{
 				if (testPass.equals(vendor.getPassword())){
-					vendor.setPassword(User.encrypt(newPass));
+					vendor.setPassword(newPass);
 					vservice.update(vendor);
 				}
 			}
@@ -138,7 +138,7 @@ public class MyAccountController {
 			if (newPass.equals(newPass2))
 			{
 				if (testPass.equals(client.getPassword())){
-					client.setPassword(User.encrypt(newPass));
+					client.setPassword(newPass);
 					cservice.update(client);
 				}
 			}
