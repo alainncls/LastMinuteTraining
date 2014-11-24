@@ -105,6 +105,11 @@
 					placeholder="La certification n'est disponible qu'en anglais" 
 					form="trainingForm"/>
 				</div>
+				<div class="form-group" id="pasteHere">
+                    <span class="input-group-btn">
+                        <button id="addNotes" type="button" class="btn btn-info btn-sm">Ajouter une note</button>
+                    </span>
+                </div>
 				<div class="form-group">
 					<label for="url">Lien de la formation</label> <input type="text"
 					class="form-control" name="url" id="url" placeholder="training.sap.com/course/lumira-classroom-014-fr-en"
@@ -128,7 +133,39 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(function(){
+	    var counter = 1;
+	    $("#addNotes").click(function () {
+	        var newRow2 = '<div class="form-group" id="div'+counter+'">'+
+	        				'<div class="row">'+
+        						'<div class="col-md-11">'+
+	        						'<input type="text" class="form-control " name="notes" id="notes'+counter+'" form="trainingForm"/>'+
+        						'</div>'+
+        						'<div class="col-sm-1">'+
+	        						'<button id="'+counter+'" type="button" onclick="suppr(this.id)" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
+	        					'</div>'
+	        				'</div>'+ 
+        				'</div>';
+        	counter++;
+	        $('#pasteHere').before(newRow2);
+	    });
+	});
+</script>
+<script>
+function suppr(btn)
+{
+    var nb = btn;
 
+    //test = id du div row
+    var test = $('#'+'notes'+nb+'').parents('div').parents('div').parents('div').attr('id');
+	console.log(test);
+    var el = document.getElementById(test);
+    el.parentNode.removeChild(el);
+    
+    return false;
+}
+</script>
 
 
 
