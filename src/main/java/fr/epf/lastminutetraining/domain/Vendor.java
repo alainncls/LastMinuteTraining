@@ -1,17 +1,16 @@
 package fr.epf.lastminutetraining.domain;
 
-
 public class Vendor extends User {
 
 	// Nom
 	private String name;
 	// Logo de l'entreprse
 	private String avatar;
-	// Marge éffectuée par LMT
+	// Marge ï¿½ffectuï¿½e par LMT
 	private String margin;
-	// Type de souscription à LMT
+	// Type de souscription ï¿½ LMT
 	private String sub;
-	// Numéro IBAN
+	// Numï¿½ro IBAN
 	private String iban;
 	// prime
 	private static final int prime = 31;
@@ -59,7 +58,7 @@ public class Vendor extends User {
 	public void setIban(String iban) {
 		this.iban = iban;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Vendor [name=" + name + ", avatar=" + avatar + ", margin="

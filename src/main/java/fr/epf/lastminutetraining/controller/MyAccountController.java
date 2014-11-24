@@ -27,38 +27,36 @@ public class MyAccountController {
 	@RequestMapping(method = RequestMethod.GET, value = "/myaccount")
 	protected ModelAndView show(HttpSession session) {
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		
-		if (session.getAttribute("status").toString().equals("vendor")){
+
+		if (session.getAttribute("status").toString().equals("vendor")) {
 			return new ModelAndView("myaccount", "currentUser",
-				vservice.findVendor(id));
-		}
-		else if (session.getAttribute("status").toString().equals("client")){
+					vservice.findVendor(id));
+		} else if (session.getAttribute("status").toString().equals("client")) {
 			return new ModelAndView("myaccount", "currentUser",
-				cservice.findClient(id));
-		}
-		else{
+					cservice.findClient(id));
+		} else {
 			return null;
 		}
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/myaccount")
 	protected ModelAndView updateAccount(HttpSession session,
-			@RequestParam(required=false) String name,
-			@RequestParam(required=false) String iban,
-			@RequestParam(required=false) String firstName,
-			@RequestParam(required=false) String lastName,
-			@RequestParam(required=false) String address,
-			@RequestParam(required=false) String town,
-			@RequestParam(required=false) String cp,
-			@RequestParam(required=false) String mail,
-			@RequestParam(required=false) String phone,
-			@RequestParam(required=false) String bank,
-			@RequestParam(required=false) String cardNumber,
-			@RequestParam(required=false) String expirationDate){
+			@RequestParam(required = false) String name,
+			@RequestParam(required = false) String iban,
+			@RequestParam(required = false) String firstName,
+			@RequestParam(required = false) String lastName,
+			@RequestParam(required = false) String address,
+			@RequestParam(required = false) String town,
+			@RequestParam(required = false) String cp,
+			@RequestParam(required = false) String mail,
+			@RequestParam(required = false) String phone,
+			@RequestParam(required = false) String bank,
+			@RequestParam(required = false) String cardNumber,
+			@RequestParam(required = false) String expirationDate) {
 
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		
-		if (session.getAttribute("status").toString().equals("vendor")){
+
+		if (session.getAttribute("status").toString().equals("vendor")) {
 			Vendor vendor = vservice.findVendor(id);
 			vendor.setId(id);
 			vendor.setName(name);
@@ -68,23 +66,22 @@ public class MyAccountController {
 			vendor.setMail(mail);
 			vendor.setPhone(phone);
 			vendor.setIban(iban);
-			
-			if ((vendor.getName()=="")||(vendor.getSub()=="")||(vendor.getIban()=="")||
-				(vendor.getAddress()=="")||(vendor.getCp()=="")||(vendor.getTown()=="")||
-				(vendor.getMail()=="")||(vendor.getPhone()=="")){
-				
+
+			if ((vendor.getName() == "") || (vendor.getSub() == "")
+					|| (vendor.getIban() == "") || (vendor.getAddress() == "")
+					|| (vendor.getCp() == "") || (vendor.getTown() == "")
+					|| (vendor.getMail() == "") || (vendor.getPhone() == "")) {
+
 				vendor.setActivated(false);
 				session.setAttribute("validated", "false");
-			}
-			else{
+			} else {
 				vendor.setActivated(true);
 				session.setAttribute("validated", "true");
 			}
-			
+
 			vservice.update(vendor);
 			return new ModelAndView("myaccount", "currentUser", vendor);
-		}
-		else if (session.getAttribute("status").toString().equals("client")){
+		} else if (session.getAttribute("status").toString().equals("client")) {
 			Client client = cservice.findClient(id);
 			client.setFirstName(firstName);
 			client.setLastName(lastName);
@@ -100,72 +97,69 @@ public class MyAccountController {
 			client.setId(id);
 			cservice.update(client);
 			return new ModelAndView("myaccount", "currentUser", client);
-		}
-		else{
+		} else {
 			return null;
 		}
 	}
-	
-	@RequestMapping(method = RequestMethod.POST, value="/myaccount/editPwd")
+
+	@RequestMapping(method = RequestMethod.POST, value = "/myaccount/editPwd")
 	protected ModelAndView editPwd(HttpSession session,
-			@RequestParam(required=false) String oldPass,
-			@RequestParam(required=false) String newPass,
-			@RequestParam(required=false) String newPass2){
-		
+			@RequestParam(required = false) String oldPass,
+			@RequestParam(required = false) String newPass,
+			@RequestParam(required = false) String newPass2) {
+
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		
-		if (session.getAttribute("status").toString().equals("vendor")){
+
+		if (session.getAttribute("status").toString().equals("vendor")) {
 			Vendor vendor = vservice.findVendor(id);
 			vendor.setId(id);
-			
+
 			String testPass = User.encrypt(oldPass);
-			if (newPass.equals(newPass2))
-			{
-				if (testPass.equals(vendor.getPassword())){
+			if (newPass.equals(newPass2)) {
+				if (testPass.equals(vendor.getPassword())) {
 					vendor.setPassword(newPass);
 					vservice.update(vendor);
 				}
 			}
-			
-			return new ModelAndView("redirect:/myaccount", "currentUser", vendor);
-			
-		}
-		else if (session.getAttribute("status").toString().equals("client")){
+
+			return new ModelAndView("redirect:/myaccount", "currentUser",
+					vendor);
+
+		} else if (session.getAttribute("status").toString().equals("client")) {
 			Client client = cservice.findClient(id);
 			client.setId(id);
-			
+
 			String testPass = User.encrypt(oldPass);
-			if (newPass.equals(newPass2))
-			{
-				if (testPass.equals(client.getPassword())){
+			if (newPass.equals(newPass2)) {
+				if (testPass.equals(client.getPassword())) {
 					client.setPassword(newPass);
 					cservice.update(client);
 				}
 			}
-			return new ModelAndView("redirect:/myaccount", "currentUser", client);
-		}
-		else{
+			return new ModelAndView("redirect:/myaccount", "currentUser",
+					client);
+		} else {
 			return null;
 		}
-		
+
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, value="/myaccount/editPwd")
-	protected ModelAndView editPwd(HttpSession session){
-		
+
+	@RequestMapping(method = RequestMethod.GET, value = "/myaccount/editPwd")
+	protected ModelAndView editPwd(HttpSession session) {
+
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		
-		if (session.getAttribute("status").toString().equals("vendor")){
+
+		if (session.getAttribute("status").toString().equals("vendor")) {
 			Vendor vendor = vservice.findVendor(id);
 			vendor.setId(id);
-			return new ModelAndView("redirect:/myaccount", "currentUser", vendor);
-		}
-		else if (session.getAttribute("status").toString().equals("client")){
+			return new ModelAndView("redirect:/myaccount", "currentUser",
+					vendor);
+		} else if (session.getAttribute("status").toString().equals("client")) {
 			Client client = cservice.findClient(id);
 			client.setId(id);
-			return new ModelAndView("redirect:/myaccount", "currentUser", client);
-		}
-		else{
+			return new ModelAndView("redirect:/myaccount", "currentUser",
+					client);
+		} else {
 			return null;
 		}
 	}

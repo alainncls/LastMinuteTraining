@@ -11,48 +11,49 @@ import java.util.List;
 @Service
 public class TrainingDBService {
 
-    @Autowired
-    private TrainingDAO trainingDAO;
+	@Autowired
+	private TrainingDAO trainingDAO;
 
-    public TrainingDBService() {
-    }
+	public TrainingDBService() {
+	}
 
-    public List<Training> findLastTraining() {
-        return trainingDAO.findLastTraining();
-    }
+	public List<Training> findLastTraining() {
+		return trainingDAO.findLastTraining();
+	}
 
-    public List<Training> findAllTrainings() {
-        return trainingDAO.findAllTrainings();
-    }
-    public List<Training> findAllTrainings(ObjectId id) {
-        return trainingDAO.findAllTrainings(id);
-    }
+	public List<Training> findAllTrainings() {
+		return trainingDAO.findAllTrainings();
+	}
 
-    public Training findTraining(String id) {
-        return trainingDAO.findTraining(id);
-    }
+	public List<Training> findAllTrainings(ObjectId id) {
+		return trainingDAO.findAllTrainings(id);
+	}
 
-    public List<Training> searchTraining(String name) {
-        return trainingDAO.searchTraining(name);
-    }
+	public Training findTraining(String id) {
+		return trainingDAO.findTraining(id);
+	}
 
-    public List<Training> searchTraining(Training training) {
-        return trainingDAO.searchTraining(training);
-    }
+	public List<Training> searchTraining(String name) {
+		return trainingDAO.searchTraining(name);
+	}
 
-    public void save(Training training) {
-        trainingDAO.saveTraining(training);
-    }
+	public List<Training> searchTraining(Training training) {
+		return trainingDAO.searchTraining(training);
+	}
 
-    public void create(Training training) {
-        trainingDAO.saveTraining(training);
-    }
+	public void save(Training training) {
+		trainingDAO.saveTraining(training);
+	}
 
-    public void update(Training training) {
-        trainingDAO.saveTraining(training);
-    }
+	public void create(Training training) {
+		trainingDAO.saveTraining(training);
+	}
 
-    public void remove(ObjectId id) {
-        trainingDAO.removeTraining(id);
-    }
+	public void update(Training training) {
+		trainingDAO.saveTraining(training);
+	}
+
+	public void remove(ObjectId id) {
+		trainingDAO.removeTraining(id);
+	}
 }

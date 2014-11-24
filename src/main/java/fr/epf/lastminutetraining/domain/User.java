@@ -132,7 +132,7 @@ public abstract class User {
 	}
 
 	public abstract String getStatus();
-	
+
 	public String getUrl() {
 		return url;
 	}
@@ -140,7 +140,7 @@ public abstract class User {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+
 	public Boolean getActivated() {
 		return activated;
 	}
@@ -148,7 +148,7 @@ public abstract class User {
 	public void setActivated(Boolean activated) {
 		this.activated = activated;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -184,8 +184,6 @@ public abstract class User {
 				+ expirationDate + ", url=" + url + ", activated=" + activated
 				+ "]";
 	}
-
-
 
 	protected static final String SALT = "Ahf54zdF";
 
