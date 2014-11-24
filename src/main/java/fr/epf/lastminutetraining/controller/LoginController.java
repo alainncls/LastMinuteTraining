@@ -44,9 +44,8 @@ public class LoginController {
 	protected ModelAndView login(@RequestParam(value = "login") String login,
 			@RequestParam(value = "password") String password,
 			HttpSession session) {
-		//System.out.println(password);
 		User user = vservice.connect(login, password);
-		if(user==null){
+		if (user == null) {
 			user = cservice.connect(login, password);
 		}
 		if (user != null) {
@@ -68,44 +67,47 @@ public class LoginController {
 			@RequestParam(value = "login") String login,
 			@RequestParam(value = "password") String password,
 			@RequestParam(value = "status") String status) {
-		//Cr�ation du compte
+		// Cr�ation du compte
 		User user;
-		if(status.equals("vendor")){
+		if (status.equals("vendor")) {
 			user = new Vendor();
-		}else{
+		} else {
 			user = new Client();
 		}
 		user.setMail(mail);
 		user.setLogin(login);
 		user.setPassword(password);
-		if(status.equals("vendor")){
+		if (status.equals("vendor")) {
 			user.setActivated(false);
-			vservice.save((Vendor)user);
-		}else{
+			vservice.save((Vendor) user);
+		} else {
 			user.setActivated(true);
-			cservice.save((Client)user);
+			cservice.save((Client) user);
 		}
-		
+
 		String typeOfUser = "";
-		if (status.equals("vendor")){
+		if (status.equals("vendor")) {
 			typeOfUser = "vendeur";
-		}
-		else{
+		} else {
 			typeOfUser = "client";
 		}
-		//Envoi d'un mail de confirmation
-		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
-   	 
-    	Mail mm = (Mail) context.getBean("Mail");
-        mm.sendMail("lastminutetraining.epf@gmail.com",
-     		   mail,
-     		   "Confirmation de cr�ation de compte Last Minute Training", 
-     		   "Cher "+typeOfUser+",\n"
-     		   + "Vous venez de cr�er un compte sur notre site Last Minute Training. "
-     		   + "Pour compl�ter votre compte, veuillez utiliser votre interface � mon compte � disponible"
-     		   + " � l�adresse suivante : http://lastminutetraining.epf.fr/myaccount\n\n"
-     		   + "Cordialement,\n\nL'�quipe Last Minute Training");
-        
+		// Envoi d'un mail de confirmation
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"context.xml");
+
+		Mail mm = (Mail) context.getBean("Mail");
+		mm.sendMail(
+				"lastminutetraining.epf@gmail.com",
+				mail,
+				"Confirmation de cr�ation de compte Last Minute Training",
+				"Cher "
+						+ typeOfUser
+						+ ",\n"
+						+ "Vous venez de cr�er un compte sur notre site Last Minute Training. "
+						+ "Pour compl�ter votre compte, veuillez utiliser votre interface � mon compte � disponible"
+						+ " � l�adresse suivante : http://lastminutetraining.epf.fr/myaccount\n\n"
+						+ "Cordialement,\n\nL'�quipe Last Minute Training");
+
 		return new ModelAndView(home, trainings, tservice.findLastTraining());
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class WorkController {
 	@RequestMapping(method = RequestMethod.GET, value = "/work")
-	protected ModelAndView home(){
+	protected ModelAndView home() {
 		return new ModelAndView("work");
 	}
 }
