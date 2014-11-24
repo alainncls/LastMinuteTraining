@@ -7,6 +7,7 @@ import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
 
 public abstract class User {
+	protected static final String SALT = "Ahf54zdF";
 
 	@Id
 	protected ObjectId id;
@@ -102,7 +103,6 @@ public abstract class User {
 	}
 
 	public void setPassword(String password) {
-
 		password = encrypt(password).toString();
 		this.password = password;
 	}
@@ -159,18 +159,23 @@ public abstract class User {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		User other = (User) obj;
 		if (id == null) {
-			if (other.id != null)
+			if (other.id != null) {
 				return false;
-		} else if (!id.equals(other.id))
+			}
+		} else if (!id.equals(other.id)) {
 			return false;
+		}
 		return true;
 	}
 
@@ -185,21 +190,20 @@ public abstract class User {
 				+ "]";
 	}
 
-	protected static final String SALT = "Ahf54zdF";
+	
 
 	public static String encrypt(String x) {
 		java.security.MessageDigest d = null;
-		x += SALT; // add salt
+		 // add salt
+		x += SALT;
 		try {
 			d = java.security.MessageDigest.getInstance("SHA-1");
 			d.reset();
 			d.update(x.getBytes());
 			return new String(d.digest(), "UTF-8");
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
