@@ -12,33 +12,30 @@ import fr.epf.lastminutetraining.domain.Training;
 import fr.epf.lastminutetraining.service.TrainingDBService;
 
 @Controller
-@RequestMapping( value="/trainings")
+@RequestMapping(value = "/trainings")
 public class TrainingController {
 
 	@Autowired
 	private TrainingDBService service;
 
-
-
 	@RequestMapping(method = RequestMethod.GET, value = "/add")
-	protected ModelAndView addTraining(){
+	protected ModelAndView addTraining() {
 		return new ModelAndView("addTraining");
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	protected ModelAndView listTrainings(){
-		return new ModelAndView("listTrainings", "trainings", service.findAllTrainings());
+	protected ModelAndView listTrainings() {
+		return new ModelAndView("listTrainings", "trainings",
+				service.findAllTrainings());
 	}
 
-
-	@RequestMapping(value="/{code}")
+	@RequestMapping(value = "/{code}")
 	@ResponseBody
-	protected ModelAndView training(@PathVariable("code") String code){
+	protected ModelAndView training(@PathVariable("code") String code) {
 		Training x = service.findTraining(code);
-		if(x!=null){
+		if (x != null) {
 			return new ModelAndView("training", "training", x);
-		}
-		else{
+		} else {
 			return new ModelAndView("404");
 		}
 	}

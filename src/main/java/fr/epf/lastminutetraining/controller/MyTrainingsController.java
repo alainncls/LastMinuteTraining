@@ -25,53 +25,64 @@ public class MyTrainingsController {
 	private TrainingDBService service;
 	@Autowired
 	private VendorDBService vservice;
-	
-	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings"})
+
+	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings" })
 	protected ModelAndView home() {
-		//A modifier par l'id du vendeur
+		// A modifier par l'id du vendeur
 		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
-		//ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		return new ModelAndView("myTrainings", "trainings", service.findAllTrainings(id));
+		// ObjectId id = new ObjectId(session.getAttribute("id").toString());
+		return new ModelAndView("myTrainings", "trainings",
+				service.findAllTrainings(id));
 	}
+
 	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings/edit/{code}" })
 	protected ModelAndView home(@PathVariable("code") String code) {
 		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
-		//ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		return new ModelAndView("editTraining", "training", service.findTraining(code));
+		// ObjectId id = new ObjectId(session.getAttribute("id").toString());
+		return new ModelAndView("editTraining", "training",
+				service.findTraining(code));
 	}
+
 	@RequestMapping(method = RequestMethod.POST, value = "mytrainings/add")
-	protected ModelAndView createTraining(HttpSession session, @ModelAttribute("training")Training training){
-		
-		//sauvegarde de la formation
+	protected ModelAndView createTraining(HttpSession session,
+			@ModelAttribute("training") Training training) {
+
+		// sauvegarde de la formation
 		service.save(training);
-		
-		//Envoi d'un mail de confirmation de cr�ation de formation
-		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
+
+		// Envoi d'un mail de confirmation de cr�ation de formation
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"context.xml");
 		ObjectId idVendor = new ObjectId(session.getAttribute("id").toString());
-   	 	Vendor vendor = vservice.findVendor(idVendor);
-		
-    	Mail mm = (Mail) context.getBean("Mail");
-        mm.sendMail("lastminutetraining.epf@gmail.com",
-     		   vendor.getMail(),
-     		   "Confirmation de cr�ation de formation", 
-     		   "Cher vendeur,\n\n"
-     		   + "Vous venez de cr�er une nouvelle formation nomm�e "+training.getName()+"."
-     		   + " Merci de votre contribution � notre catalogue.\n\nCordialement,\n\n"
-     		   + "L'�quipe Last Minute Training");
-        
-        return new ModelAndView("addTraining");
+		Vendor vendor = vservice.findVendor(idVendor);
+
+		Mail mm = (Mail) context.getBean("Mail");
+		mm.sendMail(
+				"lastminutetraining.epf@gmail.com",
+				vendor.getMail(),
+				"Confirmation de cr�ation de formation",
+				"Cher vendeur,\n\n"
+						+ "Vous venez de cr�er une nouvelle formation nomm�e "
+						+ training.getName()
+						+ "."
+						+ " Merci de votre contribution � notre catalogue.\n\nCordialement,\n\n"
+						+ "L'�quipe Last Minute Training");
+
+		return new ModelAndView("addTraining");
 	}
+
 	@RequestMapping(method = RequestMethod.GET, value = "mytrainings/add")
-	protected ModelAndView addTraining(HttpSession session){
-		if(session.getAttribute("validated").toString().equals("true")){
+	protected ModelAndView addTraining(HttpSession session) {
+		if (session.getAttribute("validated").toString().equals("true")) {
 			return new ModelAndView("addTraining");
-		}
-		else{
+		} else {
 			ObjectId id = new ObjectId("54668afc44ae11795d109a61");
-			//ObjectId id = new ObjectId(session.getAttribute("id").toString());
-			return new ModelAndView("myTrainings", "trainings", service.findAllTrainings(id));
+			// ObjectId id = new
+			// ObjectId(session.getAttribute("id").toString());
+			return new ModelAndView("myTrainings", "trainings",
+					service.findAllTrainings(id));
 		}
-		
+
 	}
 
 }
