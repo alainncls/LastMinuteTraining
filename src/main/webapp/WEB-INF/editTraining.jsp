@@ -74,6 +74,7 @@
 
 								<input type="text" class="form-control"
 									placeholder="${content.key}"></input>
+								<span class='delBig fa fa-trash'></span>
 								<ul>
 									<button id="addSmall-${loop.index}"
 										class="form-control button fa fa-plus small">Ajouter
@@ -84,6 +85,7 @@
 										<c:forEach items="${content.value}" var="value">
 											<input type="text" class="form-control"
 												placeholder="${value}"></input>
+											<span class='delSmall fa fa-trash'></span>
 										</c:forEach>
 									</c:if>
 								</ul>
@@ -126,18 +128,51 @@
 </script>
 
 <script type="text/javascript">
-addSmall();
-	$("#addBig").click(function() {
-		count=$('ul button').size();
-		after="<input type='text' class='form-control'></input><ul><button id='addSmall-"+count.toString()+"' class='form-control button fa fa-plus small'>Ajouter une sous-partie</button></ul>";
-$(this).after(after);
-$("[id^=addSmall]").unbind("click");
-addSmall();
+	addSmall();
+	$("#addBig")
+			.click(
+					function() {
+						count = $('ul button').size();
+						after = "<input type='text' class='form-control'></input><span class='delBig fa fa-trash'></span><ul><button id='addSmall-"
+								+ count.toString()
+								+ "' class='form-control button fa fa-plus small'>Ajouter une sous-partie</button></ul>";
+						$(this).after(after);
+						$("[id^=addSmall]").unbind("click");
+						addSmall();
+						$(".delBig").click(function() {
+							$(this).prev().remove();
+							$(this).next().remove();
+							$(this).remove();
+						});
+					});
+	function addSmall() {
+		$("[id^=addSmall]")
+				.click(
+						function(event) {
+							a = this.id;
+							$("#" + a)
+									.after(
+											"<input type='text' class='form-control'><span class='delSmall fa fa-trash'></span>");
+							$(".delSmall").click(function() {
+								$(this).prev().remove();
+								$(this).remove();
+							});
+						})
+	};
+</script>
+
+<script type="text/javascript">
+	$(".delSmall").click(function() {
+		$(this).prev().remove();
+		$(this).remove();
 	});
-	function addSmall(){$("[id^=addSmall]").click(function(event) {
-		a = this.id;
-		$("#" + a).after("<input type='text' class='form-control'/>");
-	})};
+</script>
+<script type="text/javascript">
+	$(".delBig").click(function() {
+		$(this).prev().remove();
+		$(this).next().remove();
+		$(this).remove();
+	});
 </script>
 
 <jsp:include page="/include/footer.jsp" />
