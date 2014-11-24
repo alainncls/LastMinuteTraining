@@ -26,7 +26,7 @@ public class Training {
 	private int category;
 	// Id vendeur
 	private String vendorId;
-	//Vendor
+	// Vendor
 	private Vendor vendor;
 	// Contact
 	private String contact;
@@ -46,7 +46,7 @@ public class Training {
 	private String endDate;
 	// difficulté
 	private String level;
-	//mot difficulté
+	// mot difficulté
 	private String textLevel;
 	// Prix original
 	private String price;
@@ -72,18 +72,17 @@ public class Training {
 	private HashMap duration;
 	// evaluation
 	private Float evaluation;
-	//Public
+	// Public
 	private ArrayList<String> audience;
-	//Images
+	// Images
 	private ArrayList<String> relatedCurricula;
-	private ArrayList<String> academys=new ArrayList<String>();
-	//Prerequisiste
+	private ArrayList<String> academys = new ArrayList<String>();
+	// Prerequisiste
 	private Map prerequisites;
-	//release
+	// release
 	private ArrayList<String> release;
 	// prime
 	private static final int prime = 31;
-
 
 	public Training() {
 
@@ -164,7 +163,7 @@ public class Training {
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
-	
+
 	public List<String> getNotes() {
 		return notes;
 	}
@@ -196,8 +195,6 @@ public class Training {
 	public void setActivities(String activities) {
 		this.activities = activities;
 	}
-
-
 
 	public ObjectId getId() {
 		return id;
@@ -317,19 +314,19 @@ public class Training {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj){
+		if (this == obj) {
 			return true;
-		}else if (obj == null){
+		} else if (obj == null) {
 			return false;
-		}else if (getClass() != obj.getClass()){
+		} else if (getClass() != obj.getClass()) {
 			return false;
 		}
 		Training other = (Training) obj;
 		if (id == null) {
-			if (other.id != null){
+			if (other.id != null) {
 				return false;
 			}
-		} else if (!id.equals(other.id)){
+		} else if (!id.equals(other.id)) {
 			return false;
 		}
 		return true;
@@ -351,8 +348,7 @@ public class Training {
 		this.language = language;
 	}
 
-
-	class Duration{
+	class Duration {
 		int count;
 		String unit;
 	}
@@ -368,12 +364,15 @@ public class Training {
 	public double getEvaluation() {
 		return evaluation;
 	}
+
 	public void addAcademy(String academy) {
 		academys.add(academy);
 	}
-	public void setEvaluation(String evaluation){
-			this.evaluation=Float.parseFloat(evaluation);
+
+	public void setEvaluation(String evaluation) {
+		this.evaluation = Float.parseFloat(evaluation);
 	}
+
 	public ArrayList<String> getAudience() {
 		return audience;
 	}
@@ -381,7 +380,6 @@ public class Training {
 	public void setAudience(ArrayList<String> audience) {
 		this.audience = audience;
 	}
-
 
 	public String getMethod() {
 		return method;
@@ -391,7 +389,6 @@ public class Training {
 		this.method = delivery;
 	}
 
-
 	public ArrayList<String> getRelatedCurricula() {
 		return relatedCurricula;
 	}
@@ -399,7 +396,6 @@ public class Training {
 	public void setRelatedCurricula(ArrayList<String> relatedCurricula) {
 		this.relatedCurricula = relatedCurricula;
 	}
-
 
 	public Map getPrerequisites() {
 		return prerequisites;
@@ -409,7 +405,6 @@ public class Training {
 		this.prerequisites = prerequisites;
 	}
 
-
 	public ArrayList<String> getRelease() {
 		return release;
 	}
@@ -417,7 +412,6 @@ public class Training {
 	public void setRelease(ArrayList<String> release) {
 		this.release = release;
 	}
-
 
 	public String getTextLevel() {
 		return textLevel;
@@ -427,7 +421,6 @@ public class Training {
 		this.textLevel = textLevel;
 	}
 
-
 	public ArrayList<String> getAcademys() {
 		return academys;
 	}
@@ -435,7 +428,6 @@ public class Training {
 	public void setAcademys(ArrayList<String> academys) {
 		this.academys = academys;
 	}
-
 
 	public Vendor getVendor() {
 		return vendor;
@@ -445,7 +437,6 @@ public class Training {
 		this.vendor = vendor;
 	}
 
-
 	public String getVendorId() {
 		return vendorId;
 	}
@@ -453,7 +444,6 @@ public class Training {
 	public void setVendorId(String vendorId) {
 		this.vendorId = vendorId;
 	}
-
 
 	public static class Builder {
 
@@ -502,7 +492,6 @@ public class Training {
 			training.description = description;
 			return this;
 		}
-
 
 		public Builder count(int count) {
 			training.count = count;

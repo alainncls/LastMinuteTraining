@@ -19,17 +19,18 @@ public class VendorController {
 	private VendorDBService service;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/addVendor")
-	protected ModelAndView addTraining(){
+	protected ModelAndView addTraining() {
 		return new ModelAndView("addVendor");
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/listVendors")
-	protected ModelAndView listTrainings(){
-		return new ModelAndView("listVendors", "vendors", service.findAllVendors());
+	protected ModelAndView listTrainings() {
+		return new ModelAndView("listVendors", "vendors",
+				service.findAllVendors());
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/addVendor")
-	protected void createTraining(@ModelAttribute("vendor")Vendor vendor){
+	protected void createTraining(@ModelAttribute("vendor") Vendor vendor) {
 		service.save(vendor);
 	}
 }
