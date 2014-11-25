@@ -518,7 +518,7 @@ public class Training {
 			return this;
 		}
 
-		public Builder category(int category) {
+		public Builder category(String category) {
 			training.category = category;
 			return this;
 		}
