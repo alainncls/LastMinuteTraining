@@ -140,7 +140,7 @@
 	        var newRow2 = '<div class="form-group" id="div'+counter+'">'+
 	        				'<div class="row">'+
         						'<div class="col-md-11">'+
-	        						'<input type="text" class="form-control " name="notes" id="notes'+counter+'" form="trainingForm"/>'+
+	        						'<input type="text" class="form-control " name="notes['+counter+']" id="notes'+counter+'" form="trainingForm"/>'+
         						'</div>'+
         						'<div class="col-sm-1">'+
 	        						'<button id="'+counter+'" type="button" onclick="suppr(this.id)" class="btn btn-danger"><span class="fa fa-times"></span></button>'+

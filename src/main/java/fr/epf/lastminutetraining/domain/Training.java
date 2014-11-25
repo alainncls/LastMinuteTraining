@@ -23,7 +23,7 @@ public class Training {
 	// Type de certification (Officielle, groupement privé, etc...) ->
 	private short certification;
 	// Categorie de la training (ERP, ...) -> références
-	private int category;
+	private String category;
 	// Id vendeur
 	private String vendorId;
 	// Vendor
@@ -132,11 +132,11 @@ public class Training {
 		this.certification = certification;
 	}
 
-	public int getCategory() {
+	public String getCategory() {
 		return category;
 	}
 
-	public void setCategory(int category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
