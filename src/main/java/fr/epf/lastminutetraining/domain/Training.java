@@ -44,6 +44,7 @@ public class Training {
 	private String startDate;
 	// Date de fin
 	private String endDate;
+	private String difficulty;
 	// difficulté
 	private String level;
 	// mot difficulté
@@ -106,6 +107,14 @@ public class Training {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	public String getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
 	}
 
 	public String getLocation() {
