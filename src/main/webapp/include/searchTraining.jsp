@@ -34,7 +34,7 @@
 							class="form-control" id="inputPriceLMT" name="inputPriceLMT" value="${inputPriceLMT}" />
 					</div>
 					<div class="form-group">
-						<label for="inputDifficulty">Difficulté</label>
+						<label for="level">Difficulté</label>
 						<div class="ratingstars"></div>
 					</div>
 					<div class="form-group">
