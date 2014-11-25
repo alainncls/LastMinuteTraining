@@ -18,7 +18,7 @@
 						<div class="form-group">
 							<label for="name">Intitulé de la formation</label> <input
 								type="text" class="form-control" name="name" id="name"
-								placeholder="${training.name}" />
+								placeholder="${training.name}" value="${training.name}"/>
 						</div>
 						<div class="form-group">
 							<label for="level">Niveau de la formation</label> <select
@@ -38,26 +38,22 @@
 						<div class="form-group">
 							<label for="price">Prix</label> <input type="number"
 								class="form-control" name="price" id="price"
-								placeholder="${training.price}" required="required" />
+								placeholder="${training.price}" value="${training.price}" required="required" />
 						</div>
 						<div class="form-group">
 							<label for="price">Prix via LMT</label> <input type="number"
 								class="form-control" name="priceLMT" id="priceLMT"
-								placeholder="${training.priceLMT}" required="required" />
+								placeholder="${training.priceLMT}" value="${training.priceLMT}" required="required" />
 						</div>
 						<div class="form-group">
 							<label for="date.startDate">Début de la formation</label> <input
 								type="date" class="form-control" name="date.startDate"
-								id="date.startDate" placeholder="${training.startDate}" />
+								id="date.startDate" placeholder="${training.startDate}" value="${training.startDate}" />
 						</div>
 						<div class="form-group">
 							<label for="date.endDate">Fin de la formation</label> <input
 								type="date" class="form-control" name="date.endDate"
 								id="date.endDate" placeholder="${training.endDate}" />
-						</div>
-						<div class="form-group">
-							<label for="level">Difficulté </label>
-							<div class="ratingstars" name="level" id="level"></div>
 						</div>
 						<div class="form-group">
 							<label for="description">Description</label>
@@ -67,13 +63,14 @@
 								</textarea>
 						</div>
 						<div class="form-group">
+							<label for="description">Contenu</label><br>
 							<button id="addBig" class="button fa fa-plus">Ajouter
 								une partie</button>
 							<c:forEach items="${training.content}" var="content"
 								varStatus="loop">
 
 								<input type="text" class="form-control"
-									placeholder="${content.key}"></input>
+									value="${content.key}"></input>
 								<span class='delBig fa fa-trash'></span>
 								<ul>
 									<button id="addSmall-${loop.index}"
@@ -84,19 +81,45 @@
 
 										<c:forEach items="${content.value}" var="value">
 											<input type="text" class="form-control"
-												placeholder="${value}"></input>
+												value="${value}"></input>
 											<span class='delSmall fa fa-trash'></span>
 										</c:forEach>
 									</c:if>
 								</ul>
 							</c:forEach>
 						</div>
+						<div class="form-group">
+							<label for="description">Cours basés sur les versions du
+								logiciel:</label><br>
+							<ul>
+								<input class="col-md-10" type="text" value="" />
+								<span class="addLogiciel col-md-1 fa fa-plus"></span>
 
+								<c:forEach items="${training.release}" var="release">
+									<input class="col-md-10" type="text" value="${release}" />
+									<span class='delLogiciel col-md-1 fa fa-trash'></span>
+								</c:forEach>
+							</ul>
+						</div>
+						<div class="form-group">
+							<br> <br> <br> <label for="description">Public:</label><br>
+							<ul>
+								<input class="col-md-10" type="text" value="" />
+								<span class="addPublic col-md-1 fa fa-plus"></span>
+
+								<c:forEach items="${training.audience}" var="audience">
+									<input class="col-md-10" type="text" value="${audience}" />
+									<span class='delPublic col-md-1 fa fa-trash'></span>
+								</c:forEach>
+							</ul>
+						</div>
 						<div class="actions">
 							<button type="submit" class="btn btn-success">Envoyer</button>
 							<a href="home" class="btn btn-danger">Annuler</a>
 						</div>
 					</form>
+
+
 				</div>
 			</div>
 		</div>
@@ -173,6 +196,34 @@
 		$(this).next().remove();
 		$(this).remove();
 	});
+</script>
+<script type="text/javascript">
+	$(".addLogiciel").click(function() {
+		$(this).after("<input class='col-md-10' type='text' value='''/><span class='delLogiciel col-md-1 fa fa-trash'></span>");
+		$(".delLogiciel").click(function() {
+			$(this).prev().remove();
+			$(this).remove();
+		});
+	});
+	$(".delLogiciel").click(function() {
+		$(this).prev().remove();
+		$(this).remove();
+	});
+	
+</script>
+<script type="text/javascript">
+	$(".addPublic").click(function() {
+		$(this).after("<input class='col-md-10' type='text' value='''/><span class='delPublic col-md-1 fa fa-trash'></span>");
+		$(".delPublic").click(function() {
+			$(this).prev().remove();
+			$(this).remove();
+		});
+	});
+	$(".delPublic").click(function() {
+		$(this).prev().remove();
+		$(this).remove();
+	});
+	
 </script>
 
 <jsp:include page="/include/footer.jsp" />
