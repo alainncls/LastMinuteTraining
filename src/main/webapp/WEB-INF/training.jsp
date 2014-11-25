@@ -157,7 +157,7 @@
 						<ul class="sap">
 							<c:forEach items="${training.relatedCurricula}" var="related"
 								varStatus="loop">
-								<a href="#modal-${loop.index}" data-toggle="modal">${training.academys[loop.index]}</a>
+								<li><a href="#modal-${loop.index}" data-toggle="modal">${training.academys[loop.index]}</a></li>
 								<div class="modal fade" id="modal-${loop.index}" role="dialog">
 									<div class="modal-dialog">
 										<div class="modal-content">
@@ -168,7 +168,7 @@
 												<br>
 											</div>
 											<div class=modal=body>
-												<li><img src="${related}" /></li>
+												<img src="${related}" />
 											</div>
 										</div>
 									</div>
