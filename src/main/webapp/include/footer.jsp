@@ -45,7 +45,7 @@
         $('div.ratingstars').raty({
         	starType: 'i',
         	number: 6,
-        	scoreName: 'inputDifficulty'
+        	scoreName: 'difficulty'
         	});
     });    
 </script>
