@@ -23,7 +23,7 @@ public class Training {
 	// Type de certification (Officielle, groupement privé, etc...) ->
 	private short certification;
 	// Categorie de la training (ERP, ...) -> références
-	private int category;
+	private String category;
 	// Id vendeur
 	private String vendorId;
 	// Vendor
@@ -44,6 +44,7 @@ public class Training {
 	private String startDate;
 	// Date de fin
 	private String endDate;
+	private String difficulty;
 	// difficulté
 	private String level;
 	// mot difficulté
@@ -107,6 +108,14 @@ public class Training {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
+	public String getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
+	}
 
 	public String getLocation() {
 		return location;
@@ -132,11 +141,11 @@ public class Training {
 		this.certification = certification;
 	}
 
-	public int getCategory() {
+	public String getCategory() {
 		return category;
 	}
 
-	public void setCategory(int category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
@@ -518,7 +527,7 @@ public class Training {
 			return this;
 		}
 
-		public Builder category(int category) {
+		public Builder category(String category) {
 			training.category = category;
 			return this;
 		}

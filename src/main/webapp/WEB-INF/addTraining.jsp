@@ -9,8 +9,8 @@
 			<div class="panel-body">
 				<form role="form" method="POST" id="trainingForm">
 					<div class="form-group">
-						<label for="name">Intitulé de la formation</label> <input
-						type="text" class="form-control" name="name" id="name"
+						<label for="name">Intitulé de la formation</label>
+						<input type="text" class="form-control" name="name" id="name"
 						placeholder="Intitulé de la fromation" />
 					</div>
 					<div class="form-group">
@@ -24,8 +24,23 @@
 						placeholder="Prix LMT" required="required" />
 					</div>
 					<div class="form-group">
-						<label for="level">Difficulté </label>
-						<div class="ratingstars" name="level" id="level"></div>
+						<label for="level">Niveau de la formation</label> <select
+							type="text" class="form-control level " name="level" id="level">
+							<option class="level level-1" value="1">Overview</option>
+							<option class="level level-2" value="2">Foundation</option>
+							<option class="level level-3" value="3">Detailed</option>
+							<option class="level level-4" value="4">Delta Knowledge</option>
+							<option class="level level-5" value="5">Consultant
+								Academy</option>
+							<option class="level level-6" value="6">Certification</option>
+							<option class="level level-9" value="9">Grouped
+								Offering</option>
+
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="difficulty">Difficulté </label>
+						<div class="ratingstars" name="difficulty" id="difficulty"></div>
 					</div>
 					<div class="form-group">
 						<label for="summary">Résumé</label> <input type="text"
@@ -64,9 +79,14 @@
 				</div>
 				<div class="form-group">
 					<label for="language">Langue</label> <input type="text"
-					class="form-control" name="language" id="language"
+					class="form-control" name="language[0]" id="language0"
 					required="required" form="trainingForm"/>
 				</div>
+				<div class="form-group" id="pasteLang">
+                    <span class="input-group-btn">
+                        <button id="addLang" type="button" onclick="addLine('language', 'pasteLang')" class="btn btn-info btn-sm">Ajouter une langue</button>
+                    </span>
+                </div>
 				<div class="form-group">
 					<label for="location">Lieux de la formation</label> <input type="text"
 					class="form-control" name="location" id="location"
@@ -96,25 +116,50 @@
 			<div class="panel-body">
 				<div class="form-group">
 					<label for="target">Utilisateurs cibles</label> <input type="text"
-					class="form-control" name="audience" id="audience"
+					class="form-control" name="audience[0]" id="audience0"
 					form="trainingForm"/>
 				</div>
+				<div class="form-group" id="pasteTarget">
+                    <span class="input-group-btn">
+                        <button id="addTarget" type="button" onclick="addLine('audience','pasteTarget')" class="btn btn-info btn-sm">Ajouter une cible</button>
+                    </span>
+                </div>
 				<div class="form-group">
 					<label for="notes">Notes</label> <input type="text"
-					class="form-control" name="notes" id="notes"
+					class="form-control" name="notes[0]" id="notes0"
 					placeholder="La certification n'est disponible qu'en anglais" 
 					form="trainingForm"/>
 				</div>
+				<div class="form-group" id="pasteNotes">
+                    <span class="input-group-btn">
+                        <button id="addNotes" type="button" onclick="addLine('notes','pasteNotes')" class="btn btn-info btn-sm">Ajouter une note</button>
+                    </span>
+                </div>
 				<div class="form-group">
 					<label for="url">Lien de la formation</label> <input type="text"
 					class="form-control" name="url" id="url" placeholder="training.sap.com/course/lumira-classroom-014-fr-en"
 					form="trainingForm"/>
 				</div>
 				<div class="form-group">
+					<label for="solution">Logiciel(s)</label> <input type="text"
+					class="form-control" name="solution[0]" id="solution0"
+					form="trainingForm"/>
+				</div>
+				<div class="form-group" id="pasteSol">
+                    <span class="input-group-btn">
+                        <button id="addSolution" type="button" onclick="addLine('solution','pasteSol')" class="btn btn-info btn-sm">Ajouter un logiciel</button>
+                    </span>
+                </div>
+				<div class="form-group">
 					<label for="release">Version du logiciel</label> <input type="text"
 					class="form-control" name="release" id="release"
 					form="trainingForm"/>
 				</div>
+				<div class="form-group" id="pasteRelease">
+                    <span class="input-group-btn">
+                        <button id="addRelease" type="button" onclick="addLine('release','pasteRelease')" class="btn btn-info btn-sm">Ajouter une version</button>
+                    </span>
+                </div>
 				<div class="form-group">
 					<label for="description">Description</label> <input type="text"
 					class="form-control" name="description" id="description" 
@@ -128,8 +173,57 @@
 		</div>
 	</div>
 </div>
-
-
+<script>
+	function addLine(name, divName){
+	    var counter = 1;
+	    var fullName = 'div'+name+counter;
+        var newRow2 = '<div class="form-group" id="'+fullName+'">'+
+        				'<div class="row">'+
+    						'<div class="col-md-10">'+
+        						'<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'+
+    						'</div>'+
+    						'<div class="col-sm-1">'+
+        						'<button id="'+counter+'" type="button" onclick="suppr(this.id,\''+name+'\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
+        					'</div>'
+        				'</div>'+ 
+    				'</div>';
+    	counter++;
+        $('#'+divName+'').before(newRow2);
+	}
+</script>
+<script>
+function suppr(nb, name){
+	
+    //test = id du div row
+    var test = $('#'+name+nb).parents('div').parents('div').parents('div').attr('id');
+    var el = document.getElementById(test);
+    el.parentNode.removeChild(el);
+}
+</script>
+<script>
+	$("#level option[value=${training.level}]").attr("selected", "selected");
+	$("#level option:selected").each(function() {
+		$('#level').addClass(" level-${training.level}")
+	});
+	$("#level").change(
+			function() {
+				$("#level option:selected").each(
+						function() {
+							$('#level').attr(
+									'class',
+									function(i, c) {
+										return c.replace(/(^|\s)level-\S+/g,
+												' level-' + $(this).val());
+									});
+						});
+			});
+	function adjustHeight(el) {
+		el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)
+				+ "px"
+				: "60px";
+		console.log(el);
+	}
+</script>
 
 
 <jsp:include page="/include/footer.jsp" />
