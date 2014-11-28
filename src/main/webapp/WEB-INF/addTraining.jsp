@@ -69,12 +69,12 @@
 			<div class="panel-body">
 				<div class="form-group">
 					<label for="date.startDate">Début de la formation</label> <input
-					type="date" class="form-control" name="date.startDate" id="date.startDate" 
+					type="date" class="form-control" name="startDate" id="startDate" 
 					required="required" form="trainingForm"/>
 				</div>
 				<div class="form-group">
 					<label for="date.endDate">Fin de la formation</label> <input type="date"
-					class="form-control" name="date.endDate" id="date.endDate" 
+					class="form-control" name="endDate" id="endDate" 
 					required="required" form="trainingForm"/>
 				</div>
 				<div class="form-group">
@@ -165,6 +165,16 @@
 					class="form-control" name="description" id="description" 
 					form="trainingForm"/>
 				</div>
+				<div class="form-group">
+					<label for="academys">Curriculum</label> <input type="text"
+					class="form-control" name="academys[0]" id="academys0"
+					required="required" form="trainingForm"/>
+				</div>
+				<div class="form-group" id="pasteCuri">
+                    <span class="input-group-btn">
+                        <button id="addCurriculum" type="button" onclick="addLine('academys', 'pasteCuri')" class="btn btn-info btn-sm">Ajouter un curriculum</button>
+                    </span>
+                </div>
 				<div class="actions">
 					<button type="submit" class="btn btn-success" form="trainingForm">Envoyer</button>
 					<a href="home" class="btn btn-danger">Annuler</a>
@@ -177,16 +187,17 @@
 	function addLine(name, divName){
 	    var counter = 1;
 	    var fullName = 'div'+name+counter;
-        var newRow2 = '<div class="form-group" id="'+fullName+'">'+
-        				'<div class="row">'+
-    						'<div class="col-md-10">'+
-        						'<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'+
-    						'</div>'+
-    						'<div class="col-sm-1">'+
-        						'<button id="'+counter+'" type="button" onclick="suppr(this.id,\''+name+'\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
-        					'</div>'
-        				'</div>'+ 
-    				'</div>';
+    	var newRow2 = '<div class="form-group" id="'+fullName+'">'+
+							'<div class="row">'+
+								'<div class="col-md-10">'+
+									'<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'+
+								'</div>'+
+								'<div class="col-sm-1">'+
+									'<button id="'+counter+'" type="button" onclick="suppr(this.id,\''+name+'\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
+								'</div>'
+							'</div>'+ 
+						'</div>';
+        
     	counter++;
         $('#'+divName+'').before(newRow2);
 	}
