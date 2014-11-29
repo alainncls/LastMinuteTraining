@@ -12,17 +12,17 @@
 							${training.name}<span class="level level-${training.level}">${training.textLevel}</span>
 						</h2>
 						<dl>
-							<dt>Vendor:</dt>
+							<dt>Vendeur :</dt>
 							<dd>${training.vendor.name}</dd>
-							<dt>Solution:</dt>
+							<dt>Solution :</dt>
 							<dd>${training.solution}</dd>
-							<dt>Delivery Method:</dt>
+							<dt>Type d'enseignement :</dt>
 							<dd>${training.method}</dd>
-							<dt>Duration:</dt>
+							<dt>Durée :</dt>
 							<dd>${training.duration.count}${training.duration.unit}</dd>
-							<dt>Delivery Languages:</dt>
+							<dt>Langues :</dt>
 							<dd>${training.language}</dd>
-							<dt>Rating:</dt>
+							<dt>Difficulté :</dt>
 							<dd>
 								<td><c:forEach begin="1" end="${training.evaluation}">
 										<i class="fa fa-star"></i>
@@ -36,15 +36,15 @@
 						<h2>Réserver</h2>
 						<ul class="sap">
 							<li><div>
-									<dt>Date:</dt>
+									<dt>Date :</dt>
 									<dd>${training.date.startDate}-${training.date.endDate}</dd>
 								</div></li>
 							<li><div>
-									<dt>Prix:</dt>
+									<dt>Prix :</dt>
 									<dd>${training.price}</dd>
 								</div></li>
 							<li><div>
-									<dt>Lieux:</dt>
+									<dt>Lieu :</dt>
 									<dd>${training.location}</dd>
 								</div> <a href="404" class="btn btn-warning btn-sm pull-right"><i
 									class="fa fa-shopping-cart"></i> Acheter</a></li>
@@ -95,7 +95,7 @@
 										Empty
 								</c:if>
 							</ul>
-							<h5>Recommended</h5>
+							<h5>Recommandé</h5>
 							<ul class="sap">
 								<!-- True if its not just a text -->
 								<c:if
@@ -153,7 +153,7 @@
 				</div>
 				<div class="jumbotron col-md-3">
 					<div class="container">
-						<h2>Related Curricula</h2>
+						<h2>Curriculum lié</h2>
 						<ul class="sap">
 							<c:forEach items="${training.relatedCurricula}" var="related"
 								varStatus="loop">

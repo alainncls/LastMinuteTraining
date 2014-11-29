@@ -21,12 +21,6 @@
 				<li><a href="${page.url}/work">Webinars</a></li>
 				<li><a href="${page.url}/work">A propos</a></li>
 				<li><a href="${page.url}/work">CGV</a>${sessionScope.status}</li>
-<!-- 
-				<c:if test="${sessionScope.status=='vendor'}">
-					<li><a href="${page.url}/addTraining">Ajouter une formation</a></li>
-				</c:if>
- -->
-
 			</ul>
 			<c:choose>
 				<c:when test="${sessionScope.login==null}">
@@ -224,9 +218,13 @@
 				Article 1<br> Article 2<br> Article 3<br>
 			</div>
 			<div class="modal-footer">
-				<a href="${page.url}/404" class="btn btn-warning btn-sm">Passer ma commande
+				<%-- <a href="${page.url}/404" class="btn btn-warning btn-sm">Passer ma commande
 					<span class="fa fa-arrow-circle-right"></span>
-				</a>
+				</a> --%>
+				<form action='#' METHOD='POST'>
+					<input type='image' name='submit' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'
+					 align='top' alt='Check out with PayPal'/>
+				</form>
 			</div>
 		</div>
 	</div>
