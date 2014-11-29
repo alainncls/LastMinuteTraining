@@ -47,7 +47,7 @@
 									<td>${training.price}€</td>
 									<td>${training.priceLMT}€</td>
 									<td>${training.date.startDate}</td>
-									<td>${training.duration.count} <c:if test="${training.duration.unit == 'days'}">jours</c:if><c:if test="${training.duration.unit == 'day'}">jour</c:if><c:if test="${training.duration.unit != 'day' && training.duration.unit != 'days'}">${training.duration.unit}</c:if></td>
+									<td>${training.duration.count} <c:if test="${training.duration.unit == 'days'}">Jours</c:if><c:if test="${training.duration.unit == 'day'}">Jour</c:if><c:if test="${training.duration.unit != 'day' && training.duration.unit != 'days'}">${training.duration.unit}</c:if></td>
 									<td><c:forEach begin="1" end="${training.level}">
 											<i class="fa fa-star"></i>
 										</c:forEach></td>
