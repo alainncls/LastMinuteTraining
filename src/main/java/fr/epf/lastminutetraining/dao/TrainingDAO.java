@@ -85,6 +85,7 @@ public class TrainingDAO {
 	}
 
 	public void removeTraining(ObjectId id) {
+        System.out.println(id);
 		trainingsCollection.remove("{id: #}", id);
 	}
 
