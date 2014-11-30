@@ -52,7 +52,7 @@
 		<h1>Catalogue</h1>
 		<p>Accès au catalogue de formations</p>
 		<p>
-			<a href="admin/trainings" class="btn btn-primary btn-sm" role="button">Gestion du
+			<a href="/admin/trainings" class="btn btn-primary btn-sm" role="button">Gestion du
 				catalogue</a>
 		</p>
 	</div>
