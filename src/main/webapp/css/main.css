@@ -264,3 +264,6 @@ min-height: 60px;
 overflow-y: auto;
 word-wrap:break-word
 }
+input{
+	display:block;
+}
