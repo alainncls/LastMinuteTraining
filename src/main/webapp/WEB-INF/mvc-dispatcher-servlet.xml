@@ -11,6 +11,7 @@
 	<mvc:annotation-driven />
 
 	<context:component-scan base-package="fr.epf.lastminutetraining.controller" />
+	<context:component-scan base-package="fr.epf.lastminutetraining.paypal" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

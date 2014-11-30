@@ -36,7 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 		 * Assistant '------------------------------------
 		 */
 
-		String returnURL = "https://www.google.fr/?gws_rd=ssl";
+		String returnURL = "http://localhost:8080/orderConfirmation";
 
 		/*
 		 * '------------------------------------ ' The cancelURL is the location
@@ -45,7 +45,7 @@ import org.springframework.web.servlet.ModelAndView;
 		 * the value entered on the Integration Assistant
 		 * '------------------------------------
 		 */
-		String cancelURL = "https://www.google.fr/?gws_rd=ssl";
+		String cancelURL = "http://localhost:8080/404";
 
 		/*
 		 * '------------------------------------ ' The items hashmap contains
