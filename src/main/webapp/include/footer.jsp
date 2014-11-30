@@ -49,6 +49,20 @@
         	});
     });    
 </script>
+<script src='https://www.paypalobjects.com/js/external/dg.js' type='text/javascript'></script>
+
+
+<script>
+
+	var dg = new PAYPAL.apps.DGFlow(
+	{
+		trigger: 'paypal_submit',
+		expType: 'instant'
+		 //PayPal will decide the experience type for the buyer based on his/her 'Remember me on your computer' option.
+	});
+
+</script>
+
 
 </body>
 </html>
