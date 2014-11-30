@@ -65,24 +65,24 @@
 						<div class="form-group">
 							<label for="description">Contenu</label><br>
 							<button id="addBig" class="button fa fa-plus">Ajouter
-								une partie</button>
+								une partie</button><br>
 							<c:forEach items="${training.content}" var="content"
 								varStatus="loop">
 
-								<input type="text" class="form-control"
+								<input type="text" class=""
 									value="${content.key}"></input>
 								<span class='delBig fa fa-trash'></span>
 								<ul>
 									<button id="addSmall-${loop.index}"
-										class="form-control button fa fa-plus small">Ajouter
+										class="button fa fa-plus small">Ajouter
 										une sous-partie</button>
 									<c:if test="${fn:length(content.value) gt 0}">
 
 
 										<c:forEach items="${content.value}" var="value">
-											<input type="text" class="form-control"
+											<input type="text" class="col-md-10"
 												value="${value}"></input>
-											<span class='delSmall fa fa-trash'></span>
+											<span class=' col-md-1 delSmall fa fa-trash'></span>
 										</c:forEach>
 									</c:if>
 								</ul>
@@ -156,9 +156,9 @@
 			.click(
 					function() {
 						count = $('ul button').size();
-						after = "<input type='text' class='form-control'></input><span class='delBig fa fa-trash'></span><ul><button id='addSmall-"
+						after = "<br><input type='text' class='col-sm-10'></input><span class='col-sm-1 delBig fa fa-trash'></span><ul><button id='addSmall-"
 								+ count.toString()
-								+ "' class='form-control button fa fa-plus small'>Ajouter une sous-partie</button></ul>";
+								+ "' class='button fa fa-plus small'>Ajouter une sous-partie</button></ul>";
 						$(this).after(after);
 						$("[id^=addSmall]").unbind("click");
 						addSmall();
@@ -175,7 +175,7 @@
 							a = this.id;
 							$("#" + a)
 									.after(
-											"<input type='text' class='form-control'><span class='delSmall fa fa-trash'></span>");
+											"<input type='text' class='col-md-10'><span class='col-md-2 delSmall fa fa-trash'></span>");
 							$(".delSmall").click(function() {
 								$(this).prev().remove();
 								$(this).remove();
