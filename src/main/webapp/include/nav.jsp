@@ -221,7 +221,7 @@
 				<%-- <a href="${page.url}/404" class="btn btn-warning btn-sm">Passer ma commande
 					<span class="fa fa-arrow-circle-right"></span>
 				</a> --%>
-				<form action='#' METHOD='POST'>
+				<form action='checkout' METHOD='POST'>
 					<input type='image' name='submit' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'
 					 align='top' alt='Check out with PayPal'/>
 				</form>
