@@ -46,9 +46,9 @@ public class PaypalFunctions {
 		// Replace <API_USERNAME> with your API Username
 		// Replace <API_PASSWORD> with your API Password
 		// Replace <API_SIGNATURE> with your Signature
-		gv_APIUserName = "lastminutetraining_api1.gmail.com";
-		gv_APIPassword = "Z9GZSM6MWAEQ6PNK";
-		gv_APISignature = "AFcWxV21C7fd0v3bYYYRCpSSRl31AKbVmp7.D0ywr2wMMch14.tdSKIP";
+		gv_APIUserName = "lastminutetraining.epf_api1.gmail.com";
+		gv_APIPassword = "6DNP2PBTZLKJG9GK";
+		gv_APISignature = "ApzOk5KHKjxhaizEHdz8feEsONnbA7h9KDijsyEDlCKbssjLaCtX4e9n";
 
 		boolean bSandbox = true;
 
