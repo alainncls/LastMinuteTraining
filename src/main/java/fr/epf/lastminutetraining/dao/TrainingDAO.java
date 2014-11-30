@@ -85,8 +85,7 @@ public class TrainingDAO {
 	}
 
 	public void removeTraining(ObjectId id) {
-        System.out.println(id);
-        System.out.println(trainingsCollection.remove(id));
+        trainingsCollection.remove(id);
 	}
 
 	// Method to find a training by id
