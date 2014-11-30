@@ -17,18 +17,18 @@ public class AdminController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/admin")
 	protected ModelAndView admin() {
-		return new ModelAndView("admin");
+		return new ModelAndView("/admin");
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/admin/trainings")
 	protected ModelAndView trainings() {
-		return new ModelAndView("trainingsAdmin", "trainings",
+		return new ModelAndView("/trainingsAdmin", "trainings",
 				service.findLastTraining());
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/admin/editTraining/{code}")
 	protected ModelAndView edit(@PathVariable("code") String code) {
-		return new ModelAndView("editTraining", "training",
+		return new ModelAndView("/editTraining", "training",
 				service.findTraining(code));
 	}
 
@@ -36,6 +36,6 @@ public class AdminController {
 	protected ModelAndView delete(@PathVariable("code") ObjectId code) {
 		// Delete the specific training
 		service.remove(code);
-		return new ModelAndView("admin");
+		return new ModelAndView("/admin/trainings");
 	}
 }

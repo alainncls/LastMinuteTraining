@@ -266,4 +266,9 @@ word-wrap:break-word
 }
 input{
 	display:block;
+	float:left;
+}
+.fa-side{
+	height:25px;
+	float:left;
 }
