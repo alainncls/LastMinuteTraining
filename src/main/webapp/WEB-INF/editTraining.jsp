@@ -64,25 +64,25 @@
 						</div>
 						<div class="form-group">
 							<label for="description">Contenu</label><br>
-							<button id="addBig" class="button fa fa-plus">Ajouter
-								une partie</button><br>
+							<span id="addBig" class="button fa fa-side fa-plus">Ajouter
+								une partie</span><br><br>
 							<c:forEach items="${training.content}" var="content"
 								varStatus="loop">
 
 								<input type="text" class=""
 									value="${content.key}"></input>
-								<span class='delBig fa fa-trash'></span>
+								<span class='delBig fa fa-side fa-trash'></span>
 								<ul>
-									<button id="addSmall-${loop.index}"
-										class="button fa fa-plus small">Ajouter
-										une sous-partie</button>
+									<span id="addSmall-${loop.index}"
+										class="button fa fa-side fa-plus small">Ajouter
+										une sous-partie</span>
 									<c:if test="${fn:length(content.value) gt 0}">
 
 
 										<c:forEach items="${content.value}" var="value">
 											<input type="text" class="col-md-10"
 												value="${value}"></input>
-											<span class=' col-md-1 delSmall fa fa-trash'></span>
+											<span class=' col-md-1 delSmall fa fa-side fa-trash'></span>
 										</c:forEach>
 									</c:if>
 								</ul>
@@ -93,11 +93,11 @@
 								logiciel:</label><br>
 							<ul>
 								<input class="col-md-10" type="text" value="" />
-								<span class="addLogiciel col-md-1 fa fa-plus"></span>
+								<span class="addLogiciel col-md-1 fa fa-side fa-plus"></span>
 
 								<c:forEach items="${training.release}" var="release">
 									<input class="col-md-10" type="text" value="${release}" />
-									<span class='delLogiciel col-md-1 fa fa-trash'></span>
+									<span class='delLogiciel col-md-1 fa fa-side fa-trash'></span>
 								</c:forEach>
 							</ul>
 						</div>
@@ -105,7 +105,7 @@
 							<br> <br> <br> <label for="description">Public:</label><br>
 							<ul>
 								<input class="col-md-10" type="text" value="" />
-								<span class="addPublic col-md-1 fa fa-plus"></span>
+								<span class="addPublic col-md-1 fa fa-side fa-plus"></span>
 
 								<c:forEach items="${training.audience}" var="audience">
 									<input class="col-md-10" type="text" value="${audience}" />
@@ -156,9 +156,9 @@
 			.click(
 					function() {
 						count = $('ul button').size();
-						after = "<br><input type='text' class='col-sm-10'></input><span class='col-sm-1 delBig fa fa-trash'></span><ul><button id='addSmall-"
+						after = "<br><input type='text' class='col-sm-10'></input><span class='col-sm-1 delBig fa fa-side fa-trash'></span><ul><span id='addSmall-"
 								+ count.toString()
-								+ "' class='button fa fa-plus small'>Ajouter une sous-partie</button></ul>";
+								+ "' class='span fa fa-side fa-plus small'>Ajouter une sous-partie</span></ul>";
 						$(this).after(after);
 						$("[id^=addSmall]").unbind("click");
 						addSmall();
@@ -175,7 +175,7 @@
 							a = this.id;
 							$("#" + a)
 									.after(
-											"<input type='text' class='col-md-10'><span class='col-md-2 delSmall fa fa-trash'></span>");
+											"<input type='text' class='col-md-10'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
 							$(".delSmall").click(function() {
 								$(this).prev().remove();
 								$(this).remove();
@@ -199,7 +199,7 @@
 </script>
 <script type="text/javascript">
 	$(".addLogiciel").click(function() {
-		$(this).after("<input class='col-md-10' type='text' value='''/><span class='delLogiciel col-md-1 fa fa-trash'></span>");
+		$(this).after("<input class='col-md-10' type='text' value='''/><span class='delLogiciel col-md-1 fa fa-side fa-trash'></span>");
 		$(".delLogiciel").click(function() {
 			$(this).prev().remove();
 			$(this).remove();
@@ -213,7 +213,7 @@
 </script>
 <script type="text/javascript">
 	$(".addPublic").click(function() {
-		$(this).after("<input class='col-md-10' type='text' value='''/><span class='delPublic col-md-1 fa fa-trash'></span>");
+		$(this).after("<input class='col-md-10' type='text' value='''/><span class='delPublic col-md-1 fa fa-side fa-trash'></span>");
 		$(".delPublic").click(function() {
 			$(this).prev().remove();
 			$(this).remove();
