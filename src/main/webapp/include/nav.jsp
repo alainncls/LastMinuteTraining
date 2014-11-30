@@ -96,7 +96,7 @@
 			<div class="modal-body">
 				<div class="tab-content">
 					<div class="tab-pane active fade in" id="signin">
-						<form class="form-horizontal" method="post" action="login">
+						<form class="form-horizontal" method="post" action="${page.url}/login">
 							<!-- Sign In Form -->
 							<!-- Text input-->
 							<div class="form-group">
