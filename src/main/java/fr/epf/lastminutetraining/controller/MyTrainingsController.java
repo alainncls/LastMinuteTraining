@@ -76,7 +76,7 @@ public class MyTrainingsController {
 				+ " Merci de votre contribution à notre catalogue.\n\nCordialement,\n\n"
 				+ "L'équipe Last Minute Training");
 
-			return new ModelAndView("addTraining");
+			return new ModelAndView("mytrainings");
 		}
 		
 		
@@ -88,8 +88,6 @@ public class MyTrainingsController {
 			return new ModelAndView("addTraining");
 		} else {
 			ObjectId id = new ObjectId("54668afc44ae11795d109a61");
-			// ObjectId id = new
-			// ObjectId(session.getAttribute("id").toString());
 			return new ModelAndView("myTrainings", "trainings",
 				service.findAllTrainings(id));
 		}
