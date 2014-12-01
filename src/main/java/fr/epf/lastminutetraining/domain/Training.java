@@ -89,10 +89,6 @@ public class Training {
 
 	}
 
-	public static Builder builder() {
-		return new Builder();
-	}
-
 	public HashMap getDate() {
 		return date;
 	}
@@ -219,14 +215,6 @@ public class Training {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getstartDate() {
-		return startDate;
-	}
-
-	public void setstartDate(String startDate) {
-		this.startDate = startDate;
 	}
 
 	public String getEndDate() {
@@ -452,123 +440,5 @@ public class Training {
 
 	public void setVendorId(String vendorId) {
 		this.vendorId = vendorId;
-	}
-
-	public static class Builder {
-
-		private Training training;
-
-		private Builder() {
-			training = new Training();
-		}
-
-		public Builder id(ObjectId id) {
-			training.id = id;
-			return this;
-		}
-
-		public Builder name(String name) {
-			training.name = name;
-			return this;
-		}
-
-		public Builder startDate(String startDate) {
-			training.startDate = startDate;
-			return this;
-		}
-
-		public Builder endDate(String endDate) {
-			training.endDate = endDate;
-			return this;
-		}
-
-		public Builder level(String level) {
-			training.level = level;
-			return this;
-		}
-
-		public Builder price(String price) {
-			training.price = price;
-			return this;
-		}
-
-		public Builder priceLMT(String priceLMT) {
-			training.priceLMT = priceLMT;
-			return this;
-		}
-
-		public Builder description(String description) {
-			training.description = description;
-			return this;
-		}
-
-		public Builder count(int count) {
-			training.count = count;
-			return this;
-		}
-
-		public Builder location(String location) {
-			training.location = location;
-			return this;
-		}
-
-		public Builder method(String delivery) {
-			training.method = delivery;
-			return this;
-		}
-
-		public Builder available(int available) {
-			training.available = available;
-			return this;
-		}
-
-		public Builder certification(Short certification) {
-			training.certification = certification;
-			return this;
-		}
-
-		public Builder category(String category) {
-			training.category = category;
-			return this;
-		}
-
-		public Builder contact(String contact) {
-			training.contact = contact;
-			return this;
-		}
-
-		public Builder summary(String summary) {
-			training.summary = summary;
-			return this;
-		}
-
-		public Builder introduction(String introduction) {
-			training.introduction = introduction;
-			return this;
-		}
-
-		public Builder program(String program) {
-			training.program = program;
-			return this;
-		}
-
-		public Builder objectives(Map objectives) {
-			training.content = objectives;
-			return this;
-		}
-
-		public Builder activities(String activities) {
-			training.activities = activities;
-			return this;
-		}
-
-		public Builder url(String url) {
-			training.url = url;
-			return this;
-		}
-
-		public Training build() {
-			return training;
-		}
 	}
 }

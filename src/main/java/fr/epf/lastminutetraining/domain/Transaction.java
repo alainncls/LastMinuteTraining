@@ -3,16 +3,18 @@ package fr.epf.lastminutetraining.domain;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+import org.jongo.marshall.jackson.oid.Id;
+
 public class Transaction {
+	@Id
+	private ObjectId id;
+	
 	// training, prixUnitaire, Quantité
 	private List< Order > orders;
 	private Client client;
 	private Date date;
 	private String status;//Facturatnio, paiement, validation/note
-
-	public List< Order > getTrainings() {
-		return orders;
-	}
 
 	public Client getClient() {
 		return client;
@@ -20,6 +22,14 @@ public class Transaction {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public ObjectId getId() {
+		return id;
+	}
+
+	public void setId(ObjectId id) {
+		this.id = id;
 	}
 
 	public Date getDate() {
