@@ -17,6 +17,8 @@
 <link rel="stylesheet" media="screen" href="/css/font-awesome.css" />
 <link rel="stylesheet" media="screen" href="/css/jquery.raty.css" />
 
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+
 <script src="/js/jquery-2.1.1.min.js"></script>
 <script src="/js/moment.min.js"></script>
 <script src="/js/chosen.min.js"></script>

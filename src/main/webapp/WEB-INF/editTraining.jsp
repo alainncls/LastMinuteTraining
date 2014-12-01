@@ -82,10 +82,15 @@
 				</div>
 				<div class="form-group">
 					<label for="language">Langue</label> <input type="text"
-						class="form-control" name="language" id="language"
+						class="form-control" name="language[0]" id="language0"
 						required="required" form="trainingForm"
 						value="${training.language}" />
 				</div>
+				<div class="form-group" id="pasteLang">
+                    <span class="input-group-btn">
+                        <button id="addLang" type="button" onclick="addLine('language', 'pasteLang')" class="btn btn-info btn-sm">Ajouter une langue</button>
+                    </span>
+                </div>
 				<div class="form-group" id="pasteLang">
 					<div class="form-group">
 						<label for="location">Lieux de la formation</label> <input

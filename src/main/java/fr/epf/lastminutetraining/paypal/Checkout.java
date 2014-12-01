@@ -71,7 +71,7 @@ import org.springframework.web.servlet.ModelAndView;
 		if (strAck != null && strAck.equalsIgnoreCase("Success")) {
 
 			// ' Redirect to paypal.com
-			String redirectURL = "redirect:https://www.sandbox.paypal.com/incontext?token="
+			String redirectURL = "redirect:https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
 			+ nvp.get("TOKEN").toString();
 			
 			return new ModelAndView(redirectURL);

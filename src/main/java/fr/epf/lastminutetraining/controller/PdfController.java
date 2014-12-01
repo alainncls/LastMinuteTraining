@@ -5,13 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.epf.lastminutetraining.domain.Order;
+
 @Controller
-public class OrderController {
-	
-	@RequestMapping(method = RequestMethod.GET, value = { "/orderConfirmation" })
-	protected ModelAndView confirmation() {
+public class PdfController {
 
-		return new ModelAndView("orderConfirmation");
+	@RequestMapping(value = "/generate/pdf.htm", method = RequestMethod.GET)
+	protected ModelAndView generatePdf(){
+
+		Order order = new Order();
+
+		return new ModelAndView("pdfView", "command", order);
 	}
-
 }

@@ -1,10 +1,11 @@
 <jsp:include page="/include/header.jsp" />
 
 <div class="row">
-	<div id="test" class="panel panel-primary">
-		<div class="panel-heading">
-			<h3 class="panel-title">Confirmation de commande</h3>
-		</div>
+	<div class="fakejumbo color-green marginright">
+		<h1>Merci de votre achat !</h1>
+		<p>
+			<a href="/" class="btn btn-primary btn-sm" role="button">Revenir à l'accueil</a>
+		</p>
 	</div>
 </div>
 <jsp:include page="/include/footer.jsp" />
