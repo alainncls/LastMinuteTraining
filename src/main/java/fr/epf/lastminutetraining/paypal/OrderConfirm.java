@@ -1,18 +1,35 @@
 package fr.epf.lastminutetraining.paypal;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class OrderConfirm extends HttpServlet {
+import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+import fr.epf.lastminutetraining.domain.Client;
+import fr.epf.lastminutetraining.domain.Mail;
+import fr.epf.lastminutetraining.domain.Vendor;
+import fr.epf.lastminutetraining.service.ClientDBService;
+
+@Controller
+public class OrderConfirm {
+	
+	@Autowired
+	private ClientDBService cservice;
+
+	@RequestMapping(method = RequestMethod.GET, value = { "/orderConfirmation" })
+	protected ModelAndView confirmation(HttpServletRequest request, HttpServletResponse response,
+										HttpSession session){
 
 		/*
 		 * '------------------------------------ ' This is the landing page
@@ -64,7 +81,7 @@ public class OrderConfirm extends HttpServlet {
 			 */
 
 			nvp = ppf.confirmPayment(token, payerId, finalPaymentAmount,
-					serverName, item);
+					serverName, item);System.out.println(nvp);
 			
 			strAck = nvp.get("ACK").toString();
 			
@@ -230,15 +247,26 @@ public class OrderConfirm extends HttpServlet {
 
 				String reasonCode = nvp.get("PAYMENTINFO_0_REASONCODE").toString();
 
-				// Add javascript to close Digital Goods frame. You may want to
-				// add more javascript code to
-				// display some info message indicating status of purchase in
-				// the parent window
-				response.setContentType("text/html");
-				response.getWriter()
-						.println(
-								"<script>\n alert(\"Payment Successful\");\n// add relevant message above or remove the line if not required \n window.onload = function(){\nif(window.opener){\nwindow.close();\n}\nelse{\nif(top.dg.isOpen() == true){\ntop.dg.closeFlow();\nreturn true;\n}\n}\n};\n</script>");
+				// Envoi d'un mail de confirmation de payement
+				ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
+				ObjectId idClient = new ObjectId(session.getAttribute("id").toString());
+				Client client = cservice.findClient(idClient);
 
+				Mail mm = (Mail) context.getBean("Mail");
+				mm.sendMail(
+					"lastminutetraining.epf@gmail.com",
+					client.getMail(),
+					"LMT - Confirmation de payement formation",
+					"Cher "+client.getFirstName()+" "+client.getLastName()+",\n\n"
+					+ "Nous vous confirmons le payement de votre formation "
+					+ "nom training"
+					+ " se déroulant le "+"jour"+"à "+"date"
+					+ "."
+					+ " Merci de votre achat.\n\nCordialement,\n\n"
+					+ "L'équipe Last Minute Training");
+				
+				return new ModelAndView("/orderConfirmation");
+				
 			} else {
 				// Display a user friendly Error on the page using any of the
 				// following error information returned by PayPal
@@ -246,19 +274,17 @@ public class OrderConfirm extends HttpServlet {
 				String ErrorCode = nvp.get("L_ERRORCODE0").toString();
 				String ErrorShortMsg = nvp.get("L_SHORTMESSAGE0").toString();
 				String ErrorLongMsg = nvp.get("L_LONGMESSAGE0").toString();
-				String ErrorSeverityCode = nvp.get("L_SEVERITYCODE0")
-						.toString();
+				String ErrorSeverityCode = nvp.get("L_SEVERITYCODE0").toString();
 
-				response.getWriter()
-						.println(
-								"<script>\n alert(\"Payment Failed\");\n// add relevant message above or remove the line if not required \n window.onload = function(){\nif(window.opener){\nwindow.close();\n}\nelse{\nif(top.dg.isOpen() == true){\ntop.dg.closeFlow();\nreturn true;\n}\n}\n};\n</script>");
+				return new ModelAndView("/404");
 			}
 		}
+		return null;
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	@RequestMapping(method = RequestMethod.POST, value = { "/orderConfirmation" })
+	protected void post(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		confirmation(request, response, session);
 	}
 
 }

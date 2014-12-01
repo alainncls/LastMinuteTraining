@@ -43,9 +43,6 @@ public class PaypalFunctions {
 	public PaypalFunctions() {// lhuynh - Actions to be Done on init of this
 								// class
 
-		// Replace <API_USERNAME> with your API Username
-		// Replace <API_PASSWORD> with your API Password
-		// Replace <API_SIGNATURE> with your Signature
 		gv_APIUserName = "lastminutetraining.epf_api1.gmail.com";
 		gv_APIPassword = "6DNP2PBTZLKJG9GK";
 		gv_APISignature = "ApzOk5KHKjxhaizEHdz8feEsONnbA7h9KDijsyEDlCKbssjLaCtX4e9n";
@@ -119,8 +116,8 @@ public class PaypalFunctions {
 		 */
 		String nvpstr = "&PAYMENTREQUEST_0_AMT=" + paymentAmount
 				+ "&PAYMENTREQUEST_0_PAYMENTACTION=" + paymentType
-				+ "&RETURNURL=" + URLEncoder.encode(returnURL) + "&CANCELURL="
-				+ URLEncoder.encode(cancelURL)
+				+ "&RETURNURL=" + returnURL + "&CANCELURL="
+				+ cancelURL
 				+ "&PAYMENTREQUEST_0_CURRENCYCODE=" + currencyCodeType
 				+ "&REQCONFIRMSHIPPING=0" + "&NOSHIPPING=1"
 				+ "&L_PAYMENTREQUEST_0_NAME0=" + item.get("name")
@@ -134,7 +131,7 @@ public class PaypalFunctions {
 		 * authorize payment. If an error occured, show the resulting errors
 		 */
 
-		HashMap nvp = httpcall("SetExpressCheckout", nvpstr);System.out.println(nvp);
+		HashMap nvp = httpcall("SetExpressCheckout", nvpstr);//System.out.println(nvp);
 
 		String strAck = nvp.get("ACK").toString();
 		if (strAck != null && strAck.equalsIgnoreCase("Success")) {
@@ -194,7 +191,7 @@ public class PaypalFunctions {
 		 * paymentType ' are set to the selections made on the Integration
 		 * Assistant '------------------------------------
 		 */
-		String currencyCodeType = "";
+		String currencyCodeType = "EUR";
 		String paymentType = "Sale";
 
 		/*
@@ -213,13 +210,13 @@ public class PaypalFunctions {
 		nvpstr = nvpstr + "&L_PAYMENTREQUEST_0_NAME0=" + item.get("name")
 				+ "&L_PAYMENTREQUEST_0_AMT0=" + item.get("amt")
 				+ "&L_PAYMENTREQUEST_0_QTY0=" + item.get("qty")
-				+ "&L_PAYMENTREQUEST_0_ITEMCATEGORY0=Digital";
+				+ "&L_PAYMENTREQUEST_0_ITEMCATEGORY0=Digital";//System.out.println(nvpstr);
 		
 		/*
 		 * Make the call to PayPal to finalize payment If an error occured, show
 		 * the resulting errors
 		 */
-		HashMap nvp = httpcall("DoExpressCheckoutPayment", nvpstr);
+		HashMap nvp = httpcall("DoExpressCheckoutPayment", nvpstr);//System.out.println(nvp);
 		String strAck = nvp.get("ACK").toString();
 		if (strAck != null
 				&& (strAck.equalsIgnoreCase("Success") || strAck
