@@ -68,13 +68,13 @@ public class MyTrainingsController {
 			mm.sendMail(
 				"lastminutetraining.epf@gmail.com",
 				vendor.getMail(),
-				"Confirmation de création de formation",
+				"Confirmation de crï¿½ation de formation",
 				"Cher vendeur,\n\n"
-				+ "Vous venez de créer une nouvelle formation nommée "
+				+ "Vous venez de crï¿½er une nouvelle formation nommï¿½e "
 				+ training.getName()
 				+ "."
-				+ " Merci de votre contribution à notre catalogue.\n\nCordialement,\n\n"
-				+ "L'équipe Last Minute Training");
+				+ " Merci de votre contribution ï¿½ notre catalogue.\n\nCordialement,\n\n"
+				+ "L'ï¿½quipe Last Minute Training");
 
 			return new ModelAndView("addTraining");
 		}
@@ -93,7 +93,6 @@ public class MyTrainingsController {
 			return new ModelAndView("myTrainings", "trainings",
 				service.findAllTrainings(id));
 		}
-
 	}
 
 }
