@@ -1,52 +1,29 @@
 package fr.epf.lastminutetraining.domain;
 
-import java.util.Date;
-
 public class Order {
 	private Training training;
-	private Client client;
-	private int quantity;
-	private int price;
-	private Date date;
-
+	private Float unitPrice;
+	private Integer quantity;
+	
+	public Order(){}
+	
 	public Training getTraining() {
 		return training;
 	}
-
 	public void setTraining(Training training) {
 		this.training = training;
+		this.unitPrice = Float.valueOf(training.getPriceLMT());
 	}
-
-	public Client getClient() {
-		return client;
+	public Float getUnitPrice() {
+		return unitPrice;
 	}
-
-	public void setClient(Client client) {
-		this.client = client;
+	public Float getTotalPrice() {
+		return unitPrice*quantity;
 	}
-
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
 }

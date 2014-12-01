@@ -7,8 +7,6 @@
 
 package fr.epf.lastminutetraining.domain;
 
-import java.util.Date;
-
 public class OrderBuilder extends OrderBuilderBase<OrderBuilder> {
 	public static OrderBuilder order() {
 		return new OrderBuilder();
@@ -42,29 +40,8 @@ class OrderBuilderBase<GeneratorT extends OrderBuilderBase<GeneratorT>> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public GeneratorT client(Client aValue) {
-		instance.setClient(aValue);
-
-		return (GeneratorT) this;
-	}
-
-	@SuppressWarnings("unchecked")
-	public GeneratorT quantity(int aValue) {
+	public GeneratorT quantity(Integer aValue) {
 		instance.setQuantity(aValue);
-
-		return (GeneratorT) this;
-	}
-
-	@SuppressWarnings("unchecked")
-	public GeneratorT price(int aValue) {
-		instance.setPrice(aValue);
-
-		return (GeneratorT) this;
-	}
-
-	@SuppressWarnings("unchecked")
-	public GeneratorT date(Date aValue) {
-		instance.setDate(aValue);
 
 		return (GeneratorT) this;
 	}
