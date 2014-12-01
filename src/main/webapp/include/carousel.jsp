@@ -10,7 +10,7 @@
     <div class="carousel-inner">
         <div class="item active">
             <img
-                    src="http://selfcoaching.fr/blog/wp-content/uploads/2013/08/dreamstime_xxl_11620953.jpg"
+                    src="/images/car_1.jpg"
                     alt="...">
 
             <div class="carousel-caption">
@@ -21,7 +21,7 @@
         </div>
         <div class="item">
             <img
-                    src="http://www.schultz-touge.com/fs/slider1/data2/images/formation_4.jpg"
+                    src="/images/car_2.jpg"
                     alt="...">
 
             <div class="carousel-caption">
@@ -32,7 +32,7 @@
         </div>
         <div class="item">
             <img
-                    src="http://www.elythe.com/sites/default/files/page%20du%20bas/page%20marseille/formation%20d%C3%A9veloppement%20personnel.jpg"
+                    src="/images/car_3.jpg"
                     alt="...">
 
             <div class="carousel-caption">
