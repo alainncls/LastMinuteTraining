@@ -199,135 +199,220 @@
 									class="form-control" name="description" id="description"
 									form="trainingForm" value="${training.description}" />
 							</div>
-							<c:forEach items="${training.relatedCurricula}" var="related"
-								varStatus="loop">
-								<div class="row col-md-12">
-								<div class="form-group" id="divrelated${loop.index}">
-									<input type="text" class="form-control"
-										name="relateds[${loop.index}]" id="related0"
-										required="required" form="trainingForm"
-										style="width: 45%;!important"
-										value="${training.academys[loop.index]}" />
-										<input
-										type="text" class="form-control col-md-5" name="academys[0]"
-										id="academy0" required="required" style="width: 45%;!important"
-										form="trainingForm" value="${related}" />
-									<div class="col-sm-1">
-										<button id="${loop.index}" type="button"
-											onclick="supprDouble(this.id,'pasteRelated');$(this).remove();"
-											class="btn btn-danger">
-											<span class="fa fa-times"></span>
-										</button>
+							<div class="form-group">
+								<label>Curricula</label>
+								<c:forEach items="${training.relatedCurricula}" var="related"
+									varStatus="loop">
+									<div class="row col-md-12">
+										<div class="form-group" id="divrelated${loop.index}">
+											<input type="text" class="form-control"
+												name="relateds[${loop.index}]" id="related0"
+												required="required" form="trainingForm"
+												style="width: 45%;!important"
+												value="${training.academys[loop.index]}" /> <input
+												type="text" class="form-control col-md-5" name="academys[0]"
+												id="academy0" required="required"
+												style="width: 45%;!important" form="trainingForm"
+												value="${related}" />
+											<div class="col-sm-1">
+												<button id="${loop.index}" type="button"
+													onclick="supprDouble(this.id,'pasteRelated');$(this).remove();"
+													class="btn btn-danger">
+													<span class="fa fa-times"></span>
+												</button>
+											</div>
+										</div>
 									</div>
+								</c:forEach>
+								<div class="form-group" id="pasteRelated">
+									<span class="input-group-btn">
+										<button id="addRelated" type="button"
+											onclick="addDouble('related', 'pasteRelated')"
+											class="btn btn-info btn-sm">Ajouter un curriculum</button>
+									</span>
 								</div>
+
+								<div class="form-group" style="display: inline-block;">
+									<label for="description">Contenu</label><br> <span
+										id="addBig" class="button fa fa-side fa-plus">Ajouter
+										une partie</span><br> <br>
+									<c:forEach items="${training.content}" var="content"
+										varStatus="loop">
+
+										<input type="text" class="form-control" value="${content.key}"></input>
+										<span class='delBig fa fa-side fa-trash'></span>
+										<ul>
+											<span id="addSmall-${loop.index}"
+												class="button fa fa-side fa-plus small ">Ajouter une
+												sous-partie</span>
+											<c:if test="${fn:length(content.value) gt 0}">
+
+
+												<c:forEach items="${content.value}" var="value">
+													<input type="text" class=" form-control col-md-10"
+														value="${value}"></input>
+													<span class=' col-md-1 delSmall fa fa-side fa-trash'></span>
+												</c:forEach>
+											</c:if>
+										</ul>
+									</c:forEach>
 								</div>
-							</c:forEach>
-							<div class="form-group" id="pasteRelated">
-								<span class="input-group-btn">
-									<button id="addRelated" type="button"
-										onclick="addDouble('related', 'pasteRelated')"
-										class="btn btn-info btn-sm">Ajouter un curriculum</button>
-								</span>
-							</div>
-							<div class="actions">
-								<button type="submit" class="btn btn-success"
-									form="trainingForm">Envoyer</button>
-								<a href="home" class="btn btn-danger">Annuler</a>
+
+								<div class="actions">
+									<button type="submit" class="btn btn-success"
+										form="trainingForm">Envoyer</button>
+									<a href="home" class="btn btn-danger">Annuler</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<script>
-				function addLine(name, divName) {
-					var counter = $("[id^='" + divName + "']").length;
-					var fullName = 'div' + name + counter;
-					var newRow2 = '<div class="form-group" id="'+fullName+'">'
-							+ '<div class="row">'
-							+ '<div class="col-md-10">'
-							+ '<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'
-							+ '</div>'
-							+ '<div class="col-sm-1">'
-							+ '<button id="'
-							+ counter
-							+ '" type="button" onclick="suppr(this.id,\''
-							+ name
-							+ '\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'
-							+ '</div>'
-					'</div>' + '</div>';
-					$('#' + divName + '').before(newRow2);
-				}
-			</script>
-			<script>
-				function suppr(nb, name) {
+				<script>
+					function addLine(name, divName) {
+						var counter = $("[id^='" + divName + "']").length;
+						var fullName = 'div' + name + counter;
+						var newRow2 = '<div class="form-group" id="'+fullName+'">'
+								+ '<div class="row">'
+								+ '<div class="col-md-10">'
+								+ '<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'
+								+ '</div>'
+								+ '<div class="col-sm-1">'
+								+ '<button id="'
+								+ counter
+								+ '" type="button" onclick="suppr(this.id,\''
+								+ name
+								+ '\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'
+								+ '</div>'
+						'</div>' + '</div>';
+						$('#' + divName + '').before(newRow2);
+					}
+				</script>
+				<script>
+					function suppr(nb, name) {
 
-					//test = id du div row
-					var test = $('#' + name + nb).parents('div').parents('div')
-							.parents('div').attr('id');
-					console.log(nb + name);
-					var el = document.getElementById(test);
+						//test = id du div row
+						var test = $('#' + name + nb).parents('div').parents(
+								'div').parents('div').attr('id');
+						console.log(nb + name);
+						var el = document.getElementById(test);
 
-					el.parentNode.removeChild(el);
-				}
-			</script>
-			<script>
-				$("#level option[value=${training.level}]").attr("selected",
-						"selected");
-				$("#level option:selected").each(function() {
-					$('#level').addClass(" level-${training.level}")
-				});
-				$("#level")
-						.change(
-								function() {
-									$("#level option:selected")
-											.each(
-													function() {
-														$('#level')
-																.attr(
-																		'class',
-																		function(
-																				i,
-																				c) {
-																			return c
-																					.replace(
-																							/(^|\s)level-\S+/g,
-																							' level-'
-																									+ $(
-																											this)
-																											.val());
-																		});
-													});
-								});
-				function adjustHeight(el) {
-					el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)
-							+ "px"
-							: "60px";
-					console.log(el);
-				}
-			</script>
-			<script>
-				function addDouble(name, divName) {
-					console.log(name+divName);
-					var counter = $("[id^='" + name + "']").length;
-					console.log(counter);
-					var fullName = 'div' + name + counter;
-					var newRow2 = '<div class="row col-md-12"><div class="form-group" id="'+fullName+'">'
-							+ '<input type="text" class="form-control " style="width:45%;" name="related['+ counter + ']" id="related'+ counter	+'" form="trainingForm" placeholder="Académie"/>'
-							+ '<input type="text" class="form-control " style="width:45%;" name="academy['+ counter + ']" id="academy'+ counter	+ '" form="trainingForm"/ placeholder="URL">'
-							+ '</div>'
-							+ '<div class="col-sm-1">'
-							+ '<button id="'
-							+ counter
-							+ '" type="button" onclick="supprDouble(this.id,\''
-							+ "related"
-							+ '\');$(this).remove();" class="btn btn-danger"><span class="fa fa-times"></span></button>'
-					'</div>' + '</div></div>';
-					$('#' + divName + '').before(newRow2);
-				}
-			</script>
-			<script>
-			function supprDouble(id) { 
-			$("#divrelated"+id).remove();
-			}
-			</script>
-			<jsp:include page="/include/footer.jsp" />
+						el.parentNode.removeChild(el);
+					}
+				</script>
+				<script>
+					$("#level option[value=${training.level}]").attr(
+							"selected", "selected");
+					$("#level option:selected").each(function() {
+						$('#level').addClass(" level-${training.level}")
+					});
+					$("#level")
+							.change(
+									function() {
+										$("#level option:selected")
+												.each(
+														function() {
+															$('#level')
+																	.attr(
+																			'class',
+																			function(
+																					i,
+																					c) {
+																				return c
+																						.replace(
+																								/(^|\s)level-\S+/g,
+																								' level-'
+																										+ $(
+																												this)
+																												.val());
+																			});
+														});
+									});
+					function adjustHeight(el) {
+						el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)
+								+ "px"
+								: "60px";
+						console.log(el);
+					}
+				</script>
+				<script>
+					function addDouble(name, divName) {
+						console.log(name + divName);
+						var counter = $("[id^='" + name + "']").length;
+						console.log(counter);
+						var fullName = 'div' + name + counter;
+						var newRow2 = '<div class="row col-md-12"><div class="form-group" id="'+fullName+'">'
+								+ '<input type="text" class="form-control " style="width:45%;" name="related['
+								+ counter
+								+ ']" id="related'
+								+ counter
+								+ '" form="trainingForm" placeholder="Academie"/>'
+								+ '<input type="text" class="form-control " style="width:45%;" name="academy['
+								+ counter
+								+ ']" id="academy'
+								+ counter
+								+ '" form="trainingForm"/ placeholder="URL">'
+								+ '</div>'
+								+ '<div class="col-sm-1">'
+								+ '<button id="'
+								+ counter
+								+ '" type="button" onclick="supprDouble(this.id,\''
+								+ "related"
+								+ '\');$(this).remove();" class="btn btn-danger"><span class="fa fa-times"></span></button>'
+						'</div>' + '</div></div>';
+						$('#' + divName + '').before(newRow2);
+					}
+				</script>
+				<script>
+					function supprDouble(id) {
+						$("#divrelated" + id).parent().remove();
+						$("#divrelated" + id).remove();
+					}
+				</script>
+				<script type="text/javascript">
+					addSmall();
+					$("#addBig")
+							.click(
+									function() {
+										count = $('ul button').size();
+										after = "<br><input type='text' class='form-control col-sm-10'></input><span class='col-sm-1 delBig fa fa-side fa-trash'></span><ul><span id='addSmall-"
+												+ count.toString()
+												+ "' class='span fa fa-side fa-plus small'>Ajouter une sous-partie</span></ul>";
+										$(this).after(after);
+										$("[id^=addSmall]").unbind("click");
+										addSmall();
+										$(".delBig").click(function() {
+											$(this).prev().remove();
+											$(this).next().remove();
+											$(this).remove();
+										});
+									});
+					function addSmall() {
+						$("[id^=addSmall]")
+								.click(
+										function(event) {
+											a = this.id;
+											$("#" + a)
+													.after(
+															"<input type='text' class='form-control col-md-10'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
+											$(".delSmall").click(function() {
+												$(this).prev().remove();
+												$(this).remove();
+											});
+										})
+					};
+				</script>
+
+				<script type="text/javascript">
+					$(".delSmall").click(function() {
+						$(this).prev().remove();
+						$(this).remove();
+					});
+				</script>
+				<script type="text/javascript">
+					$(".delBig").click(function() {
+						$(this).prev().remove();
+						$(this).next().remove();
+						$(this).remove();
+					});
+				</script>
+				<jsp:include page="/include/footer.jsp" />
