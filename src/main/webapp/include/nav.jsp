@@ -9,7 +9,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${page.url}/home">Accueil</a>
+			<a class="navbar-brand" href="${page.url}/">Accueil</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,25 +31,29 @@
 					</button>
 				</c:when>
 				<c:otherwise>
-					<a class="btn btn-danger navbar-btn navbar-right" href="${page.url}/logout">
-						<span class="fa fa-sign-out"></span> Déconnexion
+					<a class="btn btn-danger navbar-btn navbar-right"
+						href="${page.url}/logout"> <span class="fa fa-sign-out"></span>
+						Déconnexion
 					</a>
 				</c:otherwise>
 			</c:choose>
 			<c:if test="${sessionScope.status!='vendor'}">
-				<button type="button" class="btn btn-warning navbar-btn navbar-right"
-					data-toggle="modal" data-target="#cartModal">
+				<button type="button"
+					class="btn btn-warning navbar-btn navbar-right" data-toggle="modal"
+					data-target="#cartModal">
 					<span class="fa fa-shopping-cart"></span> Mon Panier
 				</button>
 			</c:if>
 			<c:if test="${sessionScope.status!=null}">
-				<a class="btn btn-info navbar-btn navbar-right" href="${page.url}/myaccount">
-					<span class="fa fa-user"></span> Mon Compte
+				<a class="btn btn-info navbar-btn navbar-right"
+					href="${page.url}/myaccount"> <span class="fa fa-user"></span>
+					Mon Compte
 				</a>
 			</c:if>
 			<c:if test="${sessionScope.status=='vendor'}">
-				<a class="btn btn-success navbar-btn navbar-right" href="${page.url}/mytrainings">
-					<span class="fa fa-bars"></span> Mes Formations
+				<a class="btn btn-success navbar-btn navbar-right"
+					href="${page.url}/mytrainings"> <span class="fa fa-bars"></span>
+					Mes Formations
 				</a>
 			</c:if>
 		</div>
@@ -96,7 +100,8 @@
 			<div class="modal-body">
 				<div class="tab-content">
 					<div class="tab-pane active fade in" id="signin">
-						<form class="form-horizontal" method="post" action="${page.url}/login">
+						<form class="form-horizontal" method="post"
+							action="${page.url}/login">
 							<!-- Sign In Form -->
 							<!-- Text input-->
 							<div class="form-group">
@@ -178,7 +183,7 @@
 									type="radio" name="status" value="client" id="statusClient"
 									checked="checked" /> Client
 								</label>
-								<div class="col-xs-1"></div> 
+								<div class="col-xs-1"></div>
 								<label class="btn btn-sm btn-primary"> <input
 									type="radio" name="status" value="vendor" id="statusVendor" />
 									Vendeur
@@ -222,11 +227,11 @@
 					<span class="fa fa-arrow-circle-right"></span>
 				</a> --%>
 				<form action='checkout' METHOD='POST'>
-					<input type='image' name='submit' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'
-					 align='top' alt='Check out with PayPal'/>
+					<input class="pull-right" type="image"
+						src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_paynow_LG.gif" name="submit"
+						alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !"></input>
 				</form>
 			</div>
 		</div>
 	</div>
-
 </div>
