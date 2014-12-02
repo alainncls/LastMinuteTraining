@@ -31,8 +31,8 @@ public class MyTrainingsController {
 	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings" })
 	protected ModelAndView home(HttpSession session) {
 		// A modifier par l'id du vendeur
-		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
-		// ObjectId id = new ObjectId(session.getAttribute("id").toString());
+		//ObjectId id = new ObjectId("54668afc44ae11795d109a61");
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());//System.out.println(id);
 		if (session.getAttribute("status").equals("client")){
 			return new ModelAndView("404");
 		}
@@ -60,15 +60,17 @@ public class MyTrainingsController {
 			System.out.println(errors);
 			return null;
 		} else {
-			// sauvegarde de la formation
+			String idVendor = session.getAttribute("id").toString();
+			ObjectId id = new ObjectId(session.getAttribute("id").toString());
+			// Ajout de l'id du vendeur à la formation
+			training.setVendorId(idVendor);
+			// Sauvegarde de la formation
 			service.save(training);
 
 			// Envoi d'un mail de confirmation de crï¿½ation de formation
 			ApplicationContext context = new ClassPathXmlApplicationContext(
 					"context.xml");
-			ObjectId idVendor = new ObjectId(session.getAttribute("id")
-					.toString());
-			Vendor vendor = vservice.findVendor(idVendor);
+			Vendor vendor = vservice.findVendor(id);
 			try {
 				Mail mm = (Mail) context.getBean("Mail");
 				mm.sendMail(
@@ -76,13 +78,14 @@ public class MyTrainingsController {
 						vendor.getMail(),
 						"Confirmation de crï¿½ation de formation",
 						"Cher vendeur,\n\n"
-								+ "Vous venez de crï¿½er une nouvelle formation nommï¿½e "
-								+ training.getName()
-								+ "."
-								+ " Merci de votre contribution ï¿½ notre catalogue.\n\nCordialement,\n\n"
-								+ "L'ï¿½quipe Last Minute Training");
+						+ "Vous venez de crï¿½er une nouvelle formation nommï¿½e "
+						+ training.getName()
+						+ "."
+						+ " Merci de votre contribution ï¿½ notre catalogue.\n\nCordialement,\n\n"
+						+ "L'ï¿½quipe Last Minute Training");
 
-				return new ModelAndView("mytrainings");
+				return new ModelAndView("myTrainings", "trainings",
+						service.findAllTrainings(id));
 			} finally {
 				((AbstractApplicationContext) context).close();
 			}
@@ -97,7 +100,8 @@ public class MyTrainingsController {
 		} else if (session.getAttribute("status").equals("client")){
 			return new ModelAndView("404");
 		} else {
-			ObjectId id = new ObjectId("54668afc44ae11795d109a61");
+			//ObjectId id = new ObjectId("54668afc44ae11795d109a61");
+			ObjectId id = new ObjectId(session.getAttribute("id").toString());//System.out.println(id);
 			return new ModelAndView("myTrainings", "trainings",
 					service.findAllTrainings(id));
 		}

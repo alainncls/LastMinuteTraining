@@ -51,7 +51,7 @@
 						<label for="category">Catégorie</label> <input type="text"
 						class="form-control" name="category" id="category" placeholder="SAP ERP, SAP NetWeaver, ..."
 						required="required" />
-					</div>
+					</div><br>
 					<div class="actions">
 						<button type="submit" class="btn btn-success">Envoyer</button>
 						<a href="home" class="btn btn-danger">Annuler</a>
@@ -97,7 +97,7 @@
 					class="form-control" name="method" id="method"
 					placeholder="En classe, e-learning, ..." 
 					form="trainingForm" />
-				</div>
+				</div><br>
 				<div class="actions">
 					<button type="submit" class="btn btn-success" form="trainingForm">Envoyer</button>
 					<a href="home" class="btn btn-danger">Annuler</a>
