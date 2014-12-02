@@ -29,17 +29,23 @@ public class MyTrainingsController {
 	private VendorDBService vservice;
 
 	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings" })
-	protected ModelAndView home() {
+	protected ModelAndView home(HttpSession session) {
 		// A modifier par l'id du vendeur
 		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
 		// ObjectId id = new ObjectId(session.getAttribute("id").toString());
+		if (session.getAttribute("status").equals("client")){
+			return new ModelAndView("404");
+		}
+
 		return new ModelAndView("myTrainings", "trainings",
 				service.findAllTrainings(id));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings/edit/{code}" })
-	protected ModelAndView home(@PathVariable("code") String code) {
-
+	protected ModelAndView home(@PathVariable("code") String code, HttpSession session) {
+		if (session.getAttribute("status").equals("client")){
+			return new ModelAndView("404");
+		}
 		return new ModelAndView("editTraining", "training",
 				service.findTraining(code));
 	}
@@ -88,6 +94,8 @@ public class MyTrainingsController {
 	protected ModelAndView addTraining(HttpSession session) {
 		if (session.getAttribute("validated").toString().equals("true")) {
 			return new ModelAndView("addTraining");
+		} else if (session.getAttribute("status").equals("client")){
+			return new ModelAndView("404");
 		} else {
 			ObjectId id = new ObjectId("54668afc44ae11795d109a61");
 			return new ModelAndView("myTrainings", "trainings",

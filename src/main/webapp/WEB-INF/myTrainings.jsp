@@ -12,11 +12,11 @@
 					placeholder="Renseignez vos termes de recherche">
 			</div>
 		</div>
-		<c:if test="${sessionScope.validated=='true'}">
+		<c:if test="${(sessionScope.validated=='true')&&(sessionScope.status=='vendor')}">
 			<a class="btn btn-primary fa fa-plus" style="margin-bottom: 10px"
 			href="/mytrainings/add"> Ajouter une formation</a>
 		</c:if>
-		<c:if test="${sessionScope.validated=='false'}">
+		<c:if test="${(sessionScope.validated!='true')&&(sessionScope.status=='vendor')}">
 			<a class="btn btn-danger fa fa-exclamation-circle" style="margin-bottom: 10px"
 			href="/myaccount"><b> Votre compte n'est pas activé, cliquez pour compléter vos informations</b></a>
 		</c:if>
