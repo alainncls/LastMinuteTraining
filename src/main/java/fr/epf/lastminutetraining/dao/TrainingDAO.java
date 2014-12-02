@@ -1,21 +1,5 @@
 package fr.epf.lastminutetraining.dao;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoException;
-
-import fr.epf.lastminutetraining.domain.Training;
-import fr.epf.lastminutetraining.domain.Vendor;
-
-import org.bson.types.ObjectId;
-import org.jongo.Jongo;
-import org.jongo.MongoCollection;
-import org.jongo.MongoCursor;
-import org.jongo.query.Query;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.util.NestedServletException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +12,13 @@ import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
 import fr.epf.lastminutetraining.domain.Training;
+import fr.epf.lastminutetraining.domain.Vendor;
 
 @Repository
 public class TrainingDAO {

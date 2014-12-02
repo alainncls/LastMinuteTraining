@@ -28,7 +28,7 @@ public class PdfView extends AbstractPdfView {
 			PdfWriter writer, HttpServletRequest req, HttpServletResponse resp)
 			throws Exception {
 
-		Order order = (Order) model.get("command");
+		//Order order = (Order) model.get("command");
 
 		String imageUrl = "http://oenologie.epf.fr/LMT/LMT.png";
 

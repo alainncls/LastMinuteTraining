@@ -8,15 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class Cancel extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-response.setContentType("text/html");
+		response.setContentType("text/html");
 
 		response.getWriter().println("<script>");
 		response.getWriter().println("alert(\"Payment Failed\");");
 		response.getWriter()
-				.println("// add relevant message above or remove the line if not required");
+				.println(
+						"// add relevant message above or remove the line if not required");
 		response.getWriter().println("window.onload = function(){");
 		response.getWriter().println("if(window.opener){");
 		response.getWriter().println("window.close();");

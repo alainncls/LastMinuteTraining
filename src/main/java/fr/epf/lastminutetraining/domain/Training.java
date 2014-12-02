@@ -104,7 +104,7 @@ public class Training {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+
 	public String getDifficulty() {
 		return difficulty;
 	}

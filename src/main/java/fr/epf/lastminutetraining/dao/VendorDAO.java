@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
-import fr.epf.lastminutetraining.domain.Vendor;
+
 import fr.epf.lastminutetraining.domain.User;
 import fr.epf.lastminutetraining.domain.Vendor;
 

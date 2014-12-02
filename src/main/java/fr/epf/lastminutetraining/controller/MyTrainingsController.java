@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -33,53 +34,54 @@ public class MyTrainingsController {
 		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
 		// ObjectId id = new ObjectId(session.getAttribute("id").toString());
 		return new ModelAndView("myTrainings", "trainings",
-			service.findAllTrainings(id));
+				service.findAllTrainings(id));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings/edit/{code}" })
 	protected ModelAndView home(@PathVariable("code") String code) {
-		ObjectId id = new ObjectId("54668afc44ae11795d109a61");
-		// ObjectId id = new ObjectId(session.getAttribute("id").toString());
+
 		return new ModelAndView("editTraining", "training",
-			service.findTraining(code));
+				service.findTraining(code));
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "mytrainings/add")
 	protected ModelAndView createTraining(HttpSession session,
-		@ModelAttribute("training") Training training, BindingResult errors) {
-		
-		//affichage des erreurs
+			@ModelAttribute("training") Training training, BindingResult errors) {
+
+		// affichage des erreurs
 		if (errors.hasErrors()) {
-		    // error handling code goes here.
+			// error handling code goes here.
 			System.out.println(errors);
 			return null;
-		}
-		else{
+		} else {
 			// sauvegarde de la formation
 			service.save(training);
 
 			// Envoi d'un mail de confirmation de cr�ation de formation
 			ApplicationContext context = new ClassPathXmlApplicationContext(
-				"context.xml");
-			ObjectId idVendor = new ObjectId(session.getAttribute("id").toString());
+					"context.xml");
+			ObjectId idVendor = new ObjectId(session.getAttribute("id")
+					.toString());
 			Vendor vendor = vservice.findVendor(idVendor);
+			try {
+				Mail mm = (Mail) context.getBean("Mail");
+				mm.sendMail(
+						"lastminutetraining.epf@gmail.com",
+						vendor.getMail(),
+						"Confirmation de cr�ation de formation",
+						"Cher vendeur,\n\n"
+								+ "Vous venez de cr�er une nouvelle formation nomm�e "
+								+ training.getName()
+								+ "."
+								+ " Merci de votre contribution � notre catalogue.\n\nCordialement,\n\n"
+								+ "L'�quipe Last Minute Training");
 
-			Mail mm = (Mail) context.getBean("Mail");
-			mm.sendMail(
-				"lastminutetraining.epf@gmail.com",
-				vendor.getMail(),
-				"Confirmation de cr�ation de formation",
-				"Cher vendeur,\n\n"
-				+ "Vous venez de cr�er une nouvelle formation nomm�e "
-				+ training.getName()
-				+ "."
-				+ " Merci de votre contribution � notre catalogue.\n\nCordialement,\n\n"
-				+ "L'�quipe Last Minute Training");
-
-			return new ModelAndView("mytrainings");
+				return new ModelAndView("mytrainings");
+			} finally {
+				((AbstractApplicationContext) context).close();
+			}
 		}
-		
-		
+
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "mytrainings/add")
@@ -89,7 +91,7 @@ public class MyTrainingsController {
 		} else {
 			ObjectId id = new ObjectId("54668afc44ae11795d109a61");
 			return new ModelAndView("myTrainings", "trainings",
-				service.findAllTrainings(id));
+					service.findAllTrainings(id));
 		}
 	}
 

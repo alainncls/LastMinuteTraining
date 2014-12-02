@@ -16,7 +16,6 @@ import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
 import fr.epf.lastminutetraining.domain.Transaction;
-import fr.epf.lastminutetraining.domain.User;
 
 @Repository
 public class TransactionDAO {

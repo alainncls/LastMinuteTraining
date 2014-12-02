@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
- @Controller
- public class Checkout {
- 	
- 	@RequestMapping(method = RequestMethod.GET, value = { "/checkout" })
- 	protected ModelAndView get(HttpServletRequest request, HttpServletResponse response) {
+@Controller
+public class Checkout {
+
+	@RequestMapping(method = RequestMethod.GET, value = { "/checkout" })
+	protected ModelAndView get(HttpServletRequest request,
+			HttpServletResponse response) {
 		// Use "request" to read incoming HTTP headers (e.g. cookies)
 		// and HTML form data (e.g. data the user entered and submitted)
 
@@ -23,9 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 		// (e.g. specifying the content type, setting cookies).
 
 		/*
-		 *  The paymentAmount is the total value of ' the purchase. ' ' 
-		 * TODO:  Enter the total Payment Amount within the quotes. ' example :
-		 * paymentAmount = "15.00"; 
+		 * The paymentAmount is the total value of ' the purchase. ' ' :
+		 * Enter the total Payment Amount within the quotes. ' example :
+		 * paymentAmount = "15.00";
 		 */
 		String paymentAmount = "1500";
 
@@ -49,8 +50,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 		/*
 		 * '------------------------------------ ' The items hashmap contains
-		 * the details of each item '------------------------------------
-		 * TODO: change "item name" to desired item name
+		 * the details of each item '------------------------------------ :
+		 * change "item name" to desired item name
 		 */
 
 		Map item = new HashMap();
@@ -66,14 +67,14 @@ import org.springframework.web.servlet.ModelAndView;
 		 */
 		PaypalFunctions ppf = new PaypalFunctions();
 		HashMap nvp = ppf.setExpressCheckout(paymentAmount, returnURL,
-			cancelURL, item);//System.out.println(item);
+				cancelURL, item);// System.out.println(item);
 		String strAck = nvp.get("ACK").toString();
 		if (strAck != null && strAck.equalsIgnoreCase("Success")) {
 
 			// ' Redirect to paypal.com
 			String redirectURL = "redirect:https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
-			+ nvp.get("TOKEN").toString();
-			
+					+ nvp.get("TOKEN").toString();
+
 			return new ModelAndView(redirectURL);
 		} else {
 			// Display a user friendly Error on the page using any of the
@@ -83,17 +84,15 @@ import org.springframework.web.servlet.ModelAndView;
 			String ErrorShortMsg = nvp.get("L_SHORTMESSAGE0").toString();
 			String ErrorLongMsg = nvp.get("L_LONGMESSAGE0").toString();
 			String ErrorSeverityCode = nvp.get("L_SEVERITYCODE0").toString();
-			
+
 			return new ModelAndView("/404");
 		}
-		
+
 	}
 
-			
-
-
 	@RequestMapping(method = RequestMethod.POST, value = { "/checkout" })
-	protected ModelAndView post(HttpServletRequest request, HttpServletResponse response) {
+	protected ModelAndView post(HttpServletRequest request,
+			HttpServletResponse response) {
 		return get(request, response);
 	}
 

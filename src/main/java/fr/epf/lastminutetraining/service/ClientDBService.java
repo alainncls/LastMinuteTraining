@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import fr.epf.lastminutetraining.dao.ClientDAO;
 import fr.epf.lastminutetraining.domain.Client;
-import fr.epf.lastminutetraining.domain.Vendor;
 
 @Service
 public class ClientDBService {
