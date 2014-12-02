@@ -14,6 +14,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
 import com.lowagie.text.Chunk;
@@ -24,16 +25,22 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 
 public class PdfView extends AbstractPdfView {
+
+	public PdfView() {
+	}
+
 	protected void buildPdfDocument(Map model, Document document,
 			PdfWriter writer, HttpServletRequest req, HttpServletResponse resp)
 			throws Exception {
+		
+		Training t = (Training) model.get("training");
 
-		//Order order = (Order) model.get("command");
+		Order order = OrderBuilder.order().training(t).quantity(2)
+				.build();
 
 		String imageUrl = "http://oenologie.epf.fr/LMT/LMT.png";
 
 		Image image2 = Image.getInstance(new URL(imageUrl));
-
 		image2.scalePercent(50f);
 
 		Paragraph header = new Paragraph(new Chunk(
@@ -46,8 +53,12 @@ public class PdfView extends AbstractPdfView {
 		Paragraph by = new Paragraph(new Chunk("Facture éditée le " + date,
 				FontFactory.getFont(FontFactory.HELVETICA, 20)));
 
+		Paragraph orderP = new Paragraph(new Chunk(order.toString(),
+				FontFactory.getFont(FontFactory.HELVETICA, 20)));
+
 		document.add(image2);
 		document.add(header);
 		document.add(by);
+		document.add(orderP);
 	}
 }
