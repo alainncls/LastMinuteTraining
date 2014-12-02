@@ -61,15 +61,16 @@ public class PdfView extends AbstractPdfView {
 		Paragraph returnLine = new Paragraph(new Chunk("\n",
 				FontFactory.getFont(FontFactory.HELVETICA, 20)));
 
-		// Table tab = new Table(4);
-
-		PdfPTable tab = new PdfPTable(5);
+		PdfPTable tab = new PdfPTable(6);
 		tab.setWidthPercentage(100);
 		
 		PdfPCell cell = new PdfPCell(new Phrase("Nom de la formation"));
 		cell.setPadding(10);
 		tab.addCell(cell);
 		cell = new PdfPCell(new Phrase("Date de la formation"));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase("Fournisseur"));
 		cell.setPadding(10);
 		tab.addCell(cell);
 		cell = new PdfPCell(new Phrase("Prix unitaire"));
@@ -86,6 +87,9 @@ public class PdfView extends AbstractPdfView {
 		cell.setPadding(10);
 		tab.addCell(cell);
 		cell = new PdfPCell(new Phrase(order.getTraining().getStartDate() + " - " + order.getTraining().getEndDate()));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase(order.getVendor().toString()));
 		cell.setPadding(10);
 		tab.addCell(cell);
 		DecimalFormat df = new DecimalFormat("0.00");
