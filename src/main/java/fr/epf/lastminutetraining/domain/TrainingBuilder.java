@@ -135,9 +135,8 @@ class TrainingBuilderBase<GeneratorT extends TrainingBuilderBase<GeneratorT>> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public GeneratorT objectives(Map aValue) {
+	public GeneratorT objectives(HashMap<String, String> aValue) {
 		instance.setObjectives(aValue);
-
 		return (GeneratorT) this;
 	}
 

@@ -55,7 +55,7 @@ public class VendorDAO {
 
 	// Method to find vendor by id
 	public Vendor findVendor(ObjectId id) {
-		System.out.println(id);
+		//System.out.println(id);
 		return collection.findOne(id).as(Vendor.class);
 	}
 

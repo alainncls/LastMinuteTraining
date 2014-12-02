@@ -60,7 +60,7 @@ public class Training {
 	// Programme de formation
 	private String program;
 	// Objectifs
-	private Map content;
+	private HashMap<String, String> content;
 	// Activités
 	private String activities;
 	// URL
@@ -185,11 +185,11 @@ public class Training {
 		this.program = program;
 	}
 
-	public Map getContent() {
+	public HashMap<String, String> getContent() {
 		return content;
 	}
 
-	public void setObjectives(Map objectives) {
+	public void setObjectives(HashMap<String, String> objectives) {
 		this.content = objectives;
 	}
 
