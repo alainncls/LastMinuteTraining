@@ -15,6 +15,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.bson.types.ObjectId;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
 import com.lowagie.text.Chunk;
@@ -27,6 +28,8 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
+import fr.epf.lastminutetraining.service.VendorDBService;
+
 public class PdfView extends AbstractPdfView {
 
 	public PdfView() {
@@ -37,8 +40,10 @@ public class PdfView extends AbstractPdfView {
 			throws Exception {
 
 		Training t = (Training) model.get("training");
+		VendorDBService vdbs = new VendorDBService();
+		Vendor vendor = vdbs.findVendor(new ObjectId(t.getVendorId()));
 
-		Order order = OrderBuilder.order().training(t).quantity(2).build();
+		Order order = OrderBuilder.order().training(t).quantity(2).vendor(vendor).build();
 
 		String imageUrl = "http://oenologie.epf.fr/LMT/LMT.png";
 

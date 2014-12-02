@@ -82,7 +82,7 @@ public class OrderConfirm {
 
 			nvp = ppf.confirmPayment(token, payerId, finalPaymentAmount,
 					serverName, item);
-			System.out.println(nvp);
+			//System.out.println(nvp);
 
 			strAck = nvp.get("ACK").toString();
 
