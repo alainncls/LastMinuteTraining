@@ -1,6 +1,5 @@
 package fr.epf.lastminutetraining.domain;
 
-import java.text.DecimalFormat;
 
 public class Order {
 

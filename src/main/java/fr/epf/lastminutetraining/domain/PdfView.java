@@ -41,10 +41,12 @@ public class PdfView extends AbstractPdfView {
 
 		Training t = (Training) model.get("training");
 		VendorDBService vdbs = new VendorDBService();
-		Vendor vendor = VendorBuilder.vendor().id(new ObjectId(t.getVendorId())).name("SAP").build();
-		vdbs.save(vendor);
+		// TODO : inclure un vendeur dans la transaction
+//		Vendor vendor = VendorBuilder.vendor().id(new ObjectId(t.getVendorId())).name("SAP").build();
+//		vdbs.save(vendor);
 
-		Order order = OrderBuilder.order().training(t).quantity(2).vendor(vendor).build();
+		//Order order = OrderBuilder.order().training(t).quantity(2).vendor(vendor).build();
+		Order order = OrderBuilder.order().training(t).quantity(2).build();
 
 		String imageUrl = "http://oenologie.epf.fr/LMT/LMT.png";
 
@@ -61,13 +63,10 @@ public class PdfView extends AbstractPdfView {
 		Paragraph by = new Paragraph(new Chunk("Facture éditée le " + date,
 				FontFactory.getFont(FontFactory.HELVETICA, 20)));
 
-		Paragraph orderP = new Paragraph(new Chunk(order.toString(),
-				FontFactory.getFont(FontFactory.HELVETICA, 20)));
-
 		Paragraph returnLine = new Paragraph(new Chunk("\n",
 				FontFactory.getFont(FontFactory.HELVETICA, 20)));
 
-		PdfPTable tab = new PdfPTable(6);
+		PdfPTable tab = new PdfPTable(5);
 		tab.setWidthPercentage(100);
 		
 		PdfPCell cell = new PdfPCell(new Phrase("Nom de la formation"));
@@ -76,9 +75,9 @@ public class PdfView extends AbstractPdfView {
 		cell = new PdfPCell(new Phrase("Date de la formation"));
 		cell.setPadding(10);
 		tab.addCell(cell);
-		cell = new PdfPCell(new Phrase("Fournisseur"));
-		cell.setPadding(10);
-		tab.addCell(cell);
+//		cell = new PdfPCell(new Phrase("Fournisseur"));
+//		cell.setPadding(10);
+//		tab.addCell(cell);
 		cell = new PdfPCell(new Phrase("Prix unitaire"));
 		cell.setPadding(10);
 		tab.addCell(cell);
@@ -95,9 +94,9 @@ public class PdfView extends AbstractPdfView {
 		cell = new PdfPCell(new Phrase(order.getTraining().getStartDate() + " - " + order.getTraining().getEndDate()));
 		cell.setPadding(10);
 		tab.addCell(cell);
-		cell = new PdfPCell(new Phrase(order.getVendor().toString()));
-		cell.setPadding(10);
-		tab.addCell(cell);
+//		cell = new PdfPCell(new Phrase(order.getVendor().toString()));
+//		cell.setPadding(10);
+//		tab.addCell(cell);
 		DecimalFormat df = new DecimalFormat("0.00");
 		cell = new PdfPCell(new Phrase(df.format(order.getUnitPrice()) + "€"));
 		cell.setPadding(10);
