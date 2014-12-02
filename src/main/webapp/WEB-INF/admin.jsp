@@ -6,7 +6,7 @@
 			<h1>Utilisateurs</h1>
 			<p>Gestion des clients</p>
 			<p>
-				<a class="btn btn-primary btn-sm" role="button">Gestion des
+				<a class="btn btn-primary btn-sm" role="button" href="/admin/users">Gestion des
 					utilisateurs</a>
 			</p>
 		</div>
@@ -31,7 +31,7 @@
 			<h1>Fournisseurs</h1>
 			<p>Accès aux organismes de formation</p>
 			<p>
-				<a class="btn btn-primary btn-sm" role="button">Gestion des
+				<a class="btn btn-primary btn-sm" role="button" href="/admin/vendors">Gestion des
 					fournisseurs</a>
 			</p>
 		</div>

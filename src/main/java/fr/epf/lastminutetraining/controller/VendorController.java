@@ -13,23 +13,24 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by Baptiste on 28/10/2014.
  */
 @Controller
+@RequestMapping(value = "/admin/vendors")
 public class VendorController {
 
 	@Autowired
 	private VendorDBService service;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/addVendor")
-	protected ModelAndView addTraining() {
+	@RequestMapping(method = RequestMethod.GET, value = "/add")
+	protected ModelAndView addVendor() {
 		return new ModelAndView("addVendor");
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/listVendors")
-	protected ModelAndView listTrainings() {
+	@RequestMapping(method = RequestMethod.GET)
+	protected ModelAndView listVendors() {
 		return new ModelAndView("listVendors", "vendors",
 				service.findAllVendors());
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/addVendor")
+	@RequestMapping(method = RequestMethod.POST, value = "/add")
 	protected void createTraining(@ModelAttribute("vendor") Vendor vendor) {
 		service.save(vendor);
 	}
