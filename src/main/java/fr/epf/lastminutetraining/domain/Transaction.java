@@ -59,4 +59,12 @@ public class Transaction {
 	public void addOrder(Order order) {
 		this.orders.add(order);
 	}
+	
+	public float getTotal() {
+		float tot = 0;
+		for (Order order : orders) {
+			tot += order.getTotalPrice();
+		}
+		return tot;
+	}
 }

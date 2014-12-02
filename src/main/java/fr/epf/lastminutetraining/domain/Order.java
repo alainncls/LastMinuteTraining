@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 public class Order {
 
 	private Training training;
+	private Vendor vendor;
 	private Integer quantity;
 
 	public Order() {
@@ -16,6 +17,14 @@ public class Order {
 
 	public void setTraining(Training training) {
 		this.training = training;
+	}
+
+	public Vendor getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(Vendor vendor) {
+		this.vendor = vendor;
 	}
 
 	public float getUnitPrice() {

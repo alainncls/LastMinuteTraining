@@ -40,6 +40,13 @@ class OrderBuilderBase<GeneratorT extends OrderBuilderBase<GeneratorT>> {
 	}
 
 	@SuppressWarnings("unchecked")
+	public GeneratorT vendor(Vendor aValue) {
+		instance.setVendor(aValue);
+
+		return (GeneratorT) this;
+	}
+
+	@SuppressWarnings("unchecked")
 	public GeneratorT quantity(Integer aValue) {
 		instance.setQuantity(aValue);
 
