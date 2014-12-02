@@ -2,7 +2,6 @@ package fr.epf.lastminutetraining.domain;
 
 public class Order {
 	private Training training;
-	private Float unitPrice;
 	private Integer quantity;
 	
 	public Order(){}
@@ -12,13 +11,12 @@ public class Order {
 	}
 	public void setTraining(Training training) {
 		this.training = training;
-		this.unitPrice = Float.valueOf(training.getPriceLMT());
 	}
 	public Float getUnitPrice() {
-		return unitPrice;
+		return Float.valueOf(training.getPriceLMT());
 	}
 	public Float getTotalPrice() {
-		return unitPrice*quantity;
+		return getUnitPrice()*quantity;
 	}
 	public Integer getQuantity() {
 		return quantity;
