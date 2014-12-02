@@ -14,365 +14,364 @@ import java.util.Map;
 
 import org.bson.types.ObjectId;
 
-
 public class TrainingBuilder extends TrainingBuilderBase<TrainingBuilder> {
-    public static TrainingBuilder training() {
-        return new TrainingBuilder();
-    }
+	public static TrainingBuilder training() {
+		return new TrainingBuilder();
+	}
 
-    public TrainingBuilder() {
-        super(new Training());
-    }
+	public TrainingBuilder() {
+		super(new Training());
+	}
 
-    public Training build() {
-        return getInstance();
-    }
+	public Training build() {
+		return getInstance();
+	}
 }
 
 class TrainingBuilderBase<GeneratorT extends TrainingBuilderBase<GeneratorT>> {
-    private Training instance;
+	private Training instance;
 
-    protected TrainingBuilderBase(Training aInstance) {
-        instance = aInstance;
-    }
+	protected TrainingBuilderBase(Training aInstance) {
+		instance = aInstance;
+	}
 
-    protected Training getInstance() {
-        return instance;
-    }
+	protected Training getInstance() {
+		return instance;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT date(HashMap<String, String> aValue) {
-        instance.setDate(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT date(HashMap<String, String> aValue) {
+		instance.setDate(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT url(String aValue) {
-        instance.setUrl(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT url(String aValue) {
+		instance.setUrl(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT difficulty(String aValue) {
-        instance.setDifficulty(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT difficulty(String aValue) {
+		instance.setDifficulty(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT location(String aValue) {
-        instance.setLocation(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT location(String aValue) {
+		instance.setLocation(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT available(int aValue) {
-        instance.setAvailable(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT available(int aValue) {
+		instance.setAvailable(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT certification(short aValue) {
-        instance.setCertification(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT certification(short aValue) {
+		instance.setCertification(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT category(String aValue) {
-        instance.setCategory(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT category(String aValue) {
+		instance.setCategory(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT contact(String aValue) {
-        instance.setContact(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT contact(String aValue) {
+		instance.setContact(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT summary(String aValue) {
-        instance.setSummary(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT summary(String aValue) {
+		instance.setSummary(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT introduction(String aValue) {
-        instance.setIntroduction(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT introduction(String aValue) {
+		instance.setIntroduction(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT notes(List<String> aValue) {
-        instance.setNotes(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT notes(List<String> aValue) {
+		instance.setNotes(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT addNote(String aValue) {
-        if (instance.getNotes() == null) {
-            instance.setNotes(new ArrayList<String>());
-        }
+	@SuppressWarnings("unchecked")
+	public GeneratorT addNote(String aValue) {
+		if (instance.getNotes() == null) {
+			instance.setNotes(new ArrayList<String>());
+		}
 
-        ((ArrayList<String>)instance.getNotes()).add(aValue);
+		((ArrayList<String>) instance.getNotes()).add(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT program(String aValue) {
-        instance.setProgram(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT program(String aValue) {
+		instance.setProgram(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT objectives(Map aValue) {
-        instance.setObjectives(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT objectives(Map aValue) {
+		instance.setObjectives(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT activities(String aValue) {
-        instance.setActivities(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT activities(String aValue) {
+		instance.setActivities(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT id(ObjectId aValue) {
-        instance.setId(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT id(ObjectId aValue) {
+		instance.setId(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT name(String aValue) {
-        instance.setName(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT name(String aValue) {
+		instance.setName(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT endDate(String aValue) {
-        instance.setEndDate(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT endDate(String aValue) {
+		instance.setEndDate(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT level(String aValue) {
-        instance.setLevel(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT level(String aValue) {
+		instance.setLevel(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT price(String aValue) {
-        instance.setPrice(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT price(String aValue) {
+		instance.setPrice(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT priceLMT(String aValue) {
-        instance.setPriceLMT(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT priceLMT(String aValue) {
+		instance.setPriceLMT(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT description(String aValue) {
-        instance.setDescription(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT description(String aValue) {
+		instance.setDescription(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT count(int aValue) {
-        instance.setCount(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT count(int aValue) {
+		instance.setCount(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT startDate(String aValue) {
-        instance.setStartDate(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT startDate(String aValue) {
+		instance.setStartDate(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT unit(String aValue) {
-        instance.setUnit(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT unit(String aValue) {
+		instance.setUnit(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT solution(List<String> aValue) {
-        instance.setSolution(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT solution(List<String> aValue) {
+		instance.setSolution(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT addSolutionElement(String aValue) {
-        if (instance.getSolution() == null) {
-            instance.setSolution(new ArrayList<String>());
-        }
+	@SuppressWarnings("unchecked")
+	public GeneratorT addSolutionElement(String aValue) {
+		if (instance.getSolution() == null) {
+			instance.setSolution(new ArrayList<String>());
+		}
 
-        ((ArrayList<String>)instance.getSolution()).add(aValue);
+		((ArrayList<String>) instance.getSolution()).add(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT language(List<String> aValue) {
-        instance.setLanguage(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT language(List<String> aValue) {
+		instance.setLanguage(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT addLanguageElement(String aValue) {
-        if (instance.getLanguage() == null) {
-            instance.setLanguage(new ArrayList<String>());
-        }
+	@SuppressWarnings("unchecked")
+	public GeneratorT addLanguageElement(String aValue) {
+		if (instance.getLanguage() == null) {
+			instance.setLanguage(new ArrayList<String>());
+		}
 
-        ((ArrayList<String>)instance.getLanguage()).add(aValue);
+		((ArrayList<String>) instance.getLanguage()).add(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT duration(HashMap<String, String> aValue) {
-        instance.setDuration(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT duration(HashMap<String, String> aValue) {
+		instance.setDuration(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT evaluation(String aValue) {
-        instance.setEvaluation(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT evaluation(String aValue) {
+		instance.setEvaluation(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT audience(ArrayList<String> aValue) {
-        instance.setAudience(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT audience(ArrayList<String> aValue) {
+		instance.setAudience(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT addAudienceElement(String aValue) {
-        if (instance.getAudience() == null) {
-            instance.setAudience(new ArrayList<String>());
-        }
+	@SuppressWarnings("unchecked")
+	public GeneratorT addAudienceElement(String aValue) {
+		if (instance.getAudience() == null) {
+			instance.setAudience(new ArrayList<String>());
+		}
 
-        ((ArrayList<String>)instance.getAudience()).add(aValue);
+		((ArrayList<String>) instance.getAudience()).add(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT method(String aValue) {
-        instance.setMethod(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT method(String aValue) {
+		instance.setMethod(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT relatedCurricula(ArrayList<String> aValue) {
-        instance.setRelatedCurricula(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT relatedCurricula(ArrayList<String> aValue) {
+		instance.setRelatedCurricula(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT addRelatedCurriculaElement(String aValue) {
-        if (instance.getRelatedCurricula() == null) {
-            instance.setRelatedCurricula(new ArrayList<String>());
-        }
+	@SuppressWarnings("unchecked")
+	public GeneratorT addRelatedCurriculaElement(String aValue) {
+		if (instance.getRelatedCurricula() == null) {
+			instance.setRelatedCurricula(new ArrayList<String>());
+		}
 
-        ((ArrayList<String>)instance.getRelatedCurricula()).add(aValue);
+		((ArrayList<String>) instance.getRelatedCurricula()).add(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT prerequisites(Map aValue) {
-        instance.setPrerequisites(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT prerequisites(Map aValue) {
+		instance.setPrerequisites(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT release(ArrayList<String> aValue) {
-        instance.setRelease(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT release(ArrayList<String> aValue) {
+		instance.setRelease(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT addReleaseElement(String aValue) {
-        if (instance.getRelease() == null) {
-            instance.setRelease(new ArrayList<String>());
-        }
+	@SuppressWarnings("unchecked")
+	public GeneratorT addReleaseElement(String aValue) {
+		if (instance.getRelease() == null) {
+			instance.setRelease(new ArrayList<String>());
+		}
 
-        ((ArrayList<String>)instance.getRelease()).add(aValue);
+		((ArrayList<String>) instance.getRelease()).add(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT textLevel(String aValue) {
-        instance.setTextLevel(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT textLevel(String aValue) {
+		instance.setTextLevel(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT academys(ArrayList<String> aValue) {
-        instance.setAcademys(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT academys(ArrayList<String> aValue) {
+		instance.setAcademys(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT addAcademy(String aValue) {
-        if (instance.getAcademys() == null) {
-            instance.setAcademys(new ArrayList<String>());
-        }
+	@SuppressWarnings("unchecked")
+	public GeneratorT addAcademy(String aValue) {
+		if (instance.getAcademys() == null) {
+			instance.setAcademys(new ArrayList<String>());
+		}
 
-        ((ArrayList<String>)instance.getAcademys()).add(aValue);
+		((ArrayList<String>) instance.getAcademys()).add(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT vendor(Vendor aValue) {
-        instance.setVendor(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT vendor(Vendor aValue) {
+		instance.setVendor(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 
-    @SuppressWarnings("unchecked")
-    public GeneratorT vendorId(String aValue) {
-        instance.setVendorId(aValue);
+	@SuppressWarnings("unchecked")
+	public GeneratorT vendorId(String aValue) {
+		instance.setVendorId(aValue);
 
-        return (GeneratorT) this;
-    }
+		return (GeneratorT) this;
+	}
 }

@@ -190,11 +190,9 @@ public abstract class User {
 				+ "]";
 	}
 
-	
-
 	public static String encrypt(String x) {
 		java.security.MessageDigest d = null;
-		 // add salt
+		// add salt
 		x += SALT;
 		try {
 			d = java.security.MessageDigest.getInstance("SHA-1");

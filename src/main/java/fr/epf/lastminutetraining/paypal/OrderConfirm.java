@@ -19,13 +19,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.epf.lastminutetraining.domain.Client;
 import fr.epf.lastminutetraining.domain.Mail;
+import fr.epf.lastminutetraining.domain.Order;
+import fr.epf.lastminutetraining.domain.OrderBuilder;
+import fr.epf.lastminutetraining.domain.Training;
 import fr.epf.lastminutetraining.service.ClientDBService;
+import fr.epf.lastminutetraining.service.TrainingDBService;
 
 @Controller
 public class OrderConfirm {
 
 	@Autowired
 	private ClientDBService cservice;
+	@Autowired
+	private TrainingDBService tdbs;
 
 	@RequestMapping(method = RequestMethod.GET, value = { "/orderConfirmation" })
 	protected ModelAndView confirmation(HttpServletRequest request,
@@ -82,7 +88,7 @@ public class OrderConfirm {
 
 			nvp = ppf.confirmPayment(token, payerId, finalPaymentAmount,
 					serverName, item);
-			//System.out.println(nvp);
+			// System.out.println(nvp);
 
 			strAck = nvp.get("ACK").toString();
 
@@ -90,9 +96,8 @@ public class OrderConfirm {
 					&& (strAck.equalsIgnoreCase("Success") || strAck
 							.equalsIgnoreCase("SuccessWithWarning"))) {
 				/*
-				 * : Proceed with desired action after the payment (ex:
-				 * start download, start streaming, Add coins to the game.. etc)
-				 * '
+				 * : Proceed with desired action after the payment (ex: start
+				 * download, start streaming, Add coins to the game.. etc) '
 				 * *************************************************************
 				 * ******************************************************* ' '
 				 * THE PARTNER SHOULD SAVE THE KEY TRANSACTION RELATED
@@ -268,12 +273,13 @@ public class OrderConfirm {
 				ObjectId idClient = new ObjectId(session.getAttribute("id")
 						.toString());
 				Client client = cservice.findClient(idClient);
+
 				try {
 					Mail mm = (Mail) context.getBean("Mail");
 					mm.sendMail(
 							"lastminutetraining.epf@gmail.com",
 							client.getMail(),
-							"LMT - Confirmation de payement formation",
+							"LMT - Confirmation de paiement formation",
 							"Cher "
 									+ client.getFirstName()
 									+ " "
@@ -283,17 +289,30 @@ public class OrderConfirm {
 									+ "nom training"
 									+ " se déroulant le "
 									+ "jour"
-									+ "à"
+									+ " à "
 									+ "date"
-									+ "."
-									+ " Merci de votre achat.\n\nCordialement,\n\n"
-									+ "L'équipe Last Minute Training");
-
-					return new ModelAndView("/orderConfirmation");
+									+ ".\n\n"
+									+ "Nous vous remercions pour votre achat.\n\nBien cordialement,\n\n"
+									+ "L'équipe LastMinuteTraining");
+					// return new ModelAndView("orderConfirmation");
 				} finally {
 					((AbstractApplicationContext) context).close();
 				}
+				
+				Training t = tdbs.findOneTraining();
+				Order order = OrderBuilder.order().training(t).quantity(2).build();
+				
+				System.out.println(client);
+				System.out.println(t);
+				System.out.println(order);
 
+				//ModelAndView mav = new ModelAndView("orderConfirmation");
+				ModelAndView mav = new ModelAndView("pdfView");		
+						
+				mav.addObject("client", client);
+				mav.addObject("order", order);
+				
+				return mav;
 			} else {
 				// Display a user friendly Error on the page using any of the
 				// following error information returned by PayPal
