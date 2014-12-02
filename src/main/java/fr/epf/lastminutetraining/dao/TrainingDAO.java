@@ -63,6 +63,15 @@ public class TrainingDAO {
 		List<Training> result = iterateAndReturn(trainings, cursor);
 		return result;
 	}
+	
+	public Training findOneTraining() {
+		Training training = new Training();
+
+		MongoCursor<Training> cursor = trainingsCollection.find().limit(limit)
+				.as(Training.class);
+		training = cursor.next();
+		return training;
+	}
 
 	public void saveTraining(Training training) {
 		trainingsCollection.save(training);

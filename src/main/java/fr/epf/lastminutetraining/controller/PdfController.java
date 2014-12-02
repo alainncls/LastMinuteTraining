@@ -16,7 +16,7 @@ public class PdfController {
 
 	@RequestMapping(value = "/generate/facture.pdf", method = RequestMethod.GET)
 	protected ModelAndView generatePdf() {
-		Training training = tdbs.findTraining("5469d513f2e9d2cd3e1b9e9a");
+		Training training = tdbs.findOneTraining();
 		return new ModelAndView("pdfView", "training", training);
 	}
 }
