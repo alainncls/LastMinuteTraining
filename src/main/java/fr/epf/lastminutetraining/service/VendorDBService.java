@@ -18,6 +18,7 @@ public class VendorDBService {
 	}
 
 	public Vendor findVendor(ObjectId id) {
+		System.out.println(id);
 		return vendorDAO.findVendor(id);
 	}
 

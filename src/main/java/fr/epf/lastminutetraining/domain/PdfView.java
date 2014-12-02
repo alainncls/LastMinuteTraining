@@ -41,7 +41,8 @@ public class PdfView extends AbstractPdfView {
 
 		Training t = (Training) model.get("training");
 		VendorDBService vdbs = new VendorDBService();
-		Vendor vendor = vdbs.findVendor(new ObjectId(t.getVendorId()));
+		Vendor vendor = VendorBuilder.vendor().id(new ObjectId(t.getVendorId())).name("SAP").build();
+		vdbs.save(vendor);
 
 		Order order = OrderBuilder.order().training(t).quantity(2).vendor(vendor).build();
 
