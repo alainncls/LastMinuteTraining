@@ -8,6 +8,7 @@
 package fr.epf.lastminutetraining.domain;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Map;
 
@@ -21,19 +22,27 @@ import com.lowagie.text.Document;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.Image;
 import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
 public class PdfView extends AbstractPdfView {
+
+	public PdfView() {
+	}
+
 	protected void buildPdfDocument(Map model, Document document,
 			PdfWriter writer, HttpServletRequest req, HttpServletResponse resp)
 			throws Exception {
 
-		//Order order = (Order) model.get("command");
+		Training t = (Training) model.get("training");
+
+		Order order = OrderBuilder.order().training(t).quantity(2).build();
 
 		String imageUrl = "http://oenologie.epf.fr/LMT/LMT.png";
 
 		Image image2 = Image.getInstance(new URL(imageUrl));
-
 		image2.scalePercent(50f);
 
 		Paragraph header = new Paragraph(new Chunk(
@@ -46,8 +55,68 @@ public class PdfView extends AbstractPdfView {
 		Paragraph by = new Paragraph(new Chunk("Facture éditée le " + date,
 				FontFactory.getFont(FontFactory.HELVETICA, 20)));
 
+		Paragraph orderP = new Paragraph(new Chunk(order.toString(),
+				FontFactory.getFont(FontFactory.HELVETICA, 20)));
+
+		Paragraph returnLine = new Paragraph(new Chunk("\n",
+				FontFactory.getFont(FontFactory.HELVETICA, 20)));
+
+		// Table tab = new Table(4);
+
+		PdfPTable tab = new PdfPTable(5);
+		tab.setWidthPercentage(100);
+		
+		PdfPCell cell = new PdfPCell(new Phrase("Nom de la formation"));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase("Date de la formation"));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase("Prix unitaire"));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase("Quantité"));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase("Total"));
+		cell.setPadding(10);
+		tab.addCell(cell);
+
+		cell = new PdfPCell(new Phrase(order.getTraining().getName()));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase(order.getTraining().getStartDate() + " - " + order.getTraining().getEndDate()));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		DecimalFormat df = new DecimalFormat("0.00");
+		cell = new PdfPCell(new Phrase(df.format(order.getUnitPrice()) + "€"));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase(order.getQuantity().toString()));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase((df.format(order.getTotalPrice())) + "€"));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		
+		cell = new PdfPCell(new Phrase("TOTAL"));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase(""));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase(""));
+		cell.setPadding(10);
+		tab.addCell(cell);
+		cell = new PdfPCell(new Phrase("..."));
+		cell.setPadding(10);
+		tab.addCell(cell);
+
 		document.add(image2);
+		document.add(returnLine);
 		document.add(header);
 		document.add(by);
+		document.add(returnLine);
+		document.add(tab);
 	}
 }
