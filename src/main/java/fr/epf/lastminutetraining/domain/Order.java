@@ -1,9 +1,10 @@
 package fr.epf.lastminutetraining.domain;
 
+import java.text.DecimalFormat;
+
 public class Order {
 
 	private Training training;
-	private Float unitPrice;
 	private Integer quantity;
 
 	public Order() {
@@ -15,15 +16,15 @@ public class Order {
 
 	public void setTraining(Training training) {
 		this.training = training;
-		this.unitPrice = Float.valueOf(training.getPriceLMT());
 	}
 
-	public Float getUnitPrice() {
-		return unitPrice;
+	public float getUnitPrice() {
+		// TODO : mettre le prixLMT plutôt que le prix de base
+		return Float.parseFloat(training.getPrice());
 	}
 
-	public Float getTotalPrice() {
-		return unitPrice * quantity;
+	public float getTotalPrice() {
+		return getUnitPrice() * quantity;
 	}
 
 	public Integer getQuantity() {
@@ -36,7 +37,6 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [training=" + training + ", unitPrice=" + unitPrice
-				+ ", quantity=" + quantity + "]";
+		return training.getName() + " - " + getUnitPrice() + " - " + quantity;
 	}
 }

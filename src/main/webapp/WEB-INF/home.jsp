@@ -12,7 +12,7 @@
 <div class="row">
 	<div class="col-sm-8">
 		<div class="panel panel-primary">
-			<div class="panel-heading">Les prochaines formations <a href="generate/pdf.htm">Generate Pdf</a></div>
+			<div class="panel-heading">Les prochaines formations <a href="generate/facture.pdf">Generate Pdf</a></div>
 			<div class="table-responsive">
 				<table class="table table-hover table-align">
 					<thead>
