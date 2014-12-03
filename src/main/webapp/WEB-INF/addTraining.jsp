@@ -168,12 +168,12 @@
 				</div>
 				<div class="form-group">
 					<label for="academys">Curriculum</label> <input type="text"
-					class="form-control" name="academys[0]" id="academys0"
+					class="form-control" name="relatedCurricula[0]" id="relatedCurricula0"
 					required="required" form="trainingForm"/>
 				</div>
 				<div class="form-group" id="pasteCuri">
                     <span class="input-group-btn">
-                        <button id="addCurriculum" type="button" onclick="addLine('academys', 'pasteCuri')" class="btn btn-info btn-sm">Ajouter un curriculum</button>
+                        <button id="addCurriculum" type="button" onclick="addLine('relatedCurricula', 'pasteCuri')" class="btn btn-info btn-sm">Ajouter un curriculum</button>
                     </span>
                 </div>
                 <div class="form-group" style="display: inline-block;">
@@ -275,7 +275,7 @@
 	.click(
 		function() {
 			count = $('ul button').size();
-			after = "<br><input type='text' class='form-control col-sm-10' form='trainingForm' name='content['partie"+index+"']'></input><span class='col-sm-1 delBig fa fa-side fa-trash'></span><ul><span id='addSmall-"
+			after = "<br><input type='text' class='form-control col-sm-10' name='content['partie"+index+"']'></input><span class='col-sm-1 delBig fa fa-side fa-trash'></span><ul><span id='addSmall-"
 			+ count.toString()
 			+ "' class='span fa fa-side fa-plus small'>Ajouter une sous-partie</span></ul>";
 			$(this).after(after);index++;
@@ -294,7 +294,7 @@
 				a = this.id;
 				$("#" + a)
 				.after(
-					"<input type='text' class='form-control col-md-10' form='trainingForm' name='content['sous-partie"+index2+"']'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
+					"<input type='text' class='form-control col-md-10' name='content['sous-partie"+index2+"']'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
 				index2++;$(".delSmall").click(function() {
 					$(this).prev().remove();
 					$(this).remove();
