@@ -2,7 +2,6 @@ package fr.epf.lastminutetraining.controller;
 
 import javax.servlet.http.HttpSession;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -32,7 +31,7 @@ public class MyTrainingsController {
 	protected ModelAndView home(HttpSession session) {
 		// A modifier par l'id du vendeur
 		//ObjectId id = new ObjectId("54668afc44ae11795d109a61");
-		ObjectId id = new ObjectId(session.getAttribute("id").toString());//System.out.println(id);
+		String id = session.getAttribute("id").toString();//System.out.println(id);
 		if (session.getAttribute("status").equals("client")){
 			return new ModelAndView("404");
 		}
@@ -61,7 +60,7 @@ public class MyTrainingsController {
 			return null;
 		} else {
 			String idVendor = session.getAttribute("id").toString();
-			ObjectId id = new ObjectId(session.getAttribute("id").toString());
+			String id = session.getAttribute("id").toString();
 			// Ajout de l'id du vendeur à la formation
 			training.setVendorId(idVendor);
 			// Sauvegarde de la formation
@@ -101,7 +100,7 @@ public class MyTrainingsController {
 			return new ModelAndView("404");
 		} else {
 			//ObjectId id = new ObjectId("54668afc44ae11795d109a61");
-			ObjectId id = new ObjectId(session.getAttribute("id").toString());//System.out.println(id);
+			String id = session.getAttribute("id").toString();//System.out.println(id);
 			return new ModelAndView("myTrainings", "trainings",
 					service.findAllTrainings(id));
 		}

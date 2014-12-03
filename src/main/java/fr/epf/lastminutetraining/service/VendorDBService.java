@@ -1,12 +1,12 @@
 package fr.epf.lastminutetraining.service;
 
-import fr.epf.lastminutetraining.dao.VendorDAO;
-import fr.epf.lastminutetraining.domain.Vendor;
-import org.bson.types.ObjectId;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import fr.epf.lastminutetraining.dao.VendorDAO;
+import fr.epf.lastminutetraining.domain.Vendor;
 
 @Service
 public class VendorDBService {
@@ -17,7 +17,7 @@ public class VendorDBService {
 	public VendorDBService() {
 	}
 
-	public Vendor findVendor(ObjectId id) {
+	public Vendor findVendor(String id) {
 		System.out.println(id);
 		return vendorDAO.findVendor(id);
 	}

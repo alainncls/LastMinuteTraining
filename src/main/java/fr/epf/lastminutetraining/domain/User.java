@@ -30,8 +30,12 @@ public abstract class User {
 		return id;
 	}
 
-	public void setId(ObjectId id) {
-		this.id = id;
+	public void setId(ObjectId id2) {
+		this.id = id2;
+	}
+	
+	public void setId(String id2) {
+		this.id = new ObjectId(id2);
 	}
 
 	public String getFirstName() {

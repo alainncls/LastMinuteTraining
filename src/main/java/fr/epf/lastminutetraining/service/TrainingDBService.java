@@ -2,6 +2,7 @@ package fr.epf.lastminutetraining.service;
 
 import fr.epf.lastminutetraining.dao.TrainingDAO;
 import fr.epf.lastminutetraining.domain.Training;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class TrainingDBService {
 		return trainingDAO.findOneTraining();
 	}
 
-	public List<Training> findAllTrainings(ObjectId id) {
+	public List<Training> findAllTrainings(String id) {
 		return trainingDAO.findAllTrainings(id);
 	}
 

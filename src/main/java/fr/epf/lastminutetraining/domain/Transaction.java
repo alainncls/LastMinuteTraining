@@ -1,5 +1,6 @@
 package fr.epf.lastminutetraining.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,10 @@ public class Transaction {
 	private Client client;
 	private Date date;
 	private String status;// Facturation, paiement, validation/note
+
+	public Transaction() {
+		this.orders = new ArrayList<Order>();
+	}
 
 	public Client getClient() {
 		return client;
@@ -66,5 +71,43 @@ public class Transaction {
 			tot += order.getTotalPrice();
 		}
 		return tot;
+	}
+
+	public void decrementTraining(Training training) {
+		int index=0;
+		for (Order order : orders) {
+			if (order.getTraining().equals(training)) {
+				if (order.getQuantity() == 1) {
+					orders.remove(index);
+				} else {
+					order.decrementQuantity();
+				}
+				return;
+			}
+			index++;
+		}
+	}
+	
+	public void incrementTraining(Training training) {
+		this.addTraining(training);
+	}
+	
+	public void addTraining(Training training) {
+		for (Order order : orders) {
+			if (order.getTraining().equals(training)) {
+				order.incrementQuantity();
+				return;
+			}
+		}
+		Order order = OrderBuilder.order().training(training).build();
+		addOrder(order);
+	}
+	
+	public void removeTraining(Training training) {
+		orders.remove(training);
+	}
+
+	public void empty() {
+		orders = new ArrayList<Order>();
 	}
 }

@@ -4,7 +4,6 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
@@ -54,7 +53,7 @@ public class VendorDAO {
 	}
 
 	// Method to find vendor by id
-	public Vendor findVendor(ObjectId id) {
+	public Vendor findVendor(String id) {
 		//System.out.println(id);
 		return collection.findOne(id).as(Vendor.class);
 	}

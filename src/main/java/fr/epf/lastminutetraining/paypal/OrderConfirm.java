@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -270,8 +269,8 @@ public class OrderConfirm {
 				ApplicationContext context = new ClassPathXmlApplicationContext(
 						"context.xml");
 
-				ObjectId idClient = new ObjectId(session.getAttribute("id")
-						.toString());
+				String idClient = session.getAttribute("id")
+						.toString();
 				Client client = cservice.findClient(idClient);
 
 				try {

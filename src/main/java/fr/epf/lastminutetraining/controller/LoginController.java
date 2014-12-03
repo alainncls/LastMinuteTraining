@@ -7,13 +7,17 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.epf.lastminutetraining.domain.Client;
 import fr.epf.lastminutetraining.domain.Mail;
+import fr.epf.lastminutetraining.domain.Transaction;
+import fr.epf.lastminutetraining.domain.TransactionBuilder;
 import fr.epf.lastminutetraining.domain.User;
 import fr.epf.lastminutetraining.domain.Vendor;
 import fr.epf.lastminutetraining.service.ClientDBService;
@@ -21,6 +25,7 @@ import fr.epf.lastminutetraining.service.TrainingDBService;
 import fr.epf.lastminutetraining.service.VendorDBService;
 
 @Controller
+@SessionAttributes({ "cart" })
 public class LoginController {
 
 	@Autowired
@@ -44,7 +49,7 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.POST, value = "/login")
 	protected ModelAndView login(@RequestParam(value = "login") String login,
 			@RequestParam(value = "password") String password,
-			HttpSession session) {
+			HttpSession session, Model model) {
 		User user = vservice.connect(login, password);
 		if (user == null) {
 			user = cservice.connect(login, password);
@@ -54,6 +59,11 @@ public class LoginController {
 			session.setAttribute("login", user.getLogin());
 			session.setAttribute("id", user.getId());
 			session.setAttribute("validated", user.getActivated());
+
+			if (!model.containsAttribute("cart")) {
+				Transaction tr = TransactionBuilder.transaction().client((Client) user).build();
+				model.addAttribute("cart", tr);
+			}
 			return new ModelAndView(home, trainings,
 					tservice.findLastTraining());
 		} else {
@@ -63,8 +73,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/register")
-	protected ModelAndView registerVendor(
-			@RequestParam(value = "mail") String mail,
+	protected ModelAndView register(@RequestParam(value = "mail") String mail,
 			@RequestParam(value = "login") String login,
 			@RequestParam(value = "password") String password,
 			@RequestParam(value = "status") String status) {

@@ -1,11 +1,21 @@
 package fr.epf.lastminutetraining.domain;
 
+import java.io.Serializable;
 
-public class Order {
+import org.springframework.beans.factory.annotation.Autowired;
 
+import fr.epf.lastminutetraining.service.VendorDBService;
+
+
+public class Order implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private Training training;
 	private Vendor vendor;
-	private Integer quantity;
+	private Integer quantity = 1;
+	
+	@Autowired
+	private VendorDBService vdbs;
 
 	public Order() {
 	}
@@ -16,6 +26,7 @@ public class Order {
 
 	public void setTraining(Training training) {
 		this.training = training;
+		this.vendor = vdbs.findVendor(training.getVendorId());
 	}
 
 	public Vendor getVendor() {
@@ -46,5 +57,13 @@ public class Order {
 	@Override
 	public String toString() {
 		return training.getName() + " - " + getUnitPrice() + " - " + quantity;
+	}
+
+	public void incrementQuantity() {
+		this.quantity++;
+	}
+	
+	public void decrementQuantity() {
+		this.quantity--;
 	}
 }
