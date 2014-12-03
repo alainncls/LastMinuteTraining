@@ -84,7 +84,7 @@ public class MyTrainingsController {
 						+ " Merci de votre contribution � notre catalogue.\n\nCordialement,\n\n"
 						+ "L'�quipe Last Minute Training");
 
-				return new ModelAndView("myTrainings", "trainings",
+				return new ModelAndView("redirect:/mytrainings", "trainings",
 						service.findAllTrainings(id));
 			} finally {
 				((AbstractApplicationContext) context).close();

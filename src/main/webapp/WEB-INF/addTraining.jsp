@@ -275,7 +275,7 @@
 	.click(
 		function() {
 			count = $('ul button').size();
-			after = "<br><input type='text' class='form-control col-sm-10' name='content['partie"+index+"']'></input><span class='col-sm-1 delBig fa fa-side fa-trash'></span><ul><span id='addSmall-"
+			after = '<br><input type="text" class="form-control col-sm-10" form="trainingForm" name="content[\'partie'+index+'\']"></input><span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><span id="addSmall-"'
 			+ count.toString()
 			+ "' class='span fa fa-side fa-plus small'>Ajouter une sous-partie</span></ul>";
 			$(this).after(after);index++;
@@ -294,7 +294,7 @@
 				a = this.id;
 				$("#" + a)
 				.after(
-					"<input type='text' class='form-control col-md-10' name='content['sous-partie"+index2+"']'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
+					'<input type="text" class="form-control col-md-10" form="trainingForm" name="content[\'sous-partie'+index2+'\']"><span class="col-md-2 delSmall fa fa-side fa-trash"></span>');
 				index2++;$(".delSmall").click(function() {
 					$(this).prev().remove();
 					$(this).remove();

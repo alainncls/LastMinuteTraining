@@ -77,8 +77,8 @@ public class Training {
 	private ArrayList<String> audience;
 	// Images
 	private ArrayList<String> relatedCurricula;
-	private ArrayList<String> academys = new ArrayList<String>();
-	// Prerequisiste
+	private ArrayList<String> academys;
+	// Prerequisite
 	private Map prerequisites;
 	// release
 	private ArrayList<String> release;
@@ -189,8 +189,8 @@ public class Training {
 		return content;
 	}
 
-	public void setObjectives(Map objectives) {
-		this.content = objectives;
+	public void setContent(Map content) {
+		this.content = content;
 	}
 
 	public String getActivities() {
