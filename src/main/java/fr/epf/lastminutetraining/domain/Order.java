@@ -27,8 +27,7 @@ public class Order {
 	}
 
 	public float getUnitPrice() {
-		// TODO : mettre le prixLMT plutôt que le prix de base
-		return Float.parseFloat(training.getPrice());
+		return (Float.parseFloat(training.getPrice()) * 0.8F);
 	}
 
 	public float getTotalPrice() {
