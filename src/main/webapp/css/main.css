@@ -180,6 +180,11 @@ th {
 	margin-bottom: 15px;
 }
 
+.jumbotron {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
+
 .paddingugly {
 	padding-right: 0 !important;
 }
@@ -245,22 +250,25 @@ dd {
 
 .span6 {
 	margin-left: 0;
-	float:left;
+	float: left;
 }
 
 ul.sap {
-list-style-image: url('https://training.sap.com/img/bullet-one.png');
+	list-style-image: url('https://training.sap.com/img/bullet-one.png');
 }
+
 textarea {
-min-height: 60px;
-overflow-y: auto;
-word-wrap:break-word
+	min-height: 60px;
+	overflow-y: auto;
+	word-wrap: break-word
 }
-input{
-	display:block;
-	float:left;
+
+input {
+	display: block;
+	float: left;
 }
-.fa-side{
-	height:25px;
-	float:left;
+
+.fa-side {
+	height: 25px;
+	float: left;
 }
