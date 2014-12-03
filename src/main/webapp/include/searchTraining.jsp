@@ -10,7 +10,7 @@
 				<form role="form" method="post">
 					<div class="form-group">
 						<label for="inputName">Nom</label> <input type="text"
-							class="form-control" id="inputName" name="inputName" value="${inputName}" />
+							class="form-control" id="inputName" name="name" value="${training.name}" />
 					</div>
 					<div class="form-group">
 						<label for="inputPrereq">Prérequis</label> <select multiple
@@ -23,19 +23,19 @@
 					</div>
 					<div class="form-group">
 						<label for="inputStart">Date Début</label> <input type="date"
-							class="form-control" id="inputStart" name="inputStart" value="${inputStart}" />
+							class="form-control" id="inputStart" name="startDate" value="${training.startDate}" />
 					</div>
 					<div class="form-group">
 						<label for="inputEnd">Date Fin</label> <input type="date"
-							class="form-control" id="inputEnd" name="inputEnd" value="${inputEnd}" />
+							class="form-control" id="inputEnd" name="endDate" value="${training.endDate}" />
 					</div>
 					<div class="form-group">
 						<label for="inputPriceLMT">Prix LMT</label> <input type="number"
-							class="form-control" id="inputPriceLMT" name="inputPriceLMT" value="${inputPriceLMT}" />
+							class="form-control" id="inputPriceLMT" name="priceLMT" value="${training.priceLMT}" />
 					</div>
 					<div class="form-group">
 						<label for="difficulty">Difficulté</label>
-						<div class="ratingstars"></div>
+						<div class="ratingstars" data-score=""></div>
 					</div>
 					<div class="form-group">
 						<label for="inputVendor">Organisme Formateur</label> <select

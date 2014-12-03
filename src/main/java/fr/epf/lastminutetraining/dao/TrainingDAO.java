@@ -56,12 +56,10 @@ public class TrainingDAO {
 	}
 
 	public List<Training> findLastTraining() {
-		List<Training> trainings = new ArrayList<Training>();
 		// get 10 last trainings from database
 		MongoCursor<Training> cursor = trainingsCollection.find().limit(limit)
 				.as(Training.class);
-		List<Training> result = iterateAndReturn(trainings, cursor);
-		return result;
+		return iterateAndReturn(cursor);
 	}
 
 	public void saveTraining(Training training) {
@@ -124,50 +122,34 @@ public class TrainingDAO {
 	}
 
 	public List<Training> searchTraining(String name) {
-		System.out.println(name);
-		List<Training> trainings = new ArrayList<Training>();
 		MongoCursor<Training> cursor = trainingsCollection.find("{name: #}",
 				Pattern.compile(".*" + name + ".*")).as(Training.class);
-		while (cursor.hasNext()) {
-			trainings.add(cursor.next());
-		}
-		System.out.println(trainings);
-		return trainings;
+		return iterateAndReturn(cursor);
 	}
 
 	public List<Training> searchTraining(Training training) {
-		System.out.println(training);
-		List<Training> trainings = new ArrayList<Training>();
-		MongoCursor<Training> cursor = trainingsCollection.find("{name: #}",
-				Pattern.compile(".*" + training.getName() + ".*")).as(
+		MongoCursor<Training> cursor = trainingsCollection.find("{ $and: [{name:#}, {startDate:#}, {endDate:#}]}",
+				Pattern.compile(".*" + training.getName() + ".*"), training.getStartDate(), training.getEndDate()).as(
 				Training.class);
-		while (cursor.hasNext()) {
-			trainings.add(cursor.next());
-		}
-		System.out.println(trainings);
-		return trainings;
+		return iterateAndReturn(cursor);
 	}
 
 	public List<Training> findAllTrainings() {
-		List<Training> trainings = new ArrayList<Training>();
 		MongoCursor<Training> cursor = trainingsCollection.find().as(
 				Training.class);
-		List<Training> result = iterateAndReturn(trainings, cursor);
-		return result;
+		return iterateAndReturn(cursor);
 	}
 
 	public List<Training> findAllTrainings(ObjectId id) {
-		List<Training> trainings = new ArrayList<Training>();
 		String query = "{vendorId: \"" + id + "\"}";
 		//System.out.println(query);
 		MongoCursor<Training> cursor = trainingsCollection.find(query).as(
 				Training.class);
-		List<Training> result = iterateAndReturn(trainings, cursor);
-		return result;
+		return iterateAndReturn(cursor);
 	}
 
-	public List<Training> iterateAndReturn(List<Training> trainings,
-			MongoCursor<Training> cursor) {
+	public List<Training> iterateAndReturn(MongoCursor<Training> cursor) {
+		List<Training> trainings = new ArrayList<Training>();
 		while (cursor.hasNext()) {
 			trainings.add(cursor.next());
 		}
