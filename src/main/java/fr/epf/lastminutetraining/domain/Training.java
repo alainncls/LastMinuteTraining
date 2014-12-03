@@ -355,7 +355,7 @@ public class Training {
 	}
 
 	public void setDuration(String duration) {
-		this.duration = duration;
+		this.duration = toString(duration.count);
 	}
 
 	public double getEvaluation() {
