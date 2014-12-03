@@ -70,15 +70,15 @@ public class Training {
 	// Objet dates
 	private HashMap<String, String> date;
 	// Objet dates
-	private HashMap<String, String> duration;
+	private String duration;
 	// evaluation
 	private Float evaluation;
 	// Public
 	private ArrayList<String> audience;
 	// Images
 	private ArrayList<String> relatedCurricula;
-	private ArrayList<String> academys = new ArrayList<String>();
-	// Prerequisiste
+	private ArrayList<String> academys;
+	// Prerequisite
 	private Map prerequisites;
 	// release
 	private ArrayList<String> release;
@@ -189,8 +189,8 @@ public class Training {
 		return content;
 	}
 
-	public void setObjectives(Map objectives) {
-		this.content = objectives;
+	public void setContent(Map content) {
+		this.content = content;
 	}
 
 	public String getActivities() {
@@ -350,12 +350,12 @@ public class Training {
 		String unit;
 	}
 
-	public HashMap<String, String> getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(HashMap<String, String> duration) {
-		this.duration = duration;
+	public void setDuration(String duration) {
+		this.duration = toString(duration.count);
 	}
 
 	public double getEvaluation() {

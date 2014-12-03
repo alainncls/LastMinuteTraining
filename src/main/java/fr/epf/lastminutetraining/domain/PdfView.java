@@ -35,22 +35,9 @@ public class PdfView extends AbstractPdfView {
 	protected void buildPdfDocument(Map model, Document document,
 			PdfWriter writer, HttpServletRequest req, HttpServletResponse resp)
 			throws Exception {
-
-		//Training t = (Training) model.get("training");
 		
 		Client c = (Client) model.get("client");
 		Order order = (Order) model.get("order");
-		
-		// VendorDBService vdbs = new VendorDBService();
-
-		// TODO : inclure un vendeur dans la transaction
-		// Vendor vendor = VendorBuilder.vendor().id(new
-		// ObjectId(t.getVendorId())).name("SAP").build();
-		// vdbs.save(vendor);
-
-		// Order order =
-		// OrderBuilder.order().training(t).quantity(2).vendor(vendor).build();
-		//Order order = OrderBuilder.order().training(t).quantity(2).build();
 
 		String imageUrl = "http://oenologie.epf.fr/LMT/LMT.png";
 

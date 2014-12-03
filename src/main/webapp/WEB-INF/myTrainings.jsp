@@ -62,7 +62,7 @@
 											test="${training.duration.unit == 'days'}">jours</c:if> <c:if
 											test="${training.duration.unit == 'day'}">jour</c:if> <c:if
 											test="${training.duration.unit != 'day' && training.duration.unit != 'days'}">${training.duration.unit}</c:if></td>
-									<td><c:forEach begin="1" end="${training.level}">
+									<td><c:forEach begin="1" end="${training.difficulty}">
 											<i class="fa fa-star"></i>
 										</c:forEach></td>
 									<td>${training.available}</td>

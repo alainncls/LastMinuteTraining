@@ -1,19 +1,15 @@
 package fr.epf.lastminutetraining.domain;
 
-import java.io.Serializable;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.epf.lastminutetraining.service.VendorDBService;
 
+public class Order {
 
-public class Order implements Serializable{
-
-	private static final long serialVersionUID = 1L;
 	private Training training;
 	private Vendor vendor;
 	private Integer quantity = 1;
-	
+
 	@Autowired
 	private VendorDBService vdbs;
 
@@ -38,8 +34,7 @@ public class Order implements Serializable{
 	}
 
 	public float getUnitPrice() {
-		// TODO : mettre le prixLMT plutôt que le prix de base
-		return Float.parseFloat(training.getPrice());
+		return (Float.parseFloat(training.getPrice()) * 0.8F);
 	}
 
 	public float getTotalPrice() {
@@ -62,7 +57,7 @@ public class Order implements Serializable{
 	public void incrementQuantity() {
 		this.quantity++;
 	}
-	
+
 	public void decrementQuantity() {
 		this.quantity--;
 	}

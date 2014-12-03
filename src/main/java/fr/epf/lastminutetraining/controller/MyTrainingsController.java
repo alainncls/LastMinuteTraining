@@ -1,5 +1,9 @@
 package fr.epf.lastminutetraining.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +67,25 @@ public class MyTrainingsController {
 			String id = session.getAttribute("id").toString();
 			// Ajout de l'id du vendeur à la formation
 			training.setVendorId(idVendor);
+			// Ajout de la durée de la formation
+			String start = training.getDate().get("startDate");System.out.println(start);
+			String end = training.getDate().get("endDate");
+			
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			
+			try {
+				Date startDate = format.parse(start);System.out.println(start);
+				Date endDate = format.parse(end);
+				
+				long diff = endDate.getTime() - startDate.getTime();
+				String duration = String.valueOf(diff/(24 * 60 * 60 * 1000));//System.out.println(duration);
+				training.setDuration(duration);
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			// Sauvegarde de la formation
 			service.save(training);
 
@@ -83,7 +106,7 @@ public class MyTrainingsController {
 						+ " Merci de votre contribution ï¿½ notre catalogue.\n\nCordialement,\n\n"
 						+ "L'ï¿½quipe Last Minute Training");
 
-				return new ModelAndView("myTrainings", "trainings",
+				return new ModelAndView("redirect:/mytrainings", "trainings",
 						service.findAllTrainings(id));
 			} finally {
 				((AbstractApplicationContext) context).close();
