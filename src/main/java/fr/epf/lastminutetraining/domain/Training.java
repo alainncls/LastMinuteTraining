@@ -355,7 +355,7 @@ public class Training {
 	}
 
 	public void setDuration(HashMap<String, String> duration) {
-		this.duration = toString(duration.count);
+		this.duration = duration;
 	}
 
 	public double getEvaluation() {
