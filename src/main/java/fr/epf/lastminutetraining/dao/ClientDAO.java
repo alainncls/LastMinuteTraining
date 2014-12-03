@@ -54,7 +54,7 @@ public class ClientDAO {
 	}
 
 	// Method to find client by id
-	public Client findClient(String id) {
+	public Client findClient(ObjectId id) {
 		return collection.findOne(id).as(Client.class);
 	}
 

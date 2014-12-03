@@ -1,5 +1,6 @@
 package fr.epf.lastminutetraining.domain;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.epf.lastminutetraining.service.VendorDBService;
@@ -22,7 +23,7 @@ public class Order {
 
 	public void setTraining(Training training) {
 		this.training = training;
-		this.vendor = vdbs.findVendor(training.getVendorId());
+		this.vendor = vdbs.findVendor(new ObjectId(training.getVendorId()));
 	}
 
 	public Vendor getVendor() {

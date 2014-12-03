@@ -2,6 +2,7 @@ package fr.epf.lastminutetraining.service;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class ClientDBService {
 	public ClientDBService() {
 	}
 
-	public Client findClient(String id) {
+	public Client findClient(ObjectId id) {
 		return clientDAO.findClient(id);
 	}
 

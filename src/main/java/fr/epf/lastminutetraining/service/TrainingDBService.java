@@ -30,7 +30,7 @@ public class TrainingDBService {
 		return trainingDAO.findOneTraining();
 	}
 
-	public List<Training> findAllTrainings(String id) {
+	public List<Training> findAllTrainings(ObjectId id) {
 		return trainingDAO.findAllTrainings(id);
 	}
 

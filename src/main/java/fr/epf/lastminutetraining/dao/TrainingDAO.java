@@ -149,7 +149,7 @@ public class TrainingDAO {
 		return iterateAndReturn(cursor);
 	}
 
-	public List<Training> findAllTrainings(String id) {
+	public List<Training> findAllTrainings(ObjectId id) {
 		String query = "{vendorId: \"" + id + "\"}";
 		//System.out.println(query);
 		MongoCursor<Training> cursor = trainingsCollection.find(query).as(

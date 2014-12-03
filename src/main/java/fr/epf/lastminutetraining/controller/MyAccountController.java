@@ -2,6 +2,7 @@ package fr.epf.lastminutetraining.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ public class MyAccountController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/myaccount")
 	protected ModelAndView show(HttpSession session) {
-		String id = session.getAttribute("id").toString();
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());
 
 		if (session.getAttribute("status").toString().equals("vendor")) {
 			return new ModelAndView("myaccount", "currentUser",
@@ -53,7 +54,7 @@ public class MyAccountController {
 			@RequestParam(required = false) String cardNumber,
 			@RequestParam(required = false) String expirationDate) {
 
-		String id = session.getAttribute("id").toString();
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());
 
 		if (session.getAttribute("status").toString().equals("vendor")) {
 			Vendor vendor = vservice.findVendor(id);
@@ -107,7 +108,7 @@ public class MyAccountController {
 			@RequestParam(required = false) String newPass,
 			@RequestParam(required = false) String newPass2) {
 
-		String id = session.getAttribute("id").toString();
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());
 
 		if (session.getAttribute("status").toString().equals("vendor")) {
 			Vendor vendor = vservice.findVendor(id);
@@ -146,7 +147,7 @@ public class MyAccountController {
 	@RequestMapping(method = RequestMethod.GET, value = "/myaccount/editPwd")
 	protected ModelAndView editPwd(HttpSession session) {
 
-		String id = session.getAttribute("id").toString();
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());
 
 		if (session.getAttribute("status").toString().equals("vendor")) {
 			Vendor vendor = vservice.findVendor(id);
