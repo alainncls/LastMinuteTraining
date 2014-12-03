@@ -20,8 +20,9 @@
 				<li><a href="${page.url}/404">Base documentaire</a></li>
 				<li><a href="${page.url}/work">Webinars</a></li>
 				<li><a href="${page.url}/work">A propos</a></li>
-				<li><a href="${page.url}/work">CGV</a>${sessionScope.status}</li>
+				<li><a href="${page.url}/work">CGV</a></li>
 			</ul>
+			${sessionScope.status}
 			<c:choose>
 				<c:when test="${sessionScope.login==null}">
 					<button type="button"

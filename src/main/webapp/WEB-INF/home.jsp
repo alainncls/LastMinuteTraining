@@ -17,7 +17,7 @@
 			</div>
 			<div class="modal-body">
 				<form role="form">
-					<div class="mudal-name">
+					<div class="modal-name">
 						Formation : <label for="name" class="control-label">X</label>
 					</div>
 					<div class="modal-price">
@@ -108,7 +108,7 @@ $('#buyModal').on('show.bs.modal', function (event) {
 									<td>${training.price * 0.8}0€</td>
 									<%-- <td>${${training.priceLMT}*2}€</td> --%>
 									<td>${training.date.startDate}</td>
-									<td>${training.duration.count}<c:if
+									<td>${training.duration.count} <c:if
 											test="${training.duration.unit == 'days'}">Jours</c:if> <c:if
 											test="${training.duration.unit == 'day'}">Jour</c:if> <c:if
 											test="${training.duration.unit != 'day' && training.duration.unit != 'days'}">${training.duration.unit}</c:if></td>
@@ -117,7 +117,7 @@ $('#buyModal').on('show.bs.modal', function (event) {
 										</c:forEach></td>
 									<td>${training.available}</td>
 									<td colspan="3"><button type="button"
-											class="btn btn-warning navbar-btn navbar-right"
+											class="btn btn-warning navbar-btn navbar-right nomargin btn-sm"
 											data-toggle="modal" data-target="#buyModal"
 											data-price="${training.price}"
 											data-priceLMT="${training.price*0.8}"

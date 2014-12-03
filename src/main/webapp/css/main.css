@@ -19,6 +19,10 @@ div.carousel-inner div.item img {
 	margin-top: 10px;
 }
 
+.nomargin {
+	margin: 0!important;
+}
+
 .navbar-padding {
 	margin-top: 80px !important;
 }
