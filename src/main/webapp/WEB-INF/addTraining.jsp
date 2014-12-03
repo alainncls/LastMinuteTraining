@@ -25,18 +25,16 @@
 						placeholder="Prix LMT" required="required" />
 					</div>
 					<div class="form-group">
-						<label for="level">Niveau de la formation</label> <select
-							type="text" class="form-control level " name="level" id="level">
+						<label for="level">Niveau de la formation</label> 
+						<select
+							type="text" class="form-control" name="level" id="level">
 							<option class="level level-1" value="1">Overview</option>
 							<option class="level level-2" value="2">Foundation</option>
 							<option class="level level-3" value="3">Detailed</option>
 							<option class="level level-4" value="4">Delta Knowledge</option>
-							<option class="level level-5" value="5">Consultant
-								Academy</option>
+							<option class="level level-5" value="5">Consultant Academy</option>
 							<option class="level level-6" value="6">Certification</option>
-							<option class="level level-9" value="9">Grouped
-								Offering</option>
-
+							<option class="level level-9" value="9">Grouped Offering</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -77,6 +75,15 @@
 					<label for="date.endDate">Fin de la formation</label> <input type="date"
 					class="form-control" name="date['endDate']" id="endDate" 
 					required="required" form="trainingForm"/>
+				</div>
+				<div class="form-group">
+					<label for="duration">Durée</label> <input type="number"
+					class="form-control input-sm" style="width:70%;" name="duration['count']" id="duration0" 
+					required="required" form="trainingForm"/> 
+					<select class="form-control input-sm" style="width:30%;" name="duration['unit']" id="duration1" form="trainingForm">
+						<option value="Heures">Heures</option>
+						<option value="Jours">Jours</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label for="language">Langue</label> <input type="text"
