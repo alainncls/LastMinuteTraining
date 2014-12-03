@@ -254,7 +254,7 @@ class TrainingBuilderBase<GeneratorT extends TrainingBuilderBase<GeneratorT>> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public GeneratorT duration(HashMap<String, String> aValue) {
+	public GeneratorT duration(String aValue) {
 		instance.setDuration(aValue);
 
 		return (GeneratorT) this;
