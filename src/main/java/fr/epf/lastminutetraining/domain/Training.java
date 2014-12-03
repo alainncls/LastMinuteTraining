@@ -153,14 +153,6 @@ public class Training {
 		this.contact = contact;
 	}
 
-	public HashMap<String, String> getDuration() {
-		return duration;
-	}
-
-	public void setDuration(HashMap<String, String> duration) {
-		this.duration = duration;
-	}
-
 	public String getSummary() {
 		return summary;
 	}
@@ -298,17 +290,16 @@ public class Training {
 				+ ", contact=" + contact + ", summary=" + summary + ", name="
 				+ name + ", notes=" + notes + ", language=" + language
 				+ ", solution=" + solution + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", difficulty=" + difficulty
-				+ ", level=" + level + ", textLevel=" + textLevel + ", price="
-				+ price + ", priceLMT=" + priceLMT + ", description="
-				+ description + ", introduction=" + introduction + ", program="
-				+ program + ", content=" + content + ", activities="
-				+ activities + ", url=" + url + ", unit=" + unit + ", date="
-				+ date + ", duration=" + duration + ", evaluation="
-				+ evaluation + ", audience=" + audience + ", relatedCurricula="
-				+ relatedCurricula + ", academys=" + academys
-				+ ", prerequisites=" + prerequisites + ", release=" + release
-				+ "]";
+				+ ", endDate=" + endDate + ", level=" + level + ", textLevel="
+				+ textLevel + ", price=" + price + ", priceLMT=" + priceLMT
+				+ ", description=" + description + ", introduction="
+				+ introduction + ", program=" + program + ", content="
+				+ content + ", activities=" + activities + ", url=" + url
+				+ ", unit=" + unit + ", date=" + date + ", duration="
+				+ duration + ", evaluation=" + evaluation + ", audience="
+				+ audience + ", relatedCurricula=" + relatedCurricula
+				+ ", academys=" + academys + ", prerequisites=" + prerequisites
+				+ ", release=" + release + "]";
 	}
 
 	@Override
@@ -352,6 +343,19 @@ public class Training {
 
 	public void setLanguage(List<String> language) {
 		this.language = language;
+	}
+
+	class Duration {
+		int count;
+		String unit;
+	}
+
+	public HashMap<String, String> getDuration() {
+		return duration;
+	}
+
+	public void setDuration(HashMap<String, String> duration) {
+		this.duration = toString(duration.count);
 	}
 
 	public double getEvaluation() {
