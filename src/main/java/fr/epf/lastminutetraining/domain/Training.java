@@ -70,7 +70,7 @@ public class Training {
 	// Objet dates
 	private HashMap<String, String> date;
 	// Objet dates
-	private HashMap<String, String> duration;
+	private String duration;
 	// evaluation
 	private Float evaluation;
 	// Public
@@ -350,11 +350,11 @@ public class Training {
 		String unit;
 	}
 
-	public HashMap<String, String> getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(HashMap<String, String> duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 

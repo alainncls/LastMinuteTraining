@@ -1,5 +1,10 @@
 package fr.epf.lastminutetraining.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.bson.types.ObjectId;
@@ -31,7 +36,7 @@ public class MyTrainingsController {
 	@RequestMapping(method = RequestMethod.GET, value = { "/mytrainings" })
 	protected ModelAndView home(HttpSession session) {
 		// A modifier par l'id du vendeur
-		//ObjectId id = new ObjectId("54668afc44ae11795d109a61");
+		//ObjectId id = new ObjectId("54668afc44ae11795d109a61");		
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());//System.out.println(id);
 		if (session.getAttribute("status").equals("client")){
 			return new ModelAndView("404");
@@ -64,6 +69,25 @@ public class MyTrainingsController {
 			ObjectId id = new ObjectId(session.getAttribute("id").toString());
 			// Ajout de l'id du vendeur à la formation
 			training.setVendorId(idVendor);
+			// Ajout de la durée de la formation
+			String start = training.getDate().get("startDate");System.out.println(start);
+			String end = training.getDate().get("endDate");
+			
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			
+			try {
+				Date startDate = format.parse(start);System.out.println(start);
+				Date endDate = format.parse(end);
+				
+				long diff = endDate.getTime() - startDate.getTime();
+				String duration = String.valueOf(diff/(24 * 60 * 60 * 1000));//System.out.println(duration);
+				training.setDuration(duration);
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			// Sauvegarde de la formation
 			service.save(training);
 
