@@ -19,11 +19,11 @@
 						class="form-control" name="price" id="price" placeholder="Prix"
 						required="required" />
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="priceLMT">Prix via LMT (temporaire)</label> <input type="number"
 						class="form-control" name="priceLMT" id="priceLMT"
 						placeholder="Prix LMT" required="required" />
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label for="level">Niveau de la formation</label> 
 						<select
@@ -81,8 +81,8 @@
 					class="form-control input-sm" style="width:70%;" name="duration['count']" id="duration0" 
 					required="required" form="trainingForm"/> 
 					<select class="form-control input-sm" style="width:30%;" name="duration['unit']" id="duration1" form="trainingForm">
-						<option value="Heures">Heures</option>
-						<option value="Jours">Jours</option>
+						<option value="heures">heures</option>
+						<option value="jours">jours</option>
 					</select>
 				</div>
 				<div class="form-group">

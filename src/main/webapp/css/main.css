@@ -276,3 +276,7 @@ input {
 	height: 25px;
 	float: left;
 }
+
+.centered {
+	text-align: center;
+}

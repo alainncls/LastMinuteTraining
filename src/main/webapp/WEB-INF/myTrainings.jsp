@@ -54,7 +54,7 @@
 									class="panel-collapse collapse tr-light">
 									<td colspan="9">${training.description}</td>
 								</tr>
-								<tr class="tr-light">
+								<tr class="tr-light centered">
 									<td>${training.price}€</td>
 									<td>${training.priceLMT}€</td>
 									<td>${training.date.startDate}</td>
