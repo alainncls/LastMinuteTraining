@@ -1,6 +1,5 @@
 package fr.epf.lastminutetraining.domain;
 
-
 public class Order {
 
 	private Training training;
