@@ -15,7 +15,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.bson.types.ObjectId;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
 import com.lowagie.text.Chunk;
@@ -28,8 +27,6 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-import fr.epf.lastminutetraining.service.VendorDBService;
-
 public class PdfView extends AbstractPdfView {
 
 	public PdfView() {
@@ -39,11 +36,21 @@ public class PdfView extends AbstractPdfView {
 			PdfWriter writer, HttpServletRequest req, HttpServletResponse resp)
 			throws Exception {
 
-		Training t = (Training) model.get("training");
-		VendorDBService vdbs = new VendorDBService();
-		Vendor vendor = vdbs.findVendor(new ObjectId(t.getVendorId()));
+		//Training t = (Training) model.get("training");
+		
+		Client c = (Client) model.get("client");
+		Order order = (Order) model.get("order");
+		
+		// VendorDBService vdbs = new VendorDBService();
 
-		Order order = OrderBuilder.order().training(t).quantity(2).vendor(vendor).build();
+		// TODO : inclure un vendeur dans la transaction
+		// Vendor vendor = VendorBuilder.vendor().id(new
+		// ObjectId(t.getVendorId())).name("SAP").build();
+		// vdbs.save(vendor);
+
+		// Order order =
+		// OrderBuilder.order().training(t).quantity(2).vendor(vendor).build();
+		//Order order = OrderBuilder.order().training(t).quantity(2).build();
 
 		String imageUrl = "http://oenologie.epf.fr/LMT/LMT.png";
 
@@ -54,29 +61,35 @@ public class PdfView extends AbstractPdfView {
 				"LastMinuteTraining - Facture client", FontFactory.getFont(
 						FontFactory.HELVETICA, 30)));
 
+		Paragraph client = new Paragraph();
+
+		if (c != null) {
+			client = new Paragraph(new Chunk("Client : " + c.getFirstName()
+					+ " " + c.getLastName() + "\n" + c.getAddress(),
+					FontFactory.getFont(FontFactory.HELVETICA, 15)));
+		}
+
 		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
 		String date = formater.format(System.currentTimeMillis());
 
 		Paragraph by = new Paragraph(new Chunk("Facture éditée le " + date,
 				FontFactory.getFont(FontFactory.HELVETICA, 20)));
 
-		Paragraph orderP = new Paragraph(new Chunk(order.toString(),
-				FontFactory.getFont(FontFactory.HELVETICA, 20)));
-
 		Paragraph returnLine = new Paragraph(new Chunk("\n",
 				FontFactory.getFont(FontFactory.HELVETICA, 20)));
 
-		// Table tab = new Table(4);
-
 		PdfPTable tab = new PdfPTable(5);
 		tab.setWidthPercentage(100);
-		
+
 		PdfPCell cell = new PdfPCell(new Phrase("Nom de la formation"));
 		cell.setPadding(10);
 		tab.addCell(cell);
 		cell = new PdfPCell(new Phrase("Date de la formation"));
 		cell.setPadding(10);
 		tab.addCell(cell);
+		// cell = new PdfPCell(new Phrase("Fournisseur"));
+		// cell.setPadding(10);
+		// tab.addCell(cell);
 		cell = new PdfPCell(new Phrase("Prix unitaire"));
 		cell.setPadding(10);
 		tab.addCell(cell);
@@ -90,9 +103,13 @@ public class PdfView extends AbstractPdfView {
 		cell = new PdfPCell(new Phrase(order.getTraining().getName()));
 		cell.setPadding(10);
 		tab.addCell(cell);
-		cell = new PdfPCell(new Phrase(order.getTraining().getStartDate() + " - " + order.getTraining().getEndDate()));
+		cell = new PdfPCell(new Phrase(order.getTraining().getStartDate()
+				+ " - " + order.getTraining().getEndDate()));
 		cell.setPadding(10);
 		tab.addCell(cell);
+		// cell = new PdfPCell(new Phrase(order.getVendor().toString()));
+		// cell.setPadding(10);
+		// tab.addCell(cell);
 		DecimalFormat df = new DecimalFormat("0.00");
 		cell = new PdfPCell(new Phrase(df.format(order.getUnitPrice()) + "€"));
 		cell.setPadding(10);
@@ -100,10 +117,11 @@ public class PdfView extends AbstractPdfView {
 		cell = new PdfPCell(new Phrase(order.getQuantity().toString()));
 		cell.setPadding(10);
 		tab.addCell(cell);
-		cell = new PdfPCell(new Phrase((df.format(order.getTotalPrice())) + "€"));
+		cell = new PdfPCell(
+				new Phrase((df.format(order.getTotalPrice())) + "€"));
 		cell.setPadding(10);
 		tab.addCell(cell);
-		
+
 		cell = new PdfPCell(new Phrase("TOTAL"));
 		cell.setPadding(10);
 		tab.addCell(cell);
@@ -118,6 +136,8 @@ public class PdfView extends AbstractPdfView {
 		tab.addCell(cell);
 
 		document.add(image2);
+		document.add(returnLine);
+		document.add(client);
 		document.add(returnLine);
 		document.add(header);
 		document.add(by);

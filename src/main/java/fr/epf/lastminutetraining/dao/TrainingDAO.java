@@ -61,6 +61,15 @@ public class TrainingDAO {
 				.as(Training.class);
 		return iterateAndReturn(cursor);
 	}
+	
+	public Training findOneTraining() {
+		Training training = new Training();
+
+		MongoCursor<Training> cursor = trainingsCollection.find().limit(limit)
+				.as(Training.class);
+		training = cursor.next();
+		return training;
+	}
 
 	public void saveTraining(Training training) {
 		trainingsCollection.save(training);

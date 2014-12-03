@@ -9,12 +9,12 @@ import org.jongo.marshall.jackson.oid.Id;
 public class Transaction {
 	@Id
 	private ObjectId id;
-	
-	// training, prixUnitaire, Quantité
-	private List< Order > orders;
+
+	// training, prixUnitaire, QuantitÃ©
+	private List<Order> orders;
 	private Client client;
 	private Date date;
-	private String status;//Facturatnio, paiement, validation/note
+	private String status;// Facturation, paiement, validation/note
 
 	public Client getClient() {
 		return client;
@@ -55,11 +55,11 @@ public class Transaction {
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-	
+
 	public void addOrder(Order order) {
 		this.orders.add(order);
 	}
-	
+
 	public float getTotal() {
 		float tot = 0;
 		for (Order order : orders) {

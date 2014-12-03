@@ -24,6 +24,10 @@ public class TrainingDBService {
 	public List<Training> findAllTrainings() {
 		return trainingDAO.findAllTrainings();
 	}
+	
+	public Training findOneTraining() {
+		return trainingDAO.findOneTraining();
+	}
 
 	public List<Training> findAllTrainings(ObjectId id) {
 		return trainingDAO.findAllTrainings(id);

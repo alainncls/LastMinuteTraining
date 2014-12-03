@@ -24,9 +24,9 @@ public class Checkout {
 		// (e.g. specifying the content type, setting cookies).
 
 		/*
-		 * The paymentAmount is the total value of ' the purchase. ' ' :
-		 * Enter the total Payment Amount within the quotes. ' example :
-		 * paymentAmount = "15.00";
+		 * The paymentAmount is the total value of ' the purchase. ' ' : Enter
+		 * the total Payment Amount within the quotes. ' example : paymentAmount
+		 * = "15.00";
 		 */
 		String paymentAmount = "1500";
 

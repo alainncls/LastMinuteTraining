@@ -25,7 +25,7 @@ public class DashboardController {
 		return new ModelAndView("home", "trainings", service.findLastTraining());
 	}
 
-	// pour un champ de recherche 'inputName'
+	// Pour un champ de recherche 'inputName'
 	@RequestMapping(method = RequestMethod.POST, value = { "/home", "/" })
 	protected ModelAndView searchHome(
 			@ModelAttribute("training") Training training) {

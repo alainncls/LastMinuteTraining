@@ -17,7 +17,7 @@ public class ClientController {
 	@Autowired
 	private ClientDBService service;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/listClients")
+	@RequestMapping(method = RequestMethod.GET, value = "/admin/users")
 	protected ModelAndView listTrainings(){
 		return new ModelAndView("listClients", "clients", service.findAllClients());
 	}

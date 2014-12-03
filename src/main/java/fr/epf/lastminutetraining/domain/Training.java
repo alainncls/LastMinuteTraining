@@ -68,9 +68,9 @@ public class Training {
 	// Unité de temps
 	private String unit;
 	// Objet dates
-	private HashMap date;
+	private HashMap<String, String> date;
 	// Objet dates
-	private HashMap duration;
+	private HashMap<String, String> duration;
 	// evaluation
 	private Float evaluation;
 	// Public
@@ -89,7 +89,7 @@ public class Training {
 
 	}
 
-	public HashMap getDate() {
+	public HashMap<String, String> getDate() {
 		return date;
 	}
 
