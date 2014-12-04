@@ -27,7 +27,10 @@ public class ClientDAO {
 
 	private MongoCollection collection = init();
 
-	private ClientDAO() {
+//	private ClientDAO() {
+//	}
+	
+	public ClientDAO() {
 	}
 
 	public MongoCollection init() {
@@ -54,7 +57,9 @@ public class ClientDAO {
 	}
 
 	// Method to find client by id
-	public Client findClient(String id) {
+	public Client findClient(ObjectId id) {
+		System.out.println("DEPUIS CDAO : " + id.toString());
+		System.out.println("CLIENT = " + collection.findOne(id).as(Client.class));
 		return collection.findOne(id).as(Client.class);
 	}
 

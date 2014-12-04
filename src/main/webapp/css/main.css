@@ -217,10 +217,9 @@ dd {
 }
 
 .level {
-	font-size: 20px;
+	font-size: 16px;
 	border-radius: 3px;
 	color: white;
-	margin-left: 10px;
 	padding: 2px;
 }
 
@@ -275,4 +274,11 @@ input {
 .fa-side {
 	height: 25px;
 	float: left;
+}
+
+.delete {
+	text-decoration: line-through;
+}
+.centered {
+	text-align: center;
 }

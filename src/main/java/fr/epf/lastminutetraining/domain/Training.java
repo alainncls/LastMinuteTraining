@@ -1,5 +1,6 @@
 package fr.epf.lastminutetraining.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +9,9 @@ import java.util.Map;
 import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
 
-public class Training {
+public class Training implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	private ObjectId id;

@@ -1,11 +1,16 @@
 package fr.epf.lastminutetraining.domain;
 
+import java.io.Serializable;
+
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.epf.lastminutetraining.service.VendorDBService;
 
-public class Order {
+public class Order implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	private Training training;
 	private Vendor vendor;
 	private Integer quantity = 1;
@@ -22,7 +27,8 @@ public class Order {
 
 	public void setTraining(Training training) {
 		this.training = training;
-		this.vendor = vdbs.findVendor(training.getVendorId());
+		// TODO à corriger : nullPointerException après validation paiement
+		//this.vendor = vdbs.findVendor(new ObjectId(training.getVendorId()));
 	}
 
 	public Vendor getVendor() {

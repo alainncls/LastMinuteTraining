@@ -2,6 +2,7 @@ package fr.epf.lastminutetraining.service;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,13 +11,15 @@ import fr.epf.lastminutetraining.domain.Client;
 
 @Service
 public class ClientDBService {
+	
 	@Autowired
-	private ClientDAO clientDAO;
+	private ClientDAO clientDAO = new ClientDAO();
 
 	public ClientDBService() {
 	}
 
-	public Client findClient(String id) {
+	public Client findClient(ObjectId id) {
+		System.out.println("DEPUIS CDBS : " + id.toString());
 		return clientDAO.findClient(id);
 	}
 

@@ -2,6 +2,7 @@ package fr.epf.lastminutetraining.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ public class PdfController {
 	
 	@RequestMapping(value = "/generate/factureClient.pdf", method = RequestMethod.GET)
 	protected ModelAndView generatePdf(HttpSession session, Order order) {
-		String idClient = session.getAttribute("id").toString();
+		ObjectId idClient = new ObjectId(session.getAttribute("id").toString());
 		Client client = cservice.findClient(idClient);
 		
 		ModelAndView mav = new ModelAndView("pdfView");

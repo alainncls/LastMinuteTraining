@@ -1,12 +1,16 @@
 package fr.epf.lastminutetraining.domain;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
 import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
 
-public abstract class User {
+public abstract class User implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
 	protected static final String SALT = "Ahf54zdF";
 
 	@Id
