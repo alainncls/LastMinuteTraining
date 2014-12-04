@@ -10,7 +10,7 @@
 <title>LastMinuteTraining | ${training.name}</title>
 <meta name="Content-Type" content="UTF-8">
 <meta name="Content-Language" content="fr">
-<meta name="Description" content="${training.name}">
+<meta name="Description" content="${training.description}">
 <meta name="Keywords" content="Formation, SAP, ERP">
 <meta name="Subject" content="Formation">
 <meta name="Identifier-Url"
