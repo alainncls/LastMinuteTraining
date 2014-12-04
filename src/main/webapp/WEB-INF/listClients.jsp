@@ -10,15 +10,14 @@
 						<tr>
 							<th>#</th>
 							<th>ID</th>
-							<th>Prénom</th>
+							<th>Identifiant</th>
+							<th>PrÃ©nom</th>
 							<th>Nom</th>
 							<th>Adresse</th>
 							<th>Ville</th>
 							<th>Code postal</th>
 							<th>Mail</th>
-							<th>Tél.</th>
-							<th>Identifiant</th>
-
+							<th>TÃ©l.</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -27,6 +26,7 @@
 								<tr>
 									<td>${loop.index+1}</td>
 									<td>${client.id}</td>
+									<td>${client.login}</td>
 									<td>${client.firstName}</td>
 									<td>${client.lastName}</td>
 									<td>${client.address}</td>
@@ -34,7 +34,6 @@
 									<td>${client.cp}</td>
 									<td>${client.mail}</td>
 									<td>${client.phone}</td>
-									<td>${client.login}</td>
 								</tr>
 							</c:forEach>
 						</c:if>

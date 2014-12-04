@@ -9,7 +9,7 @@
 <div class="row">
 	<div class="col-sm-8">
 		<div class="panel panel-primary">
-			<div class="panel-heading">Les prochaines formations</div>
+			<div class="panel-heading">Les formations choisis</div>
 			<div class="table-responsive">
 				<table class="table table-hover table-align">
 					<thead>
@@ -35,11 +35,7 @@
 									<td colspan="9">${order.training.description}</td>
 								</tr>
 								<tr class="tr-light">
-									<td>${training.duration.count}
-										<c:if test="${training.duration.unit == 'days'}">Jours</c:if> 
-										<c:if test="${training.duration.unit == 'day'}">Jour</c:if> 
-										<c:if test="${training.duration.unit != 'day' && training.duration.unit != 'days'}">${training.duration.unit}</c:if>
-									</td>
+									<td><a href="/cart/moins"><span class="fa fa-minus"></span></a> ${order.quantity} <a href="/cart/plus"><span class="fa fa-plus"></span></a></td>
 									<td>${order.training.price * 0.8}0€</td>
 									<td><span>Delete</span></td>
 								</tr>
@@ -47,6 +43,21 @@
 						</c:if>
 					</tbody>
 				</table>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Total de mes formations : ${sessionScope.cart.total}	</div>
+				<br>
+				<div class="centered">
+				<a type="button" class="btn btn-default" href="/home">
+						<span class="fa fa-arrow-circle-left"></span> Continuer mes
+						recherches
+					</a>
+					<a type="button" class="btn btn-primary" href="#"> Finaliser ma commande <span class="fa fa-check"></span>
+					</a>
+				</div>
+				<br>
 			</div>
 		</div>
 	</div>
