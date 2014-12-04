@@ -51,14 +51,14 @@
 		var training = button.data('name'); // Extract info from data-* attributes
 		var price = button.data('price');
 		var priceLMT = button.data('priceLMT');
-		var target = button.data('target');
+		var target = button.data('action');
 
 		var json = {
 			"idTraining" : button.data('idTraining')
 		};
 		// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 		$.ajax({
-			url : target,
+			url : "cart/add.json",
 			data : JSON.stringify(json),
 			type : "POST",
 			beforeSend : function(xhr) {
@@ -136,8 +136,7 @@
 											data-toggle="modal" data-target="#buyModal"
 											data-price="${training.price}"
 											data-priceLMT="${training.price*0.8}"
-											data-name="${training.name}" data-id="${training.id}"
-											data-target="${pageContext.request.contextPath}/cart/add.json">
+											data-name="${training.name}" data-id="${training.id}">
 											<span class="fa fa-shopping-cart"></span> Acheter
 										</button></td>
 								</tr>
