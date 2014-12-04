@@ -287,7 +287,8 @@
 											test="${training.prerequisites.essential[0].requirement.class.simpleName eq 'String'}">
 											<c:forEach items="${training.prerequisites.essential}"
 												var="rec" varStatus="loop">
-												<input type="text" class="form-control essential" name="prerequisites['essential][${loop.index}]" value="${rec.requirement}" form="trainingForm"></input>
+												<input type="text" class="form-control essential" name="prerequisites['essential'][${loop.index}]" value="${rec.requirement}" form="trainingForm"></input>
+											<span class=" col-md-1 delSmall fa fa-side fa-trash"></span>
 											</c:forEach>
 										</c:if>
 									</c:if>
@@ -318,6 +319,7 @@
 												<c:forEach items="${training.prerequisites.recommended}"
 													var="rec">
 													<input type="text" form="trainingForm" class="form-control recommended" value="${rec.requirement}"></input>
+												<span class=" col-md-1 delSmall fa fa-side fa-trash"></span>
 												</c:forEach>
 											</c:if>
 										</c:if>
@@ -350,8 +352,8 @@
 													+ "']";
 											$(this).attr(
 													'name',
-													"content['" + $(this).val()
-															+ "']");
+													'content["' + $(this).val()
+															+ '"]');
 											var i = 0;
 											$(this).next().next().children(
 													"input").each(
@@ -374,60 +376,44 @@
 															+ "']")
 										})
 							});
-				}
+				};
 				manageBigAndSmall();
 			</script>
 			<script>
-<<<<<<< HEAD
-				function addLine(name, divName) {
-					var counter = $("[id^='" + name + "']").length;
-					var fullName = 'div' + name + counter;
-					var newRow2 = '<div class="form-group" id="'+fullName+'">'
-=======
-					function addLine(name, divName) {
-						var counter = $("[id^='" + name + "']").length;
-						var fullName = 'div' + name + counter;
-						if (name=="relatedCurricula"){
-							var newRow2 = '<div class="form-group" id="'+fullName+'">'+
-							'<div class="row">'+
-							'<div class="col-md-10">'+
-							'<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"'+
-							'style="width: 50%;!important"/><input type="text" class="form-control col-md-5" name="academys['+counter+']"'+
-							'id="academy'+counter+'" style="width: 50%;!important" form="trainingForm"/>'+
-							'</div>'+
-							'<div class="col-sm-1">'+
-							'<button id="'+counter+'" type="button" onclick="suppr(this.id,\''+name+'\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
-							'</div>'
-							'</div>'+ 
-							'</div>';
-						}
-						else{
-							var newRow2 = '<div class="form-group" id="'+fullName+'">'
->>>>>>> a430e423b5c6cf55018f0c8a328f05bdae8224a9
-							+ '<div class="row">'
-							+ '<div class="col-md-10">'
-							+ '<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'
-							+ '</div>'
-							+ '<div class="col-sm-1">'
-							+ '<button id="'
-							+ counter
-							+ '" type="button" onclick="suppr(this.id,\''
-							+ name
-							+ '\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'
-							+ '</div>'
-<<<<<<< HEAD
-					'</div>' + '</div>';
-					$('#' + divName + '').before(newRow2);
-				}
+			function addLine(name, divName){
+		 		var counter = 1;
+		 		var fullName = 'div'+name+counter;
+		 		if (name=="relatedCurricula"){
+		 						var newRow2 = '<div class="form-group" id="'+fullName+'">'+
+		 						'<div class="row">'+
+		 						'<div class="col-md-10">'+
+		 						'<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"'+
+		 						'style="width: 50%;!important"/><input type="text" class="form-control col-md-5" name="academys['+counter+']"'+
+		 						'id="academy'+counter+'" style="width: 50%;!important" form="trainingForm"/>'+
+		 						'</div>'+
+		 						'<div class="col-sm-1">'+
+		 						'<button id="'+counter+'" type="button" onclick="suppr(this.id,\''+name+'\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
+		 						'</div>'
+		 			+			'</div>'+ 
+		 						'</div>';
+		 					}
+		 					else{
+		 						var newRow2 = '<div class="form-group" id="'+fullName+'">'+
+		 						'<div class="row">'+
+		 						'<div class="col-md-10">'+
+		 						'<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'+
+		 						'</div>'+
+		 						'<div class="col-sm-1">'+
+		 						'<button id="'+counter+'" type="button" onclick="suppr(this.id,\''+name+'\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
+		 						'</div>'+
+		 						'</div>'+ 
+		 					'</div>';
+		 					}
+		 			 		
+		 			 		counter++;
+		 			 		$('#'+divName+'').before(newRow2);
+			}
 			</script>
-=======
-							'</div>' + '</div>';
-						}
-						
-						$('#' + divName + '').before(newRow2);
-					}
-				</script>
->>>>>>> a430e423b5c6cf55018f0c8a328f05bdae8224a9
 			<script>
 				function suppr(nb, name) {
 
@@ -438,7 +424,7 @@
 					var el = document.getElementById(test);
 
 					el.parentNode.removeChild(el);
-				}
+				};
 			</script>
 			<script>
 				$("#level option[value=${training.level}]").attr("selected",
@@ -473,7 +459,7 @@
 							+ "px"
 							: "60px";
 					console.log(el);
-				}
+				};
 			</script>
 			<script>
 				function addDouble(name, divName) {
@@ -500,7 +486,7 @@
 							+ '\');$(this).remove();" class="btn btn-danger"><span class="fa fa-times"></span></button>'
 					'</div>' + '</div></div>';
 					$('#' + divName + '').before(newRow2);
-				}
+				};
 			</script>
 			<script>
 				function supprDouble(id) {
@@ -539,7 +525,7 @@
 										console.log(cpt2);
 										$("#" + a)
 												.after(
-														"<input type='text' name='content[\""+b+"\"']["+cpt2+"]\" class='form-control col-md-10'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
+														"<input type='text' name=\"content['"+b+"']["+cpt2+"]\" class='form-control col-md-10'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
 										$(".delSmall").click(function() {
 											$(this).prev().remove();
 											$(this).remove();
@@ -567,10 +553,10 @@
 				$("#addBig2")
 						.click(
 								function() {
-									count = $('ul button').size();
+									count = $(".essential").size();
 									after = '<br>'
 											+ '<input type="text" class="form-control" form="trainingForm"'
-								+'name=\"prerequisites[\'essential\']\"></input>'
+								+'name=\"prerequisites[\'essential\']['+count+']\"></input>'
 											+ '<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
 									$(this).after(after);
 									index++;
@@ -583,7 +569,7 @@
 				$("#addBig3")
 						.click(
 								function() {
-									count = $('ul button').size();
+									count = $('.recommended').size();
 									after = '<br>'
 											+ '<input type="text" class="form-control" form="trainingForm"'
 								+'name=\"prerequisites[\'recommended\']\"></input>'
@@ -604,7 +590,7 @@
 				});
 			</script>
 			<script type="text/javascript">
-				$(".delBig").click(function() {
+				$(".delBig").click(function(){
 					$(this).prev().remove();
 					$(this).next().remove();
 					$(this).remove();
