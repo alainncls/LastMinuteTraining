@@ -20,6 +20,11 @@
 						required="required" />
 					</div>
 					<div class="form-group">
+						<label for="available">Nombre de places</label> <input type="number"
+						class="form-control" name="available" id="available"
+						required="required" />
+					</div>
+					<div class="form-group">
 						<label for="level">Niveau de la formation</label> 
 						<select
 							type="text" class="form-control level" name="level" id="level">
