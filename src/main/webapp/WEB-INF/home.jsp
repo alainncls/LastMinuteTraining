@@ -17,16 +17,16 @@
 			</div>
 			<div class="modal-body">
 				<form role="form">
-					<div class="modal-name">
-						Formation : <label for="name" class="control-label">X</label>
+					<div>
+						Formation : <label id="modal-name" class="control-label"></label>
 					</div>
-					<div class="modal-price">
+					<div>
 						<br>Prix avec LastMinuteTraining <br>
-						<label for="price" class="control-label"><del>0.0 €</del></label>
+						<label id="modal-price" class="control-label delete"></label>
 					</div>
-					<div class="modal-priceLMT">	
+					<div>	
 					<h4>
-							<label for="priceLMT" class="control-label">0 €</label>
+							<label id="modal-priceLMT" class="control-label"></label>
 						</h4>
 					</div>
 				</form>
@@ -36,29 +36,31 @@
 					<span class="fa fa-arrow-circle-left"></span> Continuer mes
 					recherches
 				</button>
-				<button type="button" class="btn btn-primary">
+				<a type="button" class="btn btn-primary" href="/cart">
 					Terminer ma commande <span class="fa fa-check"></span>
-				</button>
+				</a>
 			</div>
 		</div>
 	</div>
 </div>
 
 <script>
-$('#buyModal').on('show.bs.modal', function (event) {
+	$('#buyModal').on('show.bs.modal', function (event) {
 	
-	var button = $(event.relatedTarget) // Button that triggered the modal
-	  var training = button.data('name') // Extract info from data-* attributes
-	  var price = button.data('price')
-	  var priceLMT = button.data('priceLMT')
+	var button = $(event.relatedTarget); // Button that triggered the modal
+	  var training = button.data('name'); // Extract info from data-* attributes
+	  var price = button.data('price');
+	  var priceLMT = button.data('priceLMT');
+	  var id = button.data('idTraining');
 	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  $.post('http://localhost:8080/cart/add', {'idTraining':id});
 	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-	  var modal = $(this)
-	  modal.find('.modal-name input').val(training)
-	  modal.find('.modal-price input').val(price)
-	  modal.find('.modal-priceLMT input').val(priceLMT)
-	  alert(training);  
-	})
+	 
+	 $('#modal-name').val(training);
+	 $('#modal-price').val(price+' €');
+	 $('#modal-priceLMT').val(priceLMT+' €');
+	  
+	});
 </script>
 
 <div class="row">
@@ -121,7 +123,8 @@ $('#buyModal').on('show.bs.modal', function (event) {
 											data-toggle="modal" data-target="#buyModal"
 											data-price="${training.price}"
 											data-priceLMT="${training.price*0.8}"
-											data-name="${training.name}">
+											data-name="${training.name}"
+											data-id="${training.id}">
 											<span class="fa fa-shopping-cart"></span> Acheter
 										</button></td>
 								</tr>

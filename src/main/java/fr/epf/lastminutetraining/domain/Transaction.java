@@ -1,5 +1,6 @@
 package fr.epf.lastminutetraining.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,7 +8,11 @@ import java.util.List;
 import org.bson.types.ObjectId;
 import org.jongo.marshall.jackson.oid.Id;
 
-public class Transaction {
+public class Transaction implements Serializable{
+
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private ObjectId id;
 
@@ -19,6 +24,12 @@ public class Transaction {
 
 	public Transaction() {
 		this.orders = new ArrayList<Order>();
+	}
+
+	@Override
+	public String toString() {
+		return "Transaction [id=" + id + ", orders=" + orders + ", client="
+				+ client + ", date=" + date + ", status=" + status + "]";
 	}
 
 	public Client getClient() {

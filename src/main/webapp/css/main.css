@@ -276,3 +276,7 @@ input {
 	height: 25px;
 	float: left;
 }
+
+.delete {
+	text-decoration: line-through;
+}
