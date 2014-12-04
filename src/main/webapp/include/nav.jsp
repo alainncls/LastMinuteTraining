@@ -136,7 +136,7 @@
 						</form>
 					</div>
 					<div class="tab-pane fade" id="signup">
-						<form class="form-horizontal" method="post" action="register">
+						<form class="form-horizontal" method="post" action="/register">
 							<!-- Sign Up Form -->
 							<!-- Text input-->
 							<div class="form-group">

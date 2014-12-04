@@ -25,7 +25,6 @@ import fr.epf.lastminutetraining.service.TrainingDBService;
 import fr.epf.lastminutetraining.service.VendorDBService;
 
 @Controller
-@SessionAttributes({ "cart" })
 public class LoginController {
 
 	@Autowired
@@ -60,12 +59,6 @@ public class LoginController {
 			session.setAttribute("id", user.getId());
 			session.setAttribute("validated", user.getActivated());
 
-			if (!model.containsAttribute("cart")) {
-				if (user.getStatus().equals("client")){
-					Transaction tr = TransactionBuilder.transaction().client((Client) user).build();
-					model.addAttribute("cart", tr);
-				}
-			}
 			return new ModelAndView(home, trainings,
 					tservice.findLastTraining());
 		} else {
