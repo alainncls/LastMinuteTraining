@@ -8,20 +8,17 @@
 				<table class="table table-hover table-striped table-align">
 					<thead>
 						<tr>
-							<th>num</th>
-							<th>id</th>
-							<th>firstName</th>
-							<th>lastName</th>
-							<th>address</th>
-							<th>town</th>
-							<th>cp</th>
-							<th>mail</th>
-							<th>phone</th>
-							<th>login</th>
-							<th>password</th>
-							<th>bank</th>
-							<th>cardNumber</th>
-							<th>expirationDate</th>
+							<th>#</th>
+							<th>ID</th>
+							<th>Prénom</th>
+							<th>Nom</th>
+							<th>Adresse</th>
+							<th>Ville</th>
+							<th>Code postal</th>
+							<th>Mail</th>
+							<th>Tél.</th>
+							<th>Identifiant</th>
+
 						</tr>
 					</thead>
 					<tbody>
@@ -38,10 +35,6 @@
 									<td>${client.mail}</td>
 									<td>${client.phone}</td>
 									<td>${client.login}</td>
-									<td>${client.password}</td>
-									<td>${client.bank}</td>
-									<td>${client.cardNumber}</td>
-									<td>${client.expirationDate}</td>
 								</tr>
 							</c:forEach>
 						</c:if>

@@ -4,10 +4,10 @@
 	<div class="col-sm-6">
 		<div class="fakejumbo color-blue">
 			<h1>Utilisateurs</h1>
-			<p>Gestion des clients</p>
+			<p>Affichage de la liste des clients</p>
 			<p>
-				<a class="btn btn-primary btn-sm" role="button" href="/admin/users">Gestion des
-					utilisateurs</a>
+				<a class="btn btn-primary btn-sm" role="button" href="/admin/users">Affichage
+					des utilisateurs</a>
 			</p>
 		</div>
 	</div>
@@ -17,7 +17,7 @@
 			<h1>Commandes</h1>
 			<p>Accès aux commandes passées</p>
 			<p>
-				<a class="btn btn-primary btn-sm" role="button">Consultation des
+				<a class="btn btn-primary btn-sm" role="button" href="/work">Consultation des
 					commandes</a>
 			</p>
 		</div>
@@ -31,8 +31,8 @@
 			<h1>Fournisseurs</h1>
 			<p>Accès aux organismes de formation</p>
 			<p>
-				<a class="btn btn-primary btn-sm" role="button" href="/admin/vendors">Gestion des
-					fournisseurs</a>
+				<a class="btn btn-primary btn-sm" role="button"
+					href="/admin/vendors">Gestion des fournisseurs</a>
 			</p>
 		</div>
 	</div>

@@ -51,8 +51,8 @@
 										</c:forEach></td>
 									<td>${training.available}</td>
 									<td colspan="3">
-                                        <a href="/admin/editTraining/${training.id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
-                                        <a href="/admin/deleteTraining/${training.id}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                                        <a href="/admin/editTraining/${training.id}" class="btn btn-success btn-xs"><span class="fa fa-pencil" aria-hidden="true"></span></a>
+                                        <a href="/admin/deleteTraining/${training.id}" class="btn btn-danger btn-xs"><span class="fa fa-trash-o" aria-hidden="true"></span></a>
 								</tr>
 							</c:forEach>
 						</c:if>
