@@ -36,7 +36,7 @@
 					<span class="fa fa-arrow-circle-left"></span> Continuer mes
 					recherches
 				</button>
-				<a type="button" class="btn btn-primary" href="/cart"> Terminer
+				<a id="link" type="button" class="btn btn-primary" href="/cart"> Terminer
 					ma commande <span class="fa fa-check"></span>
 				</a>
 			</div>
@@ -52,26 +52,26 @@
 		var price = button.data('price');
 		var priceLMT = button.data('priceLMT');
 		var target = button.data('action');
+		var id = button.data('id');
 
 		var json = {
-			"idTraining" : button.data('idTraining')
+			"idTraining" : id
 		};
 		// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-		$.ajax({
-			url : "cart/add.json",
-			data : JSON.stringify(json),
-			type : "POST",
-			beforeSend : function(xhr) {
-				xhr.setRequestHeader("Accept", "application/json");
-				xhr.setRequestHeader("Content-Type", "application/json");
-			}
-		});
+		//$.ajax({
+		//	type : "GET",
+		//	url : "cart/add/" + id,
+		//	success : function(){
+		//		alert('JOB DONE !');
+		//	}
+		//});
 
 		// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 
 		$('#modal-name').text(training);
 		$('#modal-price').text(price + ' €');
 		$('#modal-priceLMT').text(price * 0.8 + ' €');
+		$('#modal-footer')
 
 	});
 </script>
@@ -131,14 +131,14 @@
 											<i class="fa fa-star"></i>
 										</c:forEach></td>
 									<td>${training.available}</td>
-									<td colspan="3"><button type="button"
+									<td colspan="3"><a href="/cart/add/${training.id}"type="button"
 											class="btn btn-warning navbar-btn navbar-right nomargin btn-sm"
 											data-toggle="modal" data-target="#buyModal"
 											data-price="${training.price}"
 											data-priceLMT="${training.price*0.8}"
 											data-name="${training.name}" data-id="${training.id}">
 											<span class="fa fa-shopping-cart"></span> Acheter
-										</button></td>
+										</a></td>
 								</tr>
 							</c:forEach>
 						</c:if>
