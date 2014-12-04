@@ -1,4 +1,3 @@
-
 <jsp:include page="/include/header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -274,17 +273,60 @@
 							<div class="form-group">
 								<label for="essential">Prérequis essentiels</label> <span
 									id="addBig2" class="button fa fa-side fa-plus"> Ajouter
-									un prérequis</span><br> <input type="text" class="form-control"
-									name="prerequisites['essential']" id="essential"
-									form="trainingForm" /><br>
+									un prérequis</span><br>
+									<c:if
+										test="${fn:length(training.prerequisites.essential[0]) gt 0}">
+										<c:if
+											test="${fn:length(training.prerequisites.essential[0].requirement) eq 2}">
+											<c:forEach items="${training.prerequisites.essential}"
+												var="ess">
+												<li><a href="/trainings/${ess.requirement.url_text}">${ess.requirement.url_text}</a></li>
+											</c:forEach>
+										</c:if>
+										<c:if
+											test="${training.prerequisites.essential[0].requirement.class.simpleName eq 'String'}">
+											<c:forEach items="${training.prerequisites.essential}"
+												var="rec" varStatus="loop">
+												<input type="text" class="form-control essential" name="prerequisites['essential][${loop.index}]" value="${rec.requirement}" form="trainingForm"></input>
+											</c:forEach>
+										</c:if>
+									</c:if>
+									<c:if
+										test="${fn:length(training.prerequisites.essential[0]) eq 0}">
+										Empty
+								</c:if>
 							</div>
 
 							<div class="form-group">
 								<label for="recommended">Prérequis recommandés</label> <span
 									id="addBig3" class="button fa fa-side fa-plus"> Ajouter
-									un prérequis</span><br> <input type="text" class="form-control"
-									name="prerequisites['recommended']" id="recommended"
-									form="trainingForm" /><br>
+									un prérequis</span><br> <c:if test="${(training.prerequisites.recommended[0]) != null}">
+									<h5>Recommandé</h5>
+									<ul class="sap">
+										<!-- True if its not just a text -->
+										<c:if
+											test="${fn:length(training.prerequisites.recommended[0]) gt 0}">
+											<c:if
+												test="${fn:length(training.prerequisites.recommended[0].requirement) eq 2}">
+												<c:forEach items="${training.prerequisites.essential}"
+													var="rec">
+													<li><a href="/trainings/${rec.requirement.url_text}">${rec.requirement.url_text}</a></li>
+												</c:forEach>
+											</c:if>
+											<c:if
+												test="${training.prerequisites.recommended[0].requirement.class.simpleName eq 'String'}">
+												<c:forEach items="${training.prerequisites.recommended}"
+													var="rec">
+													<input type="text" form="trainingForm" class="form-control recommended" value="${rec.requirement}"></input>
+												</c:forEach>
+											</c:if>
+										</c:if>
+										<c:if
+											test="${fn:length(training.prerequisites.recommended[0]) eq 0}">
+										Empty
+								</c:if>
+									</ul>
+								</c:if>
 							</div>
 							<br> <br>
 							<div class="actions">
@@ -297,44 +339,31 @@
 				</div>
 			</div>
 			<script>
-					function manageBigAndSmall(){
-					$("[id^=big-input-]")
-							.each(
-									function() {
-										$(this)
-												.change(
-														function() {
-															var x = "content['"
-																	+ $(this).val()
-																	+ "']";
-															$(this)
-																	.attr(
-																			'name',
-																			"content['"
-																					+ $(
-																							this)
-																							.val()
-																					+ "']");
-															var i = 0;
-															$(this)
-																	.next()
-																	.next()
-																	.children(
-																			"input")
-																	.each(
-																			function() {
-																				$(
-																						this)
-																						.attr(
-																								'name',
-																								x
-																										+ "["
-																										+ i
-																										+ "]");
-																				i++
-																			})
-														})
-									});
+				var index = 0;
+				var index2 = 0;
+				function manageBigAndSmall() {
+					$("[id^=big-input-]").each(
+							function() {
+								$(this).change(
+										function() {
+											var x = "content['" + $(this).val()
+													+ "']";
+											$(this).attr(
+													'name',
+													"content['" + $(this).val()
+															+ "']");
+											var i = 0;
+											$(this).next().next().children(
+													"input").each(
+													function() {
+														$(this).attr(
+																'name',
+																x + "[" + i
+																		+ "]");
+														i++
+													})
+										})
+							});
 					$("[id^=small-input-]").each(
 							function() {
 								$(this).change(
@@ -345,193 +374,209 @@
 															+ "']")
 										})
 							});
-					}
-					manageBigAndSmall();
-				</script>
+				}
+				manageBigAndSmall();
+			</script>
 			<script>
-					function addLine(name, divName) {
-						var counter = $("[id^='" + name + "']").length;
-						var fullName = 'div' + name + counter;
-						var newRow2 = '<div class="form-group" id="'+fullName+'">'
-								+ '<div class="row">'
-								+ '<div class="col-md-10">'
-								+ '<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'
-								+ '</div>'
-								+ '<div class="col-sm-1">'
-								+ '<button id="'
-								+ counter
-								+ '" type="button" onclick="suppr(this.id,\''
-								+ name
-								+ '\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'
-								+ '</div>'
-						'</div>' + '</div>';
-						$('#' + divName + '').before(newRow2);
-					}
-				</script>
+				function addLine(name, divName) {
+					var counter = $("[id^='" + name + "']").length;
+					var fullName = 'div' + name + counter;
+					var newRow2 = '<div class="form-group" id="'+fullName+'">'
+							+ '<div class="row">'
+							+ '<div class="col-md-10">'
+							+ '<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'
+							+ '</div>'
+							+ '<div class="col-sm-1">'
+							+ '<button id="'
+							+ counter
+							+ '" type="button" onclick="suppr(this.id,\''
+							+ name
+							+ '\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'
+							+ '</div>'
+					'</div>' + '</div>';
+					$('#' + divName + '').before(newRow2);
+				}
+			</script>
 			<script>
-					function suppr(nb, name) {
-	
-						//test = id du div row
-						var test = $('#' + name + nb).parents('div').parents('div')
-								.parents('div').attr('id');
-						console.log(nb + name);
-						var el = document.getElementById(test);
-	
-						el.parentNode.removeChild(el);
-					}
-				</script>
+				function suppr(nb, name) {
+
+					//test = id du div row
+					var test = $('#' + name + nb).parents('div').parents('div')
+							.parents('div').attr('id');
+					console.log(nb + name);
+					var el = document.getElementById(test);
+
+					el.parentNode.removeChild(el);
+				}
+			</script>
 			<script>
-					$("#level option[value=${training.level}]").attr("selected",
-							"selected");
-					$("#level option:selected").each(function() {
-						$('#level').addClass(" level-${training.level}")
-					});
-					$("#level")
-							.change(
-									function() {
-										$("#level option:selected")
-												.each(
-														function() {
-															$('#level')
-																	.attr(
-																			'class',
-																			function(
-																					i,
-																					c) {
-																				return c
-																						.replace(
-																								/(^|\s)level-\S+/g,
-																								' level-'
-																										+ $(
-																												this)
-																												.val());
-																			});
-														});
-									});
-					function adjustHeight(el) {
-						el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)
-								+ "px"
-								: "60px";
-						console.log(el);
-					}
-				</script>
+				$("#level option[value=${training.level}]").attr("selected",
+						"selected");
+				$("#level option:selected").each(function() {
+					$('#level').addClass(" level-${training.level}")
+				});
+				$("#level")
+						.change(
+								function() {
+									$("#level option:selected")
+											.each(
+													function() {
+														$('#level')
+																.attr(
+																		'class',
+																		function(
+																				i,
+																				c) {
+																			return c
+																					.replace(
+																							/(^|\s)level-\S+/g,
+																							' level-'
+																									+ $(
+																											this)
+																											.val());
+																		});
+													});
+								});
+				function adjustHeight(el) {
+					el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)
+							+ "px"
+							: "60px";
+					console.log(el);
+				}
+			</script>
 			<script>
-					function addDouble(name, divName) {
-						var counter = $("[id^='" + name + "']").length;
-						console.log(name + counter);
-						var fullName = 'div' + name + counter;
-						var newRow2 = '<div class="row col-md-12"><div class="form-group" id="'+fullName+'">'
-								+ '<input type="text" class="form-control " style="width:45%;" name="academys['
-								+ counter
-								+ ']" id="academy'
-								+ counter
-								+ '" form="trainingForm" placeholder="Academie"/>'
-								+ '<input type="text" class="form-control " style="width:45%;" name="related['
-								+ counter
-								+ ']" id="related'
-								+ counter
-								+ '" form="trainingForm"/ placeholder="URL">'
-								+ '</div>'
-								+ '<div class="col-sm-1">'
-								+ '<button id="'
-								+ counter
-								+ '" type="button" onclick="supprDouble(this.id,\''
-								+ "related"
-								+ '\');$(this).remove();" class="btn btn-danger"><span class="fa fa-times"></span></button>'
-						'</div>' + '</div></div>';
-						$('#' + divName + '').before(newRow2);
-					}
-				</script>
+				function addDouble(name, divName) {
+					var counter = $("[id^='" + name + "']").length;
+					console.log(name + counter);
+					var fullName = 'div' + name + counter;
+					var newRow2 = '<div class="row col-md-12"><div class="form-group" id="'+fullName+'">'
+							+ '<input type="text" class="form-control " style="width:45%;" name="academys['
+							+ counter
+							+ ']" id="academy'
+							+ counter
+							+ '" form="trainingForm" placeholder="Academie"/>'
+							+ '<input type="text" class="form-control " style="width:45%;" name="related['
+							+ counter
+							+ ']" id="related'
+							+ counter
+							+ '" form="trainingForm"/ placeholder="URL">'
+							+ '</div>'
+							+ '<div class="col-sm-1">'
+							+ '<button id="'
+							+ counter
+							+ '" type="button" onclick="supprDouble(this.id,\''
+							+ "related"
+							+ '\');$(this).remove();" class="btn btn-danger"><span class="fa fa-times"></span></button>'
+					'</div>' + '</div></div>';
+					$('#' + divName + '').before(newRow2);
+				}
+			</script>
 			<script>
-					function supprDouble(id) {
-						$("#divrelated" + id).parent().remove();
-						$("#divrelated" + id).remove();
-					}
-				</script>
+				function supprDouble(id) {
+					$("#divrelated" + id).parent().remove();
+					$("#divrelated" + id).remove();
+				}
+			</script>
 			<script type="text/javascript">
-					addSmall();
-					$("#addBig")
+				addSmall();
+				$("#addBig")
+						.click(
+								function() {
+									count = $('ul .btn').size();
+									after = "<br><input type='text' id='big-input-"+count+"' class='form-control col-sm-10'></input><span class='col-sm-1 delBig fa fa-side fa-trash'></span><ul><span id='addSmall-"
+											+ count.toString()
+											+ "' class='span fa fa-side fa-plus small btn btn-sm btn-primary'>Ajouter une sous-partie</span></ul>";
+									$(this).after(after);
+									$("[id^=addSmall]").unbind("click");
+									addSmall();
+									$(".delBig").click(function() {
+										$(this).prev().remove();
+										$(this).next().remove();
+										$(this).remove();
+									});
+									manageBigAndSmall();
+								});
+				function addSmall() {
+					$("[id^=addSmall]")
 							.click(
-									function() {
-										count = $('ul .btn').size();
-										after = "<br><input type='text' id='big-input-"+count+"' class='form-control col-sm-10'></input><span class='col-sm-1 delBig fa fa-side fa-trash'></span><ul><span id='addSmall-"
-												+ count.toString()
-												+ "' class='span fa fa-side fa-plus small btn btn-sm btn-primary'>Ajouter une sous-partie</span></ul>";
-										$(this).after(after);
-										$("[id^=addSmall]").unbind("click");
-										addSmall();
-										$(".delBig").click(function() {
+									function(event) {
+										a = this.id;
+										b = $(this).parent().prev().prev()
+												.val();
+										cpt2 = $(this).parent().children(
+												"input").size();
+										console.log(cpt2);
+										$("#" + a)
+												.after(
+														"<input type='text' name='content[\""+b+"\"']["+cpt2+"]\" class='form-control col-md-10'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
+										$(".delSmall").click(function() {
 											$(this).prev().remove();
-											$(this).next().remove();
 											$(this).remove();
 										});
-										manageBigAndSmall();
 									});
-					function addSmall() {
-						$("[id^=addSmall]")
-								.click(
-										function(event) {
-											a = this.id;
-											b=$(this).parent().prev().prev().val();
-											cpt2 = $(this).parent().children(
-													"input").size();
-											console.log(cpt2);
-											$("#" + a)
-													.after(
-															"<input type='text' name='content[\""+b+"\"']["+cpt2+"]\" class='form-control col-md-10'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
-											$(".delSmall").click(function() {
-												$(this).prev().remove();
-												$(this).remove();
-											});
-										});
-						manageBigAndSmall();
-					};
-				</script>
+					manageBigAndSmall();
+				};
+			</script>
 
 			<script type="text/javascript">
-					$(".delSmall").click(function() {
-						$(this).prev().remove();
-						$(this).remove();
-					});
-				</script>
+				$(".delSmall").click(function() {
+					$(this).prev().remove();
+					$(this).remove();
+				});
+			</script>
 			<script type="text/javascript">
-					$(".delBig").click(function() {
-						$(this).prev().remove();
-						$(this).next().remove();
-						$(this).remove();
-					});
-				</script>
+				$(".delBig").click(function() {
+					$(this).prev().remove();
+					$(this).next().remove();
+					$(this).remove();
+				});
+			</script>
 
 			<script>
 				$("#addBig2")
-				.click(
-					function() {
-						count = $('ul button').size();
-						after = '<br>'
-								+'<input type="text" class="form-control" form="trainingForm"'
+						.click(
+								function() {
+									count = $('ul button').size();
+									after = '<br>'
+											+ '<input type="text" class="form-control" form="trainingForm"'
 								+'name=\"prerequisites[\'essential\']\"></input>'
-								+'<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
-						$(this).after(after);index++;
-						$(".delBig").click(function() {
-							$(this).prev().remove();
-							$(this).next().remove();
-							$(this).remove();
-						});
-					});
+											+ '<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
+									$(this).after(after);
+									index++;
+									$(".delBig").click(function() {
+										$(this).prev().remove();
+										$(this).next().remove();
+										$(this).remove();
+									});
+								});
 				$("#addBig3")
-				.click(
-					function() {
-						count = $('ul button').size();
-						after = '<br>'
-								+'<input type="text" class="form-control" form="trainingForm"'
+						.click(
+								function() {
+									count = $('ul button').size();
+									after = '<br>'
+											+ '<input type="text" class="form-control" form="trainingForm"'
 								+'name=\"prerequisites[\'recommended\']\"></input>'
-								+'<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
-						$(this).after(after);index++;
-						$(".delBig").click(function() {
-							$(this).prev().remove();
-							$(this).next().remove();
-							$(this).remove();
-						});
-					});
-				</script>
+											+ '<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
+									$(this).after(after);
+									index++;
+									$(".delBig").click(function() {
+										$(this).prev().remove();
+										$(this).next().remove();
+										$(this).remove();
+									});
+								});
+			</script>
+			<script type="text/javascript">
+				$(".delSmall").click(function() {
+					$(this).prev().remove();
+					$(this).remove();
+				});
+			</script>
+			<script type="text/javascript">
+				$(".delBig").click(function() {
+					$(this).prev().remove();
+					$(this).next().remove();
+					$(this).remove();
+				});
+			</script>
 			<jsp:include page="/include/footer.jsp" />
