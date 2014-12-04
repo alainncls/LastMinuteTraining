@@ -61,8 +61,10 @@ public class LoginController {
 			session.setAttribute("validated", user.getActivated());
 
 			if (!model.containsAttribute("cart")) {
-				Transaction tr = TransactionBuilder.transaction().client((Client) user).build();
-				model.addAttribute("cart", tr);
+				if (user.getStatus().equals("client")){
+					Transaction tr = TransactionBuilder.transaction().client((Client) user).build();
+					model.addAttribute("cart", tr);
+				}
 			}
 			return new ModelAndView(home, trainings,
 					tservice.findLastTraining());
