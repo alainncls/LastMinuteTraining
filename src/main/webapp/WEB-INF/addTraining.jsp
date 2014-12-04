@@ -174,9 +174,19 @@
 					form="trainingForm"/>
 				</div>
 				<div class="form-group">
-					<label for="academys">Curriculum</label> <input type="text"
-					class="form-control" name="relatedCurricula[0]" id="relatedCurricula0"
-					form="trainingForm"/>
+					<label for="academys">Curriculum</label> 
+					<div class="row col-md-12">
+						<div class="form-group" id="divrelated0">
+							<input type="text" class="form-control"
+								name="relatedCurricula[0]" id="relatedCurricula0"
+								form="trainingForm" placeholder="Nom"
+								style="width: 45%;!important"/> 
+							<input type="text" class="form-control col-md-5" 
+							name="academys[0]" id="academy0" placeholder="URL"
+							style="width: 45%;!important" form="trainingForm"
+							value="${related}" />
+						</div>
+					</div>
 				</div>
 				<div class="form-group" id="pasteCuri">
                     <span class="input-group-btn">
@@ -191,7 +201,7 @@
 					<label for="essential">Prérequis essentiels</label>
 					<span id="addBig2" class="button fa fa-side fa-plus"> Ajouter un prérequis</span><br> 
 					<input type="text" class="form-control" 
-					name="prerequisites['essential']" id="essential" 
+					name="prerequisites['essential']['requirement']" id="essential" 
 					form="trainingForm"/><br>
 				</div>
 
@@ -199,7 +209,7 @@
 					<label for="recommended">Prérequis recommandés</label>
 					<span id="addBig3" class="button fa fa-side fa-plus"> Ajouter un prérequis</span><br> 
 					<input type="text" class="form-control" 
-					name="prerequisites['recommended']" id="recommended" 
+					name="prerequisites['recommended']['requirement']" id="recommended" 
 					form="trainingForm"/><br>
 				</div>
 				<br><br>
@@ -215,16 +225,32 @@
 	function addLine(name, divName){
 		var counter = 1;
 		var fullName = 'div'+name+counter;
-		var newRow2 = '<div class="form-group" id="'+fullName+'">'+
-		'<div class="row">'+
-		'<div class="col-md-10">'+
-		'<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'+
-		'</div>'+
-		'<div class="col-sm-1">'+
-		'<button id="'+counter+'" type="button" onclick="suppr(this.id,\''+name+'\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
-		'</div>'
-		'</div>'+ 
-		'</div>';
+		if (name=="relatedCurricula"){
+			var newRow2 = '<div class="form-group" id="'+fullName+'">'+
+			'<div class="row">'+
+			'<div class="col-md-10">'+
+			'<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"'+
+			'style="width: 50%;!important"/><input type="text" class="form-control col-md-5" name="academys['+counter+']"'+
+			'id="academy'+counter+'" style="width: 50%;!important" form="trainingForm"/>'+
+			'</div>'+
+			'<div class="col-sm-1">'+
+			'<button id="'+counter+'" type="button" onclick="suppr(this.id,\''+name+'\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
+			'</div>'
+			'</div>'+ 
+			'</div>';
+		}
+		else{
+			var newRow2 = '<div class="form-group" id="'+fullName+'">'+
+			'<div class="row">'+
+			'<div class="col-md-10">'+
+			'<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'+
+			'</div>'+
+			'<div class="col-sm-1">'+
+			'<button id="'+counter+'" type="button" onclick="suppr(this.id,\''+name+'\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
+			'</div>'
+			'</div>'+ 
+			'</div>';
+		}
 		
 		counter++;
 		$('#'+divName+'').before(newRow2);
