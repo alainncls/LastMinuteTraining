@@ -30,7 +30,7 @@ public class CartController {
 	Transaction cart;
 
 	protected Transaction getCart(HttpSession session) {
-		if (null == session.getAttribute("Cart")) {
+		if (session.getAttribute("Cart") == null) {
 			System.out.println("DEPUIS CARTCONTROLLER : " + new ObjectId(session.getAttribute("id").toString()));
 			Client c = cdbs.findClient(new ObjectId(session.getAttribute("id")
 					.toString()));
