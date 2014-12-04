@@ -17,7 +17,7 @@
 			<!-- Menu -->
 			<ul class="nav navbar-nav">
 				<!-- liste des liens en fonction des droits d'accï¿½s -->
-				<li><a href="${page.url}/404">Base documentaire</a></li>
+				<li><a href="${page.url}/work">Base documentaire</a></li>
 				<li><a href="${page.url}/work">Webinars</a></li>
 				<li><a href="${page.url}/work">A propos</a></li>
 				<li><a href="${page.url}/work">CGV</a></li>

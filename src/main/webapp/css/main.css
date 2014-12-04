@@ -20,7 +20,7 @@ div.carousel-inner div.item img {
 }
 
 .nomargin {
-	margin: 0!important;
+	margin: 0 !important;
 }
 
 .navbar-padding {
@@ -177,6 +177,10 @@ th {
 	background-color: #aaaaff;
 }
 
+.color-lightblue {
+	background-color: #C4E3FC;
+}
+
 .fakejumbo {
 	width: 100%;
 	padding: 15px;
@@ -279,6 +283,7 @@ input {
 .delete {
 	text-decoration: line-through;
 }
+
 .centered {
 	text-align: center;
 }

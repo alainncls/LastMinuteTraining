@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<div class="col-sm-6">
-		<div class="fakejumbo color-darkblue">
+		<div class="fakejumbo color-lightblue">
 			<h1>Factures fournisseurs</h1>
 			<p>Affichage des factures fournisseurs</p>
 			<p>
