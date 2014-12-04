@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -35,7 +36,7 @@ public class MyTrainingsController {
 	protected ModelAndView home(HttpSession session) {
 		// A modifier par l'id du vendeur
 		//ObjectId id = new ObjectId("54668afc44ae11795d109a61");
-		String id = session.getAttribute("id").toString();//System.out.println(id);
+		ObjectId id = new ObjectId(session.getAttribute("id").toString());//System.out.println(id);
 		if (session.getAttribute("status").equals("client")){
 			return new ModelAndView("404");
 		}
@@ -64,32 +65,17 @@ public class MyTrainingsController {
 			return null;
 		} else {
 			String idVendor = session.getAttribute("id").toString();
-			String id = session.getAttribute("id").toString();
-			// Ajout de l'id du vendeur � la formation
+			ObjectId id = new ObjectId(session.getAttribute("id").toString());
+			// Ajout de l'id du vendeur à la formation
 			training.setVendorId(idVendor);
-			// Ajout de la dur�e de la formation
-//			String start = training.getDate().get("startDate");System.out.println(start);
-//			String end = training.getDate().get("endDate");
-//			
-//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//			
-//			try {
-//				Date startDate = format.parse(start);System.out.println(start);
-//				Date endDate = format.parse(end);
-//				
-//				long diff = endDate.getTime() - startDate.getTime();
-//				String duration = String.valueOf(diff/(24 * 60 * 60 * 1000));//System.out.println(duration);
-//				training.setDuration(duration);
-//				
-//			} catch (ParseException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			
+			//Calcul du prix réduit
+			double priceLMT = Double.parseDouble(training.getPrice());
+			priceLMT = priceLMT-(priceLMT*0.2);
+			training.setPriceLMT(String.valueOf(priceLMT));
 			// Sauvegarde de la formation
 			service.save(training);
 
-			// Envoi d'un mail de confirmation de cr�ation de formation
+			// Envoi d'un mail de confirmation de crï¿½ation de formation
 			ApplicationContext context = new ClassPathXmlApplicationContext(
 					"context.xml");
 			Vendor vendor = vservice.findVendor(id);
@@ -98,13 +84,13 @@ public class MyTrainingsController {
 				mm.sendMail(
 						"lastminutetraining.epf@gmail.com",
 						vendor.getMail(),
-						"Confirmation de cr�ation de formation",
+						"Confirmation de crï¿½ation de formation",
 						"Cher vendeur,\n\n"
-						+ "Vous venez de cr�er une nouvelle formation nomm�e "
+						+ "Vous venez de crï¿½er une nouvelle formation nommï¿½e "
 						+ training.getName()
 						+ "."
-						+ " Merci de votre contribution � notre catalogue.\n\nCordialement,\n\n"
-						+ "L'�quipe Last Minute Training");
+						+ " Merci de votre contribution ï¿½ notre catalogue.\n\nCordialement,\n\n"
+						+ "L'ï¿½quipe Last Minute Training");
 
 				return new ModelAndView("redirect:/mytrainings", "trainings",
 						service.findAllTrainings(id));
@@ -123,7 +109,7 @@ public class MyTrainingsController {
 			return new ModelAndView("404");
 		} else {
 			//ObjectId id = new ObjectId("54668afc44ae11795d109a61");
-			String id = session.getAttribute("id").toString();//System.out.println(id);
+			ObjectId id = new ObjectId(session.getAttribute("id").toString());//System.out.println(id);
 			return new ModelAndView("myTrainings", "trainings",
 					service.findAllTrainings(id));
 		}
