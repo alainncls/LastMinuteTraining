@@ -42,7 +42,7 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">Mes dernières factures</h3>
 			</div>
-			<div class="panel-body">OK, une idée comme ça hein !</div>
+			<div class="panel-body"><i>Implémentation en cours...</i></div>
 		</div>
 	</div>
 </div>
