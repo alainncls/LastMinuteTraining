@@ -11,13 +11,15 @@ import fr.epf.lastminutetraining.domain.Client;
 
 @Service
 public class ClientDBService {
+	
 	@Autowired
-	private ClientDAO clientDAO;
+	private ClientDAO clientDAO = new ClientDAO();
 
 	public ClientDBService() {
 	}
 
 	public Client findClient(ObjectId id) {
+		System.out.println("DEPUIS CDBS : " + id.toString());
 		return clientDAO.findClient(id);
 	}
 

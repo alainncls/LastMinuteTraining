@@ -23,11 +23,12 @@ public class CartController {
 
 	@Autowired
 	TrainingDBService tdbs;
-	ClientDBService cdbs;
+	ClientDBService cdbs = new ClientDBService();
 	Transaction cart;
 
 	protected Transaction getCart(HttpSession session) {
 		if (null == session.getAttribute("Cart")) {
+			System.out.println("DEPUIS CARTCONTROLLER : " + new ObjectId(session.getAttribute("id").toString()));
 			Client c = cdbs.findClient(new ObjectId(session.getAttribute("id")
 					.toString()));
 			return TransactionBuilder.transaction().client(c).build();

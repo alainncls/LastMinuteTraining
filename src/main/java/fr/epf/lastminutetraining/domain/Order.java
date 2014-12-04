@@ -27,7 +27,8 @@ public class Order implements Serializable{
 
 	public void setTraining(Training training) {
 		this.training = training;
-		this.vendor = vdbs.findVendor(new ObjectId(training.getVendorId()));
+		// TODO à corriger : nullPointerException après validation paiement
+		//this.vendor = vdbs.findVendor(new ObjectId(training.getVendorId()));
 	}
 
 	public Vendor getVendor() {
