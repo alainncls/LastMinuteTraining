@@ -216,7 +216,7 @@
 									<div class="row col-md-12">
 										<div class="form-group" id="divrelated${loop.index}">
 											<input type="text" class="form-control"
-												name="related[${loop.index}]" id="related0"
+												name="relatedCurricula[${loop.index}]" id="relatedCurricula0"
 												required="required" form="trainingForm"
 												style="width: 45%;!important"
 												value="${training.academys[loop.index]}" /> <input
@@ -352,19 +352,36 @@
 					function addLine(name, divName) {
 						var counter = $("[id^='" + name + "']").length;
 						var fullName = 'div' + name + counter;
-						var newRow2 = '<div class="form-group" id="'+fullName+'">'
-								+ '<div class="row">'
-								+ '<div class="col-md-10">'
-								+ '<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'
-								+ '</div>'
-								+ '<div class="col-sm-1">'
-								+ '<button id="'
-								+ counter
-								+ '" type="button" onclick="suppr(this.id,\''
-								+ name
-								+ '\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'
-								+ '</div>'
-						'</div>' + '</div>';
+						if (name=="relatedCurricula"){
+							var newRow2 = '<div class="form-group" id="'+fullName+'">'+
+							'<div class="row">'+
+							'<div class="col-md-10">'+
+							'<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"'+
+							'style="width: 50%;!important"/><input type="text" class="form-control col-md-5" name="academys['+counter+']"'+
+							'id="academy'+counter+'" style="width: 50%;!important" form="trainingForm"/>'+
+							'</div>'+
+							'<div class="col-sm-1">'+
+							'<button id="'+counter+'" type="button" onclick="suppr(this.id,\''+name+'\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'+
+							'</div>'
+							'</div>'+ 
+							'</div>';
+						}
+						else{
+							var newRow2 = '<div class="form-group" id="'+fullName+'">'
+							+ '<div class="row">'
+							+ '<div class="col-md-10">'
+							+ '<input type="text" class="form-control " name="'+name+'['+counter+']" id="'+name+counter+'" form="trainingForm"/>'
+							+ '</div>'
+							+ '<div class="col-sm-1">'
+							+ '<button id="'
+							+ counter
+							+ '" type="button" onclick="suppr(this.id,\''
+							+ name
+							+ '\')" class="btn btn-danger"><span class="fa fa-times"></span></button>'
+							+ '</div>'
+							'</div>' + '</div>';
+						}
+						
 						$('#' + divName + '').before(newRow2);
 					}
 				</script>

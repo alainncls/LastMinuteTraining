@@ -72,7 +72,7 @@
 								<dd>${training.language}</dd>
 								<dt>Difficulté :</dt>
 								<dd>
-									<c:forEach begin="1" end="${training.evaluation}">
+									<c:forEach begin="1" end="${training.difficulty}">
 										<i class="fa fa-star"></i>
 									</c:forEach>
 								</dd>
@@ -146,7 +146,7 @@
 									</c:forEach>
 								</ul>
 							</div>
-							<div class="span6 col-md-6">
+							<%-- <div class="span6 col-md-6">
 								<h4>Prérequis</h4>
 								<h5>Essentiels</h5>
 								<ul class="sap">
@@ -200,7 +200,7 @@
 								</c:if>
 									</ul>
 								</c:if>
-							</div>
+							</div> --%>
 
 							<div class="span6 col-md-6">
 								<h4>Cours basés sur les versions des logiciels</h4>
