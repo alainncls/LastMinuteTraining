@@ -1,3 +1,4 @@
+
 <jsp:include page="/include/header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -74,13 +75,13 @@
 					<label for="date.startDate">Début de la formation</label> <input
 						type="date" class="form-control" name="date['startDate'] id="
 						startDate"
-						required="required" form="trainingForm" />
+							required="required" form="trainingForm" />
 				</div>
 				<div class="form-group">
 					<label for="date.endDate">Fin de la formation</label> <input
 						type="date" class="form-control" name="date['endDate'] id="
 						endDate"
-						required="required" form="trainingForm" />
+							required="required" form="trainingForm" />
 				</div>
 				<div class="form-group">
 					<label for="language">Langue</label> <input type="text"
@@ -240,46 +241,114 @@
 											class="btn btn-info btn-sm">Ajouter un curriculum</button>
 									</span>
 								</div>
+							</div>
+							<div class="form-group" style="display: inline-block;">
+								<label for="description">Contenu</label><br> <span
+									id="addBig" class="btn btn-primary btn-sm fa fa-side fa-plus">Ajouter
+									une partie</span><br> <br>
+								<c:forEach items="${training.content}" var="content"
+									varStatus="loop">
 
-								<div class="form-group" style="display: inline-block;">
-									<label for="description">Contenu</label><br> <span
-										id="addBig" class="btn btn-primary btn-sm fa fa-side fa-plus">Ajouter
-										une partie</span><br> <br>
-									<c:forEach items="${training.content}" var="content"
-										varStatus="loop">
-
-										<input type="text" id="big-input-${loop.index}"class="variable form-control"
-											name="content['${content.key}']" value="${content.key}"></input>
-										<span class='delBig fa fa-side fa-trash'></span>
-										<ul>
-											<span id="addSmall-${loop.index}"
-												class="btn btn-primary btn-sm fa fa-side fa-plus small ">Ajouter
-												une sous-partie</span>
-											<c:if test="${fn:length(content.value) gt 0}">
+									<input type="text" id="big-input-${loop.index}"
+										class="variable form-control" name="content['${content.key}']"
+										value="${content.key}"></input>
+									<span class='delBig fa fa-side fa-trash'></span>
+									<ul>
+										<span id="addSmall-${loop.index}"
+											class="btn btn-primary btn-sm fa fa-side fa-plus small ">Ajouter
+											une sous-partie</span>
+										<c:if test="${fn:length(content.value) gt 0}">
 
 
-												<c:forEach items="${content.value}" var="value"
-													varStatus="loop2">
-													<input type="text" class=" form-control col-md-10"
-														value="${value}"
-														name="content['${content.key}'][${loop2.index}]"></input>
-													<span class=' col-md-1 delSmall fa fa-side fa-trash'></span>
-												</c:forEach>
-											</c:if>
-										</ul>
-									</c:forEach>
-								</div>
+											<c:forEach items="${content.value}" var="value"
+												varStatus="loop2">
+												<input type="text" class=" form-control col-md-10"
+													value="${value}"
+													name="content['${content.key}'][${loop2.index}]"></input>
+												<span class=' col-md-1 delSmall fa fa-side fa-trash'></span>
+											</c:forEach>
+										</c:if>
+									</ul>
+								</c:forEach>
+							</div>
+							<div class="form-group">
+								<label for="essential">Prérequis essentiels</label> <span
+									id="addBig2" class="button fa fa-side fa-plus"> Ajouter
+									un prérequis</span><br> <input type="text" class="form-control"
+									name="prerequisites['essential']" id="essential"
+									form="trainingForm" /><br>
+							</div>
 
-								<div class="actions">
-									<button type="submit" class="btn btn-success"
-										form="trainingForm">Envoyer</button>
-									<a href="home" class="btn btn-danger">Annuler</a>
-								</div>
+							<div class="form-group">
+								<label for="recommended">Prérequis recommandés</label> <span
+									id="addBig3" class="button fa fa-side fa-plus"> Ajouter
+									un prérequis</span><br> <input type="text" class="form-control"
+									name="prerequisites['recommended']" id="recommended"
+									form="trainingForm" /><br>
+							</div>
+							<br> <br>
+							<div class="actions">
+								<button type="submit" class="btn btn-success"
+									form="trainingForm">Envoyer</button>
+								<a href="home" class="btn btn-danger">Annuler</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<script>
+			</div>
+			<script>
+					function manageBigAndSmall(){
+					$("[id^=big-input-]")
+							.each(
+									function() {
+										$(this)
+												.change(
+														function() {
+															var x = "content['"
+																	+ $(this).val()
+																	+ "']";
+															$(this)
+																	.attr(
+																			'name',
+																			"content['"
+																					+ $(
+																							this)
+																							.val()
+																					+ "']");
+															var i = 0;
+															$(this)
+																	.next()
+																	.next()
+																	.children(
+																			"input")
+																	.each(
+																			function() {
+																				$(
+																						this)
+																						.attr(
+																								'name',
+																								x
+																										+ "["
+																										+ i
+																										+ "]");
+																				i++
+																			})
+														})
+									});
+					$("[id^=small-input-]").each(
+							function() {
+								$(this).change(
+										function() {
+											$(this).attr(
+													'name',
+													"content['" + $(this).val()
+															+ "']")
+										})
+							});
+					}
+					manageBigAndSmall();
+				</script>
+			<script>
 					function addLine(name, divName) {
 						var counter = $("[id^='" + name + "']").length;
 						var fullName = 'div' + name + counter;
@@ -299,21 +368,21 @@
 						$('#' + divName + '').before(newRow2);
 					}
 				</script>
-				<script>
+			<script>
 					function suppr(nb, name) {
-
+	
 						//test = id du div row
-						var test = $('#' + name + nb).parents('div').parents(
-								'div').parents('div').attr('id');
+						var test = $('#' + name + nb).parents('div').parents('div')
+								.parents('div').attr('id');
 						console.log(nb + name);
 						var el = document.getElementById(test);
-
+	
 						el.parentNode.removeChild(el);
 					}
 				</script>
-				<script>
-					$("#level option[value=${training.level}]").attr(
-							"selected", "selected");
+			<script>
+					$("#level option[value=${training.level}]").attr("selected",
+							"selected");
 					$("#level option:selected").each(function() {
 						$('#level').addClass(" level-${training.level}")
 					});
@@ -346,7 +415,7 @@
 						console.log(el);
 					}
 				</script>
-				<script>
+			<script>
 					function addDouble(name, divName) {
 						var counter = $("[id^='" + name + "']").length;
 						console.log(name + counter);
@@ -373,13 +442,13 @@
 						$('#' + divName + '').before(newRow2);
 					}
 				</script>
-				<script>
+			<script>
 					function supprDouble(id) {
 						$("#divrelated" + id).parent().remove();
 						$("#divrelated" + id).remove();
 					}
 				</script>
-				<script type="text/javascript">
+			<script type="text/javascript">
 					addSmall();
 					$("#addBig")
 							.click(
@@ -396,42 +465,73 @@
 											$(this).next().remove();
 											$(this).remove();
 										});
+										manageBigAndSmall();
 									});
 					function addSmall() {
 						$("[id^=addSmall]")
 								.click(
 										function(event) {
 											a = this.id;
+											b=$(this).parent().prev().prev().val();
 											cpt2 = $(this).parent().children(
 													"input").size();
 											console.log(cpt2);
 											$("#" + a)
 													.after(
-															"<input type='text' name='content['above']["+cpt2+"] class='form-control col-md-10'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
+															"<input type='text' name='content[\""+b+"\"']["+cpt2+"]\" class='form-control col-md-10'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
 											$(".delSmall").click(function() {
 												$(this).prev().remove();
 												$(this).remove();
 											});
-										})
+										});
+						manageBigAndSmall();
 					};
 				</script>
 
-				<script type="text/javascript">
+			<script type="text/javascript">
 					$(".delSmall").click(function() {
 						$(this).prev().remove();
 						$(this).remove();
 					});
 				</script>
-				<script type="text/javascript">
+			<script type="text/javascript">
 					$(".delBig").click(function() {
 						$(this).prev().remove();
 						$(this).next().remove();
 						$(this).remove();
 					});
 				</script>
-				<script>
-				$("[id^=big-input-]").each(function(){$(this).change(function(){var x="content['"+$(this).val()+"']"; $(this).attr('name',"content['"+$(this).val()+"']"); var i=0; $(this).next().next().children("input").each(function(){$(this).attr('name',x+"["+i+"]");i++})})});
-				$("[id^=small-input-]").each(function(){$(this).change(function(){$(this).attr('name',"content['"+$(this).val()+"']")})});
 
+			<script>
+				$("#addBig2")
+				.click(
+					function() {
+						count = $('ul button').size();
+						after = '<br>'
+								+'<input type="text" class="form-control" form="trainingForm"'
+								+'name=\"prerequisites[\'essential\']\"></input>'
+								+'<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
+						$(this).after(after);index++;
+						$(".delBig").click(function() {
+							$(this).prev().remove();
+							$(this).next().remove();
+							$(this).remove();
+						});
+					});
+				$("#addBig3")
+				.click(
+					function() {
+						count = $('ul button').size();
+						after = '<br>'
+								+'<input type="text" class="form-control" form="trainingForm"'
+								+'name=\"prerequisites[\'recommended\']\"></input>'
+								+'<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
+						$(this).after(after);index++;
+						$(".delBig").click(function() {
+							$(this).prev().remove();
+							$(this).next().remove();
+							$(this).remove();
+						});
+					});
 				</script>
-				<jsp:include page="/include/footer.jsp" />
+			<jsp:include page="/include/footer.jsp" />
