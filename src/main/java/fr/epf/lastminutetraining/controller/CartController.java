@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,11 +25,11 @@ public class CartController {
 	TrainingDBService tdbs;
 	@Autowired
 	ClientDBService cdbs;
-	
 	Transaction cart;
 
 	protected Transaction getCart(HttpSession session) {
 		if (null == session.getAttribute("Cart")) {
+			System.out.println("DEPUIS CARTCONTROLLER : " + new ObjectId(session.getAttribute("id").toString()));
 			Client c = cdbs.findClient(new ObjectId(session.getAttribute("id")
 					.toString()));
 			return TransactionBuilder.transaction().client(c).build();
@@ -42,7 +43,7 @@ public class CartController {
 		return new ModelAndView("panier", "panier", getCart(session));
 	}
 
-	@RequestMapping(value = { "/cart/increment", "/cart/add" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/cart/increment", "/cart/add" }, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	protected @ResponseBody boolean incrementTraining(HttpSession session,
 			@RequestParam("idTraining") String idTraining) {
 		getCart(session).addTraining(tdbs.findTraining(idTraining));

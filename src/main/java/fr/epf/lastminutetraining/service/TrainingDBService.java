@@ -25,7 +25,7 @@ public class TrainingDBService {
 	public List<Training> findAllTrainings() {
 		return trainingDAO.findAllTrainings();
 	}
-	
+
 	public Training findOneTraining() {
 		return trainingDAO.findOneTraining();
 	}

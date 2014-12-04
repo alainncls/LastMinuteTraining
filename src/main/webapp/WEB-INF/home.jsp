@@ -21,11 +21,11 @@
 						Formation : <label id="modal-name" class="control-label"></label>
 					</div>
 					<div>
-						<br>Prix avec LastMinuteTraining <br>
-						<label id="modal-price" class="control-label delete"></label>
+						<br>Prix avec LastMinuteTraining <br> <label
+							id="modal-price" class="control-label delete"></label>
 					</div>
-					<div>	
-					<h4>
+					<div>
+						<h4>
 							<label id="modal-priceLMT" class="control-label"></label>
 						</h4>
 					</div>
@@ -36,8 +36,8 @@
 					<span class="fa fa-arrow-circle-left"></span> Continuer mes
 					recherches
 				</button>
-				<a type="button" class="btn btn-primary" href="/cart">
-					Terminer ma commande <span class="fa fa-check"></span>
+				<a type="button" class="btn btn-primary" href="/cart"> Terminer
+					ma commande <span class="fa fa-check"></span>
 				</a>
 			</div>
 		</div>
@@ -45,21 +45,34 @@
 </div>
 
 <script>
-	$('#buyModal').on('show.bs.modal', function (event) {
-	
-	var button = $(event.relatedTarget); // Button that triggered the modal
-	  var training = button.data('name'); // Extract info from data-* attributes
-	  var price = button.data('price');
-	  var priceLMT = button.data('priceLMT');
-	  var id = button.data('idTraining');
-	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-	  $.post('http://localhost:8080/cart/add', {'idTraining':id});
-	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-	 
-	 $('#modal-name').val(training);
-	 $('#modal-price').val(price+' €');
-	 $('#modal-priceLMT').val(priceLMT+' €');
-	  
+	$('#buyModal').on('show.bs.modal', function(event) {
+
+		var button = $(event.relatedTarget); // Button that triggered the modal
+		var training = button.data('name'); // Extract info from data-* attributes
+		var price = button.data('price');
+		var priceLMT = button.data('priceLMT');
+		var target = button.data('target');
+
+		var json = {
+			"idTraining" : button.data('idTraining')
+		};
+		// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		$.ajax({
+			url : target,
+			data : JSON.stringify(json),
+			type : "POST",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader("Accept", "application/json");
+				xhr.setRequestHeader("Content-Type", "application/json");
+			}
+		});
+
+		// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+		$('#modal-name').text(training);
+		$('#modal-price').text(price + ' €');
+		$('#modal-priceLMT').text(price * 0.8 + ' €');
+
 	});
 </script>
 
@@ -110,7 +123,7 @@
 									<td>${training.price * 0.8}0€</td>
 									<%-- <td>${${training.priceLMT}*2}€</td> --%>
 									<td>${training.date.startDate}</td>
-									<td>${training.duration.count} <c:if
+									<td>${training.duration.count}<c:if
 											test="${training.duration.unit == 'days'}">Jours</c:if> <c:if
 											test="${training.duration.unit == 'day'}">Jour</c:if> <c:if
 											test="${training.duration.unit != 'day' && training.duration.unit != 'days'}">${training.duration.unit}</c:if></td>
@@ -123,8 +136,8 @@
 											data-toggle="modal" data-target="#buyModal"
 											data-price="${training.price}"
 											data-priceLMT="${training.price*0.8}"
-											data-name="${training.name}"
-											data-id="${training.id}">
+											data-name="${training.name}" data-id="${training.id}"
+											data-target="${pageContext.request.contextPath}/cart/add.json">
 											<span class="fa fa-shopping-cart"></span> Acheter
 										</button></td>
 								</tr>
