@@ -39,10 +39,9 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	protected ModelAndView cart(HttpSession session) {
-		return new ModelAndView("panier", "panier", getCart(session));
+	protected ModelAndView cart() {//HttpSession session
+		return new ModelAndView("panier");//return new ModelAndView("panier", "panier", getCart(session));
 	}
-
 	@RequestMapping(value = "/cart/add" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	protected @ResponseBody boolean incrementTraining(HttpSession session,
 			@RequestParam("idTraining") String idTraining) {
