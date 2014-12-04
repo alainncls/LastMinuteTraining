@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.epf.lastminutetraining.domain.Client;
@@ -18,12 +18,13 @@ import fr.epf.lastminutetraining.service.ClientDBService;
 import fr.epf.lastminutetraining.service.TrainingDBService;
 
 @Controller
-@SessionAttributes({ "cart" })
 public class CartController {
 
 	@Autowired
 	TrainingDBService tdbs;
+	@Autowired
 	ClientDBService cdbs;
+	
 	Transaction cart;
 
 	protected Transaction getCart(HttpSession session) {
@@ -42,7 +43,7 @@ public class CartController {
 	}
 
 	@RequestMapping(value = { "/cart/increment", "/cart/add" }, method = RequestMethod.POST)
-	protected boolean incrementTraining(HttpSession session,
+	protected @ResponseBody boolean incrementTraining(HttpSession session,
 			@RequestParam("idTraining") String idTraining) {
 		getCart(session).addTraining(tdbs.findTraining(idTraining));
 		return true;
