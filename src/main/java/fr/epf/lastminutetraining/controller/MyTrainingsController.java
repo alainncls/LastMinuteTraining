@@ -68,25 +68,10 @@ public class MyTrainingsController {
 			ObjectId id = new ObjectId(session.getAttribute("id").toString());
 			// Ajout de l'id du vendeur à la formation
 			training.setVendorId(idVendor);
-			// Ajout de la durée de la formation
-//			String start = training.getDate().get("startDate");System.out.println(start);
-//			String end = training.getDate().get("endDate");
-//			
-//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//			
-//			try {
-//				Date startDate = format.parse(start);System.out.println(start);
-//				Date endDate = format.parse(end);
-//				
-//				long diff = endDate.getTime() - startDate.getTime();
-//				String duration = String.valueOf(diff/(24 * 60 * 60 * 1000));//System.out.println(duration);
-//				training.setDuration(duration);
-//				
-//			} catch (ParseException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			
+			//Calcul du prix réduit
+			double priceLMT = Double.parseDouble(training.getPrice());
+			priceLMT = priceLMT-(priceLMT*0.2);
+			training.setPriceLMT(String.valueOf(priceLMT));
 			// Sauvegarde de la formation
 			service.save(training);
 

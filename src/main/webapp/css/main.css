@@ -280,3 +280,6 @@ input {
 .delete {
 	text-decoration: line-through;
 }
+.centered {
+	text-align: center;
+}

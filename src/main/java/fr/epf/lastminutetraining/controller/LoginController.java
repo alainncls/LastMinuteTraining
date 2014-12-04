@@ -59,7 +59,6 @@ public class LoginController {
 			session.setAttribute("id", user.getId());
 			session.setAttribute("validated", user.getActivated());
 
-			
 			return new ModelAndView(home, trainings,
 					tservice.findLastTraining());
 		} else {
