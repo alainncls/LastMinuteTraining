@@ -56,9 +56,9 @@
 	  $.post('http://localhost:8080/cart/add', {'idTraining':id});
 	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 	 
-	 $('#modal-name').val(training);
-	 $('#modal-price').val(price+' €');
-	 $('#modal-priceLMT').val(priceLMT+' €');
+	 $('#modal-name').text(training);
+	 $('#modal-price').text(price+' €');
+	 $('#modal-priceLMT').text(price*0.8+' €');
 	  
 	});
 </script>
