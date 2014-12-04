@@ -72,6 +72,7 @@ public class MyTrainingsController {
 			double priceLMT = Double.parseDouble(training.getPrice());
 			priceLMT = priceLMT-(priceLMT*0.2);
 			training.setPriceLMT(String.valueOf(priceLMT));
+			training.setEvaluation("0");
 			// Sauvegarde de la formation
 			service.save(training);
 

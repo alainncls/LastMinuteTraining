@@ -115,14 +115,14 @@ public class TrainingDAO {
 		} catch (IllegalArgumentException e) {
 			result = null;
 		}
-		String regex = "(?<=Curriculum=)(.*?)(?=&)";
-		Pattern pattern = Pattern.compile(regex);
-		for (String x : result.getRelatedCurricula()) {
-			Matcher matcher = pattern.matcher(x);
-			if (matcher.find()) {
-				result.addAcademy(matcher.group(1));
-			}
-		}
+//		String regex = "(?<=Curriculum=)(.*?)(?=&)";
+//		Pattern pattern = Pattern.compile(regex);
+//		for (String x : result.getRelatedCurricula()) {
+//			Matcher matcher = pattern.matcher(x);
+//			if (matcher.find()) {
+//				result.addAcademy(matcher.group(1));
+//			}
+//		}
 		ObjectId oid = new ObjectId(result.getVendorId());
 		Vendor vendor = new Vendor();
 		vendor = vendorCollection.findOne(oid).as(Vendor.class);
