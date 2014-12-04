@@ -19,15 +19,10 @@
 						class="form-control" name="price" id="price" placeholder="Prix"
 						required="required" />
 					</div>
-					<!-- <div class="form-group">
-						<label for="priceLMT">Prix via LMT (temporaire)</label> <input type="number"
-						class="form-control" name="priceLMT" id="priceLMT"
-						placeholder="Prix LMT" required="required" />
-					</div> -->
 					<div class="form-group">
 						<label for="level">Niveau de la formation</label> 
 						<select
-							type="text" class="form-control" name="level" id="level">
+							type="text" class="form-control level" name="level" id="level">
 							<option class="level level-1" value="1">Overview</option>
 							<option class="level level-2" value="2">Foundation</option>
 							<option class="level level-3" value="3">Detailed</option>
@@ -50,7 +45,7 @@
 						<label for="category">Catégorie</label> <input type="text"
 						class="form-control" name="category" id="category" placeholder="SAP ERP, SAP NetWeaver, ..."
 						required="required" />
-					</div><br>
+					</div><br><br>
 					<div class="actions">
 						<button type="submit" class="btn btn-success">Envoyer</button>
 						<a href="home" class="btn btn-danger">Annuler</a>
@@ -105,7 +100,7 @@
 					class="form-control" name="method" id="method"
 					placeholder="En classe, e-learning, ..." 
 					form="trainingForm" />
-				</div><br>
+				</div><br><br>
 				<div class="actions">
 					<button type="submit" class="btn btn-success" form="trainingForm">Envoyer</button>
 					<a href="home" class="btn btn-danger">Annuler</a>
@@ -176,7 +171,7 @@
 				<div class="form-group">
 					<label for="academys">Curriculum</label> <input type="text"
 					class="form-control" name="relatedCurricula[0]" id="relatedCurricula0"
-					required="required" form="trainingForm"/>
+					form="trainingForm"/>
 				</div>
 				<div class="form-group" id="pasteCuri">
                     <span class="input-group-btn">
@@ -184,30 +179,25 @@
                     </span>
                 </div>
                 <div class="form-group" style="display: inline-block;">
-					<label for="description">Contenu</label><br> <span
-						id="addBig" class="button fa fa-side fa-plus">Ajouter
-						une partie</span><br> <br>
-					<c:forEach items="${training.content}" var="content"
-						varStatus="loop">
-
-						<input type="text" class="form-control" value="${content.key}"></input>
-						<span class='delBig fa fa-side fa-trash'></span>
-						<ul>
-							<span id="addSmall-${loop.index}"
-								class="button fa fa-side fa-plus small ">Ajouter une
-								sous-partie</span>
-							<c:if test="${fn:length(content.value) gt 0}">
-
-
-								<c:forEach items="${content.value}" var="value">
-									<input type="text" class=" form-control col-md-10"
-										value="${value}"></input>
-									<span class=' col-md-1 delSmall fa fa-side fa-trash'></span>
-								</c:forEach>
-							</c:if>
-						</ul>
-					</c:forEach>
+					<label for="description">Contenu</label><br> 
+					<span id="addBig" class="button fa fa-side fa-plus"> Ajouter une partie</span><br>
 				</div>
+				<div class="form-group">
+					<label for="essential">Prérequis essentiels</label>
+					<span id="addBig2" class="button fa fa-side fa-plus"> Ajouter un prérequis</span><br> 
+					<input type="text" class="form-control" 
+					name="prerequisites['essential']" id="essential" 
+					form="trainingForm"/><br>
+				</div>
+
+				<div class="form-group">
+					<label for="recommended">Prérequis recommandés</label>
+					<span id="addBig3" class="button fa fa-side fa-plus"> Ajouter un prérequis</span><br> 
+					<input type="text" class="form-control" 
+					name="prerequisites['recommended']" id="recommended" 
+					form="trainingForm"/><br>
+				</div>
+				<br><br>
 				<div class="actions">
 					<button type="submit" class="btn btn-success" form="trainingForm">Envoyer</button>
 					<a href="home" class="btn btn-danger">Annuler</a>
@@ -245,9 +235,10 @@
 }
 </script>
 <script>
-	$("#level option[value=${training.level}]").attr("selected", "selected");
 	$("#level option:selected").each(function() {
-		$('#level').addClass(" level-${training.level}")
+		var e = document.getElementById("level");
+		var strUser = e.options[e.selectedIndex].value;
+		$('#level').addClass(" level-"+strUser+"")
 	});
 	$("#level").change(
 		function() {
@@ -284,7 +275,7 @@
 			count = $('ul button').size();
 			after = '<br><input type="text" class="form-control col-sm-10" form="trainingForm" name="content[\'partie'+index+'\']"></input><span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><span id="addSmall-"'
 			+ count.toString()
-			+ "' class='span fa fa-side fa-plus small'>Ajouter une sous-partie</span></ul>";
+			+ "' class='span fa fa-side fa-plus small'>Ajouter une sous-partie</span></ul><br><br>";
 			$(this).after(after);index++;
 			$("[id^=addSmall]").unbind("click");
 			addSmall();
@@ -294,6 +285,39 @@
 				$(this).remove();
 			});
 		});
+	
+	$("#addBig2")
+	.click(
+		function() {
+			count = $('ul button').size();
+			after = '<br>'
+					+'<input type="text" class="form-control" form="trainingForm"'
+					+'name=\"prerequisites[\'essential\']\"></input>'
+					+'<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
+			$(this).after(after);index++;
+			$(".delBig").click(function() {
+				$(this).prev().remove();
+				$(this).next().remove();
+				$(this).remove();
+			});
+		});
+	
+	$("#addBig3")
+	.click(
+		function() {
+			count = $('ul button').size();
+			after = '<br>'
+					+'<input type="text" class="form-control" form="trainingForm"'
+					+'name=\"prerequisites[\'recommended\']\"></input>'
+					+'<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
+			$(this).after(after);index++;
+			$(".delBig").click(function() {
+				$(this).prev().remove();
+				$(this).next().remove();
+				$(this).remove();
+			});
+		});
+	
 	function addSmall() {
 		$("[id^=addSmall]")
 		.click(
@@ -301,7 +325,7 @@
 				a = this.id;
 				$("#" + a)
 				.after(
-					'<input type="text" class="form-control col-md-10" form="trainingForm" name="content[\'sous-partie'+index2+'\']"><span class="col-md-2 delSmall fa fa-side fa-trash"></span>');
+					'<input type="text" class="form-control" form="trainingForm" name="content[\'sous-partie'+index2+'\']"><span class="col-md-2 delSmall fa fa-side fa-trash"></span>');
 				index2++;$(".delSmall").click(function() {
 					$(this).prev().remove();
 					$(this).remove();
