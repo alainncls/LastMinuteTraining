@@ -8,19 +8,16 @@
                 <table class="table table-hover table-striped table-align">
                     <thead>
                     <tr>
-                        <th>index</th>
-                        <th>id</th>
-                        <th>login</th>
-                        <th>password</th>
-                        <th>name</th>
-                        <th>avatar</th>
-                        <th>mail</th>
-                        <th>phone</th>
-                        <th>margin</th>
-                        <th>sub</th>
-                        <th>address</th>
-                        <th>town</th>
-                        <th>iban</th>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Identifiant</th>
+                        <th>Nom</th>
+                        <th>Avatar</th>
+                        <th>Mail</th>
+                        <th>Tél.</th>
+                        <th>Marge</th>
+                        <th>Adresse</th>
+                        <th>Ville</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,16 +27,13 @@
                                 <td>${loop.index+1}</td>
                                 <td>${vendor.id}</td>
                                 <td>${vendor.login}</td>
-                                <td>${vendor.password}</td>
                                 <td>${vendor.name}</td>
                                 <td>${vendor.avatar}</td>
                                 <td>${vendor.mail}</td>
                                 <td>${vendor.phone}</td>
                                 <td>${vendor.margin}</td>
-                                <td>${vendor.sub}</td>
                                 <td>${vendor.address}</td>
                                 <td>${vendor.town}</td>
-                                <td>${vendor.iban}</td>
                             </tr>
                         </c:forEach>
                     </c:if>
