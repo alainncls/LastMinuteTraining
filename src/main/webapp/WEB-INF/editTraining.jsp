@@ -72,12 +72,14 @@
 			<div class="panel-body">
 				<div class="form-group">
 					<label for="date.startDate">Début de la formation</label> <input
-						type="date" class="form-control" name="startDate" id="startDate"
+						type="date" class="form-control" name="date['startDate'] id="
+						startDate"
 						required="required" form="trainingForm" />
 				</div>
 				<div class="form-group">
 					<label for="date.endDate">Fin de la formation</label> <input
-						type="date" class="form-control" name="endDate" id="endDate"
+						type="date" class="form-control" name="date['endDate'] id="
+						endDate"
 						required="required" form="trainingForm" />
 				</div>
 				<div class="form-group">
@@ -87,10 +89,12 @@
 						value="${training.language}" />
 				</div>
 				<div class="form-group" id="pasteLang">
-                    <span class="input-group-btn">
-                        <button id="addLang" type="button" onclick="addLine('language', 'pasteLang')" class="btn btn-info btn-sm">Ajouter une langue</button>
-                    </span>
-                </div>
+					<span class="input-group-btn">
+						<button id="addLang" type="button"
+							onclick="addLine('language', 'pasteLang')"
+							class="btn btn-info btn-sm">Ajouter une langue</button>
+					</span>
+				</div>
 				<div class="form-group" id="pasteLang">
 					<div class="form-group">
 						<label for="location">Lieux de la formation</label> <input
@@ -211,7 +215,7 @@
 									<div class="row col-md-12">
 										<div class="form-group" id="divrelated${loop.index}">
 											<input type="text" class="form-control"
-												name="relateds[${loop.index}]" id="related0"
+												name="related[${loop.index}]" id="related0"
 												required="required" form="trainingForm"
 												style="width: 45%;!important"
 												value="${training.academys[loop.index]}" /> <input
@@ -239,23 +243,26 @@
 
 								<div class="form-group" style="display: inline-block;">
 									<label for="description">Contenu</label><br> <span
-										id="addBig" class="button fa fa-side fa-plus">Ajouter
+										id="addBig" class="btn btn-primary btn-sm fa fa-side fa-plus">Ajouter
 										une partie</span><br> <br>
 									<c:forEach items="${training.content}" var="content"
 										varStatus="loop">
 
-										<input type="text" class="form-control" value="${content.key}"></input>
+										<input type="text" id="big-input-${loop.index}"class="variable form-control"
+											name="content['${content.key}']" value="${content.key}"></input>
 										<span class='delBig fa fa-side fa-trash'></span>
 										<ul>
 											<span id="addSmall-${loop.index}"
-												class="button fa fa-side fa-plus small ">Ajouter une
-												sous-partie</span>
+												class="btn btn-primary btn-sm fa fa-side fa-plus small ">Ajouter
+												une sous-partie</span>
 											<c:if test="${fn:length(content.value) gt 0}">
 
 
-												<c:forEach items="${content.value}" var="value">
+												<c:forEach items="${content.value}" var="value"
+													varStatus="loop2">
 													<input type="text" class=" form-control col-md-10"
-														value="${value}"></input>
+														value="${value}"
+														name="content['${content.key}'][${loop2.index}]"></input>
 													<span class=' col-md-1 delSmall fa fa-side fa-trash'></span>
 												</c:forEach>
 											</c:if>
@@ -274,7 +281,7 @@
 				</div>
 				<script>
 					function addLine(name, divName) {
-						var counter = $("[id^='" + divName + "']").length;
+						var counter = $("[id^='" + name + "']").length;
 						var fullName = 'div' + name + counter;
 						var newRow2 = '<div class="form-group" id="'+fullName+'">'
 								+ '<div class="row">'
@@ -341,19 +348,18 @@
 				</script>
 				<script>
 					function addDouble(name, divName) {
-						console.log(name + divName);
 						var counter = $("[id^='" + name + "']").length;
-						console.log(counter);
+						console.log(name + counter);
 						var fullName = 'div' + name + counter;
 						var newRow2 = '<div class="row col-md-12"><div class="form-group" id="'+fullName+'">'
+								+ '<input type="text" class="form-control " style="width:45%;" name="academys['
+								+ counter
+								+ ']" id="academy'
+								+ counter
+								+ '" form="trainingForm" placeholder="Academie"/>'
 								+ '<input type="text" class="form-control " style="width:45%;" name="related['
 								+ counter
 								+ ']" id="related'
-								+ counter
-								+ '" form="trainingForm" placeholder="Academie"/>'
-								+ '<input type="text" class="form-control " style="width:45%;" name="academy['
-								+ counter
-								+ ']" id="academy'
 								+ counter
 								+ '" form="trainingForm"/ placeholder="URL">'
 								+ '</div>'
@@ -378,10 +384,10 @@
 					$("#addBig")
 							.click(
 									function() {
-										count = $('ul button').size();
-										after = "<br><input type='text' class='form-control col-sm-10'></input><span class='col-sm-1 delBig fa fa-side fa-trash'></span><ul><span id='addSmall-"
+										count = $('ul .btn').size();
+										after = "<br><input type='text' id='big-input-"+count+"' class='form-control col-sm-10'></input><span class='col-sm-1 delBig fa fa-side fa-trash'></span><ul><span id='addSmall-"
 												+ count.toString()
-												+ "' class='span fa fa-side fa-plus small'>Ajouter une sous-partie</span></ul>";
+												+ "' class='span fa fa-side fa-plus small btn btn-sm btn-primary'>Ajouter une sous-partie</span></ul>";
 										$(this).after(after);
 										$("[id^=addSmall]").unbind("click");
 										addSmall();
@@ -396,9 +402,12 @@
 								.click(
 										function(event) {
 											a = this.id;
+											cpt2 = $(this).parent().children(
+													"input").size();
+											console.log(cpt2);
 											$("#" + a)
 													.after(
-															"<input type='text' class='form-control col-md-10'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
+															"<input type='text' name='content['above']["+cpt2+"] class='form-control col-md-10'><span class='col-md-2 delSmall fa fa-side fa-trash'></span>");
 											$(".delSmall").click(function() {
 												$(this).prev().remove();
 												$(this).remove();
@@ -419,5 +428,10 @@
 						$(this).next().remove();
 						$(this).remove();
 					});
+				</script>
+				<script>
+				$("[id^=big-input-]").each(function(){$(this).change(function(){var x="content['"+$(this).val()+"']"; $(this).attr('name',"content['"+$(this).val()+"']"); var i=0; $(this).next().next().children("input").each(function(){$(this).attr('name',x+"["+i+"]");i++})})});
+				$("[id^=small-input-]").each(function(){$(this).change(function(){$(this).attr('name',"content['"+$(this).val()+"']")})});
+
 				</script>
 				<jsp:include page="/include/footer.jsp" />

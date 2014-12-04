@@ -66,16 +66,16 @@ public class MyTrainingsController {
 		} else {
 			String idVendor = session.getAttribute("id").toString();
 			ObjectId id = new ObjectId(session.getAttribute("id").toString());
-			// Ajout de l'id du vendeur � la formation
+			// Ajout de l'id du vendeur à la formation
 			training.setVendorId(idVendor);
-			//Calcul du prix r�duit
+			//Calcul du prix réduit
 			double priceLMT = Double.parseDouble(training.getPrice());
 			priceLMT = priceLMT-(priceLMT*0.2);
 			training.setPriceLMT(String.valueOf(priceLMT));
 			// Sauvegarde de la formation
 			service.save(training);
 
-			// Envoi d'un mail de confirmation de cr�ation de formation
+			// Envoi d'un mail de confirmation de crï¿½ation de formation
 			ApplicationContext context = new ClassPathXmlApplicationContext(
 					"context.xml");
 			Vendor vendor = vservice.findVendor(id);
@@ -84,13 +84,13 @@ public class MyTrainingsController {
 				mm.sendMail(
 						"lastminutetraining.epf@gmail.com",
 						vendor.getMail(),
-						"Confirmation de cr�ation de formation",
+						"Confirmation de crï¿½ation de formation",
 						"Cher vendeur,\n\n"
-						+ "Vous venez de cr�er une nouvelle formation nomm�e "
+						+ "Vous venez de crï¿½er une nouvelle formation nommï¿½e "
 						+ training.getName()
 						+ "."
-						+ " Merci de votre contribution � notre catalogue.\n\nCordialement,\n\n"
-						+ "L'�quipe Last Minute Training");
+						+ " Merci de votre contribution ï¿½ notre catalogue.\n\nCordialement,\n\n"
+						+ "L'ï¿½quipe Last Minute Training");
 
 				return new ModelAndView("redirect:/mytrainings", "trainings",
 						service.findAllTrainings(id));
