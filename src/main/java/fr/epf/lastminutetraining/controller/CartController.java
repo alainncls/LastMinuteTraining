@@ -43,10 +43,11 @@ public class CartController {
 		return new ModelAndView("panier", "panier", getCart(session));
 	}
 
-	@RequestMapping(value = { "/cart/increment", "/cart/add" }, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/cart/add" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	protected @ResponseBody boolean incrementTraining(HttpSession session,
 			@RequestParam("idTraining") String idTraining) {
 		getCart(session).addTraining(tdbs.findTraining(idTraining));
+		System.out.println("Reception add");
 		return true;
 	}
 
