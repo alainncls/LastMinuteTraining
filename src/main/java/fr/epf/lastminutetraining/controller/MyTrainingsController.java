@@ -65,9 +65,9 @@ public class MyTrainingsController {
 		} else {
 			String idVendor = session.getAttribute("id").toString();
 			String id = session.getAttribute("id").toString();
-			// Ajout de l'id du vendeur à la formation
+			// Ajout de l'id du vendeur ï¿½ la formation
 			training.setVendorId(idVendor);
-			// Ajout de la durée de la formation
+			// Ajout de la durï¿½e de la formation
 //			String start = training.getDate().get("startDate");System.out.println(start);
 //			String end = training.getDate().get("endDate");
 //			
