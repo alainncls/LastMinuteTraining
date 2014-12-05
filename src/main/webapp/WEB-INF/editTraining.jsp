@@ -302,7 +302,6 @@
 								<label for="recommended">Prérequis recommandés</label> <span
 									id="addBig3" class="button fa fa-side fa-plus"> Ajouter
 									un prérequis</span><br> <c:if test="${(training.prerequisites.recommended[0]) != null}">
-									<h5>Recommandé</h5>
 									<ul class="sap">
 										<!-- True if its not just a text -->
 										<c:if
