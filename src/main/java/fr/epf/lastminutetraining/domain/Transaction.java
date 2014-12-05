@@ -17,13 +17,12 @@ public class Transaction implements Serializable{
 	private ObjectId id;
 
 	// training, prixUnitaire, Quantité
-	private List<Order> orders;
+	private List<Order> orders = new ArrayList<Order>();
 	private Client client;
 	private Date date;
 	private String status;// Facturation, paiement, validation/note
 
 	public Transaction() {
-		this.orders = new ArrayList<Order>();
 	}
 
 	@Override
@@ -107,15 +106,22 @@ public class Transaction implements Serializable{
 		for (Order order : orders) {
 			if (order.getTraining().equals(training)) {
 				order.incrementQuantity();
+				System.out.println("addTraining--Increment");
 				return;
 			}
 		}
 		Order order = OrderBuilder.order().training(training).build();
 		addOrder(order);
+		System.out.println("addTraining--Ajout");
 	}
 	
 	public void removeTraining(Training training) {
-		orders.remove(training);
+		for (Order order : orders) {
+			if (order.getTraining().equals(training)) {
+				orders.remove(order);
+				return;
+			}
+		}
 	}
 
 	public void empty() {

@@ -34,44 +34,56 @@ public class CartController {
 			System.out.println("DEPUIS CARTCONTROLLER : " + new ObjectId(session.getAttribute("id").toString()));
 			Client c = cdbs.findClient(new ObjectId(session.getAttribute("id")
 					.toString()));
-			return TransactionBuilder.transaction().client(c).build();
+			Transaction t = TransactionBuilder.transaction().client(c).build();
+			session.setAttribute("Cart", t);
+			return t;
 		} else {
 			return (Transaction) session.getAttribute("Cart");
 		}
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	protected ModelAndView cart(HttpSession session) {
+		System.out.println("Total: "+getCart(session).getTotal());
 		return new ModelAndView("panier", "panier", getCart(session));
 	}
 	
 	@RequestMapping(value = "/add/{code}" , method = RequestMethod.GET)
-	protected ModelAndView addTraining(HttpSession session,
+	protected void addTraining(HttpSession session,
 			@PathVariable("code") String code) {
-		System.out.println("Cart/add");
+		System.out.println("Cart/add/"+code);
 		getCart(session).addTraining(tdbs.findTraining(code));
-		System.out.println("Reception add");
+		//return cart(session);
+	}
+	
+	@RequestMapping(value = "/increment/{code}" , method = RequestMethod.GET)
+	protected ModelAndView incrementTraining(HttpSession session,
+			@PathVariable("code") String code) {
+		System.out.println("Cart/increment"+code);
+		getCart(session).incrementTraining(tdbs.findTraining(code));
+		return cart(session);
+	}
+	
+	@RequestMapping(value = "/decrement/{code}" , method = RequestMethod.GET)
+	protected ModelAndView decrementTraining(HttpSession session,
+			@PathVariable("code") String code) {
+		System.out.println("Cart/decrement"+code);
+		getCart(session).decrementTraining(tdbs.findTraining(code));
 		return cart(session);
 	}
 
-	@RequestMapping(value = "/decrement", method = RequestMethod.POST)
-	protected boolean decrementTraining(HttpSession session,
-			@RequestParam("idTraining") String idTraining) {
-		getCart(session).removeTraining(tdbs.findTraining(idTraining));
-		return true;
+	@RequestMapping(value = "/remove/{code}", method = RequestMethod.GET)
+	protected ModelAndView removeFromCart(HttpSession session,
+			@PathVariable("code") String code) {
+		System.out.println("Cart/remove"+code);
+		getCart(session).removeTraining(tdbs.findTraining(code));
+		return cart(session);
 	}
 
-	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	protected boolean removeFromCart(HttpSession session,
-			@RequestParam("idTraining") String idTraining) {
-		getCart(session).removeTraining(tdbs.findTraining(idTraining));
-		return true;
-	}
-
-	@RequestMapping(value = "/empty", method = RequestMethod.POST)
-	protected boolean emptyCart(HttpSession session) {
+	@RequestMapping(value = "/empty", method = RequestMethod.GET)
+	protected ModelAndView emptyCart(HttpSession session) {
 		getCart(session).empty();
-		return true;
+		return cart(session);
 	}
 
 }

@@ -224,9 +224,9 @@
 				Article 1<br> Article 2<br> Article 3<br>
 			</div>
 			<div class="modal-footer">
-				<%-- <a href="${page.url}/404" class="btn btn-warning btn-sm">Passer ma commande
+				<a href="${page.url}/cart/" class="btn btn-warning btn-sm">Voir mon panier
 					<span class="fa fa-arrow-circle-right"></span>
-				</a> --%>
+				</a>
 				<form action='checkout' METHOD='POST'>
 					<input class="pull-right" type="image"
 						src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_paynow_LG.gif" name="submit"
