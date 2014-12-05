@@ -317,8 +317,8 @@
 											<c:if
 												test="${training.prerequisites.recommended[0].requirement.class.simpleName eq 'String'}">
 												<c:forEach items="${training.prerequisites.recommended}"
-													var="rec">
-													<input type="text" form="trainingForm" class="form-control recommended" value="${rec.requirement}"></input>
+													var="rec" varStatus="loop">
+													<input type="text" form="trainingForm" class="form-control recommended" name="prerequisites['essential'][${loop.index}]" value="${rec.requirement}"></input>
 												<span class=" col-md-1 delSmall fa fa-side fa-trash"></span>
 												</c:forEach>
 											</c:if>
@@ -555,7 +555,7 @@
 								function() {
 									count = $(".essential").size();
 									after = '<br>'
-											+ '<input type="text" class="form-control" form="trainingForm"'
+											+ '<input type="text" class="form-control essential" form="trainingForm"'
 								+'name=\"prerequisites[\'essential\']['+count+']\"></input>'
 											+ '<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
 									$(this).after(after);
@@ -571,8 +571,8 @@
 								function() {
 									count = $('.recommended').size();
 									after = '<br>'
-											+ '<input type="text" class="form-control" form="trainingForm"'
-								+'name=\"prerequisites[\'recommended\']\"></input>'
+											+ '<input type="text" class="form-control recommended" form="trainingForm"'
+								+'name=\"prerequisites[\'recommended\']['+count+']\"></input>'
 											+ '<span class="col-sm-1 delBig fa fa-side fa-trash"></span><ul><br><br>';
 									$(this).after(after);
 									index++;
