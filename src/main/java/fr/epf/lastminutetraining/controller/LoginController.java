@@ -11,13 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.epf.lastminutetraining.domain.Client;
 import fr.epf.lastminutetraining.domain.Mail;
-import fr.epf.lastminutetraining.domain.Transaction;
-import fr.epf.lastminutetraining.domain.TransactionBuilder;
 import fr.epf.lastminutetraining.domain.User;
 import fr.epf.lastminutetraining.domain.Vendor;
 import fr.epf.lastminutetraining.service.ClientDBService;
@@ -114,10 +111,9 @@ public class LoginController {
 							+ " à l\'adresse suivante : http://lastminutetraining.epf.fr/myaccount\n\n"
 							+ "Cordialement,\n\nL'équipe Last Minute Training");
 
-			return new ModelAndView(home, trainings,
-					tservice.findLastTraining());
 		} finally {
 			((AbstractApplicationContext) context).close();
 		}
+		return new ModelAndView(home, trainings, tservice.findLastTraining());
 	}
 }

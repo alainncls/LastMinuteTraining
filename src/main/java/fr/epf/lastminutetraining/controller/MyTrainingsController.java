@@ -93,11 +93,12 @@ public class MyTrainingsController {
 						+ " Merci de votre contribution ï¿½ notre catalogue.\n\nCordialement,\n\n"
 						+ "L'ï¿½quipe Last Minute Training");
 
-				return new ModelAndView("redirect:/mytrainings", "trainings",
-						service.findAllTrainings(id));
+				
 			} finally {
 				((AbstractApplicationContext) context).close();
 			}
+			return new ModelAndView("redirect:/mytrainings", "trainings",
+						service.findAllTrainings(id));
 		}
 
 	}
