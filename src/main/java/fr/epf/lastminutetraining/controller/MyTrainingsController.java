@@ -80,23 +80,23 @@ public class MyTrainingsController {
 			ApplicationContext context = new ClassPathXmlApplicationContext(
 					"context.xml");
 			Vendor vendor = vservice.findVendor(id);
-			try {
-				Mail mm = (Mail) context.getBean("Mail");
-				mm.sendMail(
-						"lastminutetraining.epf@gmail.com",
-						vendor.getMail(),
-						"Confirmation de crï¿½ation de formation",
-						"Cher vendeur,\n\n"
-						+ "Vous venez de crï¿½er une nouvelle formation nommï¿½e "
-						+ training.getName()
-						+ "."
-						+ " Merci de votre contribution ï¿½ notre catalogue.\n\nCordialement,\n\n"
-						+ "L'ï¿½quipe Last Minute Training");
-
-				
-			} finally {
-				((AbstractApplicationContext) context).close();
-			}
+//			try {
+//				Mail mm = (Mail) context.getBean("Mail");
+//				mm.sendMail(
+//						"lastminutetraining.epf@gmail.com",
+//						vendor.getMail(),
+//						"Confirmation de crï¿½ation de formation",
+//						"Cher vendeur,\n\n"
+//						+ "Vous venez de crï¿½er une nouvelle formation nommï¿½e "
+//						+ training.getName()
+//						+ "."
+//						+ " Merci de votre contribution ï¿½ notre catalogue.\n\nCordialement,\n\n"
+//						+ "L'ï¿½quipe Last Minute Training");
+//
+//				
+//			} finally {
+//				((AbstractApplicationContext) context).close();
+//			}
 			return new ModelAndView("redirect:/mytrainings", "trainings",
 						service.findAllTrainings(id));
 		}

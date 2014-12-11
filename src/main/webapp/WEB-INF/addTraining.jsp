@@ -201,7 +201,7 @@
 					<label for="essential">Prérequis essentiels</label>
 					<span id="addBig2" class="button fa fa-side fa-plus"> Ajouter un prérequis</span><br> 
 					<input type="text" class="form-control" 
-					name="prerequisites['essential']['requirement']" id="essential" 
+					name="prerequisites['essential']" id="essential" 
 					form="trainingForm"/><br>
 				</div>
 
@@ -209,7 +209,7 @@
 					<label for="recommended">Prérequis recommandés</label>
 					<span id="addBig3" class="button fa fa-side fa-plus"> Ajouter un prérequis</span><br> 
 					<input type="text" class="form-control" 
-					name="prerequisites['recommended']['requirement']" id="recommended" 
+					name="prerequisites['recommended']" id="recommended" 
 					form="trainingForm"/><br>
 				</div>
 				<br><br>
