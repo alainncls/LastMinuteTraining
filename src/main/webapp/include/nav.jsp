@@ -227,7 +227,7 @@
 				<a href="${page.url}/cart/" class="btn btn-warning btn-sm">Voir mon panier
 					<span class="fa fa-arrow-circle-right"></span>
 				</a>
-				<form action='checkout' METHOD='POST'>
+				<form action='cart/checkout' METHOD='POST'>
 					<input class="pull-right" type="image"
 						src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_paynow_LG.gif" name="submit"
 						alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !"></input>

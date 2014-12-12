@@ -42,9 +42,9 @@ public class PaypalFunctions {
 	public PaypalFunctions() {// lhuynh - Actions to be Done on init of this
 								// class
 
-		gv_APIUserName = "lastminutetraining.epf_api1.gmail.com";
-		gv_APIPassword = "6DNP2PBTZLKJG9GK";
-		gv_APISignature = "ApzOk5KHKjxhaizEHdz8feEsONnbA7h9KDijsyEDlCKbssjLaCtX4e9n";
+		gv_APIUserName = "epf.lmt-facilitator_api1.gmail.com";
+		gv_APIPassword = "53LTDXYTTGMWKEPU";
+		gv_APISignature = "AFcWxV21C7fd0v3bYYYRCpSSRl31AXxPUal6G-k3rnwwShlusw9CePhQ";
 
 		boolean bSandbox = true;
 

@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class Checkout {
 
-	@RequestMapping(method = RequestMethod.GET, value = { "/checkout" })
+	@RequestMapping(method = RequestMethod.GET, value = { "/cart/checkout" })
 	protected ModelAndView get(HttpServletRequest request,
 			HttpServletResponse response) {
 		// Use "request" to read incoming HTTP headers (e.g. cookies)
@@ -90,7 +90,7 @@ public class Checkout {
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = { "/checkout" })
+	@RequestMapping(method = RequestMethod.POST, value = { "/cart/checkout" })
 	protected ModelAndView post(HttpServletRequest request,
 			HttpServletResponse response) {
 		return get(request, response);
