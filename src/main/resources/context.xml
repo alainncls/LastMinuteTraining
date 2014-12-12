@@ -11,20 +11,19 @@
 	<context:component-scan base-package="fr.epf.lastminutetraining.dao"></context:component-scan>
 	<context:component-scan base-package="fr.epf.lastminutetraining.service"></context:component-scan>
 
-
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="port" value="587" />
-		<property name="username" value="lastminutetraining.epf@gmail.com" />
-		<property name="password" value="LMTlover" />
-
-		<property name="javaMailProperties">
-			<props>
-				<prop key="mail.smtp.auth">true</prop>
-				<prop key="mail.smtp.starttls.enable">true</prop>
-			</props>
-		</property>
-	</bean>
+	<property name="host" value="smtp.gmail.com" />
+	<property name="port" value="587" />
+	<property name="username" value="epf.lmt@gmail.com" />
+	<property name="password" value="LMTloverEPF" />
+ 
+	<property name="javaMailProperties">
+	   <props>
+       	      <prop key="mail.smtp.auth">true</prop>
+       	      <prop key="mail.smtp.starttls.enable">true</prop>
+       	   </props>
+	</property>
+</bean>
 
 	<bean id="Mail" class="fr.epf.lastminutetraining.domain.Mail">
 		<property name="mailSender" ref="mailSender" />
