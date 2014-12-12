@@ -55,12 +55,12 @@ public class MyTrainingsController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = { "/mytrainings/edit/{code}" })
-	protected ModelAndView postTraining(@PathVariable("code") String code, HttpSession session) {
+	protected ModelAndView postTraining(HttpSession session) {
 		if (session.getAttribute("status").equals("client")){
 			return new ModelAndView("404");
 		}
 		ObjectId id = new ObjectId(session.getAttribute("id").toString());
-		return new ModelAndView("myTrainings", "trainings",
+		return new ModelAndView("redirect:/mytrainings", "trainings",
 				service.findAllTrainings(id));
 	}
 
