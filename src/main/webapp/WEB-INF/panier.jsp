@@ -60,9 +60,12 @@
 				<div class="centered">
 					<a type="button" class="btn btn-default" href="/home"> <span
 						class="fa fa-arrow-circle-left"></span> Continuer mes recherches
-					</a> <a type="button" class="btn btn-primary" href="#"> Finaliser
-						ma commande <span class="fa fa-check"></span>
-					</a>
+					</a> 
+					<form action='cart/checkout' METHOD='POST'>
+						<input class="btn" type="image"
+						src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_paynow_LG.gif" name="submit"
+						alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !"></input>
+					</form>
 				</div>
 				<br>
 			</div>
