@@ -97,23 +97,23 @@ public class LoginController {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"context.xml");
 
-		try {
-			Mail mm = (Mail) context.getBean("Mail");
-			mm.sendMail(
-					"lastminutetraining.epf@gmail.com",
-					mail,
-					"Confirmation de cr�ation de compte Last Minute Training",
-					"Cher "
-							+ typeOfUser
-							+ ",\n"
-							+ "Vous venez de créer un compte sur notre site Last Minute Training. "
-							+ "Pour compléter votre compte, veuillez utiliser votre interface \" mon compte \" disponible"
-							+ " à l\'adresse suivante : http://lastminutetraining.epf.fr/myaccount\n\n"
-							+ "Cordialement,\n\nL'équipe Last Minute Training");
-
-		} finally {
-			((AbstractApplicationContext) context).close();
-		}
+//		try {
+//			Mail mm = (Mail) context.getBean("Mail");
+//			mm.sendMail(
+//					"lastminutetraining.epf@gmail.com",
+//					mail,
+//					"Confirmation de cr�ation de compte Last Minute Training",
+//					"Cher "
+//							+ typeOfUser
+//							+ ",\n"
+//							+ "Vous venez de créer un compte sur notre site Last Minute Training. "
+//							+ "Pour compléter votre compte, veuillez utiliser votre interface \" mon compte \" disponible"
+//							+ " à l\'adresse suivante : http://lastminutetraining.epf.fr/myaccount\n\n"
+//							+ "Cordialement,\n\nL'équipe Last Minute Training");
+//
+//		} finally {
+//			((AbstractApplicationContext) context).close();
+//		}
 		return new ModelAndView(home, trainings, tservice.findLastTraining());
 	}
 }
