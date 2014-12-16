@@ -274,30 +274,30 @@ public class OrderConfirm {
 						.toString());
 				Client client = cservice.findClient(idClient);
 
-				try {
-					Mail mm = (Mail) context.getBean("Mail");
-					mm.sendMail(
-							"lastminutetraining.epf@gmail.com",
-							client.getMail(),
-							"LMT - Confirmation de paiement formation",
-							"Cher "
-									+ client.getFirstName()
-									+ " "
-									+ client.getLastName()
-									+ ",\n\n"
-									+ "Nous vous confirmons le paiement de votre formation "
-									+ "nom training"
-									+ " se déroulant le "
-									+ "jour"
-									+ " à "
-									+ "date"
-									+ ".\n\n"
-									+ "Nous vous remercions pour votre achat.\n\nBien cordialement,\n\n"
-									+ "L'équipe LastMinuteTraining");
-					// return new ModelAndView("orderConfirmation");
-				} finally {
-					((AbstractApplicationContext) context).close();
-				}
+//				try {
+//					Mail mm = (Mail) context.getBean("Mail");
+//					mm.sendMail(
+//							"lastminutetraining.epf@gmail.com",
+//							client.getMail(),
+//							"LMT - Confirmation de paiement formation",
+//							"Cher "
+//									+ client.getFirstName()
+//									+ " "
+//									+ client.getLastName()
+//									+ ",\n\n"
+//									+ "Nous vous confirmons le paiement de votre formation "
+//									+ "nom training"
+//									+ " se déroulant le "
+//									+ "jour"
+//									+ " à "
+//									+ "date"
+//									+ ".\n\n"
+//									+ "Nous vous remercions pour votre achat.\n\nBien cordialement,\n\n"
+//									+ "L'équipe LastMinuteTraining");
+//					// return new ModelAndView("orderConfirmation");
+//				} finally {
+//					((AbstractApplicationContext) context).close();
+//				}
 				
 				Training t = tdbs.findOneTraining();
 				Order order = OrderBuilder.order().training(t).quantity(2).build();
