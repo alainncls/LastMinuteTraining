@@ -20,12 +20,6 @@
 							value="${training.price}" required="required" />
 					</div>
 					<div class="form-group">
-						<label for="priceLMT">Prix via LMT (temporaire)</label> <input
-							type="number" class="form-control" name="priceLMT" id="priceLMT"
-							value="${training.priceLMT}" placeholder="400€"
-							required="required" />
-					</div>
-					<div class="form-group">
 						<label for="level">Niveau de la formation</label> <select
 							type="text" class="form-control level " name="level" id="level"
 							value="${training.level}">

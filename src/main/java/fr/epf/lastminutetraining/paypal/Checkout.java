@@ -5,18 +5,21 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.epf.lastminutetraining.domain.Transaction;
+
 @Controller
 public class Checkout {
 
 	@RequestMapping(method = RequestMethod.GET, value = { "/cart/checkout" })
 	protected ModelAndView get(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response, HttpSession session) {
 		// Use "request" to read incoming HTTP headers (e.g. cookies)
 		// and HTML form data (e.g. data the user entered and submitted)
 
@@ -28,7 +31,7 @@ public class Checkout {
 		 * the total Payment Amount within the quotes. ' example : paymentAmount
 		 * = "15.00";
 		 */
-		String paymentAmount = "1500";
+		String paymentAmount = Float.toString(((Transaction) session.getAttribute("Cart")).getTotal());
 
 		/*
 		 * '------------------------------------ ' The returnURL is the location
@@ -92,8 +95,8 @@ public class Checkout {
 
 	@RequestMapping(method = RequestMethod.POST, value = { "/cart/checkout" })
 	protected ModelAndView post(HttpServletRequest request,
-			HttpServletResponse response) {
-		return get(request, response);
+			HttpServletResponse response, HttpSession session) {
+		return get(request, response, session);
 	}
 
 }
