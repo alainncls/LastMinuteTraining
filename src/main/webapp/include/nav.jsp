@@ -194,7 +194,7 @@
 							<div class="form-group">
 								<div class="col-sm-offset-4 col-sm-8">
 									<button type="submit" name="buttonRegister"
-										class="btn btn-success">Sign Up</button>
+										class="btn btn-success">S'enregistrer</button>
 								</div>
 							</div>
 						</form>
