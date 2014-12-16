@@ -7,7 +7,7 @@
 			</div>
 			<div class="panel-body">
 				<%-- <pre>${debug}</pre> --%>
-				<form role="form" method="post">
+				<form role="form" method="POST">
 					<div class="form-group">
 						<label for="inputName">Nom</label> <input type="text"
 							class="form-control" id="inputName" name="name" value="${training.name}" />
@@ -47,8 +47,7 @@
 						</select>
 					</div>
 					<div>
-						<input type="submit" class="btn btn-primary" name="search"
-							value="Rechercher" />
+						<button type="submit" class="btn btn-primary">Rechercher</button>
 					</div>
 				</form>
 			</div>
