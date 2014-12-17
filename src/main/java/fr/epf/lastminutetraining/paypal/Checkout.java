@@ -40,7 +40,7 @@ public class Checkout {
 		 * Assistant '------------------------------------
 		 */
 
-		String returnURL = "http://localhost:8080/orderConfirmation";
+		String returnURL = "http://lastminutetraining.epf.fr:8080/orderConfirmation";
 
 		/*
 		 * '------------------------------------ ' The cancelURL is the location
