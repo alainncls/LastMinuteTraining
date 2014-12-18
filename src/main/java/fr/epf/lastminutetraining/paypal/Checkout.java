@@ -49,7 +49,7 @@ public class Checkout {
 		 * the value entered on the Integration Assistant
 		 * '------------------------------------
 		 */
-		String cancelURL = "http://localhost:8080/404";
+		String cancelURL = "http://lastminutetraining.epf.fr:8080/404";
 
 		/*
 		 * '------------------------------------ ' The items hashmap contains
